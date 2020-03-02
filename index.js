@@ -1,3 +1,7 @@
+import Button from "./src/components/button/Button";
+import Input from "./src/components/input/Input";
+import Checkbox from "./src/components/checkbox/Checkbox";
+import RadioButton from "./src/components/radio-button/RadioButton";
 import Theme from "./src/components/theme/Theme";
 
 const applyWebpackConfig = (test = /\.jsx/) => {
@@ -10,4 +14,4 @@ const applyWebpackConfig = (test = /\.jsx/) => {
   };
 };
 
-export { Theme, applyWebpackConfig };
+export { Button, Input, Checkbox, RadioButton, Theme, applyWebpackConfig };
