@@ -1,0 +1,55 @@
+@import "./spacing.scss";
+@import "./colours.scss";
+
+@mixin main($firstColour, $secondColour) {
+  background-color: $firstColour;
+  border: solid 1px $firstColour;
+  color: $secondColour;
+
+  &:hover {
+    background-color: $secondColour;
+    border: solid 1px $firstColour;
+    color: $firstColour;
+  }
+}
+
+@mixin alternate($firstColour, $secondColour) {
+  &.alternate {
+    background-color: $secondColour;
+    border: solid 1px $firstColour;
+    color: $firstColour;
+
+    &:hover {
+      background-color: $firstColour;
+      border: solid 1px $firstColour;
+      color: $secondColour;
+    }
+  }
+}
+
+@mixin generateVariant($className, $firstColour, $secondColour) {
+  &.#{$className} {
+    @include main($firstColour, $secondColour);
+    @include alternate($firstColour, $secondColour);
+  }
+}
+
+button,
+.button {
+  // Note the margin rule is a quick demo of spacing
+  margin: $spacer-five;
+  padding: $grid-base $spacer-three;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+
+  @each $colourClassName in map-keys($theme-colours) {
+    @include generateVariant(
+      $colourClassName,
+      map-get($theme-colours, $colourClassName),
+      white
+    );
+  }
+}

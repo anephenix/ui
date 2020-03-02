@@ -1,0 +1,115 @@
+@import "./colours.scss";
+@import "./spacing.scss";
+
+label {
+  margin-right: $grid-base;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: $grid-base;
+  border-radius: 3px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border: solid 1px #cfcfcf;
+  color: #414141;
+  font-size: 14px;
+
+  &.large {
+    padding: $spacer-two $spacer-one;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.checkbox,
+.radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-element,
+.radio-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: $spacer-one;
+  height: $spacer-one;
+  padding: $grid-base / 2;
+  margin-right: $grid-base;
+  border: solid 1px #cfcfcf;
+  border-radius: 3px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.radio-element {
+  border-radius: $spacer-two;
+}
+
+.large .checkbox-element,
+.large .radio-element {
+  width: $spacer-two;
+  height: $spacer-two;
+}
+
+.large .radio-element {
+  border-radius: $spacer-two;
+}
+
+.large .tick {
+  border-radius: 2px;
+}
+
+.large .selected {
+  border-radius: $spacer-one;
+}
+
+.tick,
+.selected {
+  width: 0px;
+  height: 0px;
+  border-radius: 1px;
+  background-color: $green-one-colour;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.selected {
+  border-radius: $spacer-one;
+}
+
+input[type="checkbox"]:checked + .checkbox-element .tick,
+input[type="radio"]:checked + .radio-element .selected {
+  width: $grid-base;
+  height: $grid-base;
+  opacity: 1;
+}
+
+.large input[type="checkbox"]:checked + .checkbox-element .tick,
+.large input[type="radio"]:checked + .radio-element .selected {
+  width: $spacer-two;
+  height: $spacer-two;
+  opacity: 1;
+}
+
+input[type="checkbox"]:disabled + .checkbox-element,
+input[type="radio"]:disabled + .radio-element {
+  opacity: 0.2;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  padding: $grid-base;
+}
+
+// TODO - Make sure that the focussed/hover state is reflected in the checkbox and radio buttons
+
+// TODO - dropdowns and their lists
