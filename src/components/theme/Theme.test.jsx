@@ -1,5 +1,5 @@
-import "../../../design-system/index.scss";
+// import Theme from './Theme';
 
-const Theme = ({ children }) => <>{children}</>;
-
-export default Theme;
+describe("Theme", () => {
+  test.todo("should do something");
+});

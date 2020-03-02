@@ -1,6 +1,5 @@
+import "../../../design-system/index.scss";
 
-import './Theme.scss';
+const Theme = ({ children }) => <>{children}</>;
 
-const Theme = () => (<div id='theme' />);
-			
 export default Theme;
