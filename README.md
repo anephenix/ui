@@ -2,6 +2,8 @@
 
 A design system for Next.js applications, using Sass as the CSS preprocessor.
 
+[![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui)
+
 ### Installation
 
 ```
@@ -10,9 +12,9 @@ npm i @anephenix/ui @zeit/next-sass --save
 
 ### Dependencies
 
-- Node.js (10)
-- React (Version 16)
-- Sass Lang
+-   Node.js (10)
+-   React (Version 16)
+-   Sass Lang
 
 ### Setup
 
@@ -26,15 +28,15 @@ In order to use Anephenix's React UI within your applications, you will need to 
 Make sure that the next.config.js file for your Next.js app has this code:
 
 ```javascript
-const path = require("path");
-const withSass = require("@zeit/next-sass");
-const { applyWebpackConfig } = require("@anephenix/ui");
+const path = require('path');
+const withSass = require('@zeit/next-sass');
+const { applyWebpackConfig } = require('@anephenix/ui');
 
 module.exports = withSass({
-  sassLoaderOptions: {
-    includePaths: [path.resolve("node_modules")]
-  },
-  webpack: applyWebpackConfig()
+    sassLoaderOptions: {
+        includePaths: [path.resolve('node_modules')]
+    },
+    webpack: applyWebpackConfig()
 });
 ```
 
@@ -48,29 +50,29 @@ By default, `applyWebpackConfig` will look for .jsx files in the @anephenix/ui n
 In your pages/\_app.js file, wrap the page components with a `<Theme>` component, like in the example below:
 
 ```javascript
-import App from "next/app";
-import React from "react";
-import Head from "next/head";
-import { Theme } from "@anephenix/ui";
+import App from 'next/app';
+import React from 'react';
+import Head from 'next/head';
+import { Theme } from '@anephenix/ui';
 
 class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <>
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-          <title>My App</title>
-        </Head>
-        <Theme>
-          <Component {...pageProps} />
-        </Theme>
-      </>
-    );
-  }
+    render() {
+        const { Component, pageProps } = this.props;
+        return (
+            <>
+                <Head>
+                    <meta
+                        name="viewport"
+                        content="initial-scale=1.0, width=device-width"
+                    />
+                    <title>My App</title>
+                </Head>
+                <Theme>
+                    <Component {...pageProps} />
+                </Theme>
+            </>
+        );
+    }
 }
 export default MyApp;
 ```
