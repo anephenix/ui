@@ -1,5 +1,7 @@
-// import Theme from './Theme';
+import Theme from './Theme';
 
-describe("Theme", () => {
-  test.todo("should do something");
+describe('Theme', () => {
+    test.todo(
+        'should render child elements inside of the higher order component'
+    );
 });

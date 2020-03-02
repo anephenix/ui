@@ -81,7 +81,7 @@ The `<Theme>` component is a higher order component that ensure that the Sass fi
 
 ### Usage
 
-To be fleshed out
+To be fleshed out.
 
 ### tests
 

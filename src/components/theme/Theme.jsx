@@ -1,4 +1,4 @@
-import "../../../design-system/index.scss";
+import '../../../design-system/index.scss';
 
 const Theme = ({ children }) => <>{children}</>;
 
