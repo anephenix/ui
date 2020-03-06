@@ -2,7 +2,7 @@
 
 A design system for Next.js applications, using Sass as the CSS preprocessor.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/anephenix/ui.svg)](https://greenkeeper.io/) [![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
+ [![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
 
 ### Installation
 
