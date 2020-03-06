@@ -7,14 +7,14 @@ A design system for Next.js applications, using Sass as the CSS preprocessor.
 ### Installation
 
 ```
-npm i @anephenix/ui @zeit/next-sass --save
+npm i @anephenix/ui --save
 ```
 
 ### Dependencies
 
--   Node.js (10)
+-   Node.js (12)
 -   React (Version 16)
--   Sass Lang
+-   Sass Lang (recommend installing @zeit/next-sass if using with Next.js)
 
 ### Setup
 
