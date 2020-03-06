@@ -5,9 +5,9 @@
     "main": "index.jsx",
     "type": "module",
     "scripts": {
-        "lint": "npx eslint .",
-        "cover": "jest --coverage --coverageReporters=text-lcov | coveralls",
-        "test": "jest --coverage"
+        "lint": "npx eslint *.cjs",
+        "cover": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
+        "test": "npx jest --coverage"
     },
     "keywords": [
         "react",
