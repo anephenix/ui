@@ -1,11 +1,9 @@
 import React, { forwardRef } from 'react';
 
-const RadioButton = forwardRef(function radioButton({
-	name,
-	label,
-	className,
+const RadioButton = forwardRef(function radioButton(
+	{ name, label, className },
 	ref
-}) {
+) {
 	const classNames = `radio ${className}`;
 	return (
 		<label className={classNames}>

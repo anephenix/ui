@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 
-const Checkbox = forwardRef(function checkbox({ label, className, name, ref }) {
+// TODO - support for default initial value
+const Checkbox = forwardRef(function checkbox({ label, className, name }, ref) {
 	{
 		const classNames = `checkbox ${className}`;
 		return (
