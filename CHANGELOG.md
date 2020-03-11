@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 0.0.4 - Wednesday 11th March, 2020
+
+-   Fix for passing refs to components for use with react-hook-form
+-   Dropdown component
+-   FormField component, with support for display validation error messages on form fields
+
 ### 0.0.3 - Friday 6th March, 2020
 
 -   Pass name and ref values to components for use with react-hook-form
