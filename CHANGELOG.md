@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.5 - Wednesday 11th March, 2020
+
+-   Small fixes for the Checkbox and RadioButton components
+
 ### 0.0.4 - Wednesday 11th March, 2020
 
 -   Fix for passing refs to components for use with react-hook-form
