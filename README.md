@@ -2,7 +2,7 @@
 
 A design system for Next.js applications, using Sass as the CSS preprocessor.
 
- [![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
+[![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
 
 ### Installation
 
@@ -33,10 +33,10 @@ const withSass = require('@zeit/next-sass');
 const { applyWebpackConfig } = require('@anephenix/ui');
 
 module.exports = withSass({
-    sassLoaderOptions: {
-        includePaths: [path.resolve('node_modules')]
-    },
-    webpack: applyWebpackConfig()
+	sassLoaderOptions: {
+		includePaths: [path.resolve('node_modules')]
+	},
+	webpack: applyWebpackConfig()
 });
 ```
 
@@ -56,23 +56,23 @@ import Head from 'next/head';
 import { Theme } from '@anephenix/ui';
 
 class MyApp extends App {
-    render() {
-        const { Component, pageProps } = this.props;
-        return (
-            <>
-                <Head>
-                    <meta
-                        name="viewport"
-                        content="initial-scale=1.0, width=device-width"
-                    />
-                    <title>My App</title>
-                </Head>
-                <Theme>
-                    <Component {...pageProps} />
-                </Theme>
-            </>
-        );
-    }
+	render() {
+		const { Component, pageProps } = this.props;
+		return (
+			<>
+				<Head>
+					<meta
+						name="viewport"
+						content="initial-scale=1.0, width=device-width"
+					/>
+					<title>My App</title>
+				</Head>
+				<Theme>
+					<Component {...pageProps} />
+				</Theme>
+			</>
+		);
+	}
 }
 export default MyApp;
 ```
