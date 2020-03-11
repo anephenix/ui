@@ -30,11 +30,22 @@ Make sure that the next.config.js file for your Next.js app has this code:
 ```javascript
 const path = require('path');
 const withSass = require('@zeit/next-sass');
-const { applyWebpackConfig } = require('@anephenix/ui');
+
+const applyWebpackConfig = (test = /\.jsx/) => {
+	return (config, options) => {
+		config.module.rules.push({
+			test,
+			use: [options.defaultLoaders.babel]
+		});
+		return config;
+	};
+};
 
 module.exports = withSass({
 	sassLoaderOptions: {
-		includePaths: [path.resolve('node_modules')]
+		sassOptions: {
+			includePaths: [path.resolve('node_modules')]
+		}
 	},
 	webpack: applyWebpackConfig()
 });

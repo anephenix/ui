@@ -3,6 +3,7 @@ import Input from './src/components/input/Input';
 import Checkbox from './src/components/checkbox/Checkbox';
 import RadioButton from './src/components/radio-button/RadioButton';
 import Dropdown from './src/components/dropdown/Dropdown';
+import FormField from './src/components/form-field/FormField';
 import Theme from './src/components/theme/Theme';
 
 const applyWebpackConfig = (test = /\.jsx/) => {
@@ -22,5 +23,6 @@ export {
 	RadioButton,
 	Theme,
 	Dropdown,
+	FormField,
 	applyWebpackConfig
 };

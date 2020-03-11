@@ -1,0 +1,17 @@
+@import '../../../design-system/spacing.scss';
+@import '../../../design-system/colours.scss';
+
+.form-field {
+	&.error {
+		input {
+			border-color: $primary-colour;
+			color: $primary-colour;
+		}
+	}
+}
+
+.error-message {
+	padding: $grid-base / 2;
+	font-size: 8pt;
+	color: $primary-colour;
+}

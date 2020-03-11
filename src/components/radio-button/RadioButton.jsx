@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const RadioButton = ({ name, label, className, ref }) => {
+const RadioButton = forwardRef(function radioButton({
+	name,
+	label,
+	className,
+	ref
+}) {
 	const classNames = `radio ${className}`;
 	return (
 		<label className={classNames}>
@@ -11,6 +16,6 @@ const RadioButton = ({ name, label, className, ref }) => {
 			<span>{label}</span>
 		</label>
 	);
-};
+});
 
 export default RadioButton;
