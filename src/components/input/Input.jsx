@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 const Input = forwardRef(function input(
-	{ type = 'text', className, value, placeholder, name },
+	{ type = 'text', className, value, placeholder, name, onChange },
 	ref
 ) {
 	return (
@@ -11,6 +11,7 @@ const Input = forwardRef(function input(
 			type={type}
 			className={className}
 			value={value}
+			onChange={onChange}
 			placeholder={placeholder}
 		/>
 	);
