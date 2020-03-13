@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.6 - Friday 13th March, 2020
+
+-   Added event handlers for the input and button components
+
 ### 0.0.5 - Wednesday 11th March, 2020
 
 -   Small fixes for the Checkbox and RadioButton components
