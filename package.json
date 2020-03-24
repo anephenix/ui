@@ -38,6 +38,6 @@
 	"dependencies": {
 		"@zeit/next-sass": "^1.0.1",
 		"node-sass": "^4.13.1",
-		"react": "^16.13.0"
+		"react": "^16.13.1"
 	}
 }
