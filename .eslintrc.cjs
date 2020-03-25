@@ -1,18 +1,28 @@
 module.exports = {
 	env: {
+		browser: true,
 		commonjs: true,
 		es6: true,
 		jest: true,
 		node: true
 	},
 	extends: ['eslint:recommended', 'plugin:react/recommended'],
+	parser: 'babel-eslint',
 	globals: {
 		Atomics: 'readonly',
 		SharedArrayBuffer: 'readonly'
 	},
 	parserOptions: {
-		ecmaVersion: 2018,
+		ecmaFeatures: {
+			ecmaVersion: 6,
+			jsx: true
+		},
 		sourceType: 'module'
+	},
+	settings: {
+		react: {
+			version: 'detect'
+		}
 	},
 	rules: {
 		'react/prop-types': 0,
@@ -21,5 +31,5 @@ module.exports = {
 		quotes: ['error', 'single'],
 		semi: ['error', 'always']
 	},
-	plugins: ['jest']
+	plugins: ['react', 'jest']
 };

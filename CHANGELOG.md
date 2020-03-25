@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.7 - Wednesday 25th March, 2020
+
+-   Added a helper function for handling errors
+
 ### 0.0.6 - Friday 13th March, 2020
 
 -   Added event handlers for the input and button components
