@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.8 - Friday 3rd April, 2020
+
+-   Added defaultValue for fields
+
 ### 0.0.7 - Wednesday 25th March, 2020
 
 -   Added a helper function for handling errors
