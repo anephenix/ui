@@ -1,12 +1,20 @@
 import React, { forwardRef } from 'react';
 
 // TODO - support for default initial value
-const Checkbox = forwardRef(function checkbox({ label, className, name }, ref) {
+const Checkbox = forwardRef(function checkbox(
+	{ label, className, name, defaultValue },
+	ref
+) {
 	{
 		const classNames = `checkbox ${className}`;
 		return (
 			<label className={classNames}>
-				<input type="checkbox" name={name} ref={ref} />
+				<input
+					type="checkbox"
+					name={name}
+					ref={ref}
+					defaultValue={defaultValue}
+				/>
 				<div className="checkbox-element">
 					<div className="tick"></div>
 				</div>
