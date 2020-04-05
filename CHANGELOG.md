@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 0.0.9 - Sunday 5th April, 2020
+
+-   Imported the Sarus website's grid system into Anephenix UI
+-   Applied some scoping to the CSS theming for typography and buttons
+-   Updated development dependencies
+
 ### 0.0.8 - Friday 3rd April, 2020
 
 -   Added defaultValue for fields
