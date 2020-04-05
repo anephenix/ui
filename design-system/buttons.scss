@@ -34,9 +34,8 @@
 	}
 }
 
-button,
-.button {
-	// Note the margin rule is a quick demo of spacing
+button.theme-default,
+.button.theme-default {
 	margin: $spacer-five;
 	padding: $grid-base $spacer-three;
 	border-radius: 4px;

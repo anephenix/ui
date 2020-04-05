@@ -1,0 +1,65 @@
+/* So, grid options
+  - mobile < 480px
+  - small >= 481px and <= 768px
+  - medium >= 769px and <= 1024px
+  - large >= 1025px
+*/
+
+/* Screen size definitions */
+$max-mobile-width: 480px;
+$min-tablet-width: 481px;
+$max-tablet-width: 768px;
+$min-desktop-width: 769px;
+$max-desktop-width: 1024px;
+$min-large-desktop-width: 1025px;
+
+// Kind of CSS reset
+body {
+	padding: 0;
+	margin: 0;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+}
+
+.container {
+	&.debug {
+		border: dotted 1px rgba(255, 0, 0, 0.5);
+	}
+
+	display: flex;
+	flex-direction: column;
+
+	// Mobile device viewport
+	@media screen and (max-width: $max-mobile-width) {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// Between mobile to tablet viewport sizes
+	@media screen and (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+		width: 100%;
+	}
+
+	// Between tablet to desktop viewport sizes
+	@media screen and (min-width: $min-desktop-width) and (max-width: $max-desktop-width) {
+		width: 720px;
+	}
+
+	// Desktop viewport sizes and larger (widescreen)
+	@media screen and (min-width: $min-large-desktop-width) {
+		width: $max-desktop-width;
+	}
+}
+
+.withSidePadding {
+	padding: 0px 20px;
+}
