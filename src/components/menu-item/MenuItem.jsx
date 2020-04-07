@@ -14,15 +14,36 @@ const MenuItem = ({
 	i,
 }) => {
 	if (url && !onClick) {
-		return (
-			<li key={i} onClick={isMobile ? toggleMenu : null}>
-				<Link href={url}>
-					<a id={id} className={className} target={target} rel={rel}>
+		if (url.match('http') !== -1) {
+			return (
+				<li key={i} onClick={isMobile ? toggleMenu : null}>
+					<a
+						id={id}
+						href={url}
+						className={className}
+						target={target}
+						rel={rel}
+					>
 						{text}
 					</a>
-				</Link>
-			</li>
-		);
+				</li>
+			);
+		} else {
+			return (
+				<li key={i} onClick={isMobile ? toggleMenu : null}>
+					<Link href={url}>
+						<a
+							id={id}
+							className={className}
+							target={target}
+							rel={rel}
+						>
+							{text}
+						</a>
+					</Link>
+				</li>
+			);
+		}
 	} else {
 		return (
 			<li key={i}>

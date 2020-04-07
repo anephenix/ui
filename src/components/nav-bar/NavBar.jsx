@@ -38,13 +38,13 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const { logo, links, loggedIn } = this.props;
+		const { logo, links, loggedIn, className } = this.props;
 		const { menuOpen } = this.state;
 		const mobileMenuClass = menuOpen ? 'open' : 'closed';
 
 		return (
 			<>
-				<div id="nav-bar">
+				<div id="nav-bar" className={className}>
 					<div className="container">
 						<div className="withSidePadding">
 							{logo}
