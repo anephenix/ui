@@ -14,12 +14,17 @@ const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn }) => {
 			<ul>
 				{links
 					.filter((x) => x.hideOptions({ loggedIn }))
-					.map((x) => {
-						x.onClick = toggleMenu;
-						x.forMobile = true;
-						return x;
-					})
-					.map(MenuItem)}
+					.map((link, i) => {
+						return (
+							<MenuItem
+								key={i}
+								{...link}
+								isMobile={true}
+								toggleMenu={toggleMenu}
+								i={i}
+							/>
+						);
+					})}
 			</ul>
 		</div>
 	);

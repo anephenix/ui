@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.11 - Tuesday 7th April, 2020
+
+-   Applied some fixes for the NavBar component
+-   Included Next.js Links component for navigation bar menu items
+
 ### 0.0.10 - Tuesday 7th April, 2020
 
 -   Added the NavBar component from the Sarus website into here

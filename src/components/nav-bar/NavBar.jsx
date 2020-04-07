@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 // Components
 import Hamburger from '../hamburger/Hamburger';
@@ -29,7 +29,7 @@ import './NavBar.scss';
 class NavBar extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { menuOpen: false, loggedIn: false };
+		this.state = { menuOpen: false };
 		this.toggleMenu = this.toggleMenu.bind(this);
 	}
 
@@ -38,12 +38,12 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const { logo, links } = this.props;
-		const { menuOpen, loggedIn } = this.state;
+		const { logo, links, loggedIn } = this.props;
+		const { menuOpen } = this.state;
 		const mobileMenuClass = menuOpen ? 'open' : 'closed';
 
 		return (
-			<Fragment>
+			<>
 				<div id="nav-bar">
 					<div className="container">
 						<div className="withSidePadding">
@@ -61,7 +61,7 @@ class NavBar extends Component {
 						loggedIn,
 					}}
 				/>
-			</Fragment>
+			</>
 		);
 	}
 }
