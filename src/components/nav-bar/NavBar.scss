@@ -1,0 +1,65 @@
+/* TODO items
+
+- see if shadow can be extracted into a class/variable as well, seems more like styling choice
+- decide how/where to store and reference them 
+- apply grid base to padding, dimensions
+- Extract links into a sub-component for styling
+- Make use of viewports to define media query behaviour
+
+*/
+
+$navbar-background-color: rgba(255, 255, 255, 0.8);
+$navbar-border-bottom-color: rgba(255, 255, 255, 0.75);
+$navbar-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.0375);
+$foreground: rgb(17, 17, 17);
+
+#nav-bar {
+	background: $navbar-background-color;
+	border-bottom: solid 1px $navbar-border-bottom-color;
+	box-shadow: $navbar-box-shadow;
+	-webkit-backdrop-filter: blur(8px);
+	color: $foreground;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px 0px;
+	top: 0px;
+	left: 0px;
+	position: fixed;
+	z-index: 2;
+
+	@media screen and (max-width: 767px) {
+		width: 100%;
+		padding: 10px 0px;
+
+		.container #links {
+			display: none;
+		}
+	}
+
+	.container {
+		.withSidePadding {
+			width: calc(100% - 20px);
+			padding: 0px 10px;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: space-between;
+			#links {
+				a {
+					text-decoration: none;
+					font-size: 10pt;
+					margin: 0px 10px;
+					transition: all 0.3s linear;
+					cursor: pointer;
+					color: $foreground;
+					&:hover {
+						color: lighten($foreground, 25);
+					}
+				}
+			}
+		}
+	}
+}

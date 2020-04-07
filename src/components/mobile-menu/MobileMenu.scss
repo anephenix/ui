@@ -1,0 +1,50 @@
+$background: white;
+$foreground: rgb(17, 17, 17);
+
+#mobile-menu {
+	background: $background;
+
+	&.open {
+		z-index: 3;
+		width: 100vw;
+		min-height: 100vh;
+		display: block;
+	}
+
+	display: none;
+	position: fixed;
+
+	ul {
+		margin-top: 0px;
+		list-style-type: none;
+		-webkit-padding-start: 0;
+		border-top: $foreground;
+
+		li {
+			font-size: 18pt;
+			padding: 20px 40px;
+			border-bottom: solid 1px $foreground;
+			border-bottom-color: lighten($foreground, 80);
+
+			a {
+				text-decoration: none;
+				color: $foreground;
+
+				&:hover {
+					color: $foreground;
+				}
+			}
+		}
+	}
+
+	#mobile-menu-header {
+		display: flex;
+		padding: 10px;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	#close-icon {
+		cursor: pointer;
+	}
+}

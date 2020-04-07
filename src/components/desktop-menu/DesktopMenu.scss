@@ -1,0 +1,32 @@
+$foreground: rgb(17, 17, 17);
+
+#desktop-menu {
+	display: flex;
+	list-style-type: none;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+
+	li {
+		a {
+			color: $foreground;
+			text-decoration: none;
+			font-size: 10pt;
+			margin: 0px 10px;
+			transition: all 0.3s linear;
+			cursor: pointer;
+			color: $foreground;
+			&:hover {
+				color: lighten($foreground, 25);
+			}
+		}
+
+		&:last-of-type a {
+			margin-right: 0px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		display: none;
+	}
+}

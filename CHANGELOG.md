@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.10 - Tuesday 7th April, 2020
+
+-   Added the NavBar component from the Sarus website into here
+
 ### 0.0.9 - Sunday 5th April, 2020
 
 -   Imported the Sarus website's grid system into Anephenix UI

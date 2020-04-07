@@ -1,0 +1,49 @@
+import React from 'react';
+import './Hamburger.scss';
+
+const Hamburger = ({ width, height, onClick }) => (
+	<div id="hamburger" onClick={onClick}>
+		<svg
+			width={width || '33px'}
+			height={height || '26px'}
+			viewBox="0 0 33 26"
+			version="1.1"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlnsXlink="http://www.w3.org/1999/xlink"
+		>
+			<g
+				id="Homepage"
+				stroke="none"
+				strokeWidth="1"
+				fill="none"
+				fillRule="evenodd"
+				strokeLinecap="end"
+				strokeLinejoin="end"
+			>
+				<g
+					id="iPhone-8"
+					transform="translate(-328.000000, -19.000000)"
+					stroke="#777"
+					strokeWidth="3"
+				>
+					<g id="Group" transform="translate(330.000000, 20.000000)">
+						<path
+							d="M0.357142857,1 L29.320836,1"
+							id="Line-3"
+						></path>
+						<path
+							d="M0.357142857,12 L29.320836,12"
+							id="Line-3"
+						></path>
+						<path
+							d="M0.357142857,23 L29.320836,23"
+							id="Line-3"
+						></path>
+					</g>
+				</g>
+			</g>
+		</svg>
+	</div>
+);
+
+export default Hamburger;

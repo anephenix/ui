@@ -12,6 +12,7 @@ $max-tablet-width: 768px;
 $min-desktop-width: 769px;
 $max-desktop-width: 1024px;
 $min-large-desktop-width: 1025px;
+$desktop-container-width: 720px;
 
 // Kind of CSS reset
 body {
@@ -51,7 +52,7 @@ body {
 
 	// Between tablet to desktop viewport sizes
 	@media screen and (min-width: $min-desktop-width) and (max-width: $max-desktop-width) {
-		width: 720px;
+		width: $desktop-container-width;
 	}
 
 	// Desktop viewport sizes and larger (widescreen)
