@@ -3,6 +3,8 @@ import React from 'react';
 
 const MenuItem = ({
 	text,
+	id,
+	className,
 	url,
 	target,
 	rel,
@@ -15,7 +17,7 @@ const MenuItem = ({
 		return (
 			<li key={i} onClick={isMobile ? toggleMenu : null}>
 				<Link href={url}>
-					<a target={target} rel={rel}>
+					<a id={id} className={className} target={target} rel={rel}>
 						{text}
 					</a>
 				</Link>
@@ -24,7 +26,9 @@ const MenuItem = ({
 	} else {
 		return (
 			<li key={i}>
-				<a onClick={onClick}>{text}</a>
+				<a id={id} className={className} onClick={onClick}>
+					{text}
+				</a>
 			</li>
 		);
 	}

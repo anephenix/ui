@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.12 - Tuesday 7th April, 2020
+
+-   Added extra options to inherit in the links on the navigation menu
+
 ### 0.0.11 - Tuesday 7th April, 2020
 
 -   Applied some fixes for the NavBar component
