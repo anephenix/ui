@@ -1,3 +1,5 @@
+@import '../../../design-system/spacing.scss';
+
 $background: white;
 $foreground: rgb(17, 17, 17);
 
@@ -22,7 +24,7 @@ $foreground: rgb(17, 17, 17);
 
 		li {
 			font-size: 18pt;
-			padding: 20px 40px;
+			padding: $spacer-three $spacer-five;
 			border-bottom: solid 1px $foreground;
 			border-bottom-color: lighten($foreground, 80);
 
@@ -39,7 +41,7 @@ $foreground: rgb(17, 17, 17);
 
 	#mobile-menu-header {
 		display: flex;
-		padding: 10px;
+		padding: $spacer-one;
 		align-items: center;
 		justify-content: flex-end;
 	}

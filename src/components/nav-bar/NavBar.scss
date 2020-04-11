@@ -1,3 +1,5 @@
+@import '../../../design-system/spacing.scss';
+
 /* TODO items
 
 - see if shadow can be extracted into a class/variable as well, seems more like styling choice
@@ -24,7 +26,7 @@ $foreground: rgb(17, 17, 17);
 	align-items: center;
 	flex-direction: row;
 	justify-content: center;
-	padding: 10px 0px;
+	padding: $spacer-one 0px;
 	top: 0px;
 	left: 0px;
 	position: fixed;
@@ -32,7 +34,7 @@ $foreground: rgb(17, 17, 17);
 
 	@media screen and (max-width: 767px) {
 		width: 100%;
-		padding: 10px 0px;
+		padding: $spacer-one 0px;
 
 		.container #links {
 			display: none;
@@ -41,8 +43,8 @@ $foreground: rgb(17, 17, 17);
 
 	.container {
 		.withSidePadding {
-			width: calc(100% - 20px);
-			padding: 0px 10px;
+			width: calc(100% - $spacer-two);
+			padding: 0px $spacer-one;
 			display: flex;
 			align-items: center;
 			flex-direction: row;
@@ -51,7 +53,7 @@ $foreground: rgb(17, 17, 17);
 				a {
 					text-decoration: none;
 					font-size: 10pt;
-					margin: 0px 10px;
+					margin: 0px $spacer-one;
 					transition: all 0.3s linear;
 					cursor: pointer;
 					color: $foreground;
