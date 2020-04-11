@@ -1,5 +1,13 @@
 # CHANGELOG
 
+### 0.0.14 - Saturday 11th April, 2020
+
+-   Made the checkbox background white
+-   Removed the default margin that was being applied to buttons
+-   Applied an 8px default grid for padding on some elements
+-   Removed some unneeeded dependencies
+-   Updated existing dependencies
+
 ### 0.0.13 - Tuesday 7th April, 2020
 
 -   Added some more options to the NavBar component
