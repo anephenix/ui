@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.15 - Friday 8th May, 2020
+
+-   Applied border-box css rule to html elements
+
 ### 0.0.14 - Saturday 11th April, 2020
 
 -   Made the checkbox background white

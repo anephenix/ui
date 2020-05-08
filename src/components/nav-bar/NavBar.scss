@@ -43,7 +43,7 @@ $foreground: rgb(17, 17, 17);
 
 	.container {
 		.withSidePadding {
-			width: calc(100% - $spacer-two);
+			width: 100%;
 			padding: 0px $spacer-one;
 			display: flex;
 			align-items: center;
