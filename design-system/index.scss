@@ -15,3 +15,9 @@ body {
 *:after {
 	box-sizing: border-box;
 }
+
+// Used to help ensure that checkbox elements and the label elements that wrap them are clickable
+label,
+.checkbox-element {
+	box-sizing: content-box;
+}
