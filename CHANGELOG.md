@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.16 - Thursday 4th June, 2020
+
+-   Fix for border-box css rule affecting checkbox elements
+-   Fix for menu items in the mobile menu
+
 ### 0.0.15 - Friday 8th May, 2020
 
 -   Applied border-box css rule to html elements
