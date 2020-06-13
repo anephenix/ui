@@ -10,7 +10,7 @@ const CloseIcon = ({ width, height }) => (
 		xmlnsXlink="http://www.w3.org/1999/xlink"
 	>
 		<g
-			id="Homepage"
+			id="containing-group"
 			stroke="none"
 			strokeWidth="1"
 			fill="none"

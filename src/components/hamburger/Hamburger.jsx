@@ -12,7 +12,7 @@ const Hamburger = ({ width, height, onClick }) => (
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 		>
 			<g
-				id="Homepage"
+				id="hamburger-container"
 				stroke="none"
 				strokeWidth="1"
 				fill="none"
@@ -21,23 +21,23 @@ const Hamburger = ({ width, height, onClick }) => (
 				strokeLinejoin="end"
 			>
 				<g
-					id="iPhone-8"
+					id="hamburger-layers"
 					transform="translate(-328.000000, -19.000000)"
 					stroke="#777"
-					strokeWidth="3"
+					strokeWidth="2"
 				>
 					<g id="Group" transform="translate(330.000000, 20.000000)">
 						<path
 							d="M0.357142857,1 L29.320836,1"
-							id="Line-3"
+							id="layer-1"
 						></path>
 						<path
 							d="M0.357142857,12 L29.320836,12"
-							id="Line-3"
+							id="layer-2"
 						></path>
 						<path
 							d="M0.357142857,23 L29.320836,23"
-							id="Line-3"
+							id="layer-3"
 						></path>
 					</g>
 				</g>

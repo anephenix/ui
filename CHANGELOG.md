@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.17 - Saturday 13th June, 2020
+
+-   Fix for the mobile menu in the navbar component
+-   Renamed some SVG element ids for accessibility improvements
+
 ### 0.0.16 - Thursday 4th June, 2020
 
 -   Fix for border-box css rule affecting checkbox elements
