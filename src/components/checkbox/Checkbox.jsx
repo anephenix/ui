@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 
-// TODO - support for default initial value
 const Checkbox = forwardRef(function checkbox(
 	{ label, className, name, defaultValue },
 	ref
@@ -13,7 +12,7 @@ const Checkbox = forwardRef(function checkbox(
 					type="checkbox"
 					name={name}
 					ref={ref}
-					defaultValue={defaultValue}
+					defaultChecked={defaultValue}
 				/>
 				<div className="checkbox-element">
 					<div className="tick"></div>

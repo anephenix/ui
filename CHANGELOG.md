@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.18 - Wednesday 8th July, 2020
+
+-   Fix for the Checkbox element and how it handles default values
+
 ### 0.0.17 - Saturday 13th June, 2020
 
 -   Fix for the mobile menu in the navbar component
