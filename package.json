@@ -1,12 +1,15 @@
 {
 	"name": "@anephenix/ui",
-	"version": "0.0.18",
+	"version": "0.0.19",
 	"description": "A collection of UI components for React web applications",
 	"main": "index.jsx",
 	"type": "module",
 	"scripts": {
-		"lint": "npx eslint *.cjs *.jsx **/*.jsx",
+		"build": "npx next build && npx next export",
 		"cover": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
+		"dev": "next",
+		"lint": "npx eslint *.cjs *.jsx **/*.jsx",
+		"start": "next start",
 		"test": "npx jest --coverage"
 	},
 	"keywords": [
@@ -46,6 +49,7 @@
 		"@zeit/next-sass": "^1.0.1",
 		"next": "^9.5.1",
 		"node-sass": "^4.14.1",
-		"react": "^16.13.1"
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
 	}
 }

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 0.0.19 - Thursday 5th August, 2020
+
+-   Added a styled select element
+-   Initial version of a website for the documentation
+-   Tweaks to the CSS for the body
+
 ### 0.0.18 - Wednesday 8th July, 2020
 
 -   Fix for the Checkbox element and how it handles default values
