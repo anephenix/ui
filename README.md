@@ -35,7 +35,7 @@ const applyWebpackConfig = (test = /\.jsx/) => {
 	return (config, options) => {
 		config.module.rules.push({
 			test,
-			use: [options.defaultLoaders.babel]
+			use: [options.defaultLoaders.babel],
 		});
 		return config;
 	};
@@ -44,10 +44,10 @@ const applyWebpackConfig = (test = /\.jsx/) => {
 module.exports = withSass({
 	sassLoaderOptions: {
 		sassOptions: {
-			includePaths: [path.resolve('node_modules')]
-		}
+			includePaths: [path.resolve('node_modules')],
+		},
 	},
-	webpack: applyWebpackConfig()
+	webpack: applyWebpackConfig(),
 });
 ```
 
@@ -92,7 +92,7 @@ The `<Theme>` component is a higher order component that ensure that the Sass fi
 
 ### Usage
 
-To be fleshed out.
+To be fleshed out. See the site for details.
 
 ### tests
 
