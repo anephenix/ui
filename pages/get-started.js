@@ -4,7 +4,7 @@ const section = {
 	padding: '20px 0px',
 };
 
-module.exports = () => (
+const GetStartedPage = () => (
 	<>
 		<div style={section}>
 			<h2>Install</h2>
@@ -47,3 +47,5 @@ module.exports = () => (
 		</div>
 	</>
 );
+
+export default GetStartedPage;

@@ -14,7 +14,7 @@ const lead = {
 // TODO - move the custom css into a dedicate scss file
 // or into components served by the UI library
 
-module.exports = () => (
+const HomePage = () => (
 	<div style={{ marginTop: '40px' }}>
 		<div style={hero}>
 			<h1>UI</h1>
@@ -25,3 +25,5 @@ module.exports = () => (
 		</div>
 	</div>
 );
+
+export default HomePage;
