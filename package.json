@@ -3,7 +3,6 @@
 	"version": "0.0.19",
 	"description": "A collection of UI components for React web applications",
 	"main": "index.jsx",
-	"type": "module",
 	"scripts": {
 		"build": "npx next build && npx next export",
 		"cover": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
