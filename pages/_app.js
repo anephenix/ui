@@ -5,12 +5,18 @@ import Link from 'next/link';
 
 import { Theme, NavBar } from '../index';
 
+// Data
+import links from '../data/navbar-links';
+
 class MyApp extends App {
 	render() {
 		const { Component, pageProps } = this.props;
 		const logo = (
 			<Link href="/">
-				<div style={{ fontWeight: 'bold' }} id="logo">
+				<div
+					style={{ fontWeight: 'bold', cursor: 'pointer' }}
+					id="logo"
+				>
 					UI
 				</div>
 			</Link>
@@ -25,7 +31,7 @@ class MyApp extends App {
 					<title>UI - a design system from Anephenix</title>
 				</Head>
 				<Theme>
-					<NavBar logo={logo} links={[]} />
+					<NavBar logo={logo} links={links} loggedIn={false} />
 					<div className="page container withSidePadding">
 						<Component {...pageProps} />
 					</div>

@@ -17,8 +17,8 @@ const lead = {
 const HomePage = () => (
 	<div style={{ marginTop: '40px' }}>
 		<div style={hero}>
-			<h1>UI</h1>
-			<p style={lead}>A Design System for Anephenix</p>
+			<h1>A Design System for React</h1>
+			<p style={lead}>Built for Anephenix</p>
 			<Link href="get-started">
 				<a className="button theme-default primary">Get started</a>
 			</Link>
