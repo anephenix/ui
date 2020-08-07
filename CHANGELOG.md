@@ -1,6 +1,10 @@
 # CHANGELOG
 
-### 0.0.19 - Thursday 5th August, 2020
+### 0.0.20 - Friday 7th August, 2020
+
+-   CSS Tweaks and fixes
+
+### 0.0.19 - Thursday 6th August, 2020
 
 -   Added a styled select element
 -   Initial version of a website for the documentation
