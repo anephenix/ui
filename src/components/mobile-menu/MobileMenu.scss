@@ -1,10 +1,8 @@
 @import '../../../design-system/spacing.scss';
-
-$background: white;
-$foreground: rgb(17, 17, 17);
+@import '../../../design-system/colours.scss';
 
 #mobile-menu {
-	background: $background;
+	background: $light;
 
 	&.open {
 		left: 0px;
@@ -22,22 +20,22 @@ $foreground: rgb(17, 17, 17);
 		margin-top: 0px;
 		list-style-type: none;
 		-webkit-padding-start: 0;
-		border-top: $foreground;
+		border-top: $dark;
 
 		li {
 			font-size: 18pt;
-			border-bottom: solid 1px $foreground;
-			border-bottom-color: lighten($foreground, 80);
+			border-bottom: solid 1px $dark;
+			border-bottom-color: lighten($dark, 80);
 
 			a {
 				display: block;
 				padding: $spacer-three $spacer-five;
 				width: 100%;
 				text-decoration: none;
-				color: $foreground;
+				color: $dark;
 
 				&:hover {
-					color: $foreground;
+					color: $dark;
 				}
 			}
 		}
@@ -52,5 +50,44 @@ $foreground: rgb(17, 17, 17);
 
 	#close-icon {
 		cursor: pointer;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	#mobile-menu {
+		background: $dark;
+		color: $light;
+
+		#close-icon {
+			&:hover {
+				path {
+					stroke: darken($light, 20);
+				}
+			}
+
+			path {
+				stroke: $light;
+			}
+		}
+
+		li {
+			a {
+				color: $light;
+
+				&:hover {
+					color: darken($light, 20);
+				}
+			}
+		}
+	}
+
+	#hamburger {
+		&:hover path {
+			stroke: darken($light, 20);
+		}
+
+		path {
+			stroke: $light;
+		}
 	}
 }

@@ -48,7 +48,20 @@ button.theme-default,
 		@include generateVariant(
 			$colourClassName,
 			map-get($theme-colours, $colourClassName),
-			white
+			$light
 		);
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	button.theme-default,
+	.button.theme-default {
+		@each $colourClassName in map-keys($theme-colours) {
+			@include generateVariant(
+				$colourClassName,
+				map-get($theme-colours, $colourClassName),
+				$dark
+			);
+		}
 	}
 }

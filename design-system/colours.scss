@@ -17,19 +17,20 @@ $blue-one-colour: #279ae1;
 $blue-two-colour: #7bccff;
 $blue-three-colour: #c8eaff;
 
-$white: #fff;
+$light: #fff;
+$dark: #111;
 $form-field-colour: #cfcfcf;
 $form-field-border-colour: #414141;
 $form-field-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
 $theme-colours: (
-  "primary": $primary-colour,
-  "secondary": $secondary-colour,
-  "tertiary": $tertiary-colour,
-  "green-one": $green-one-colour,
-  "green-two": $green-two-colour,
-  "green-three": $green-three-colour,
-  "blue-one": $blue-one-colour,
-  "blue-two": $blue-two-colour,
-  "blue-three": $blue-three-colour
+	'primary': $primary-colour,
+	'secondary': $secondary-colour,
+	'tertiary': $tertiary-colour,
+	'green-one': $green-one-colour,
+	'green-two': $green-two-colour,
+	'green-three': $green-three-colour,
+	'blue-one': $blue-one-colour,
+	'blue-two': $blue-two-colour,
+	'blue-three': $blue-three-colour,
 );
