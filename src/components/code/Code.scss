@@ -1,0 +1,133 @@
+#code {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	border: solid 1px rgba(0, 0, 0, 0.05);
+	border-radius: 8px;
+	background: rgba(3, 28, 61, 0.95);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	-webkit-backdrop-filter: blur(10px);
+
+	#title-bar {
+		padding: 4px;
+		display: grid;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		grid-template-columns: 33% 33% 33%;
+		border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+
+		#title-bar-title {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 10pt;
+			color: white;
+			font-weight: 700;
+		}
+
+		#title-bar-buttons {
+			display: flex;
+			padding: 4px;
+			width: 56px;
+			justify-content: space-between;
+
+			.title-bar-button {
+				width: 12px;
+				height: 12px;
+				border-radius: 6px;
+			}
+
+			#close {
+				background: rgb(248, 34, 34);
+			}
+
+			#minimize {
+				background: rgb(255, 196, 3);
+			}
+
+			#maximize {
+				background: rgb(8, 196, 71);
+			}
+		}
+
+		#title-bar-actions {
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-end;
+
+			.title-bar-action {
+				cursor: pointer;
+				font-size: 8pt;
+				text-transform: uppercase;
+				font-weight: 700;
+				padding: 4px 8px;
+				border-radius: 4px;
+				color: rgb(143, 236, 174);
+				background: rgba(143, 236, 174, 0.2);
+				transition: all 0.2s linear;
+
+				&:hover {
+					background: rgba(143, 236, 174, 0.3);
+					color: rgb(205, 255, 222);
+				}
+			}
+		}
+	}
+
+	#code-editor {
+		display: grid;
+		grid-template-columns: 30px auto;
+
+		#line-count {
+			display: flex;
+			flex-direction: column;
+			padding: 10px 0px;
+			border-right: solid 1px rgba(255, 255, 255, 0.1);
+			font-family: 'Menlo', 'Monaco', 'Courier New', Courier, monospace;
+			font-weight: 400;
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 10pt;
+			align-items: flex-end;
+			justify-content: flex-start;
+			padding-right: 5px;
+		}
+
+		pre {
+			display: flex;
+			padding: 10px 10px;
+			margin: 0;
+			// background-color: transparent !important;
+			// color: rgb(180, 240, 131) !important;
+			font-size: 10pt;
+
+			code {
+				font-family: 'Menlo', 'Monaco', 'Courier New', Courier,
+					monospace;
+				font-weight: 400;
+				color: lightgray;
+				.hljs-comment,
+				.hljs-attr {
+					color: turquoise;
+				}
+
+				.hljs-keyword {
+					color: gold;
+				}
+
+				.hljs-string {
+					color: lightgreen;
+				}
+
+				.hljs-built_in {
+					color: lightblue;
+				}
+
+				.hljs-function {
+					color: lightcoral;
+				}
+			}
+		}
+	}
+}

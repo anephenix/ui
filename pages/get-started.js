@@ -1,9 +1,32 @@
 import React from 'react';
 import Terminal from '../src/components/terminal/Terminal';
+import Code from '../src/components/code/Code';
 
 const section = {
 	padding: '20px 0px',
 };
+
+const webpackCode = `const path = require('path');
+const withSass = require('@zeit/next-sass');
+
+const applyWebpackConfig = (test = /\.jsx/) => {
+	return (config, options) => {
+		config.module.rules.push({
+			test,
+			use: [options.defaultLoaders.babel],
+		});
+		return config;
+	};
+};
+
+module.exports = withSass({
+	sassLoaderOptions: {
+		sassOptions: {
+			includePaths: [path.resolve('node_modules')],
+		},
+	},
+	webpack: applyWebpackConfig(),
+});`;
 
 const GetStartedPage = () => (
 	<>
@@ -40,9 +63,7 @@ const GetStartedPage = () => (
 				</li>
 			</ol>
 			<p>Put this code in your next.config.js file:</p>
-			<pre>
-				<code>TODO - next.config.js code goes here</code>
-			</pre>
+			<Code title="next.config.js" code={webpackCode} />
 		</div>
 	</>
 );

@@ -8,6 +8,7 @@ import FormField from './src/components/form-field/FormField';
 import NavBar from './src/components/nav-bar/NavBar';
 import Theme from './src/components/theme/Theme';
 import Terminal from './src/components/terminal/Terminal';
+import Code from './src/components/code/Code';
 
 const handleErrors = (setError, err) => {
 	const errors = [];
@@ -47,6 +48,7 @@ export {
 	FormField,
 	NavBar,
 	Terminal,
+	Code,
 	applyWebpackConfig,
 	handleErrors,
 };
