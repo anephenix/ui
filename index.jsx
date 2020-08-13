@@ -7,6 +7,7 @@ import Dropdown from './src/components/dropdown/Dropdown';
 import FormField from './src/components/form-field/FormField';
 import NavBar from './src/components/nav-bar/NavBar';
 import Theme from './src/components/theme/Theme';
+import Terminal from './src/components/terminal/Terminal';
 
 const handleErrors = (setError, err) => {
 	const errors = [];
@@ -45,6 +46,7 @@ export {
 	Dropdown,
 	FormField,
 	NavBar,
+	Terminal,
 	applyWebpackConfig,
 	handleErrors,
 };

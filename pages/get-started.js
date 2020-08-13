@@ -1,4 +1,5 @@
 import React from 'react';
+import Terminal from '../src/components/terminal/Terminal';
 
 const section = {
 	padding: '20px 0px',
@@ -8,9 +9,7 @@ const GetStartedPage = () => (
 	<>
 		<div style={section}>
 			<h2>Install</h2>
-			<pre>
-				<code>npm i @anephenix/ui</code>
-			</pre>
+			<Terminal code="npm i @anephenix/ui" title="Install UI" />
 		</div>
 		<div style={section}>
 			<h2>Dependencies</h2>
