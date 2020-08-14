@@ -21,7 +21,7 @@ const CloseIcon = ({ width, height }) => (
 			<g
 				id="9.7”-iPad"
 				transform="translate(-681.000000, -23.000000)"
-				stroke="#777"
+				stroke="#000"
 				strokeWidth="3"
 			>
 				<g id="Group-2" transform="translate(683.000000, 25.000000)">

@@ -23,7 +23,7 @@ const Hamburger = ({ width, height, onClick }) => (
 				<g
 					id="hamburger-layers"
 					transform="translate(-328.000000, -19.000000)"
-					stroke="#777"
+					stroke="#000"
 					strokeWidth="2"
 				>
 					<g id="Group" transform="translate(330.000000, 20.000000)">

@@ -23,6 +23,14 @@ $form-field-colour: #cfcfcf;
 $form-field-border-colour: #414141;
 $form-field-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
+$foreground: $dark;
+$background: $light;
+
+@media screen and (prefers-color-scheme: dark) {
+	$foreground: $light;
+	$background: $dark;
+}
+
 $theme-colours: (
 	'primary': $primary-colour,
 	'secondary': $secondary-colour,

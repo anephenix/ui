@@ -51,10 +51,8 @@
 	#close-icon {
 		cursor: pointer;
 	}
-}
 
-@media screen and (prefers-color-scheme: dark) {
-	#mobile-menu {
+	@media screen and (prefers-color-scheme: dark) {
 		background: $dark;
 		color: $light;
 
@@ -70,12 +68,14 @@
 			}
 		}
 
-		li {
-			a {
-				color: $light;
+		ul {
+			li {
+				a {
+					color: $light;
 
-				&:hover {
-					color: darken($light, 20);
+					&:hover {
+						color: darken($light, 20);
+					}
 				}
 			}
 		}

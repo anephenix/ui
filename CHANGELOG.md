@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.22 - Friday 14th August, 2020
+
+-   CSS tweaks and fixes for dark mode
+
 ### 0.0.21 - Friday 14th August, 2020
 
 -   Added the Terminal Component

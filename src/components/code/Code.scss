@@ -12,6 +12,11 @@
 		width: 100%;
 	}
 
+	@media screen and (prefers-color-scheme: dark) {
+		border: solid 1px rgba(255, 255, 255, 0.175);
+		box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.025);
+	}
+
 	#title-bar {
 		padding: 4px;
 		display: grid;
