@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 0.0.21 - Friday 14th August, 2020
+
+-   Added the Terminal Component
+-   Added the Code Component
+-   Applied some changes for the documentation
+
 ### 0.0.20 - Friday 7th August, 2020
 
 -   CSS Tweaks and fixes
