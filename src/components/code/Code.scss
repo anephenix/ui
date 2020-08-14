@@ -1,5 +1,4 @@
 #code {
-	position: absolute;
 	display: flex;
 	flex-direction: column;
 	width: 600px;
@@ -8,6 +7,10 @@
 	background: rgba(3, 28, 61, 0.95);
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 	-webkit-backdrop-filter: blur(10px);
+
+	@media screen and (max-width: 720px) {
+		width: 100%;
+	}
 
 	#title-bar {
 		padding: 4px;
@@ -101,6 +104,10 @@
 			// background-color: transparent !important;
 			// color: rgb(180, 240, 131) !important;
 			font-size: 10pt;
+
+			@media screen and (max-width: 720px) {
+				overflow-x: scroll;
+			}
 
 			code {
 				font-family: 'Menlo', 'Monaco', 'Courier New', Courier,

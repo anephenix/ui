@@ -1,0 +1,25 @@
+.hero {
+	margin-top: 60px;
+
+	.heading-and-lead {
+		margin-bottom: 200px;
+	}
+
+	h1 {
+		margin-top: 240px;
+		font-size: 64px;
+		line-height: 1em;
+	}
+
+	p {
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 32px;
+	}
+}
+
+.hero-ctas {
+	display: flex;
+	width: 300px;
+	justify-content: space-between;
+}

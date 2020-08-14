@@ -1,52 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
+import '../styles/index.scss';
 
-const hero = {
-	marginTop: '60px',
-};
+const ctas = [
+	{ href: '/get-started', text: 'Get started', buttonClass: 'primary' },
+	{ href: '/docs', text: 'Documentation', buttonClass: 'secondary' },
+];
 
-const heroH1 = {
-	marginTop: '240px',
-	fontSize: '64px',
-	lineHeight: '1em',
-};
-
-const lead = {
-	fontSize: '18px',
-	fontWeight: 400,
-	marginBottom: '32px',
-};
-
-const ctas = {
-	display: 'flex',
-	width: '300px',
-	justifyContent: 'space-between',
-};
-
-const headHeadingAndLead = {
-	marginBottom: '200px',
-};
-
-// TODO - move the custom css into a dedicate scss file
-// or into components served by the UI library
+const CTA = ({ href, text, buttonClass }, i) => (
+	<Link key={i} href={href}>
+		<a className={`button theme-default ${buttonClass}`}>{text}</a>
+	</Link>
+);
 
 const HomePage = () => (
 	<div style={{ marginTop: '40px' }}>
-		<div style={hero}>
-			<div style={headHeadingAndLead}>
-				<h1 style={heroH1}>A Design System for React</h1>
-				<p style={lead}>Built for Anephenix</p>
+		<div className="hero">
+			<div className="heading-and-lead">
+				<h1>A Design System for React</h1>
+				<p>Built for Anephenix</p>
 			</div>
-			<div className="ctas" style={ctas}>
-				<Link href="get-started">
-					<a className="button theme-default primary">Get started</a>
-				</Link>
-				<Link href="docs">
-					<a className="button theme-default secondary">
-						Documentation
-					</a>
-				</Link>
-			</div>
+			<div className="hero-ctas">{ctas.map(CTA)}</div>
 		</div>
 	</div>
 );

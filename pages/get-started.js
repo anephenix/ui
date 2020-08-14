@@ -1,10 +1,7 @@
 import React from 'react';
 import Terminal from '../src/components/terminal/Terminal';
 import Code from '../src/components/code/Code';
-
-const section = {
-	padding: '20px 0px',
-};
+import '../styles/get-started.scss';
 
 const webpackCode = `const path = require('path');
 const withSass = require('@zeit/next-sass');
@@ -29,12 +26,12 @@ module.exports = withSass({
 });`;
 
 const GetStartedPage = () => (
-	<>
-		<div style={section}>
+	<div className="section-gap">
+		<div className="section-gap">
 			<h2>Install</h2>
 			<Terminal code="npm i @anephenix/ui" title="Install UI" />
 		</div>
-		<div style={section}>
+		<div className="section-gap">
 			<h2>Dependencies</h2>
 			<ul>
 				<li>Node.js (version 12 and greater)</li>
@@ -45,7 +42,7 @@ const GetStartedPage = () => (
 				</li>
 			</ul>
 		</div>
-		<div style={section}>
+		<div className="section-gap">
 			<h2>Setup</h2>
 			<p>
 				In order to use Anephenix's React UI within your applications,
@@ -65,7 +62,7 @@ const GetStartedPage = () => (
 			<p>Put this code in your next.config.js file:</p>
 			<Code title="next.config.js" code={webpackCode} />
 		</div>
-	</>
+	</div>
 );
 
 export default GetStartedPage;

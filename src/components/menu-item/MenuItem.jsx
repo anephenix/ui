@@ -15,6 +15,7 @@ const MenuItem = ({
 }) => {
 	if (url && !onClick) {
 		if (url.match('http') !== -1) {
+			// Need to check if this is external domain (i.e. github)
 			return (
 				<li key={i} onClick={isMobile ? toggleMenu : null}>
 					<a
