@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.23 - Monday 17th August, 2020
+
+-   CSS fix for the title bar in the Code and Terminal components
+
 ### 0.0.22 - Friday 14th August, 2020
 
 -   CSS tweaks and fixes for dark mode
