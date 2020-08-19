@@ -3,8 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { Theme, NavBar } from '../index';
-import Page from '../src/components/page/Page';
+import { Theme, NavBar, Page } from '../index';
 import Footer from '../src/components/footer/Footer';
 
 // Data

@@ -9,6 +9,7 @@ import NavBar from './src/components/nav-bar/NavBar';
 import Theme from './src/components/theme/Theme';
 import Terminal from './src/components/terminal/Terminal';
 import Code from './src/components/code/Code';
+import Page from './src/components/page/Page';
 
 const handleErrors = (setError, err) => {
 	const errors = [];
@@ -49,6 +50,7 @@ export {
 	NavBar,
 	Terminal,
 	Code,
+	Page,
 	applyWebpackConfig,
 	handleErrors,
 };

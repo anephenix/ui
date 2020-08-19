@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.24 - Wednesday 19th August, 2020
+
+-   Added Page component
+
 ### 0.0.23 - Monday 17th August, 2020
 
 -   CSS fix for the title bar in the Code and Terminal components
