@@ -1,3 +1,5 @@
+@import '../../../design-system/colours.scss';
+
 #terminal {
 	display: flex;
 	flex-direction: column;
@@ -46,15 +48,15 @@
 			}
 
 			#close {
-				background: rgb(248, 34, 34);
+				background: $window-title-bar-close;
 			}
 
 			#minimize {
-				background: rgb(255, 196, 3);
+				background: $window-title-bar-minimize;
 			}
 
 			#maximize {
-				background: rgb(8, 196, 71);
+				background: $window-title-bar-maximize;
 			}
 		}
 

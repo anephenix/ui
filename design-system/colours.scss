@@ -19,8 +19,8 @@ $blue-three-colour: #c8eaff;
 
 $light: #fff;
 $dark: #111;
-$form-field-colour: #cfcfcf;
-$form-field-border-colour: #414141;
+$form-field-border-colour: #cfcfcf;
+$form-field-colour: #414141;
 $form-field-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
 $foreground: $dark;
@@ -42,3 +42,24 @@ $theme-colours: (
 	'blue-two': $blue-two-colour,
 	'blue-three': $blue-three-colour,
 );
+
+// Code / Terminal title bar colours
+$window-title-bar-close: rgb(255, 95, 87);
+$window-title-bar-minimize: rgb(254, 188, 47);
+$window-title-bar-maximize: rgb(40, 200, 64);
+
+:export {
+	primaryColour: $primary-colour;
+	secondaryColour: $secondary-colour;
+	tertiaryColour: $tertiary-colour;
+
+	// Green colour palette
+	greenOneColour: $green-one-colour;
+	greenTwoColour: $green-two-colour;
+	greenThreeColour: $green-three-colour;
+
+	// Blue colour palette
+	blueOneColour: $blue-one-colour;
+	blueTwoColour: $blue-two-colour;
+	blueThreeColour: $blue-three-colour;
+}

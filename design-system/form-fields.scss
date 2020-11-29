@@ -12,8 +12,8 @@ input[type='search'] {
 	padding: $grid-base;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-	border: solid 1px #cfcfcf;
-	color: #414141;
+	border: solid 1px $form-field-border-colour;
+	color: $form-field-colour;
 	font-size: 14px;
 
 	&.large {
@@ -46,7 +46,7 @@ input[type='radio'] {
 	padding: $grid-base / 2;
 	margin-right: $grid-base;
 	background: $light;
-	border: solid 1px #cfcfcf;
+	border: solid 1px $form-field-border-colour;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -115,7 +115,6 @@ input[type='radio']:disabled + .radio-element {
 .select {
 	padding: $grid-base;
 	min-width: 180px;
-	box-sizing: border-box;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -125,8 +124,8 @@ input[type='radio']:disabled + .radio-element {
 	background-size: 0.65em auto, 100%;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-	border: solid 1px #cfcfcf;
-	color: #414141;
+	border: solid 1px $form-field-border-colour;
+	color: $form-field-colour;
 	font-size: 14px;
 }
 
@@ -140,12 +139,12 @@ input[type='radio']:disabled + .radio-element {
 	border-color: #aaa;
 	box-shadow: 0 0 1px 1px rgba(59, 153, 252, 0.7);
 	box-shadow: 0 0 0 1px -moz-mac-focusring;
-	color: #414141;
+	color: $form-field-colour;
 	outline: none;
 }
 .select > option {
 	padding: $grid-base;
-	color: #414141;
+	color: $form-field-colour;
 	font-weight: normal;
 	font-size: 14px;
 }

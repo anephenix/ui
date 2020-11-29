@@ -6,7 +6,7 @@ import '../styles/get-started.scss';
 const webpackCode = `const path = require('path');
 const withSass = require('@zeit/next-sass');
 
-const applyWebpackConfig = (test = /\.jsx/) => {
+const applyWebpackConfig = (test = /.jsx/) => {
 	return (config, options) => {
 		config.module.rules.push({
 			test,
@@ -45,7 +45,7 @@ const GetStartedPage = () => (
 		<div className="section-gap">
 			<h2>Setup</h2>
 			<p>
-				In order to use Anephenix's React UI within your applications,
+				In order to use Anephenix&apos;s React UI within your applications,
 				you will need to do 2 things:
 			</p>
 			<ol>
