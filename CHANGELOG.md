@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.26 - Monday 25th January, 2021
+
+-   Updated dependencies
+-   Small bug fix on loading Next.js versions
+
 ### 0.0.25 - Monday 25th January, 2021
 
 -   Added Hero component
