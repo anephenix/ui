@@ -10,6 +10,8 @@ import Theme from './src/components/theme/Theme';
 import Terminal from './src/components/terminal/Terminal';
 import Code from './src/components/code/Code';
 import Page from './src/components/page/Page';
+import Hero from './src/components/hero/Hero';
+import Textarea from './src/components/textarea/Textarea';
 
 const handleErrors = (setError, err) => {
 	const errors = [];
@@ -51,6 +53,8 @@ export {
 	Terminal,
 	Code,
 	Page,
+	Hero,
+	Textarea,
 	applyWebpackConfig,
 	handleErrors,
 };

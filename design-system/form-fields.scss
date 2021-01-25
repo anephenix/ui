@@ -8,7 +8,8 @@ label {
 input[type='text'],
 input[type='email'],
 input[type='password'],
-input[type='search'] {
+input[type='search'],
+textarea {
 	padding: $grid-base;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
@@ -152,3 +153,5 @@ input[type='radio']:disabled + .radio-element {
 // TODO - Make sure that the focussed/hover state is reflected in the checkbox and radio buttons
 
 // TODO - dropdowns and their lists
+
+// TODO - textarea (Anephenix-web has appropriate styling)

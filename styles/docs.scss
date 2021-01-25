@@ -1,0 +1,42 @@
+@import '../design-system/colours.scss';
+
+.colour-key {
+    width: 96px;
+    height: 96px; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    color: white; 
+    font-weight: bold;
+    text-align: center;
+
+    &.primary {
+        background: $primary-colour;
+    }
+
+    &.secondary {
+        background: $secondary-colour;
+    }
+
+    &.tertiary {
+        background: $tertiary-colour;
+    }
+
+    &.green-two {
+        background: $green-two-colour;
+    }
+
+    &.green-one {
+        background: $green-one-colour;
+    }
+
+    &.blue-two {
+        background: $blue-two-colour;
+    }
+
+    &.blue-one {
+        background: $blue-one-colour;
+    }
+
+
+}

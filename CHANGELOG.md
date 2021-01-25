@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.25 - Monday 25th January, 2021
+
+-   Added Hero component
+-   Added Textarea component
+
 ### 0.0.24 - Wednesday 19th August, 2020
 
 -   Added Page component

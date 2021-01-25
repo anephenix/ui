@@ -1,5 +1,5 @@
 import React from 'react';
-import { primaryColour, secondaryColour, tertiaryColour, greenOneColour, greenTwoColour } from '../design-system/colours.scss';
+import { primaryColour, secondaryColour, tertiaryColour, greenOneColour, greenTwoColour, blueOneColour, blueTwoColour } from '../design-system/colours.scss';
 
 import {
 	Button,
@@ -10,25 +10,30 @@ import {
 	// Dropdown,
 	// FormField,
 	// Terminal,
-	// Code,  
+	// Code,
+	// Hero,
+	// Textarea
 } from '../index';
+import '../styles/docs.scss';
 
 const buttonsList = [
 	{ text: 'Primary', className: 'primary' },
 	{ text: 'Secondary', className: 'secondary' },
 	{ text: 'Tertiary', className: 'tertiary' }, 
-	{ text: 'Green one', className: 'green-one' },
 	{ text: 'Green two', className: 'green-two' },
+	{ text: 'Green one', className: 'green-one' },
 	{ text: 'Blue one', className: 'blue-one' },
 	{ text: 'Blue two', className: 'blue-two' },
 ];
 
 const colours = [
-	{name: 'Primary', value: primaryColour },
-	{name: 'Secondary', value: secondaryColour },
-	{name: 'Tertiary', value: tertiaryColour },
-	{name: 'Green Two', value: greenTwoColour },
-	{name: 'Green One', value: greenOneColour }
+	{name: 'Primary', value: primaryColour, className: 'primary' },
+	{name: 'Secondary', value: secondaryColour, className: 'secondary' },
+	{name: 'Tertiary', value: tertiaryColour, className: 'tertiary' },
+	{name: 'Green Two', value: greenTwoColour, className: 'green-two' },
+	{name: 'Green One', value: greenOneColour, className: 'green-one' },
+	{name: 'Blue one', value: blueOneColour, className: 'blue-one' },
+	{name: 'Blue two', value: blueTwoColour, className: 'blue-two' },
 ];
 
 const DocsPage = () => (
@@ -37,7 +42,7 @@ const DocsPage = () => (
 			<h1>Docs</h1>
 			<p>Below is a list of the items and how they are used</p>
 			<div style={{display: 'flex'}}>
-				{colours.map(c => <div key={c.name} style={{ display: 'flex', background: c.value, width: '80px', height: '80px', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold'}}>{c.value}</div>)}
+				{colours.map(c => <div key={c.name} className={`colour-key ${c.className}`}>{c.name} - {c.value}</div>)}
 			</div>
 
 			<h2>Colours available</h2>
