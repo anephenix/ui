@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.30 - Saturday 30th January, 2021
+
+-   Refactored Navbar and Hero so that Next/Link is passed as a prop
+-   Made Next.js a development dependency
+
 ### 0.0.29 - Saturday 30th January, 2021
 
 -   Small bug fix on loading Next.js version
