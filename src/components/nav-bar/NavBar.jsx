@@ -38,7 +38,7 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const { logo, links, loggedIn, className } = this.props;
+		const { logo, links, Link, loggedIn, className } = this.props;
 		const { menuOpen } = this.state;
 		const mobileMenuClass = menuOpen ? 'open' : 'closed';
 
@@ -49,7 +49,7 @@ class NavBar extends Component {
 						<div className="withSidePadding">
 							{logo}
 							<Hamburger width="25px" onClick={this.toggleMenu} />
-							<DesktopMenu {...{ links, loggedIn }} />
+							<DesktopMenu {...{ links, loggedIn, Link }} />
 						</div>
 					</div>
 				</div>
@@ -59,6 +59,7 @@ class NavBar extends Component {
 						toggleMenu: this.toggleMenu,
 						links,
 						loggedIn,
+						Link,
 					}}
 				/>
 			</>

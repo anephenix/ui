@@ -3,7 +3,7 @@ import MenuItem from '../menu-item/MenuItem';
 import CloseIcon from '../close-icon/CloseIcon';
 import './MobileMenu.scss';
 
-const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn }) => {
+const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn, Link }) => {
 	return (
 		<div id="mobile-menu" className={mobileMenuClass}>
 			<div id="mobile-menu-header">
@@ -22,6 +22,7 @@ const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn }) => {
 								isMobile={true}
 								toggleMenu={toggleMenu}
 								i={i}
+								Link={Link}
 							/>
 						);
 					})}

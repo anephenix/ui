@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 const MenuItem = ({
@@ -11,10 +10,11 @@ const MenuItem = ({
 	onClick,
 	isMobile,
 	toggleMenu,
+	Link,
 	i,
 }) => {
 	if (url && !onClick) {
-		if (url.match('http') !== -1) {
+		if (url.startsWith('http') || url.startsWith('mailto')) {
 			// Need to check if this is external domain (i.e. github)
 			return (
 				<li key={i} onClick={isMobile ? toggleMenu : null}>
@@ -35,6 +35,7 @@ const MenuItem = ({
 					<Link href={url}>
 						<a
 							id={id}
+							href={url}
 							className={className}
 							target={target}
 							rel={rel}

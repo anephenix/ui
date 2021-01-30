@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.28 - Saturday 30th January, 2021
+
+-   Small bug fix on loading Sass version
+-   Small bug fix for loading Next/Link in NavBar - need to pass component
+
 ### 0.0.27 - Friday 29th January, 2021
 
 -   Small bug fix on loading Next.js versions
