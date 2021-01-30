@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react';
+import Link from 'next/link';
 
 // Components
 import Hero from '../src/components/hero/Hero';
@@ -17,7 +18,7 @@ const ctas = [
 
 const HomePage = () => (
 	<div id="home-page">
-		<Hero {...{title, description, ctas}} />
+		<Hero {...{title, description, ctas}} Link={Link} />
 	</div>
 );
 

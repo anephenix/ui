@@ -33,7 +33,7 @@ class MyApp extends App {
 				</Head>
 				<Theme>
 					<Page>
-						<NavBar logo={logo} links={links} loggedIn={false} />
+						<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
 						<div className="page container withSidePadding">
 							<Component {...pageProps} />
 						</div>
