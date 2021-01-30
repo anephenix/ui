@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.29 - Saturday 30th January, 2021
+
+-   Small bug fix on loading Next.js version
+
 ### 0.0.28 - Saturday 30th January, 2021
 
 -   Small bug fix on loading Sass version
