@@ -4,10 +4,10 @@ import styles from './Hero.module.scss';
 
 const CTA = (Link) => {
 	const f = ({ href, text, buttonClass }, i) => {
-		if (!Link) return <a key={i} href={href} className={`button theme-default ${buttonClass}`}>{text}</a>;
+		if (!Link) return <a key={i} href={href} className={styles.button + ` button theme-default ${buttonClass}`}>{text}</a>;
 		return (
 			<Link key={i} href={href}>
-				<a className={`button theme-default ${buttonClass}`}>{text}</a>
+				<a className={styles.button + ` button theme-default ${buttonClass}`}>{text}</a>
 			</Link>
 		);
 	};

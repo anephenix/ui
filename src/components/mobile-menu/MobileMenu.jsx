@@ -3,9 +3,9 @@ import MenuItem from '../menu-item/MenuItem';
 import CloseIcon from '../close-icon/CloseIcon';
 import styles from './MobileMenu.module.scss';
 
-const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn, Link }) => {
+const MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 	return (
-		<div id={styles['mobile-menu']} className={mobileMenuClass}>
+		<div id={styles['mobile-menu']} className={menuOpen ? styles.open : styles.closed}>
 			<div id={styles['mobile-menu-header']}>
 				<div id={styles['close-icon']} onClick={toggleMenu}>
 					<CloseIcon width="20px" />

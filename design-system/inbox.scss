@@ -1,5 +1,5 @@
 
-// For the code component
+// For the code component - has to be embedded here otherwise the CSS override does not get inherited 
 code {
     .hljs-comment,
 				.hljs-attr {

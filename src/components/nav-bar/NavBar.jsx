@@ -40,8 +40,6 @@ class NavBar extends Component {
 	render() {
 		const { logo, links, Link, loggedIn, className } = this.props;
 		const { menuOpen } = this.state;
-		const mobileMenuClass = menuOpen ? 'open' : 'closed';
-
 		return (
 			<>
 				<div id={styles['nav-bar']} className={className}>
@@ -55,7 +53,7 @@ class NavBar extends Component {
 				</div>
 				<MobileMenu
 					{...{
-						mobileMenuClass,
+						menuOpen,
 						toggleMenu: this.toggleMenu,
 						links,
 						loggedIn,
