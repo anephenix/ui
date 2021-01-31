@@ -1,1 +1,24 @@
 
+// For the code component
+code {
+    .hljs-comment,
+				.hljs-attr {
+					color: gold;
+				}
+
+				.hljs-keyword {
+					color: #9BE1FF;
+				}
+
+				.hljs-string {
+					color: #C3E091;
+				}
+
+				.hljs-built_in {
+					color: #7D9ADD;
+				}
+
+				.hljs-function {
+					color: lightcoral;
+				}
+}

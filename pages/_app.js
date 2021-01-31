@@ -3,11 +3,20 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { Theme, NavBar, Page } from '../index';
+import { NavBar, Page } from '../index';
 import Footer from '../src/components/footer/Footer';
 
 // Data
 import links from '../data/navbar-links';
+
+// Styling
+// This has to now be imported in the pages/_app.js file for all projects using Next.js 10
+import '../design-system/index.scss';
+
+// Other files
+import '../styles/docs.scss';
+import '../styles/get-started.scss';
+import '../styles/index.scss';
 
 class MyApp extends App {
 	render() {
@@ -31,15 +40,13 @@ class MyApp extends App {
 					/>
 					<title>UI - a design system from Anephenix</title>
 				</Head>
-				<Theme>
-					<Page>
-						<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
-						<div className="page container withSidePadding">
-							<Component {...pageProps} />
-						</div>
-						<Footer />
-					</Page>
-				</Theme>
+				<Page>
+					<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
+					<div className="page container withSidePadding">
+						<Component {...pageProps} />
+					</div>
+					<Footer />
+				</Page>
 			</>
 		);
 	}

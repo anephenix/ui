@@ -1,13 +1,13 @@
 import React from 'react';
 import MenuItem from '../menu-item/MenuItem';
 import CloseIcon from '../close-icon/CloseIcon';
-import './MobileMenu.scss';
+import styles from './MobileMenu.module.scss';
 
 const MobileMenu = ({ mobileMenuClass, toggleMenu, links, loggedIn, Link }) => {
 	return (
-		<div id="mobile-menu" className={mobileMenuClass}>
-			<div id="mobile-menu-header">
-				<div id="close-icon" onClick={toggleMenu}>
+		<div id={styles['mobile-menu']} className={mobileMenuClass}>
+			<div id={styles['mobile-menu-header']}>
+				<div id={styles['close-icon']} onClick={toggleMenu}>
 					<CloseIcon width="20px" />
 				</div>
 			</div>

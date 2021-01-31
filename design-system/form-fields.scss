@@ -2,7 +2,13 @@
 @import './spacing.scss';
 
 label {
+	box-sizing: content-box;
 	margin-right: $grid-base;
+}
+
+// Used to help ensure that checkbox elements and the label elements that wrap them are clickable
+.checkbox-element {
+	box-sizing: content-box;
 }
 
 input[type='text'],

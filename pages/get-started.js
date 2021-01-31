@@ -1,7 +1,6 @@
 import React from 'react';
 import Terminal from '../src/components/terminal/Terminal';
 import Code from '../src/components/code/Code';
-import '../styles/get-started.scss';
 
 const webpackCode = `const path = require('path');
 const withSass = require('@zeit/next-sass');
@@ -36,10 +35,7 @@ const GetStartedPage = () => (
 			<ul>
 				<li>Node.js (version 12 and greater)</li>
 				<li>React</li>
-				<li>
-					Sass (recommend installing @zeit/next-sass if using with
-					Next.js)
-				</li>
+				<li>Sass (V 5.0+)</li>
 			</ul>
 		</div>
 		<div className="section-gap">

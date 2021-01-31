@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './Hero.scss';
+import styles from './Hero.module.scss';
 
 const CTA = (Link) => {
 	const f = ({ href, text, buttonClass }, i) => {
@@ -17,12 +17,12 @@ const CTA = (Link) => {
 const Hero = ({title, description, ctas, Link }) => {
 	const ctaFunk = CTA(Link);
 	return (
-		<div id="hero">
-			<div id="heading-and-lead">
+		<div id={styles.hero}>
+			<div id={styles['heading-and-lead']}>
 				<h1>{title}</h1>
 				<p>{description}</p>
 			</div>
-			<div id="hero-ctas">{ctas.map(ctaFunk)}</div>
+			<div id={styles['hero-ctas']}>{ctas.map(ctaFunk)}</div>
 		</div>
 	);
 };

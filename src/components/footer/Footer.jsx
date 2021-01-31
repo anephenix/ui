@@ -2,7 +2,7 @@ import React from 'react';
 // Components
 
 // Styling
-import './Footer.scss';
+import styles from './Footer.module.scss';
 
 const UKFlag = ({ width = 60, height = 30 }) => (
 	<svg
@@ -33,10 +33,10 @@ const UKFlag = ({ width = 60, height = 30 }) => (
 );
 
 const Footer = () => (
-	<div id="footer">
-		<div className="container">
-			<div className="withSidePadding">
-				<div className="copyright">
+	<div id={styles.footer}>
+		<div className={'container ' + styles.container}>
+			<div className={'withSidePading ' + styles.withSidePadding}>
+				<div className={styles.copyright}>
 					&copy; {new Date().getFullYear()}{' '}
 					<a
 						href="https://anephenix.com"
@@ -55,7 +55,7 @@ const Footer = () => (
 					</a>
 					.
 				</div>
-				<div className="made-in-location">
+				<div className={styles['made-in-location']}>
 					<UKFlag width={24} height={12} />
 					<a
 						href="https://www.gov.uk"

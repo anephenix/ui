@@ -12,9 +12,9 @@ npm i @anephenix/ui --save
 
 ### Dependencies
 
--   Node.js (12)
--   React (Version 16)
--   Sass Lang (recommend installing @zeit/next-sass if using with Next.js)
+-   Node.js (14 +)
+-   React (Version 17)
+-   Sass (V 5.0+)
 
 ### Setup
 
@@ -42,10 +42,8 @@ const applyWebpackConfig = (test = /\.jsx/) => {
 };
 
 module.exports = withSass({
-	sassLoaderOptions: {
-		sassOptions: {
-			includePaths: [path.resolve('node_modules')],
-		},
+	sassOptions: {
+		includePaths: [path.resolve('node_modules')],
 	},
 	webpack: applyWebpackConfig(),
 });
@@ -64,7 +62,6 @@ In your pages/\_app.js file, wrap the page components with a `<Theme>` component
 import App from 'next/app';
 import React from 'react';
 import Head from 'next/head';
-import { Theme } from '@anephenix/ui';
 
 class MyApp extends App {
 	render() {
@@ -78,9 +75,7 @@ class MyApp extends App {
 					/>
 					<title>My App</title>
 				</Head>
-				<Theme>
-					<Component {...pageProps} />
-				</Theme>
+				<Component {...pageProps} />
 			</>
 		);
 	}

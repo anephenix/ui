@@ -5,9 +5,6 @@ import Link from 'next/link';
 // Components
 import Hero from '../src/components/hero/Hero';
 
-// Styling
-import '../styles/index.scss';
-
 // Data
 const title = 'A Design System for React';
 const description = 'Built for Anephenix';

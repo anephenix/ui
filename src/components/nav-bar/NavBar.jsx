@@ -7,7 +7,7 @@ import MobileMenu from '../mobile-menu/MobileMenu';
 import DesktopMenu from '../desktop-menu/DesktopMenu';
 
 // Styling
-import './NavBar.scss';
+import styles from './NavBar.module.scss';
 
 /*
   NOTES
@@ -44,9 +44,9 @@ class NavBar extends Component {
 
 		return (
 			<>
-				<div id="nav-bar" className={className}>
-					<div className="container">
-						<div className="withSidePadding">
+				<div id={styles['nav-bar']} className={className}>
+					<div className={'container ' + styles.container}>
+						<div className={'withSidePadding ' + styles.withSidePadding}>
 							{logo}
 							<Hamburger width="25px" onClick={this.toggleMenu} />
 							<DesktopMenu {...{ links, loggedIn, Link }} />

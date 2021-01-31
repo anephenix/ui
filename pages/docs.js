@@ -1,5 +1,4 @@
 import React from 'react';
-import { primaryColour, secondaryColour, tertiaryColour, greenOneColour, greenTwoColour, blueOneColour, blueTwoColour } from '../design-system/colours.scss';
 
 import {
 	Button,
@@ -14,7 +13,6 @@ import {
 	// Hero,
 	// Textarea
 } from '../index';
-import '../styles/docs.scss';
 
 const buttonsList = [
 	{ text: 'Primary', className: 'primary' },
@@ -27,13 +25,13 @@ const buttonsList = [
 ];
 
 const colours = [
-	{name: 'Primary', value: primaryColour, className: 'primary' },
-	{name: 'Secondary', value: secondaryColour, className: 'secondary' },
-	{name: 'Tertiary', value: tertiaryColour, className: 'tertiary' },
-	{name: 'Green Two', value: greenTwoColour, className: 'green-two' },
-	{name: 'Green One', value: greenOneColour, className: 'green-one' },
-	{name: 'Blue one', value: blueOneColour, className: 'blue-one' },
-	{name: 'Blue two', value: blueTwoColour, className: 'blue-two' },
+	{name: 'Primary', className: 'primary' },
+	{name: 'Secondary', className: 'secondary' },
+	{name: 'Tertiary', className: 'tertiary' },
+	{name: 'Green Two', className: 'green-two' },
+	{name: 'Green One', className: 'green-one' },
+	{name: 'Blue one', className: 'blue-one' },
+	{name: 'Blue two', className: 'blue-two' },
 ];
 
 const DocsPage = () => (
@@ -42,7 +40,7 @@ const DocsPage = () => (
 			<h1>Docs</h1>
 			<p>Below is a list of the items and how they are used</p>
 			<div style={{display: 'flex'}}>
-				{colours.map(c => <div key={c.name} className={`colour-key ${c.className}`}>{c.name} - {c.value}</div>)}
+				{colours.map(c => <div key={c.name} className={`colour-key ${c.className}`}>{c.name}</div>)}
 			</div>
 
 			<h2>Colours available</h2>

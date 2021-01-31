@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormField.scss';
+import './FormField.module.scss';
 
 const ErrorMessage = ({ error }) => (
 	<div className="error-message">{error}</div>
