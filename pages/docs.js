@@ -12,7 +12,7 @@ import {
 	// Code,
 	// Hero,
 	// Textarea
-} from '../index';
+} from '../dist/';
 
 const buttonsList = [
 	{ text: 'Primary', className: 'primary' },

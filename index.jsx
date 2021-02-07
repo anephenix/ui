@@ -11,6 +11,9 @@ import Code from './src/components/code/Code';
 import Page from './src/components/page/Page';
 import Hero from './src/components/hero/Hero';
 import Textarea from './src/components/textarea/Textarea';
+import Footer from './src/components/footer/Footer';
+
+import './design-system/index.scss';
 
 const handleErrors = (setError, err) => {
 	const errors = [];
@@ -52,6 +55,7 @@ export {
 	Code,
 	Page,
 	Hero,
+	Footer,
 	Textarea,
 	applyWebpackConfig,
 	handleErrors,

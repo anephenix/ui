@@ -3,15 +3,13 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { NavBar, Page } from '../index';
-import Footer from '../src/components/footer/Footer';
+import { NavBar, Page, Footer } from '../dist';
 
 // Data
 import links from '../data/navbar-links';
 
 // Styling
-// This has to now be imported in the pages/_app.js file for all projects using Next.js 10
-import '../design-system/index.scss';
+import '../dist/index.css';
 
 // Other files
 import '../styles/docs.scss';

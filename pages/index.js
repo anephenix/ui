@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 // Components
-import Hero from '../src/components/hero/Hero';
+import { Hero } from '../dist';
 
 // Data
 const title = 'A Design System for React';

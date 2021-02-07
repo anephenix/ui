@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Page.module.scss';
+import './Page.scss';
 
-const Page = ({ children }) => <div className={styles.page}>{children}</div>;
+const Page = ({ children }) => <div className="page">{children}</div>;
 
 export default Page;

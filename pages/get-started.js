@@ -1,6 +1,8 @@
 import React from 'react';
-import Terminal from '../src/components/terminal/Terminal';
-import Code from '../src/components/code/Code';
+import { Terminal, Code } from '../dist';
+
+// import Terminal from '../src/components/terminal/Terminal';
+// import Code from '../src/components/code/Code';
 
 const webpackCode = `const path = require('path');
 const withSass = require('@zeit/next-sass');

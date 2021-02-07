@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Hamburger.module.scss';
+import './Hamburger.scss';
 
 const Hamburger = ({ width, height, onClick }) => (
-	<div id={styles.hamburger} onClick={onClick}>
+	<div id='hamburger' onClick={onClick}>
 		<svg
 			width={width || '33px'}
 			height={height || '26px'}
