@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.0.31 - Sunday 7th February, 2021
+
+-   Use of esbuild to create a compiled version of the library
+-   Reverse the use of CSS modules for the UI components
+
 ### 0.0.30 - Saturday 30th January, 2021
 
 -   Refactored Navbar and Hero so that Next/Link is passed as a prop
