@@ -44,16 +44,28 @@ $foreground: rgb(17, 17, 17);
 		.withSidePadding {
 			width: 100%;
 			padding: 0px $spacer-one;
-			display: flex;
+			// display: flex;
+			// align-items: center;
+			// flex-direction: row;
+			// justify-content: space-between;
+			display: grid;
+			grid-template-columns: 40% 20% 40%;
 			align-items: center;
-			flex-direction: row;
-			justify-content: space-between;
+
+			#logo {
+				justify-self: start;
+			}
+
+			form {
+				justify-self: center;
+			}
 
 			ul {
 				margin: 0;
 			}
 
 			#links {
+				justify-self: end;
 				a {
 					text-decoration: none;
 					font-size: 10pt;

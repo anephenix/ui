@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.32 - Sunday 28th March, 2021
+
+-   Navbar now has a midSection option for embedding components in the middle of the navbar
+
 ### 0.0.31 - Sunday 7th February, 2021
 
 -   Use of esbuild to create a compiled version of the library

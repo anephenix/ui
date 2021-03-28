@@ -38,7 +38,7 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const { logo, links, Link, loggedIn, className } = this.props;
+		const { logo, links, Link, loggedIn, className, midSection=<div /> } = this.props;
 		const { menuOpen } = this.state;
 		return (
 			<>
@@ -46,6 +46,7 @@ class NavBar extends Component {
 					<div className='container'>
 						<div className='withSidePadding'>
 							{logo}
+							{midSection}
 							<Hamburger width="25px" onClick={this.toggleMenu} />
 							<DesktopMenu {...{ links, loggedIn, Link }} />
 						</div>

@@ -39,7 +39,12 @@ class MyApp extends App {
 					<title>UI - a design system from Anephenix</title>
 				</Head>
 				<Page>
-					<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
+					<NavBar
+						logo={logo}
+						links={links}
+						loggedIn={false}
+						Link={Link}
+					/>
 					<div className="page container withSidePadding">
 						<Component {...pageProps} />
 					</div>
