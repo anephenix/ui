@@ -2,7 +2,7 @@
 
 A design system for Next.js applications, using Sass as the CSS preprocessor.
 
-[![CircleCI](https://circleci.com/gh/anephenix/ui.svg?style=shield)](https://circleci.com/gh/anephenix/ui) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
+[![Node.js CI](https://github.com/anephenix/ui/actions/workflows/node.js.yml/badge.svg)](https://github.com/anephenix/ui/actions/workflows/node.js.yml) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master)
 
 ### Installation
 
