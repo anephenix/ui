@@ -1,11 +1,7 @@
 import React from 'react';
 import { Terminal, Code } from '../dist';
 
-// import Terminal from '../src/components/terminal/Terminal';
-// import Code from '../src/components/code/Code';
-
 const webpackCode = `const path = require('path');
-const withSass = require('@zeit/next-sass');
 
 const applyWebpackConfig = (test = /.jsx/) => {
 	return (config, options) => {
@@ -17,14 +13,9 @@ const applyWebpackConfig = (test = /.jsx/) => {
 	};
 };
 
-module.exports = withSass({
-	sassLoaderOptions: {
-		sassOptions: {
-			includePaths: [path.resolve('node_modules')],
-		},
-	},
+module.exports = {
 	webpack: applyWebpackConfig(),
-});`;
+};`;
 
 const GetStartedPage = () => (
 	<div className="section-gap">
@@ -43,21 +34,10 @@ const GetStartedPage = () => (
 		<div className="section-gap">
 			<h2>Setup</h2>
 			<p>
-				In order to use Anephenix&apos;s React UI within your applications,
-				you will need to do 2 things:
+				In order to use Anephenix&apos;s React UI within your
+				applications, you will need to put this code in your
+				next.config.js file:
 			</p>
-			<ol>
-				<li>
-					Adjust your Webpack configuration in order to load the react
-					components and compile them with sass as the CSS
-					preprocessor.
-				</li>
-				<li>
-					Wrap your React app in a higher-order-component in order to
-					inherit the theme for the design system.
-				</li>
-			</ol>
-			<p>Put this code in your next.config.js file:</p>
 			<Code title="next.config.js" code={webpackCode} />
 		</div>
 	</div>
