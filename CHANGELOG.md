@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.0.33 - Wednesday 21st December, 2021
+
+-   Updated Sass dependency
+
 ### 0.0.32 - Sunday 28th March, 2021
 
 -   Navbar now has a midSection option for embedding components in the middle of the navbar
