@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      COVERALLS_REPO_TOKEN: HDcmp3jgIeTbbLRn5o1iDvj4Xlq0W4OOn
       CC_TEST_REPORTER_ID: b3d635e89729551523de4f4deb56beef8178d02676c948f403ccbde5fd3d186e
 
     strategy:
