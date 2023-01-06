@@ -50,7 +50,7 @@ input[type='radio'] {
 	flex-direction: row;
 	width: $spacer-one;
 	height: $spacer-one;
-	padding: $grid-base / 2;
+	padding: calc($grid-base / 2);
 	margin-right: $grid-base;
 	background: $light;
 	border: solid 1px $form-field-border-colour;

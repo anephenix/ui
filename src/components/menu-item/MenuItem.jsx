@@ -32,16 +32,14 @@ const MenuItem = ({
 		} else {
 			return (
 				<li key={i} onClick={isMobile ? toggleMenu : null}>
-					<Link href={url}>
-						<a
-							id={id}
-							href={url}
-							className={className}
-							target={target}
-							rel={rel}
-						>
-							{text}
-						</a>
+					<Link
+						id={id}
+						href={url}
+						className={className}
+						target={target}
+						rel={rel}
+					>
+						{text}
 					</Link>
 				</li>
 			);

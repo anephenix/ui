@@ -11,7 +11,7 @@
 }
 
 .error-message {
-	padding: $grid-base / 2;
+	padding: calc($grid-base / 2);
 	font-size: 8pt;
 	color: $primary-colour;
 }

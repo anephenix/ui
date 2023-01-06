@@ -22,7 +22,10 @@ class MyApp extends App {
 		const logo = (
 			<Link href="/">
 				<div
-					style={{ fontWeight: 'bold', cursor: 'pointer' }}
+					style={{
+						fontWeight: 'bold',
+						cursor: 'pointer',
+					}}
 					id="logo"
 				>
 					UI

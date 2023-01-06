@@ -1,21 +1,29 @@
 import React from 'react';
 import { Terminal, Code } from '../dist';
 
-const webpackCode = `const path = require('path');
+const appCode = `
+import App from 'next/app';
+import React from 'react';
+import Head from 'next/head';
+import { Page } from '@anephenix/ui';
 
-const applyWebpackConfig = (test = /.jsx/) => {
-	return (config, options) => {
-		config.module.rules.push({
-			test,
-			use: [options.defaultLoaders.babel],
-		});
-		return config;
-	};
-};
+// Style dependencies
+import '@anephenix/ui/index.css';
 
-module.exports = {
-	webpack: applyWebpackConfig(),
-};`;
+class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <>
+        <Head />
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </>
+    );
+  }
+}
+export default MyApp;`;
 
 const GetStartedPage = () => (
 	<div className="section-gap">
@@ -26,19 +34,17 @@ const GetStartedPage = () => (
 		<div className="section-gap">
 			<h2>Dependencies</h2>
 			<ul>
-				<li>Node.js (version 12 and greater)</li>
-				<li>React</li>
-				<li>Sass (V 5.0+)</li>
+				<li>Node.js (V 16 and greater)</li>
+				<li>React (V 18)</li>
 			</ul>
 		</div>
 		<div className="section-gap">
-			<h2>Setup</h2>
+			<h2>Usage</h2>
 			<p>
-				In order to use Anephenix&apos;s React UI within your
-				applications, you will need to put this code in your
-				next.config.js file:
+				To use the library in your codebase, you will want to setup your
+				pages/_app.js file like this:
 			</p>
-			<Code title="next.config.js" code={webpackCode} />
+			<Code title="pages/_app.js" code={appCode} />
 		</div>
 	</div>
 );
