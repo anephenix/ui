@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.1.1 - Sunday 8th October, 2023
+
+-   Updated dependencies
+
 ### 0.0.33 - Wednesday 21st December, 2021
 
 -   Updated Sass dependency

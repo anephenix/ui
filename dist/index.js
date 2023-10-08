@@ -2619,7 +2619,10 @@ var require_core = __commonJS({
           result[key] = obj[key];
         }
       });
-      return result;
+      return (
+        /** @type {T} */
+        result
+      );
     }
     var SPAN_CLOSE = "</span>";
     var emitsWrappingTags = (node) => {
@@ -2681,7 +2684,7 @@ var require_core = __commonJS({
         this.buffer += `<span class="${className}">`;
       }
     };
-    var TokenTree = class {
+    var TokenTree = class _TokenTree {
       constructor() {
         this.rootNode = { children: [] };
         this.stack = [this.rootNode];
@@ -2748,7 +2751,7 @@ var require_core = __commonJS({
           node.children = [node.children.join("")];
         } else {
           node.children.forEach((child) => {
-            TokenTree._collapse(child);
+            _TokenTree._collapse(child);
           });
         }
       }
@@ -3215,7 +3218,10 @@ var require_core = __commonJS({
         return mm;
       }
       function compileMode(mode, parent) {
-        const cmode = mode;
+        const cmode = (
+          /** @type CompiledMode */
+          mode
+        );
         if (mode.compiled)
           return cmode;
         [
@@ -3263,14 +3269,21 @@ var require_core = __commonJS({
           }
         }
         if (mode.illegal)
-          cmode.illegalRe = langRe(mode.illegal);
+          cmode.illegalRe = langRe(
+            /** @type {RegExp | string} */
+            mode.illegal
+          );
         if (!mode.contains)
           mode.contains = [];
         mode.contains = [].concat(...mode.contains.map(function(c) {
           return expandOrCloneMode(c === "self" ? mode : c);
         }));
         mode.contains.forEach(function(c) {
-          compileMode(c, cmode);
+          compileMode(
+            /** @type Mode */
+            c,
+            cmode
+          );
         });
         if (mode.starts) {
           compileMode(mode.starts, parent);
@@ -3284,7 +3297,10 @@ var require_core = __commonJS({
         throw new Error("ERR: contains `self` is not supported at the top-level of a language.  See documentation.");
       }
       language.classNameAliases = inherit(language.classNameAliases || {});
-      return compileMode(language);
+      return compileMode(
+        /** @type Mode */
+        language
+      );
     }
     function dependencyOnParent(mode) {
       if (!mode)
@@ -3558,7 +3574,8 @@ var require_core = __commonJS({
               return;
             }
             result2 = _highlight(top.subLanguage, modeBuffer, true, continuations[top.subLanguage]);
-            continuations[top.subLanguage] = result2.top;
+            continuations[top.subLanguage] = /** @type {CompiledMode} */
+            result2.top;
           } else {
             result2 = highlightAuto(modeBuffer, top.subLanguage.length ? top.subLanguage : null);
           }
@@ -5356,7 +5373,10 @@ var require_arduino = __commonJS({
         literal: "DIGITAL_MESSAGE FIRMATA_STRING ANALOG_MESSAGE REPORT_DIGITAL REPORT_ANALOG INPUT_PULLUP SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL DEFAULT OUTPUT INPUT HIGH LOW"
       };
       const ARDUINO = cPlusPlus(hljs);
-      const kws = ARDUINO.keywords;
+      const kws = (
+        /** @type {Record<string,any>} */
+        ARDUINO.keywords
+      );
       kws.keyword += " " + ARDUINO_KW.keyword;
       kws.literal += " " + ARDUINO_KW.literal;
       kws.built_in += " " + ARDUINO_KW.built_in;
@@ -35223,7 +35243,7 @@ var UKFlag = ({ width = 60, height = 30 }) => /* @__PURE__ */ import_react19.def
     }
   ), /* @__PURE__ */ import_react19.default.createElement("path", { d: "M30,0 v30 M0,15 h60", stroke: "#fff", strokeWidth: "10" }), /* @__PURE__ */ import_react19.default.createElement("path", { d: "M30,0 v30 M0,15 h60", stroke: "#C8102E", strokeWidth: "6" }))
 );
-var Footer = () => /* @__PURE__ */ import_react19.default.createElement("div", { id: "footer" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "container" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "withSidePadding" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "copyright" }, "\xA9 ", new Date().getFullYear(), " ", /* @__PURE__ */ import_react19.default.createElement(
+var Footer = () => /* @__PURE__ */ import_react19.default.createElement("div", { id: "footer" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "container" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "withSidePadding" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "copyright" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " ", /* @__PURE__ */ import_react19.default.createElement(
   "a",
   {
     href: "https://anephenix.com",
