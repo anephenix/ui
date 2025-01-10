@@ -38,7 +38,7 @@
 		"babel-eslint": "^10.1.0",
 		"babel-jest": "^29.7.0",
 		"coveralls": "^3.1.1",
-		"esbuild": "^0.21.1",
+		"esbuild": "^0.24.2",
 		"esbuild-plugin-sass": "^1.0.1",
 		"eslint": "^8.51.0",
 		"eslint-plugin-jest": "^28.5.0",
