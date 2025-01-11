@@ -12,8 +12,8 @@ npm i @anephenix/ui --save
 
 ### Dependencies
 
--   Node.js (14+)
--   React (Version 17)
+-   Node.js (22+)
+-   React (Version 18+)
 -   Sass (V 5.0+)
 
 ### Setup
@@ -52,4 +52,4 @@ npm t
 
 ### License and credits
 
-&copy;2021 Anephenix OÜ. UI is licenced under the MIT Licence.
+&copy;2025 Anephenix OÜ. UI is licenced under the MIT Licence.
