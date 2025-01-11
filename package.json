@@ -40,7 +40,7 @@
 		"coveralls": "^3.1.1",
 		"esbuild": "^0.24.2",
 		"esbuild-plugin-sass": "^1.0.1",
-		"eslint": "^8.51.0",
+		"eslint": "^9.18.0",
 		"eslint-plugin-jest": "^28.5.0",
 		"eslint-plugin-react": "^7.34.1",
 		"identity-obj-proxy": "^3.0.0",
