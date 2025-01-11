@@ -1,5 +1,30 @@
 # CHANGELOG
 
+### 0.1.3 - Saturday 11th January, 2025
+
+- Updated the eslint config
+- Merge pull request #46 from anephenix/dependabot/npm_and_yarn/eslint-9.18.0
+- Merge pull request #44 from anephenix/dependabot/npm_and_yarn/next-15.1.4
+- Bump next from 14.2.15 to 15.1.4
+- Merge pull request #42 from anephenix/dependabot/npm_and_yarn/babel/eslint-parser-7.26.5
+- Merge pull request #43 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.26.0
+- Bump eslint from 8.57.0 to 9.18.0
+- Merge pull request #45 from anephenix/dependabot/npm_and_yarn/esbuild-0.24.2
+- Bump esbuild from 0.21.1 to 0.24.2
+- Bump @babel/preset-env from 7.24.5 to 7.26.0
+- Bump @babel/eslint-parser from 7.24.5 to 7.26.5
+- Merge pull request #40 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-28.10.0
+- Merge pull request #39 from anephenix/dependabot/npm_and_yarn/prettier-3.4.2
+- Merge pull request #38 from anephenix/dependabot/npm_and_yarn/eslint-plugin-react-7.37.3
+- Merge pull request #37 from anephenix/dependabot/npm_and_yarn/jsdoc-4.0.4
+- Merge pull request #36 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.12
+- Bump eslint-plugin-jest from 28.5.0 to 28.10.0
+- Bump prettier from 3.2.5 to 3.4.2
+- Bump eslint-plugin-react from 7.34.1 to 7.37.3
+- Bump jsdoc from 4.0.3 to 4.0.4
+- Bump @anephenix/rcg from 0.0.11 to 0.0.12
+- Create dependabot.yml
+
 ### 0.1.2 - Thursday 9th January, 2025
 
 - Added scripts to automate publishing the NPM package
