@@ -24,6 +24,12 @@
 		"url": "git://github.com/anephenix/ui.git"
 	},
 	"author": "Paul Jensen <paul@anephenix.com>",
+	"maintainers": [
+		{
+			"name": "Paul Jensen",
+			"email": "paul@anephenix.com"
+		}
+	],
 	"license": "MIT",
 	"husky": {
 		"hooks": {
