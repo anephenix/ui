@@ -2203,6 +2203,7 @@ var require_toggle_selection = __commonJS({
         ranges.push(selection.getRangeAt(i));
       }
       switch (active.tagName.toUpperCase()) {
+        // .toUpperCase handles XHTML
         case "INPUT":
         case "TEXTAREA":
           active.blur();
@@ -34670,8 +34671,8 @@ var require_react_highlight = __commonJS({
 });
 
 // index.jsx
-var ui_exports = {};
-__export(ui_exports, {
+var index_exports = {};
+__export(index_exports, {
   Button: () => Button_default,
   Checkbox: () => Checkbox_default,
   Code: () => Code_default,
@@ -34689,7 +34690,7 @@ __export(ui_exports, {
   applyWebpackConfig: () => applyWebpackConfig,
   handleErrors: () => handleErrors
 });
-module.exports = __toCommonJS(ui_exports);
+module.exports = __toCommonJS(index_exports);
 
 // src/components/button/Button.jsx
 var import_react = __toESM(require_react());
