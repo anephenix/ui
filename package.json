@@ -37,7 +37,7 @@
 		}
 	},
 	"devDependencies": {
-		"@anephenix/rcg": "0.0.12",
+		"@anephenix/rcg": "0.0.13",
 		"@babel/eslint-parser": "^7.24.5",
 		"@babel/plugin-proposal-optional-chaining": "^7.21.0",
 		"@babel/preset-env": "^7.24.5",
