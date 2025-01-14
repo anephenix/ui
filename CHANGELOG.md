@@ -1,5 +1,24 @@
 # CHANGELOG
 
+### 0.1.4 - Tuesday 14th January, 2025
+
+- Merge pull request #51 from anephenix/dependabot/npm_and_yarn/multi-43de07ffaa
+- Replaced react-copy-to-clipboard with clipboard-copy and added unit tests for the Terminal and Code components
+- Bump react, react-dom and react-test-renderer
+- Updated github action to run Node.js v22
+- Merge pull request #50 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.13
+- Merge pull request #49 from anephenix/dependabot/npm_and_yarn/sass-1.83.1
+- Merge pull request #48 from anephenix/dependabot/npm_and_yarn/eslint-plugin-react-7.37.4
+- Merge pull request #47 from anephenix/dependabot/npm_and_yarn/babel/preset-react-7.26.3
+- Bump @anephenix/rcg from 0.0.12 to 0.0.13
+- Bump sass from 1.77.0 to 1.83.1
+- Bump eslint-plugin-react from 7.37.3 to 7.37.4
+- Bump @babel/preset-react from 7.24.1 to 7.26.3
+- Added updates to the README
+- Updated maintainers in package.json file
+- Fixed a typo
+- Updated dependencies
+
 ### 0.1.3 - Saturday 11th January, 2025
 
 - Updated the eslint config
