@@ -1,6 +1,6 @@
 import React from 'react';
 import './Terminal.scss';
-import CopyToClipboard from 'react-copy-to-clipboard';
+import copy from 'clipboard-copy';
 
 const Terminal = ({ title, code }) => {
 	return (
@@ -13,9 +13,7 @@ const Terminal = ({ title, code }) => {
 				</div>
 				<div id='title-bar-title'>{title}</div>
 				<div id='title-bar-actions'>
-					<CopyToClipboard text={code}>
-						<div className='title-bar-action'>{'Copy'}</div>
-					</CopyToClipboard>
+					<div className='title-bar-action' onClick={() => copy(code)}>Copy</div>
 				</div>
 			</div>
 			<pre>

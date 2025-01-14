@@ -1,10 +1,10 @@
 import React from 'react';
 import './Code.scss';
 import Highlight from 'react-highlight';
-import CopyToClipboard from 'react-copy-to-clipboard';
+import copy from 'clipboard-copy';
 
 const TitleBarButton = (id) => (
-	<div className='title-bar-button' id={id} />
+	<div className='title-bar-button' key={id} id={id} />
 );
 
 const TitleBarButtons = () => {
@@ -21,9 +21,7 @@ const TitleBar = ({title, code}) => (
 		<TitleBarButtons />
 		<div id='title-bar-title'>{title}</div>
 		<div id='title-bar-actions'>
-			<CopyToClipboard text={code}>
-				<div className='title-bar-action'>Copy</div>
-			</CopyToClipboard>
+			<div className='title-bar-action' onClick={() => copy(code)}>Copy</div>
 		</div>
 	</div>
 );
