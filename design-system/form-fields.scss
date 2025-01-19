@@ -1,9 +1,9 @@
-@import './colours.scss';
-@import './spacing.scss';
+@use 'colours.scss';
+@use 'spacing.scss';
 
 label {
 	box-sizing: content-box;
-	margin-right: $grid-base;
+	margin-right: spacing.$grid-base;
 }
 
 // Used to help ensure that checkbox elements and the label elements that wrap them are clickable
@@ -16,15 +16,15 @@ input[type='email'],
 input[type='password'],
 input[type='search'],
 textarea {
-	padding: $grid-base;
+	padding: spacing.$grid-base;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-	border: solid 1px $form-field-border-colour;
-	color: $form-field-colour;
+	border: solid 1px colours.$form-field-border-colour;
+	color: colours.$form-field-colour;
 	font-size: 14px;
 
 	&.large {
-		padding: $spacer-two $spacer-one;
+		padding: spacing.$spacer-two spacing.$spacer-one;
 	}
 }
 
@@ -48,28 +48,28 @@ input[type='radio'] {
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
-	width: $spacer-one;
-	height: $spacer-one;
-	padding: calc($grid-base / 2);
-	margin-right: $grid-base;
-	background: $light;
-	border: solid 1px $form-field-border-colour;
+	width: spacing.$spacer-one;
+	height: spacing.$spacer-one;
+	padding: calc(spacing.$grid-base / 2);
+	margin-right: spacing.$grid-base;
+	background: colours.$light;
+	border: solid 1px colours.$form-field-border-colour;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .radio-element {
-	border-radius: $spacer-two;
+	border-radius: spacing.$spacer-two;
 }
 
 .large .checkbox-element,
 .large .radio-element {
-	width: $spacer-two;
-	height: $spacer-two;
+	width: spacing.$spacer-two;
+	height: spacing.$spacer-two;
 }
 
 .large .radio-element {
-	border-radius: $spacer-two;
+	border-radius: spacing.$spacer-two;
 }
 
 .large .tick {
@@ -77,7 +77,7 @@ input[type='radio'] {
 }
 
 .large .selected {
-	border-radius: $spacer-one;
+	border-radius: spacing.$spacer-one;
 }
 
 .tick,
@@ -85,26 +85,26 @@ input[type='radio'] {
 	width: 0px;
 	height: 0px;
 	border-radius: 1px;
-	background-color: $green-one-colour;
+	background-color: colours.$green-one-colour;
 	opacity: 0;
 	transition: all 0.2s linear;
 }
 
 .selected {
-	border-radius: $spacer-one;
+	border-radius: spacing.$spacer-one;
 }
 
 input[type='checkbox']:checked + .checkbox-element .tick,
 input[type='radio']:checked + .radio-element .selected {
-	width: $grid-base;
-	height: $grid-base;
+	width: spacing.$grid-base;
+	height: spacing.$grid-base;
 	opacity: 1;
 }
 
 .large input[type='checkbox']:checked + .checkbox-element .tick,
 .large input[type='radio']:checked + .radio-element .selected {
-	width: $spacer-two;
-	height: $spacer-two;
+	width: spacing.$spacer-two;
+	height: spacing.$spacer-two;
 	opacity: 1;
 }
 
@@ -116,11 +116,11 @@ input[type='radio']:disabled + .radio-element {
 .input-group {
 	display: flex;
 	align-items: center;
-	padding: $grid-base;
+	padding: spacing.$grid-base;
 }
 
 .select {
-	padding: $grid-base;
+	padding: spacing.$grid-base;
 	min-width: 180px;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -131,8 +131,8 @@ input[type='radio']:disabled + .radio-element {
 	background-size: 0.65em auto, 100%;
 	border-radius: 3px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-	border: solid 1px $form-field-border-colour;
-	color: $form-field-colour;
+	border: solid 1px colours.$form-field-border-colour;
+	color: colours.$form-field-colour;
 	font-size: 14px;
 }
 
@@ -146,12 +146,12 @@ input[type='radio']:disabled + .radio-element {
 	border-color: #aaa;
 	box-shadow: 0 0 1px 1px rgba(59, 153, 252, 0.7);
 	box-shadow: 0 0 0 1px -moz-mac-focusring;
-	color: $form-field-colour;
+	color: colours.$form-field-colour;
 	outline: none;
 }
 .select > option {
-	padding: $grid-base;
-	color: $form-field-colour;
+	padding: spacing.$grid-base;
+	color: colours.$form-field-colour;
 	font-weight: normal;
 	font-size: 14px;
 }

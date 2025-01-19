@@ -1,4 +1,4 @@
-@import '../design-system/colours.scss';
+@use '../design-system/colours.scss';
 
 .colour-key {
     width: 96px;
@@ -11,31 +11,31 @@
     text-align: center;
 
     &.primary {
-        background: $primary-colour;
+        background: colours.$primary-colour;
     }
 
     &.secondary {
-        background: $secondary-colour;
+        background: colours.$secondary-colour;
     }
 
     &.tertiary {
-        background: $tertiary-colour;
+        background: colours.$tertiary-colour;
     }
 
     &.green-two {
-        background: $green-two-colour;
+        background: colours.$green-two-colour;
     }
 
     &.green-one {
-        background: $green-one-colour;
+        background: colours.$green-one-colour;
     }
 
     &.blue-two {
-        background: $blue-two-colour;
+        background: colours.$blue-two-colour;
     }
 
     &.blue-one {
-        background: $blue-one-colour;
+        background: colours.$blue-one-colour;
     }
 
 

@@ -1,5 +1,6 @@
-@import './spacing.scss';
-@import './colours.scss';
+@use "sass:map";
+@use 'spacing.scss';
+@use 'colours.scss';
 
 @mixin main($firstColour, $secondColour) {
 	background-color: $firstColour;
@@ -36,7 +37,7 @@
 
 button.theme-default,
 .button.theme-default {
-	padding: $grid-base $spacer-three;
+	padding: spacing.$grid-base spacing.$spacer-three;
 	border-radius: 4px;
 	font-weight: 600;
 	font-size: 14px;
@@ -44,11 +45,11 @@ button.theme-default,
 	transition: all 0.3s linear;
 	text-decoration: none;
 
-	@each $colourClassName in map-keys($theme-colours) {
+	@each $colourClassName in map.keys(colours.$theme-colours) {
 		@include generateVariant(
 			$colourClassName,
-			map-get($theme-colours, $colourClassName),
-			$light
+			map.get(colours.$theme-colours, $colourClassName),
+			colours.$light
 		);
 	}
 }
@@ -56,11 +57,11 @@ button.theme-default,
 @media screen and (prefers-color-scheme: dark) {
 	button.theme-default,
 	.button.theme-default {
-		@each $colourClassName in map-keys($theme-colours) {
+		@each $colourClassName in map.keys(colours.$theme-colours) {
 			@include generateVariant(
 				$colourClassName,
-				map-get($theme-colours, $colourClassName),
-				$dark
+				map.get(colours.$theme-colours, $colourClassName),
+				colours.$dark
 			);
 		}
 	}

@@ -33903,7 +33903,7 @@ var import_react13 = __toESM(require_react());
 
 // src/components/hamburger/Hamburger.jsx
 var import_react8 = __toESM(require_react());
-var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ import_react8.default.createElement("div", { id: "hamburger", onClick }, /* @__PURE__ */ import_react8.default.createElement(
+var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ import_react8.default.createElement("div", { id: "hamburger", onClick, "data-testid": "hamburger" }, /* @__PURE__ */ import_react8.default.createElement(
   "svg",
   {
     width: width || "33px",

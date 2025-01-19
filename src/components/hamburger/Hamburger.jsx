@@ -2,7 +2,7 @@ import React from 'react';
 import './Hamburger.scss';
 
 const Hamburger = ({ width, height, onClick }) => (
-	<div id='hamburger' onClick={onClick}>
+	<div id='hamburger' onClick={onClick} data-testid='hamburger'>
 		<svg
 			width={width || '33px'}
 			height={height || '26px'}

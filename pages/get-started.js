@@ -34,7 +34,7 @@ const GetStartedPage = () => (
 		<div className="section-gap">
 			<h2>Dependencies</h2>
 			<ul>
-				<li>Node.js (V 16 and greater)</li>
+				<li>Node.js (V 22 and greater)</li>
 				<li>React (V 18)</li>
 			</ul>
 		</div>

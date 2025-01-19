@@ -4,7 +4,7 @@
   - medium >= 769px and <= 1024px
   - large >= 1025px
 */
-@import './spacing.scss';
+@use 'spacing.scss';
 
 /* Screen size definitions */
 $min-mobile-width: 320px;
@@ -64,5 +64,5 @@ body {
 }
 
 .withSidePadding {
-	padding: 0px $spacer-two;
+	padding: 0px spacing.$spacer-two;
 }
