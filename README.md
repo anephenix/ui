@@ -2,7 +2,7 @@
 
 A design system for Next.js applications, using Sass as the CSS preprocessor.
 
-[![Node.js CI](https://github.com/anephenix/ui/actions/workflows/node.js.yml/badge.svg)](https://github.com/anephenix/ui/actions/workflows/node.js.yml) [![Coverage Status](https://coveralls.io/repos/github/anephenix/ui/badge.svg?branch=master)](https://coveralls.io/github/anephenix/ui?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/ad75e2ac73c6a033d922/maintainability)](https://codeclimate.com/github/anephenix/ui/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ad75e2ac73c6a033d922/test_coverage)](https://codeclimate.com/github/anephenix/ui/test_coverage)
+[![npm version](https://badge.fury.io/js/%40anephenix%2Fui.svg)](https://badge.fury.io/js/%40anephenix%2Fui) [![Node.js CI](https://github.com/anephenix/ui/actions/workflows/node.js.yml/badge.svg)](https://github.com/anephenix/ui/actions/workflows/node.js.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/ad75e2ac73c6a033d922/maintainability)](https://codeclimate.com/github/anephenix/ui/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ad75e2ac73c6a033d922/test_coverage)](https://codeclimate.com/github/anephenix/ui/test_coverage) [![Socket Badge](https://socket.dev/api/badge/npm/package/@anephenix/ui)](https://socket.dev/npm/package/@anephenix/ui)
 
 ### Installation
 
