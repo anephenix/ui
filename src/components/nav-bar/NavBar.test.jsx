@@ -2,7 +2,7 @@
  * @jest-environment jsdom
 */
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import NavBar from './NavBar';
 
 describe('NavBar', () => {
