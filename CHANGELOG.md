@@ -1,5 +1,26 @@
 # CHANGELOG
 
+### 0.1.5 - Saturday 25th January, 2025
+
+- Merge pull request #59 from anephenix/dependabot/npm_and_yarn/eslint-9.19.0
+- Bump eslint from 9.18.0 to 9.19.0
+- Merge pull request #58 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.26.7
+- Merge pull request #57 from anephenix/dependabot/npm_and_yarn/eslint/js-9.19.0
+- Bump @babel/preset-env from 7.26.0 to 7.26.7
+- Bump @eslint/js from 9.18.0 to 9.19.0
+- Update Badges
+- Merge pull request #56 from anephenix/dependabot/npm_and_yarn/next-15.1.6
+- Bump next from 15.1.5 to 15.1.6
+- Work in progress on changes
+- Merge pull request #55 from anephenix/dependabot/npm_and_yarn/next-15.1.5
+- Bump next from 15.1.4 to 15.1.5
+- Merge pull request #54 from anephenix/dependabot/npm_and_yarn/testing-library/react-16.2.0
+- Bump @testing-library/react from 16.1.0 to 16.2.0
+- Merge pull request #53 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-28.11.0
+- Bump eslint-plugin-jest from 28.10.0 to 28.11.0
+- Merge pull request #52 from anephenix/dependabot/npm_and_yarn/sass-1.83.4
+- Bump sass from 1.83.1 to 1.83.4
+
 ### 0.1.4 - Tuesday 14th January, 2025
 
 - Merge pull request #51 from anephenix/dependabot/npm_and_yarn/multi-43de07ffaa
