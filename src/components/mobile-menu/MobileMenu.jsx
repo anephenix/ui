@@ -11,22 +11,25 @@ const MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 					<CloseIcon width="20px" />
 				</div>
 			</div>
-			<ul>
-				{links
-					.filter((x) => x.hideOptions({ loggedIn }))
-					.map((link, i) => {
-						return (
-							<MenuItem
-								key={i}
-								{...link}
-								isMobile={true}
-								toggleMenu={toggleMenu}
-								i={i}
-								Link={Link}
-							/>
-						);
-					})}
-			</ul>
+				{menuOpen && (
+					<ul>
+						{links
+							.filter((x) => x.hideOptions({ loggedIn }))
+							.map((link, i) => {
+								return (
+									<MenuItem
+										key={i}
+										{...link}
+										isMobile={true}
+										toggleMenu={toggleMenu}
+										i={i}
+										Link={Link}
+									/>
+								);
+							})
+						}
+					</ul>)
+				}
 		</div>
 	);
 };
