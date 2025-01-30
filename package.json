@@ -43,10 +43,10 @@
 			"limit": "250 kB"
 		},
 		{
-      		"path": "dist/index.css",
-      		"limit": "10 kB"
-    	}
-  	],
+			"path": "dist/index.css",
+			"limit": "10 kB"
+		}
+	],
 	"devDependencies": {
 		"@anephenix/rcg": "0.0.13",
 		"@babel/eslint-parser": "^7.24.5",
@@ -55,6 +55,8 @@
 		"@babel/preset-react": "^7.24.1",
 		"@eslint/eslintrc": "^3.2.0",
 		"@eslint/js": "^9.18.0",
+		"@size-limit/esbuild": "^11.1.6",
+		"@size-limit/esbuild-why": "^11.1.6",
 		"@size-limit/preset-small-lib": "^11.1.6",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.1.0",
