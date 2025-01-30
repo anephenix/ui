@@ -9,6 +9,7 @@
 		"cover": "npx jest --coverage --coverageReporters=text-lcov",
 		"dev": "next",
 		"lint": "npx eslint .",
+		"size": "size-limit",
 		"start": "next start",
 		"prepare-patch-release": "npm run build-lib && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch",
 		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags",
@@ -36,6 +37,16 @@
 			"pre-commit": "npm run lint && npm t"
 		}
 	},
+	"size-limit": [
+		{
+			"path": "dist/index.js",
+			"limit": "250 kB"
+		},
+		{
+      		"path": "dist/index.css",
+      		"limit": "10 kB"
+    	}
+  	],
 	"devDependencies": {
 		"@anephenix/rcg": "0.0.13",
 		"@babel/eslint-parser": "^7.24.5",
@@ -44,6 +55,7 @@
 		"@babel/preset-react": "^7.24.1",
 		"@eslint/eslintrc": "^3.2.0",
 		"@eslint/js": "^9.18.0",
+		"@size-limit/preset-small-lib": "^11.1.6",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.1.0",
 		"@testing-library/user-event": "^14.6.1",
@@ -63,7 +75,8 @@
 		"next": "15.1.6",
 		"prettier": "^3.2.5",
 		"react-test-renderer": "^19.0.0",
-		"sass": "^1.77.0"
+		"sass": "^1.77.0",
+		"size-limit": "^11.1.6"
 	},
 	"dependencies": {
 		"clipboard-copy": "^4.0.1",
