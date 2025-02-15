@@ -1,5 +1,49 @@
 # CHANGELOG
 
+### 0.1.6 - Saturday 15th February, 2025
+
+- Merge branch 'master' of github.com:anephenix/ui
+- Small tweaks to prepare script
+- Merge pull request #74 from anephenix/dependabot/npm_and_yarn/sass-1.85.0
+- Merge pull request #73 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.26.9
+- Bump sass from 1.84.0 to 1.85.0
+- Bump @babel/preset-env from 7.26.8 to 7.26.9
+- Merge pull request #72 from anephenix/dependabot/npm_and_yarn/prettier-3.5.1
+- Merge pull request #71 from anephenix/dependabot/npm_and_yarn/globals-15.15.0
+- Bump prettier from 3.5.0 to 3.5.1
+- Bump globals from 15.14.0 to 15.15.0
+- Merge pull request #69 from anephenix/dependabot/npm_and_yarn/next-15.1.7
+- Merge pull request #70 from anephenix/dependabot/npm_and_yarn/eslint-9.20.1
+- Bump eslint from 9.20.0 to 9.20.1
+- Bump next from 15.1.6 to 15.1.7
+- Merge pull request #68 from anephenix/dependabot/npm_and_yarn/babel/eslint-parser-7.26.8
+- Merge pull request #67 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.26.8
+- Merge pull request #66 from anephenix/dependabot/npm_and_yarn/esbuild-0.25.0
+- Merge pull request #65 from anephenix/dependabot/npm_and_yarn/prettier-3.5.0
+- Bump @babel/eslint-parser from 7.26.5 to 7.26.8
+- Bump @babel/preset-env from 7.26.7 to 7.26.8
+- Bump esbuild from 0.24.2 to 0.25.0
+- Bump prettier from 3.4.2 to 3.5.0
+- Merge pull request #64 from anephenix/dependabot/npm_and_yarn/eslint-9.20.0
+- Bump eslint from 9.19.0 to 9.20.0
+- Merge pull request #63 from anephenix/dependabot/npm_and_yarn/eslint/js-9.20.0
+- Bump @eslint/js from 9.19.0 to 9.20.0
+- Merge pull request #62 from anephenix/dependabot/npm_and_yarn/sass-1.84.0
+- Bump sass from 1.83.4 to 1.84.0
+- Merge pull request #61 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.15
+- Bump @anephenix/rcg from 0.0.14 to 0.0.15
+- Merge branch 'master' of github.com:anephenix/ui
+- Added these changes
+- Added size script to detect size changes in library
+- Merge pull request #60 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.14
+- Bump @anephenix/rcg from 0.0.13 to 0.0.14
+- Added some tests for DesktopMenu
+- Added more unit tests
+- Added unit tests for the footer
+- Added unit tests for the button component
+- Added more unit tests
+- Added some unit tests for the dropdown component
+
 ### 0.1.5 - Saturday 25th January, 2025
 
 - Merge pull request #59 from anephenix/dependabot/npm_and_yarn/eslint-9.19.0
