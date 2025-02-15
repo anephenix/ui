@@ -11,7 +11,7 @@
 		"lint": "npx eslint .",
 		"size": "size-limit",
 		"start": "next start",
-		"prepare-patch-release": "npm run build-lib && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch",
+		"prepare-patch-release": "npm run build-lib && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch",
 		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags",
 		"test": "npx jest --coverage",
 		"update-changelog": "node scripts/update-changelog.js"
