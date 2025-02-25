@@ -1,5 +1,28 @@
 # CHANGELOG
 
+### 0.1.7 - Tuesday 25th February, 2025
+
+- Merge pull request #82 from anephenix/dependabot/npm_and_yarn/eslint-9.21.0
+- Merge pull request #84 from anephenix/dependabot/npm_and_yarn/prettier-3.5.2
+- Merge pull request #83 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.17
+- Bump prettier from 3.5.1 to 3.5.2
+- Bump @anephenix/rcg from 0.0.16 to 0.0.17
+- Bump eslint from 9.20.1 to 9.21.0
+- Merge pull request #76 from anephenix/dependabot/npm_and_yarn/size-limit-11.2.0
+- Bump size-limit from 11.1.6 to 11.2.0
+- Merge pull request #78 from anephenix/dependabot/npm_and_yarn/size-limit/esbuild-11.2.0
+- Merge pull request #77 from anephenix/dependabot/npm_and_yarn/size-limit/esbuild-why-11.2.0
+- Bump @size-limit/esbuild-why from 11.1.6 to 11.2.0
+- Bump @size-limit/esbuild from 11.1.6 to 11.2.0
+- Merge pull request #79 from anephenix/dependabot/npm_and_yarn/size-limit/preset-small-lib-11.2.0
+- Merge pull request #81 from anephenix/dependabot/npm_and_yarn/eslint/eslintrc-3.3.0
+- Bump @eslint/eslintrc from 3.2.0 to 3.3.0
+- Merge pull request #80 from anephenix/dependabot/npm_and_yarn/globals-16.0.0
+- Bump globals from 15.15.0 to 16.0.0
+- Bump @size-limit/preset-small-lib from 11.1.6 to 11.2.0
+- Merge pull request #75 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.16
+- Bump @anephenix/rcg from 0.0.15 to 0.0.16
+
 ### 0.1.6 - Saturday 15th February, 2025
 
 - Merge branch 'master' of github.com:anephenix/ui
