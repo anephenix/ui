@@ -23,6 +23,7 @@ const UKFlag = ({ width = 60, height = 30 }) => (
 		width={width}
 		height={height}
 	>
+		<title>Union Jack Flag</title>
 		<clipPath id="s">
 			<path d="M0,0 v30 h60 v-30 z" />
 		</clipPath>
