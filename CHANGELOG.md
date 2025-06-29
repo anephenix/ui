@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### 0.1.10 - Sunday 29th June, 2025
+
+- Updated instructions for setting up the UI library
+- Added title to SVG component for UK flag
+- Added some unit test fixes
+- Small linting fix
+
 ### 0.1.9 - Sunday 29th June, 2025
 
 - Another small update
