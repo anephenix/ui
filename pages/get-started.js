@@ -8,7 +8,7 @@ import Head from 'next/head';
 import { Page } from '@anephenix/ui';
 
 // Style dependencies
-import '@anephenix/ui/index.css';
+import '@anephenix/ui/dist/index.css';
 
 class MyApp extends App {
   render() {
