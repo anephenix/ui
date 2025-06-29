@@ -1,5 +1,53 @@
 # CHANGELOG
 
+### 0.1.9 - Sunday 29th June, 2025
+
+- Another small update
+- Small update after library updates
+- Merge branch 'master' of github.com:anephenix/ui
+- Small fix for the mobile hamburger menu and made the Footer receive parameters for custom content
+- Merge pull request #167 from anephenix/dependabot/npm_and_yarn/eslint/js-9.30.0
+- Merge pull request #166 from anephenix/dependabot/npm_and_yarn/eslint-9.30.0
+- Merge pull request #165 from anephenix/dependabot/npm_and_yarn/prettier-3.6.2
+- Bump @eslint/js from 9.29.0 to 9.30.0
+- Bump eslint from 9.29.0 to 9.30.0
+- Bump prettier from 3.6.1 to 3.6.2
+- Merge pull request #164 from anephenix/dependabot/npm_and_yarn/prettier-3.6.1
+- Merge pull request #163 from anephenix/dependabot/npm_and_yarn/jest-30.0.3
+- Bump prettier from 3.6.0 to 3.6.1
+- Bump jest from 30.0.2 to 30.0.3
+- Merge pull request #162 from anephenix/dependabot/npm_and_yarn/prettier-3.6.0
+- Bump prettier from 3.5.3 to 3.6.0
+- Merge pull request #161 from anephenix/dependabot/npm_and_yarn/jest-environment-jsdom-30.0.2
+- Merge pull request #160 from anephenix/dependabot/npm_and_yarn/babel-jest-30.0.2
+- Merge pull request #159 from anephenix/dependabot/npm_and_yarn/jest-30.0.2
+- Bump jest-environment-jsdom from 30.0.0 to 30.0.2
+- Bump babel-jest from 30.0.0 to 30.0.2
+- Bump jest from 30.0.0 to 30.0.2
+- Merge pull request #158 from anephenix/dependabot/npm_and_yarn/next-15.3.4
+- Merge pull request #157 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.0.1
+- Bump next from 15.3.3 to 15.3.4
+- Bump eslint-plugin-jest from 28.14.0 to 29.0.1
+- Merge pull request #156 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-28.14.0
+- Bump eslint-plugin-jest from 28.13.5 to 28.14.0
+- Merge pull request #155 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-28.13.5
+- Merge pull request #154 from anephenix/dependabot/npm_and_yarn/eslint/js-9.29.0
+- Merge pull request #153 from anephenix/dependabot/npm_and_yarn/eslint-9.29.0
+- Bump eslint-plugin-jest from 28.13.3 to 28.13.5
+- Bump @eslint/js from 9.28.0 to 9.29.0
+- Bump eslint from 9.28.0 to 9.29.0
+- Removed CodeClimate
+- Merge pull request #151 from anephenix/dependabot/npm_and_yarn/babel-jest-30.0.0
+- Bump babel-jest from 29.7.0 to 30.0.0
+- Merge pull request #150 from anephenix/dependabot/npm_and_yarn/jest-environment-jsdom-30.0.0
+- Bump jest-environment-jsdom from 29.7.0 to 30.0.0
+- Merge pull request #152 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.21
+- Merge pull request #149 from anephenix/dependabot/npm_and_yarn/jest-30.0.0
+- Merge pull request #148 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-28.13.3
+- Bump @anephenix/rcg from 0.0.20 to 0.0.21
+- Bump jest from 29.7.0 to 30.0.0
+- Bump eslint-plugin-jest from 28.13.0 to 28.13.3
+
 ### 0.1.8 - Tuesday 10th June, 2025
 
 - Merge pull request #147 from anephenix/dependabot/npm_and_yarn/sass-1.89.2
