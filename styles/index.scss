@@ -10,3 +10,16 @@
 		color: white;
 	}
 }
+
+.made-in-location {
+	display: flex;
+	align-items: center;
+
+	a {
+		border-bottom: none;
+	}
+
+	@media screen and (max-width: 767px) {
+		padding-top: 10px;
+	}
+}

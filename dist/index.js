@@ -36851,51 +36851,7 @@ var Textarea_default = Textarea;
 
 // src/components/footer/Footer.jsx
 var import_react19 = __toESM(require_react());
-var UKFlag = ({ width = 60, height = 30 }) => /* @__PURE__ */ import_react19.default.createElement(
-  "svg",
-  {
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 60 30",
-    width,
-    height
-  },
-  /* @__PURE__ */ import_react19.default.createElement("clipPath", { id: "s" }, /* @__PURE__ */ import_react19.default.createElement("path", { d: "M0,0 v30 h60 v-30 z" })),
-  /* @__PURE__ */ import_react19.default.createElement("clipPath", { id: "t" }, /* @__PURE__ */ import_react19.default.createElement("path", { d: "M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" })),
-  /* @__PURE__ */ import_react19.default.createElement("g", { clipPath: "url(#s)" }, /* @__PURE__ */ import_react19.default.createElement("path", { d: "M0,0 v30 h60 v-30 z", fill: "#012169" }), /* @__PURE__ */ import_react19.default.createElement("path", { d: "M0,0 L60,30 M60,0 L0,30", stroke: "#fff", strokeWidth: "6" }), /* @__PURE__ */ import_react19.default.createElement(
-    "path",
-    {
-      d: "M0,0 L60,30 M60,0 L0,30",
-      clipPath: "url(#t)",
-      stroke: "#C8102E",
-      strokeWidth: "4"
-    }
-  ), /* @__PURE__ */ import_react19.default.createElement("path", { d: "M30,0 v30 M0,15 h60", stroke: "#fff", strokeWidth: "10" }), /* @__PURE__ */ import_react19.default.createElement("path", { d: "M30,0 v30 M0,15 h60", stroke: "#C8102E", strokeWidth: "6" }))
-);
-var Footer = () => /* @__PURE__ */ import_react19.default.createElement("div", { id: "footer" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "container" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "withSidePadding" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "copyright" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " ", /* @__PURE__ */ import_react19.default.createElement(
-  "a",
-  {
-    href: "https://anephenix.com",
-    rel: "noopen noreferrer",
-    target: "_blank"
-  },
-  "Anephenix"
-), ". UI is licensed under the", " ", /* @__PURE__ */ import_react19.default.createElement(
-  "a",
-  {
-    href: "https://raw.githubusercontent.com/anephenix/ui/master/LICENSE",
-    rel: "noopen noreferrer",
-    target: "_blank"
-  },
-  "MIT License"
-), "."), /* @__PURE__ */ import_react19.default.createElement("div", { className: "made-in-location" }, /* @__PURE__ */ import_react19.default.createElement(UKFlag, { width: 24, height: 12 }), /* @__PURE__ */ import_react19.default.createElement(
-  "a",
-  {
-    href: "https://www.gov.uk",
-    rel: "noopen noreferrer",
-    target: "_blank"
-  },
-  "\xA0 Made in the United Kingdom"
-)))));
+var Footer = ({ leftSection, rightSection }) => /* @__PURE__ */ import_react19.default.createElement("div", { id: "footer" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "container" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "withSidePadding" }, leftSection, rightSection)));
 var Footer_default = Footer;
 
 // index.jsx
