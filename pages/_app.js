@@ -76,7 +76,7 @@ const RightSection = () => (
 			&nbsp; Made in the United Kingdom
 		</a>
 	</div>
-)
+);
 
 class MyApp extends App {
 	render() {
