@@ -3,42 +3,29 @@ import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import Footer from './Footer';
 
+const LeftSection = () => (
+	<div className="left-section">This is content for the left section</div>
+)
+
+const RightSection = () => (
+	<div className="right-section">This is content for the right section</div>
+)
+
 describe('Footer', () => {
-	test('renders correctly', () => {
-		const { container } = render(<Footer />);
-		expect(container).toMatchSnapshot();
+
+	describe('when passed no props', () => {
+		test('renders without crashing', () => {
+			const { container } = render(<Footer />);
+			expect(container).toBeTruthy();
+		});
 	});
 
-	test('displays the current year in the copright', () => {
-		const { container } = render(<Footer />);
-		const currentYear = new Date().getFullYear();
-		const className = 'copyright';
-		const element = container.querySelector(`.${className}`);
-		expect(element).toBeTruthy();
-		expect(element.textContent.match(new RegExp(currentYear))).toBeTruthy();
-	});
-
-	test('contains a link to Anephenix', () => {
-		const { getByText } = render(<Footer />);
-		const link = getByText('Anephenix').closest('a');
-		expect(link).toHaveAttribute('href', 'https://anephenix.com');
-		expect(link).toHaveAttribute('target', '_blank');
-		expect(link).toHaveAttribute('rel', 'noopen noreferrer');
-	});
-
-	test('contains a link to the MIT License', () => {
-		const { getByText } = render(<Footer />);
-		const link = getByText('MIT License').closest('a');
-		expect(link).toHaveAttribute('href', 'https://raw.githubusercontent.com/anephenix/ui/master/LICENSE');
-		expect(link).toHaveAttribute('target', '_blank');
-		expect(link).toHaveAttribute('rel', 'noopen noreferrer');
-	});
-
-	test('contains a link to the UK government site', () => {
-		const { getByText } = render(<Footer />);
-		const link = getByText('Made in the United Kingdom').closest('a');
-		expect(link).toHaveAttribute('href', 'https://www.gov.uk');
-		expect(link).toHaveAttribute('target', '_blank');
-		expect(link).toHaveAttribute('rel', 'noopen noreferrer');
+	describe('when passed leftSection and rightSection props', () => {
+		test('renders without crashing', () => {
+			const { container } = render(<Footer leftSection={<LeftSection />} rightSection={<RightSection />} />);
+			expect(container).toBeTruthy();
+			expect(container.querySelector('.left-section')).toBeTruthy();
+			expect(container.querySelector('.right-section')).toBeTruthy();
+		});
 	});
 });
