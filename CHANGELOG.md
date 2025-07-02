@@ -1,5 +1,15 @@
 # CHANGELOG
 
+### 0.1.12 - Wednesday 2nd July, 2025
+
+- Merge branch 'master' of github.com:anephenix/ui
+- Merge pull request #169 from anephenix/dependabot/npm_and_yarn/eslint/js-9.30.1
+- Merge pull request #170 from anephenix/dependabot/npm_and_yarn/eslint-9.30.1
+- Merge pull request #168 from anephenix/dependabot/npm_and_yarn/globals-16.3.0
+- Bump eslint from 9.30.0 to 9.30.1
+- Bump @eslint/js from 9.30.0 to 9.30.1
+- Bump globals from 16.2.0 to 16.3.0
+
 ### 0.1.11 - Wednesday 2nd July, 2025
 
 - Small tweak to pass component as description to hero component
