@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.1.11 - Wednesday 2nd July, 2025
+
+- Small tweak to pass component as description to hero component
+
 ### 0.1.10 - Sunday 29th June, 2025
 
 - Updated instructions for setting up the UI library
