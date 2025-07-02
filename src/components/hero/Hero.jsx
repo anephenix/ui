@@ -16,11 +16,14 @@ const CTA = (Link) => {
 
 const Hero = ({title, description, ctas, Link }) => {
 	const ctaFunk = CTA(Link);
+	if (typeof description === 'string') {
+		description = <p>{description}</p>;
+	}
 	return (
 		<div id="hero">
 			<div id='heading-and-lead'>
 				<h1>{title}</h1>
-				<p>{description}</p>
+				{description}
 			</div>
 			<div id='hero-ctas'>{ctas.map(ctaFunk)}</div>
 		</div>

@@ -36828,7 +36828,10 @@ var CTA = (Link) => {
 };
 var Hero = ({ title, description, ctas, Link }) => {
   const ctaFunk = CTA(Link);
-  return /* @__PURE__ */ import_react17.default.createElement("div", { id: "hero" }, /* @__PURE__ */ import_react17.default.createElement("div", { id: "heading-and-lead" }, /* @__PURE__ */ import_react17.default.createElement("h1", null, title), /* @__PURE__ */ import_react17.default.createElement("p", null, description)), /* @__PURE__ */ import_react17.default.createElement("div", { id: "hero-ctas" }, ctas.map(ctaFunk)));
+  if (typeof description === "string") {
+    description = /* @__PURE__ */ import_react17.default.createElement("p", null, description);
+  }
+  return /* @__PURE__ */ import_react17.default.createElement("div", { id: "hero" }, /* @__PURE__ */ import_react17.default.createElement("div", { id: "heading-and-lead" }, /* @__PURE__ */ import_react17.default.createElement("h1", null, title), description), /* @__PURE__ */ import_react17.default.createElement("div", { id: "hero-ctas" }, ctas.map(ctaFunk)));
 };
 var Hero_default = Hero;
 

@@ -49,6 +49,7 @@ const CodeEditor = ({code, language}) => {
 	);
 };
 
+// NOTE - ID is not best if you have multiple Code components on the same page
 const Code = ({ title, code, language = 'javascript' }) => (
 	<div id="code">
 		<TitleBar title={title} code={code} />
