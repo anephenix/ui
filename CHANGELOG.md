@@ -1,5 +1,31 @@
 # CHANGELOG
 
+### 0.1.13 - Sunday 20th July, 2025
+
+- Merge pull request #181 from anephenix/dependabot/npm_and_yarn/next-15.4.2
+- Bump next from 15.4.1 to 15.4.2
+- Merge pull request #180 from anephenix/dependabot/npm_and_yarn/next-15.4.1
+- Bump next from 15.3.5 to 15.4.1
+- Merge pull request #179 from anephenix/dependabot/npm_and_yarn/eslint-9.31.0
+- Merge pull request #178 from anephenix/dependabot/npm_and_yarn/eslint/js-9.31.0
+- Bump eslint from 9.30.1 to 9.31.0
+- Bump @eslint/js from 9.30.1 to 9.31.0
+- Merge pull request #177 from anephenix/dependabot/npm_and_yarn/esbuild-0.25.6
+- Bump esbuild from 0.25.5 to 0.25.6
+- Updated dependencies
+- Merge pull request #175 from anephenix/dependabot/npm_and_yarn/jest-30.0.4
+- Merge pull request #176 from anephenix/dependabot/npm_and_yarn/next-15.3.5
+- Bump next from 15.3.4 to 15.3.5
+- Bump jest from 30.0.3 to 30.0.4
+- Merge pull request #174 from anephenix/dependabot/npm_and_yarn/babel-jest-30.0.4
+- Merge pull request #173 from anephenix/dependabot/npm_and_yarn/jest-environment-jsdom-30.0.4
+- Bump babel-jest from 30.0.2 to 30.0.4
+- Bump jest-environment-jsdom from 30.0.2 to 30.0.4
+- Merge pull request #172 from anephenix/dependabot/npm_and_yarn/babel/eslint-parser-7.28.0
+- Merge pull request #171 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.28.0
+- Bump @babel/eslint-parser from 7.27.5 to 7.28.0
+- Bump @babel/preset-env from 7.27.2 to 7.28.0
+
 ### 0.1.12 - Wednesday 2nd July, 2025
 
 - Merge branch 'master' of github.com:anephenix/ui
