@@ -44,6 +44,7 @@ var require_react_production = __commonJS({
     var REACT_SUSPENSE_TYPE = Symbol.for("react.suspense");
     var REACT_MEMO_TYPE = Symbol.for("react.memo");
     var REACT_LAZY_TYPE = Symbol.for("react.lazy");
+    var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
     var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
     function getIteratorFn(maybeIterable) {
       if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
@@ -94,27 +95,22 @@ var require_react_production = __commonJS({
     assign(pureComponentPrototype, Component2.prototype);
     pureComponentPrototype.isPureReactComponent = true;
     var isArrayImpl = Array.isArray;
-    var ReactSharedInternals = { H: null, A: null, T: null, S: null, V: null };
+    function noop() {
+    }
+    var ReactSharedInternals = { H: null, A: null, T: null, S: null };
     var hasOwnProperty = Object.prototype.hasOwnProperty;
-    function ReactElement(type, key, self, source, owner, props) {
-      self = props.ref;
+    function ReactElement(type, key, props) {
+      var refProp = props.ref;
       return {
         $$typeof: REACT_ELEMENT_TYPE,
         type,
         key,
-        ref: void 0 !== self ? self : null,
+        ref: void 0 !== refProp ? refProp : null,
         props
       };
     }
     function cloneAndReplaceKey(oldElement, newKey) {
-      return ReactElement(
-        oldElement.type,
-        newKey,
-        void 0,
-        void 0,
-        void 0,
-        oldElement.props
-      );
+      return ReactElement(oldElement.type, newKey, oldElement.props);
     }
     function isValidElement(object) {
       return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -129,8 +125,6 @@ var require_react_production = __commonJS({
     function getElementKey(element, index) {
       return "object" === typeof element && null !== element && null != element.key ? escape("" + element.key) : index.toString(36);
     }
-    function noop$1() {
-    }
     function resolveThenable(thenable) {
       switch (thenable.status) {
         case "fulfilled":
@@ -138,7 +132,7 @@ var require_react_production = __commonJS({
         case "rejected":
           throw thenable.reason;
         default:
-          switch ("string" === typeof thenable.status ? thenable.then(noop$1, noop$1) : (thenable.status = "pending", thenable.then(
+          switch ("string" === typeof thenable.status ? thenable.then(noop, noop) : (thenable.status = "pending", thenable.then(
             function(fulfilledValue) {
               "pending" === thenable.status && (thenable.status = "fulfilled", thenable.value = fulfilledValue);
             },
@@ -270,9 +264,7 @@ var require_react_production = __commonJS({
       }
       console.error(error);
     };
-    function noop() {
-    }
-    exports2.Children = {
+    var Children = {
       map: mapChildren,
       forEach: function(children, forEachFunc, forEachContext) {
         mapChildren(
@@ -303,6 +295,8 @@ var require_react_production = __commonJS({
         return children;
       }
     };
+    exports2.Activity = REACT_ACTIVITY_TYPE;
+    exports2.Children = Children;
     exports2.Component = Component2;
     exports2.Fragment = REACT_FRAGMENT_TYPE;
     exports2.Profiler = REACT_PROFILER_TYPE;
@@ -321,14 +315,17 @@ var require_react_production = __commonJS({
         return fn.apply(null, arguments);
       };
     };
+    exports2.cacheSignal = function() {
+      return null;
+    };
     exports2.cloneElement = function(element, config, children) {
       if (null === element || void 0 === element)
         throw Error(
           "The argument must be a React element, but you passed " + element + "."
         );
-      var props = assign({}, element.props), key = element.key, owner = void 0;
+      var props = assign({}, element.props), key = element.key;
       if (null != config)
-        for (propName in void 0 !== config.ref && (owner = void 0), void 0 !== config.key && (key = "" + config.key), config)
+        for (propName in void 0 !== config.key && (key = "" + config.key), config)
           !hasOwnProperty.call(config, propName) || "key" === propName || "__self" === propName || "__source" === propName || "ref" === propName && void 0 === config.ref || (props[propName] = config[propName]);
       var propName = arguments.length - 2;
       if (1 === propName) props.children = children;
@@ -337,7 +334,7 @@ var require_react_production = __commonJS({
           childArray[i] = arguments[i + 2];
         props.children = childArray;
       }
-      return ReactElement(element.type, key, void 0, void 0, owner, props);
+      return ReactElement(element.type, key, props);
     };
     exports2.createContext = function(defaultValue) {
       defaultValue = {
@@ -370,7 +367,7 @@ var require_react_production = __commonJS({
       if (type && type.defaultProps)
         for (propName in childrenLength = type.defaultProps, childrenLength)
           void 0 === props[propName] && (props[propName] = childrenLength[propName]);
-      return ReactElement(type, key, void 0, void 0, null, props);
+      return ReactElement(type, key, props);
     };
     exports2.createRef = function() {
       return { current: null };
@@ -403,7 +400,7 @@ var require_react_production = __commonJS({
       } catch (error) {
         reportGlobalError(error);
       } finally {
-        ReactSharedInternals.T = prevTransition;
+        null !== prevTransition && null !== currentTransition.types && (prevTransition.types = currentTransition.types), ReactSharedInternals.T = prevTransition;
       }
     };
     exports2.unstable_useCacheRefresh = function() {
@@ -426,13 +423,11 @@ var require_react_production = __commonJS({
     exports2.useDeferredValue = function(value, initialValue) {
       return ReactSharedInternals.H.useDeferredValue(value, initialValue);
     };
-    exports2.useEffect = function(create, createDeps, update) {
-      var dispatcher = ReactSharedInternals.H;
-      if ("function" === typeof update)
-        throw Error(
-          "useEffect CRUD overload is not enabled in this build of React."
-        );
-      return dispatcher.useEffect(create, createDeps);
+    exports2.useEffect = function(create, deps) {
+      return ReactSharedInternals.H.useEffect(create, deps);
+    };
+    exports2.useEffectEvent = function(callback) {
+      return ReactSharedInternals.H.useEffectEvent(callback);
     };
     exports2.useId = function() {
       return ReactSharedInternals.H.useId();
@@ -471,7 +466,7 @@ var require_react_production = __commonJS({
     exports2.useTransition = function() {
       return ReactSharedInternals.H.useTransition();
     };
-    exports2.version = "19.1.0";
+    exports2.version = "19.2.0";
   }
 });
 
@@ -479,7 +474,7 @@ var require_react_production = __commonJS({
 var require_react_development = __commonJS({
   "node_modules/react/cjs/react.development.js"(exports2, module2) {
     "use strict";
-    "production" !== process.env.NODE_ENV && function() {
+    "production" !== process.env.NODE_ENV && (function() {
       function defineDeprecationWarning(methodName, info) {
         Object.defineProperty(Component2.prototype, methodName, {
           get: function() {
@@ -519,6 +514,8 @@ var require_react_development = __commonJS({
         this.context = context;
         this.refs = emptyObject;
         this.updater = updater || ReactNoopUpdateQueue;
+      }
+      function noop() {
       }
       function testStringCoercion(value) {
         return "" + value;
@@ -568,7 +565,7 @@ var require_react_development = __commonJS({
             case REACT_PORTAL_TYPE:
               return "Portal";
             case REACT_CONTEXT_TYPE:
-              return (type.displayName || "Context") + ".Provider";
+              return type.displayName || "Context";
             case REACT_CONSUMER_TYPE:
               return (type._context.displayName || "Context") + ".Consumer";
             case REACT_FORWARD_REF_TYPE:
@@ -634,8 +631,8 @@ var require_react_development = __commonJS({
         componentName = this.props.ref;
         return void 0 !== componentName ? componentName : null;
       }
-      function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {
-        self = props.ref;
+      function ReactElement(type, key, props, owner, debugStack, debugTask) {
+        var refProp = props.ref;
         type = {
           $$typeof: REACT_ELEMENT_TYPE,
           type,
@@ -643,7 +640,7 @@ var require_react_development = __commonJS({
           props,
           _owner: owner
         };
-        null !== (void 0 !== self ? self : null) ? Object.defineProperty(type, "ref", {
+        null !== (void 0 !== refProp ? refProp : null) ? Object.defineProperty(type, "ref", {
           enumerable: false,
           get: elementRefGetterWithDeprecationWarning
         }) : Object.defineProperty(type, "ref", { enumerable: false, value: null });
@@ -679,15 +676,16 @@ var require_react_development = __commonJS({
         newKey = ReactElement(
           oldElement.type,
           newKey,
-          void 0,
-          void 0,
-          oldElement._owner,
           oldElement.props,
+          oldElement._owner,
           oldElement._debugStack,
           oldElement._debugTask
         );
         oldElement._store && (newKey._store.validated = oldElement._store.validated);
         return newKey;
+      }
+      function validateChildKeys(node) {
+        isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
       }
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -701,8 +699,6 @@ var require_react_development = __commonJS({
       function getElementKey(element, index) {
         return "object" === typeof element && null !== element && null != element.key ? (checkKeyStringCoercion(element.key), escape("" + element.key)) : index.toString(36);
       }
-      function noop$1() {
-      }
       function resolveThenable(thenable) {
         switch (thenable.status) {
           case "fulfilled":
@@ -710,7 +706,7 @@ var require_react_development = __commonJS({
           case "rejected":
             throw thenable.reason;
           default:
-            switch ("string" === typeof thenable.status ? thenable.then(noop$1, noop$1) : (thenable.status = "pending", thenable.then(
+            switch ("string" === typeof thenable.status ? thenable.then(noop, noop) : (thenable.status = "pending", thenable.then(
               function(fulfilledValue) {
                 "pending" === thenable.status && (thenable.status = "fulfilled", thenable.value = fulfilledValue);
               },
@@ -817,28 +813,46 @@ var require_react_development = __commonJS({
       }
       function lazyInitializer(payload) {
         if (-1 === payload._status) {
-          var ctor = payload._result;
-          ctor = ctor();
-          ctor.then(
+          var ioInfo = payload._ioInfo;
+          null != ioInfo && (ioInfo.start = ioInfo.end = performance.now());
+          ioInfo = payload._result;
+          var thenable = ioInfo();
+          thenable.then(
             function(moduleObject) {
-              if (0 === payload._status || -1 === payload._status)
-                payload._status = 1, payload._result = moduleObject;
+              if (0 === payload._status || -1 === payload._status) {
+                payload._status = 1;
+                payload._result = moduleObject;
+                var _ioInfo = payload._ioInfo;
+                null != _ioInfo && (_ioInfo.end = performance.now());
+                void 0 === thenable.status && (thenable.status = "fulfilled", thenable.value = moduleObject);
+              }
             },
             function(error) {
-              if (0 === payload._status || -1 === payload._status)
-                payload._status = 2, payload._result = error;
+              if (0 === payload._status || -1 === payload._status) {
+                payload._status = 2;
+                payload._result = error;
+                var _ioInfo2 = payload._ioInfo;
+                null != _ioInfo2 && (_ioInfo2.end = performance.now());
+                void 0 === thenable.status && (thenable.status = "rejected", thenable.reason = error);
+              }
             }
           );
-          -1 === payload._status && (payload._status = 0, payload._result = ctor);
+          ioInfo = payload._ioInfo;
+          if (null != ioInfo) {
+            ioInfo.value = thenable;
+            var displayName = thenable.displayName;
+            "string" === typeof displayName && (ioInfo.name = displayName);
+          }
+          -1 === payload._status && (payload._status = 0, payload._result = thenable);
         }
         if (1 === payload._status)
-          return ctor = payload._result, void 0 === ctor && console.error(
+          return ioInfo = payload._result, void 0 === ioInfo && console.error(
             "lazy: Expected the result of a dynamic import() call. Instead received: %s\n\nYour code should look like: \n  const MyComponent = lazy(() => import('./MyComponent'))\n\nDid you accidentally put curly braces around the import?",
-            ctor
-          ), "default" in ctor || console.error(
+            ioInfo
+          ), "default" in ioInfo || console.error(
             "lazy: Expected the result of a dynamic import() call. Instead received: %s\n\nYour code should look like: \n  const MyComponent = lazy(() => import('./MyComponent'))",
-            ctor
-          ), ctor.default;
+            ioInfo
+          ), ioInfo.default;
         throw payload._result;
       }
       function resolveDispatcher() {
@@ -848,7 +862,8 @@ var require_react_development = __commonJS({
         );
         return dispatcher;
       }
-      function noop() {
+      function releaseAsyncTransition() {
+        ReactSharedInternals.asyncTransitions--;
       }
       function enqueueTask(task) {
         if (null === enqueueTaskImpl)
@@ -924,9 +939,7 @@ var require_react_development = __commonJS({
         }
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
-      Symbol.for("react.provider");
-      var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
+      var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
         isMounted: function() {
           return false;
         },
@@ -961,7 +974,7 @@ var require_react_development = __commonJS({
           "replaceState",
           "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."
         ]
-      }, fnName;
+      };
       for (fnName in deprecatedAPIs)
         deprecatedAPIs.hasOwnProperty(fnName) && defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
       ComponentDummy.prototype = Component2.prototype;
@@ -974,8 +987,8 @@ var require_react_development = __commonJS({
         A: null,
         T: null,
         S: null,
-        V: null,
         actQueue: null,
+        asyncTransitions: 0,
         isBatchingLegacy: false,
         didScheduleLegacyUpdate: false,
         didUsePromise: false,
@@ -986,13 +999,16 @@ var require_react_development = __commonJS({
         return null;
       };
       deprecatedAPIs = {
-        "react-stack-bottom-frame": function(callStackForError) {
+        react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown, didWarnAboutOldJSXRuntime;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = deprecatedAPIs["react-stack-bottom-frame"].bind(deprecatedAPIs, UnknownOwner)();
+      var unknownOwnerDebugStack = deprecatedAPIs.react_stack_bottom_frame.bind(
+        deprecatedAPIs,
+        UnknownOwner
+      )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
       var didWarnAboutMaps = false, userProvidedKeyEscapeRegex = /\/+/g, reportGlobalError = "function" === typeof reportError ? reportError : function(error) {
         if ("object" === typeof window && "function" === typeof window.ErrorEvent) {
@@ -1019,7 +1035,7 @@ var require_react_development = __commonJS({
           return resolveDispatcher().useMemoCache(size);
         }
       });
-      exports2.Children = {
+      var fnName = {
         map: mapChildren,
         forEach: function(children, forEachFunc, forEachContext) {
           mapChildren(
@@ -1050,6 +1066,8 @@ var require_react_development = __commonJS({
           return children;
         }
       };
+      exports2.Activity = REACT_ACTIVITY_TYPE;
+      exports2.Children = fnName;
       exports2.Component = Component2;
       exports2.Fragment = REACT_FRAGMENT_TYPE;
       exports2.Profiler = REACT_PROFILER_TYPE;
@@ -1140,6 +1158,9 @@ var require_react_development = __commonJS({
           return fn.apply(null, arguments);
         };
       };
+      exports2.cacheSignal = function() {
+        return null;
+      };
       exports2.captureOwnerStack = function() {
         var getCurrentStack = ReactSharedInternals.getCurrentStack;
         return null === getCurrentStack ? null : getCurrentStack();
@@ -1178,15 +1199,13 @@ var require_react_development = __commonJS({
         props = ReactElement(
           element.type,
           key,
-          void 0,
-          void 0,
-          owner,
           props,
+          owner,
           element._debugStack,
           element._debugTask
         );
         for (key = 2; key < arguments.length; key++)
-          owner = arguments[key], isValidElement(owner) && owner._store && (owner._store.validated = 1);
+          validateChildKeys(arguments[key]);
         return props;
       };
       exports2.createContext = function(defaultValue) {
@@ -1208,16 +1227,14 @@ var require_react_development = __commonJS({
         return defaultValue;
       };
       exports2.createElement = function(type, config, children) {
-        for (var i = 2; i < arguments.length; i++) {
-          var node = arguments[i];
-          isValidElement(node) && node._store && (node._store.validated = 1);
-        }
+        for (var i = 2; i < arguments.length; i++)
+          validateChildKeys(arguments[i]);
         i = {};
-        node = null;
+        var key = null;
         if (null != config)
           for (propName in didWarnAboutOldJSXRuntime || !("__self" in config) || "key" in config || (didWarnAboutOldJSXRuntime = true, console.warn(
             "Your app (or one of its dependencies) is using an outdated JSX transform. Update to the modern JSX transform for faster performance: https://react.dev/link/new-jsx-transform"
-          )), hasValidKey(config) && (checkKeyStringCoercion(config.key), node = "" + config.key), config)
+          )), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), config)
             hasOwnProperty.call(config, propName) && "key" !== propName && "__self" !== propName && "__source" !== propName && (i[propName] = config[propName]);
         var childrenLength = arguments.length - 2;
         if (1 === childrenLength) i.children = children;
@@ -1230,18 +1247,16 @@ var require_react_development = __commonJS({
         if (type && type.defaultProps)
           for (propName in childrenLength = type.defaultProps, childrenLength)
             void 0 === i[propName] && (i[propName] = childrenLength[propName]);
-        node && defineKeyPropWarningGetter(
+        key && defineKeyPropWarningGetter(
           i,
           "function" === typeof type ? type.displayName || type.name || "Unknown" : type
         );
         var propName = 1e4 > ReactSharedInternals.recentlyCreatedOwnerStacks++;
         return ReactElement(
           type,
-          node,
-          void 0,
-          void 0,
-          getOwner(),
+          key,
           i,
+          getOwner(),
           propName ? Error("react-stack-top-frame") : unknownOwnerDebugStack,
           propName ? createTask(getTaskName(type)) : unknownOwnerDebugTask
         );
@@ -1280,11 +1295,23 @@ var require_react_development = __commonJS({
       };
       exports2.isValidElement = isValidElement;
       exports2.lazy = function(ctor) {
-        return {
+        ctor = { _status: -1, _result: ctor };
+        var lazyType = {
           $$typeof: REACT_LAZY_TYPE,
-          _payload: { _status: -1, _result: ctor },
+          _payload: ctor,
           _init: lazyInitializer
+        }, ioInfo = {
+          name: "lazy",
+          start: -1,
+          end: -1,
+          value: null,
+          owner: null,
+          debugStack: Error("react-stack-top-frame"),
+          debugTask: console.createTask ? console.createTask("lazy()") : null
         };
+        ctor._ioInfo = ioInfo;
+        lazyType._debugInfo = [{ awaited: ioInfo }];
+        return lazyType;
       };
       exports2.memo = function(type, compare) {
         null == type && console.error(
@@ -1312,18 +1339,20 @@ var require_react_development = __commonJS({
       };
       exports2.startTransition = function(scope) {
         var prevTransition = ReactSharedInternals.T, currentTransition = {};
-        ReactSharedInternals.T = currentTransition;
         currentTransition._updatedFibers = /* @__PURE__ */ new Set();
+        ReactSharedInternals.T = currentTransition;
         try {
           var returnValue = scope(), onStartTransitionFinish = ReactSharedInternals.S;
           null !== onStartTransitionFinish && onStartTransitionFinish(currentTransition, returnValue);
-          "object" === typeof returnValue && null !== returnValue && "function" === typeof returnValue.then && returnValue.then(noop, reportGlobalError);
+          "object" === typeof returnValue && null !== returnValue && "function" === typeof returnValue.then && (ReactSharedInternals.asyncTransitions++, returnValue.then(releaseAsyncTransition, releaseAsyncTransition), returnValue.then(noop, reportGlobalError));
         } catch (error) {
           reportGlobalError(error);
         } finally {
           null === prevTransition && currentTransition._updatedFibers && (scope = currentTransition._updatedFibers.size, currentTransition._updatedFibers.clear(), 10 < scope && console.warn(
             "Detected a large number of updates inside startTransition. If this is due to a subscription please re-write it to use React provided hooks. Otherwise concurrent mode guarantees are off the table."
-          )), ReactSharedInternals.T = prevTransition;
+          )), null !== prevTransition && null !== currentTransition.types && (null !== prevTransition.types && prevTransition.types !== currentTransition.types && console.error(
+            "We expected inner Transitions to have transferred the outer types set and that you cannot add to the outer Transition while inside the inner.This is a bug in React."
+          ), prevTransition.types = currentTransition.types), ReactSharedInternals.T = prevTransition;
         }
       };
       exports2.unstable_useCacheRefresh = function() {
@@ -1355,16 +1384,14 @@ var require_react_development = __commonJS({
       exports2.useDeferredValue = function(value, initialValue) {
         return resolveDispatcher().useDeferredValue(value, initialValue);
       };
-      exports2.useEffect = function(create, createDeps, update) {
+      exports2.useEffect = function(create, deps) {
         null == create && console.warn(
           "React Hook useEffect requires an effect callback. Did you forget to pass a callback to the hook?"
         );
-        var dispatcher = resolveDispatcher();
-        if ("function" === typeof update)
-          throw Error(
-            "useEffect CRUD overload is not enabled in this build of React."
-          );
-        return dispatcher.useEffect(create, createDeps);
+        return resolveDispatcher().useEffect(create, deps);
+      };
+      exports2.useEffectEvent = function(callback) {
+        return resolveDispatcher().useEffectEvent(callback);
       };
       exports2.useId = function() {
         return resolveDispatcher().useId();
@@ -1409,9 +1436,9 @@ var require_react_development = __commonJS({
       exports2.useTransition = function() {
         return resolveDispatcher().useTransition();
       };
-      exports2.version = "19.1.0";
+      exports2.version = "19.2.0";
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-    }();
+    })();
   }
 });
 
@@ -36330,7 +36357,7 @@ var require_lib2 = __commonJS({
     Object.defineProperty(exports2, "__esModule", {
       value: true
     });
-    var _createClass = /* @__PURE__ */ function() {
+    var _createClass = /* @__PURE__ */ (function() {
       function defineProperties(target, props) {
         for (var i = 0; i < props.length; i++) {
           var descriptor = props[i];
@@ -36345,7 +36372,7 @@ var require_lib2 = __commonJS({
         if (staticProps) defineProperties(Constructor, staticProps);
         return Constructor;
       };
-    }();
+    })();
     var _highlight = require_lib();
     var _highlight2 = _interopRequireDefault(_highlight);
     var _react = require_react();
@@ -36371,7 +36398,7 @@ var require_lib2 = __commonJS({
       subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
       if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
     }
-    var Highlight2 = function(_React$Component) {
+    var Highlight2 = (function(_React$Component) {
       _inherits(Highlight3, _React$Component);
       function Highlight3(props) {
         _classCallCheck(this, Highlight3);
@@ -36433,7 +36460,7 @@ var require_lib2 = __commonJS({
         }
       }]);
       return Highlight3;
-    }(_react2.default.Component);
+    })(_react2.default.Component);
     Highlight2.defaultProps = {
       innerHTML: false,
       className: null,
