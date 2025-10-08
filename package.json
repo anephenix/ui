@@ -9,6 +9,7 @@
 		"cover": "npx jest --coverage --coverageReporters=text-lcov",
 		"dev": "next",
 		"lint": "npx eslint .",
+		"lint:package": "npx publint",
 		"size": "size-limit",
 		"start": "next start",
 		"prepare-patch-release": "npm run build-lib && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch",
@@ -77,6 +78,7 @@
 		"jsdoc": "^4.0.3",
 		"next": "15.5.4",
 		"prettier": "^3.2.5",
+		"publint": "^0.3.14",
 		"react-test-renderer": "^19.0.0",
 		"sass": "^1.77.0",
 		"size-limit": "^11.1.6"

@@ -12,7 +12,7 @@ import {
 	// Code,
 	// Hero,
 	// Textarea
-} from '../dist/';
+} from '../dist';
 
 const buttonsList = [
 	{ text: 'Primary', className: 'primary' },
@@ -49,7 +49,7 @@ const DocsPage = () => (
 				<Button
 					key={text}
 					text={text}
-					className={'button theme-default ' + className}
+					className={`button theme-default ${className}`}
 				/> 
 			))}
 			<p>Alternate option</p>
@@ -57,7 +57,7 @@ const DocsPage = () => (
 				<Button
 					key={text}
 					text={text}
-					className={'button theme-default alternate ' + className}
+					className={`button theme-default alternate ${className}`}
 				/>
 			))}
 		</div>

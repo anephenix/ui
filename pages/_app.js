@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { NavBar, Page, Footer } from '../dist';
 
 // Data
-import links from '../data/navbar-links';
+import links from '../data/navbar-links.js';
 
 // Styling
 import '../dist/index.css';
