@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 0.1.15 - Wednesday 8th October, 2025
+
+- Added publint and some tweaks
+- Merge pull request #240 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.22
+- Bump @anephenix/rcg from 0.0.21 to 0.0.22
+
 ### 0.1.14 - Monday 6th October, 2025
 
 - Updated the package-lock.json file
