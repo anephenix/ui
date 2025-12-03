@@ -52,4 +52,4 @@ npm t
 
 ### License and credits
 
-&copy;2025 Anephenix OÜ. UI is licenced under the MIT Licence.
+&copy;2025 Anephenix Ltd. UI is licenced under the MIT Licence.
