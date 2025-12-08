@@ -50,7 +50,7 @@
 		}
 	],
 	"devDependencies": {
-		"@anephenix/rcg": "0.0.23",
+		"@anephenix/rcg": "0.0.24",
 		"@babel/eslint-parser": "^7.24.5",
 		"@babel/plugin-proposal-optional-chaining": "^7.21.0",
 		"@babel/preset-env": "^7.24.5",
@@ -76,7 +76,7 @@
 		"jest": "^30.0.0",
 		"jest-environment-jsdom": "^30.0.0",
 		"jsdoc": "^4.0.3",
-		"next": "^16.0.6",
+		"next": "^16.0.7",
 		"prettier": "^3.2.5",
 		"publint": "^0.3.14",
 		"react-test-renderer": "^19.0.0",
