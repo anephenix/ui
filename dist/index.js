@@ -466,7 +466,7 @@ var require_react_production = __commonJS({
     exports2.useTransition = function() {
       return ReactSharedInternals.H.useTransition();
     };
-    exports2.version = "19.2.1";
+    exports2.version = "19.2.3";
   }
 });
 
@@ -1436,7 +1436,7 @@ var require_react_development = __commonJS({
       exports2.useTransition = function() {
         return resolveDispatcher().useTransition();
       };
-      exports2.version = "19.2.1";
+      exports2.version = "19.2.3";
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
     })();
   }
