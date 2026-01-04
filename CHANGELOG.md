@@ -1,5 +1,73 @@
 # CHANGELOG
 
+### 0.1.17 - Sunday 4th January, 2026
+
+- Tweaks for new publish workflow
+- Updated dependencies
+- Merge pull request #311 from anephenix/dependabot/npm_and_yarn/globals-17.0.0
+- Bump globals from 16.5.0 to 17.0.0
+- Merge pull request #310 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.12.0
+- Bump eslint-plugin-jest from 29.11.2 to 29.12.0
+- Merge pull request #309 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.11.2
+- Bump eslint-plugin-jest from 29.11.1 to 29.11.2
+- Merge pull request #308 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.11.1
+- Bump eslint-plugin-jest from 29.11.0 to 29.11.1
+- Updated dependencies
+- Merge pull request #307 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.11.0
+- Merge pull request #304 from anephenix/dependabot/npm_and_yarn/next-16.1.1
+- Bump eslint-plugin-jest from 29.5.0 to 29.11.0
+- Merge pull request #306 from anephenix/dependabot/npm_and_yarn/sass-1.97.1
+- Bump sass from 1.97.0 to 1.97.1
+- Bump next from 16.1.0 to 16.1.1
+- Merge pull request #303 from anephenix/dependabot/npm_and_yarn/next-16.1.0
+- Bump next from 16.0.10 to 16.1.0
+- Merge pull request #302 from anephenix/dependabot/npm_and_yarn/esbuild-0.27.2
+- Bump esbuild from 0.27.1 to 0.27.2
+- Merge pull request #301 from anephenix/dependabot/npm_and_yarn/sass-1.97.0
+- Bump sass from 1.96.0 to 1.97.0
+- Merge pull request #299 from anephenix/dependabot/npm_and_yarn/eslint-9.39.2
+- Merge pull request #298 from anephenix/dependabot/npm_and_yarn/testing-library/react-16.3.1
+- Merge pull request #300 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.5.0
+- Merge pull request #297 from anephenix/dependabot/npm_and_yarn/eslint/js-9.39.2
+- Bump eslint-plugin-jest from 29.2.2 to 29.5.0
+- Bump eslint from 9.39.1 to 9.39.2
+- Bump @testing-library/react from 16.3.0 to 16.3.1
+- Bump @eslint/js from 9.39.1 to 9.39.2
+- Merge pull request #296 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.2.2
+- Bump eslint-plugin-jest from 29.2.1 to 29.2.2
+- Merge pull request #292 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.2.2
+- Updated dependencies
+- Merge branch 'master' into dependabot/npm_and_yarn/react-test-renderer-19.2.2
+- Merge pull request #294 from anephenix/dependabot/npm_and_yarn/react-dom-19.2.2
+- Merge pull request #293 from anephenix/dependabot/npm_and_yarn/next-16.0.9
+- Merge pull request #295 from anephenix/dependabot/npm_and_yarn/sass-1.96.0
+- Bump sass from 1.95.1 to 1.96.0
+- Bump react-dom from 19.2.1 to 19.2.2
+- Bump next from 16.0.8 to 16.0.9
+- Bump react-test-renderer from 19.2.1 to 19.2.2
+- Merge pull request #290 from anephenix/dependabot/npm_and_yarn/sass-1.95.1
+- Merge pull request #289 from anephenix/dependabot/npm_and_yarn/publint-0.3.16
+- Bump sass from 1.95.0 to 1.95.1
+- Bump publint from 0.3.15 to 0.3.16
+- Merge pull request #288 from anephenix/dependabot/npm_and_yarn/sass-1.95.0
+- Merge pull request #287 from anephenix/dependabot/npm_and_yarn/next-16.0.8
+- Bump sass from 1.94.3 to 1.95.0
+- Bump next from 16.0.7 to 16.0.8
+- Merge branch 'master' of github.com:anephenix/ui
+- Updated dependencies
+- Merge pull request #286 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.2.1
+- Bump react-test-renderer from 19.2.0 to 19.2.1
+- Merge pull request #285 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.24
+- Merge pull request #284 from anephenix/dependabot/npm_and_yarn/react-dom-19.2.1
+- Merge pull request #283 from anephenix/dependabot/npm_and_yarn/esbuild-0.27.1
+- Merge pull request #282 from anephenix/dependabot/npm_and_yarn/prettier-3.7.4
+- Merge pull request #281 from anephenix/dependabot/npm_and_yarn/next-16.0.7
+- Bump @anephenix/rcg from 0.0.23 to 0.0.24
+- Bump react-dom from 19.2.0 to 19.2.1
+- Bump esbuild from 0.27.0 to 0.27.1
+- Bump prettier from 3.7.3 to 3.7.4
+- Bump next from 16.0.6 to 16.0.7
+
 ### 0.1.16 - Wednesday 3rd December, 2025
 
 - Updated license
