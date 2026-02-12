@@ -1,5 +1,5 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -13,7 +13,11 @@ class MyDocument extends Document {
 				<Head>
 					<meta charSet="utf-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<script defer data-domain="ui.anephenix.com" src="https://plausible.io/js/script.js"/>
+					<script
+						defer
+						data-domain="ui.anephenix.com"
+						src="https://plausible.io/js/script.js"
+					/>
 				</Head>
 				<body>
 					<Main />

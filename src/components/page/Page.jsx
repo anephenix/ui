@@ -1,5 +1,5 @@
-import React from 'react';
-import './Page.scss';
+import React from "react";
+import "./Page.scss";
 
 const Page = ({ children }) => <div className="page">{children}</div>;
 

@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
 const Button = forwardRef(function button(
 	{ className, text, name, onClick },
-	ref
+	ref,
 ) {
 	return (
 		<button name={name} ref={ref} className={className} onClick={onClick}>

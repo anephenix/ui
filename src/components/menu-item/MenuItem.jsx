@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const MenuItem = ({
 	text,
@@ -14,17 +14,11 @@ const MenuItem = ({
 	i,
 }) => {
 	if (url && !onClick) {
-		if (url.startsWith('http') || url.startsWith('mailto')) {
+		if (url.startsWith("http") || url.startsWith("mailto")) {
 			// Need to check if this is external domain (i.e. github)
 			return (
 				<li key={i} onClick={isMobile ? toggleMenu : null}>
-					<a
-						id={id}
-						href={url}
-						className={className}
-						target={target}
-						rel={rel}
-					>
+					<a id={id} href={url} className={className} target={target} rel={rel}>
 						{text}
 					</a>
 				</li>

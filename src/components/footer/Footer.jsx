@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 // Components
 
 // Styling
-import './Footer.scss';
+import "./Footer.scss";
 
-const Footer = ({leftSection, rightSection }) => (
+const Footer = ({ leftSection, rightSection }) => (
 	<div id="footer">
-		<div className='container'>
-			<div className='withSidePadding'>
+		<div className="container">
+			<div className="withSidePadding">
 				{leftSection}
 				{rightSection}
 			</div>

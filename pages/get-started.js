@@ -1,5 +1,5 @@
-import React from 'react';
-import { Terminal, Code } from '../dist';
+import React from "react";
+import { Terminal, Code } from "../dist";
 
 const appCode = `
 import App from 'next/app';
@@ -42,8 +42,8 @@ const GetStartedPage = () => {
 			<div className="section-gap">
 				<h2>Usage</h2>
 				<p>
-				To use the library in your codebase, you will want to setup your
-				pages/_app.js file like this:
+					To use the library in your codebase, you will want to setup your
+					pages/_app.js file like this:
 				</p>
 				<Code title="pages/_app.js" code={appCode} />
 			</div>

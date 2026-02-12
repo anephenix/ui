@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
 const Input = forwardRef(function input(
-	{ type = 'text', className, defaultValue, placeholder, name, onChange },
-	ref
+	{ type = "text", className, defaultValue, placeholder, name, onChange },
+	ref,
 ) {
 	return (
 		<input

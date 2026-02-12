@@ -1,9 +1,9 @@
-import React from 'react';
-import MenuItem from '../menu-item/MenuItem';
-import './DesktopMenu.scss';
+import React from "react";
+import MenuItem from "../menu-item/MenuItem";
+import "./DesktopMenu.scss";
 
 const DesktopMenu = ({ links, loggedIn, Link }) => (
-	<ul id='desktop-menu'>
+	<ul id="desktop-menu">
 		{links
 			.filter((x) => !x.hideOnDesktop)
 

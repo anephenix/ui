@@ -1,7 +1,6 @@
+import CloseIcon from "./CloseIcon";
 
-import CloseIcon from './CloseIcon';
-
-describe('CloseIcon', () => {
+describe("CloseIcon", () => {
 	CloseIcon;
-	test.todo('should do something');
+	test.todo("should do something");
 });

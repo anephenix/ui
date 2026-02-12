@@ -1,13 +1,13 @@
 // Dependencies
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Components
-import Hamburger from '../hamburger/Hamburger';
-import MobileMenu from '../mobile-menu/MobileMenu';
-import DesktopMenu from '../desktop-menu/DesktopMenu';
+import Hamburger from "../hamburger/Hamburger";
+import MobileMenu from "../mobile-menu/MobileMenu";
+import DesktopMenu from "../desktop-menu/DesktopMenu";
 
 // Styling
-import './NavBar.scss';
+import "./NavBar.scss";
 
 /*
   NOTES
@@ -38,13 +38,20 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const { logo, links, Link, loggedIn, className, midSection=<div /> } = this.props;
+		const {
+			logo,
+			links,
+			Link,
+			loggedIn,
+			className,
+			midSection = <div />,
+		} = this.props;
 		const { menuOpen } = this.state;
 		return (
 			<>
-				<div id='nav-bar' className={className}>
-					<div className='container'>
-						<div className='withSidePadding'>
+				<div id="nav-bar" className={className}>
+					<div className="container">
+						<div className="withSidePadding">
 							{logo}
 							{midSection}
 							<Hamburger width="25px" onClick={this.toggleMenu} />

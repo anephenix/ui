@@ -1,11 +1,11 @@
-import React from 'react';
-import './Hamburger.scss';
+import React from "react";
+import "./Hamburger.scss";
 
 const Hamburger = ({ width, height, onClick }) => (
-	<div id='hamburger' onClick={onClick} data-testid='hamburger'>
+	<div id="hamburger" onClick={onClick} data-testid="hamburger">
 		<svg
-			width={width || '33px'}
-			height={height || '26px'}
+			width={width || "33px"}
+			height={height || "26px"}
 			viewBox="0 0 33 26"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
@@ -27,18 +27,9 @@ const Hamburger = ({ width, height, onClick }) => (
 					strokeWidth="2"
 				>
 					<g id="Group" transform="translate(330.000000, 20.000000)">
-						<path
-							d="M0.357142857,1 L29.320836,1"
-							id="layer-1"
-						></path>
-						<path
-							d="M0.357142857,12 L29.320836,12"
-							id="layer-2"
-						></path>
-						<path
-							d="M0.357142857,23 L29.320836,23"
-							id="layer-3"
-						></path>
+						<path d="M0.357142857,1 L29.320836,1" id="layer-1"></path>
+						<path d="M0.357142857,12 L29.320836,12" id="layer-2"></path>
+						<path d="M0.357142857,23 L29.320836,23" id="layer-3"></path>
 					</g>
 				</g>
 			</g>

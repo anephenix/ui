@@ -36564,15 +36564,7 @@ var Checkbox_default = Checkbox;
 var import_react5 = __toESM(require_react());
 var RadioButton = (0, import_react5.forwardRef)(function radioButton({ name, label, className, defaultValue }, ref) {
   const classNames = `radio ${className}`;
-  return /* @__PURE__ */ import_react5.default.createElement("label", { className: classNames }, /* @__PURE__ */ import_react5.default.createElement(
-    "input",
-    {
-      type: "radio",
-      name,
-      ref,
-      defaultValue
-    }
-  ), /* @__PURE__ */ import_react5.default.createElement("div", { className: "radio-element" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "selected" })), /* @__PURE__ */ import_react5.default.createElement("span", null, label));
+  return /* @__PURE__ */ import_react5.default.createElement("label", { className: classNames }, /* @__PURE__ */ import_react5.default.createElement("input", { type: "radio", name, ref, defaultValue }), /* @__PURE__ */ import_react5.default.createElement("div", { className: "radio-element" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "selected" })), /* @__PURE__ */ import_react5.default.createElement("span", null, label));
 });
 var RadioButton_default = RadioButton;
 
@@ -36639,25 +36631,7 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ import_react8.de
         stroke: "#000",
         strokeWidth: "2"
       },
-      /* @__PURE__ */ import_react8.default.createElement("g", { id: "Group", transform: "translate(330.000000, 20.000000)" }, /* @__PURE__ */ import_react8.default.createElement(
-        "path",
-        {
-          d: "M0.357142857,1 L29.320836,1",
-          id: "layer-1"
-        }
-      ), /* @__PURE__ */ import_react8.default.createElement(
-        "path",
-        {
-          d: "M0.357142857,12 L29.320836,12",
-          id: "layer-2"
-        }
-      ), /* @__PURE__ */ import_react8.default.createElement(
-        "path",
-        {
-          d: "M0.357142857,23 L29.320836,23",
-          id: "layer-3"
-        }
-      ))
+      /* @__PURE__ */ import_react8.default.createElement("g", { id: "Group", transform: "translate(330.000000, 20.000000)" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }), /* @__PURE__ */ import_react8.default.createElement("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }), /* @__PURE__ */ import_react8.default.createElement("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" }))
     )
   )
 ));
@@ -36683,17 +36657,7 @@ var MenuItem = ({
 }) => {
   if (url && !onClick) {
     if (url.startsWith("http") || url.startsWith("mailto")) {
-      return /* @__PURE__ */ import_react9.default.createElement("li", { key: i, onClick: isMobile ? toggleMenu : null }, /* @__PURE__ */ import_react9.default.createElement(
-        "a",
-        {
-          id,
-          href: url,
-          className,
-          target,
-          rel
-        },
-        text
-      ));
+      return /* @__PURE__ */ import_react9.default.createElement("li", { key: i, onClick: isMobile ? toggleMenu : null }, /* @__PURE__ */ import_react9.default.createElement("a", { id, href: url, className, target, rel }, text));
     } else {
       return /* @__PURE__ */ import_react9.default.createElement("li", { key: i, onClick: isMobile ? toggleMenu : null }, /* @__PURE__ */ import_react9.default.createElement(
         Link,
@@ -36744,13 +36708,7 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ import_react10.default.cr
         stroke: "#000",
         strokeWidth: "3"
       },
-      /* @__PURE__ */ import_react10.default.createElement("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)" }, /* @__PURE__ */ import_react10.default.createElement(
-        "path",
-        {
-          d: "M0.315354693,22.0054813 L22.320836,0",
-          id: "Line-3"
-        }
-      ), /* @__PURE__ */ import_react10.default.createElement("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" }))
+      /* @__PURE__ */ import_react10.default.createElement("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)" }, /* @__PURE__ */ import_react10.default.createElement("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }), /* @__PURE__ */ import_react10.default.createElement("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" }))
     )
   )
 );
@@ -36792,7 +36750,14 @@ var NavBar = class extends import_react13.Component {
     this.setState({ menuOpen: !this.state.menuOpen });
   }
   render() {
-    const { logo, links, Link, loggedIn, className, midSection = /* @__PURE__ */ import_react13.default.createElement("div", null) } = this.props;
+    const {
+      logo,
+      links,
+      Link,
+      loggedIn,
+      className,
+      midSection = /* @__PURE__ */ import_react13.default.createElement("div", null)
+    } = this.props;
     const { menuOpen } = this.state;
     return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, /* @__PURE__ */ import_react13.default.createElement("div", { id: "nav-bar", className }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "container" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "withSidePadding" }, logo, midSection, /* @__PURE__ */ import_react13.default.createElement(Hamburger_default, { width: "25px", onClick: this.toggleMenu }), /* @__PURE__ */ import_react13.default.createElement(DesktopMenu_default, { ...{ links, loggedIn, Link } })))), /* @__PURE__ */ import_react13.default.createElement(
       MobileMenu_default,
@@ -36848,8 +36813,25 @@ var Page_default = Page;
 var import_react17 = __toESM(require_react());
 var CTA = (Link) => {
   const f = ({ href, text, buttonClass }, i) => {
-    if (!Link) return /* @__PURE__ */ import_react17.default.createElement("a", { key: i, href, className: `button theme-default ${buttonClass}` }, text);
-    return /* @__PURE__ */ import_react17.default.createElement(Link, { key: i, href, className: `button theme-default ${buttonClass}` }, text);
+    if (!Link)
+      return /* @__PURE__ */ import_react17.default.createElement(
+        "a",
+        {
+          key: i,
+          href,
+          className: `button theme-default ${buttonClass}`
+        },
+        text
+      );
+    return /* @__PURE__ */ import_react17.default.createElement(
+      Link,
+      {
+        key: i,
+        href,
+        className: `button theme-default ${buttonClass}`
+      },
+      text
+    );
   };
   return f;
 };

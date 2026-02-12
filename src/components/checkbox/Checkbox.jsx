@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
 const Checkbox = forwardRef(function checkbox(
 	{ label, className, name, defaultValue },
-	ref
+	ref,
 ) {
 	{
 		const classNames = `checkbox ${className}`;

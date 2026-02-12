@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
 // const Option = (value, text) => <option value={value}>{text}</option>;
 
 const Dropdown = forwardRef(function dropdown(
 	{ options, multiple, id, className, name, defaultValue },
-	ref
+	ref,
 ) {
 	const classNames = `dropdown ${className}`;
 	return (

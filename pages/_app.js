@@ -1,20 +1,20 @@
-import App from 'next/app';
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import App from "next/app";
+import React from "react";
+import Head from "next/head";
+import Link from "next/link";
 
-import { NavBar, Page, Footer } from '../dist';
+import { NavBar, Page, Footer } from "../dist";
 
 // Data
-import links from '../data/navbar-links.js';
+import links from "../data/navbar-links.js";
 
 // Styling
-import '../dist/index.css';
+import "../dist/index.css";
 
 // Other files
-import '../styles/docs.scss';
-import '../styles/get-started.scss';
-import '../styles/index.scss';
+import "../styles/docs.scss";
+import "../styles/get-started.scss";
+import "../styles/index.scss";
 
 const UKFlag = ({ width = 60, height = 30 }) => (
 	<svg
@@ -46,16 +46,12 @@ const UKFlag = ({ width = 60, height = 30 }) => (
 );
 
 const LeftSection = () => (
-	<div className='copyright'>
-		&copy; {new Date().getFullYear()}{' '}
-		<a
-			href="https://anephenix.com"
-			rel="noopen noreferrer"
-			target="_blank"
-		>
+	<div className="copyright">
+		&copy; {new Date().getFullYear()}{" "}
+		<a href="https://anephenix.com" rel="noopen noreferrer" target="_blank">
 			Anephenix
 		</a>
-		. UI is licensed under the{' '}
+		. UI is licensed under the{" "}
 		<a
 			href="https://raw.githubusercontent.com/anephenix/ui/master/LICENSE"
 			rel="noopen noreferrer"
@@ -64,16 +60,12 @@ const LeftSection = () => (
 			MIT License
 		</a>
 		.
-	</div>	
+	</div>
 );
 const RightSection = () => (
-	<div className='made-in-location'>
+	<div className="made-in-location">
 		<UKFlag width={24} height={12} />
-		<a
-			href="https://www.gov.uk"
-			rel="noopen noreferrer"
-			target="_blank"
-		>
+		<a href="https://www.gov.uk" rel="noopen noreferrer" target="_blank">
 			&nbsp; Made in the United Kingdom
 		</a>
 	</div>
@@ -86,8 +78,8 @@ class MyApp extends App {
 			<Link href="/">
 				<div
 					style={{
-						fontWeight: 'bold',
-						cursor: 'pointer',
+						fontWeight: "bold",
+						cursor: "pointer",
 					}}
 					id="logo"
 				>
@@ -105,16 +97,14 @@ class MyApp extends App {
 					<title>UI - a design system from Anephenix</title>
 				</Head>
 				<Page>
-					<NavBar
-						logo={logo}
-						links={links}
-						loggedIn={false}
-						Link={Link}
-					/>
+					<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
 					<div className="page container withSidePadding">
 						<Component {...pageProps} />
 					</div>
-					<Footer leftSection={<LeftSection />} rightSection={<RightSection />} />
+					<Footer
+						leftSection={<LeftSection />}
+						rightSection={<RightSection />}
+					/>
 				</Page>
 			</>
 		);

@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
 const Textarea = forwardRef(function textarea(
 	{ className, defaultValue, placeholder, name, onChange },
-	ref
+	ref,
 ) {
 	return (
 		<textarea
@@ -15,5 +15,5 @@ const Textarea = forwardRef(function textarea(
 		/>
 	);
 });
-			
+
 export default Textarea;

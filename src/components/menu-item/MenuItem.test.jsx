@@ -1,10 +1,10 @@
-import React from 'react';
-import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
-import MenuItem from './MenuItem';
+import React from "react";
+import "@testing-library/jest-dom";
+import { render, screen, fireEvent } from "@testing-library/react";
+import MenuItem from "./MenuItem";
 
-describe('MenuItem', () => {
-	test('renders an external link correctly', () => {
+describe("MenuItem", () => {
+	test("renders an external link correctly", () => {
 		render(
 			<MenuItem
 				text="External Link"
@@ -13,16 +13,16 @@ describe('MenuItem', () => {
 				target="_blank"
 				rel="noopener noreferrer"
 				i={1}
-			/>
+			/>,
 		);
-		const linkElement = screen.getByText('External Link');
+		const linkElement = screen.getByText("External Link");
 		expect(linkElement).toBeInTheDocument();
-		expect(linkElement).toHaveAttribute('href', 'http://example.com');
-		expect(linkElement).toHaveAttribute('target', '_blank');
-		expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
+		expect(linkElement).toHaveAttribute("href", "http://example.com");
+		expect(linkElement).toHaveAttribute("target", "_blank");
+		expect(linkElement).toHaveAttribute("rel", "noopener noreferrer");
 	});
 
-	test('renders an internal link correctly', () => {
+	test("renders an internal link correctly", () => {
 		const MockLink = ({ children, ...props }) => <a {...props}>{children}</a>;
 		render(
 			<MenuItem
@@ -31,30 +31,25 @@ describe('MenuItem', () => {
 				className="internal-link"
 				Link={MockLink}
 				i={2}
-			/>
+			/>,
 		);
-		const linkElement = screen.getByText('Internal Link');
+		const linkElement = screen.getByText("Internal Link");
 		expect(linkElement).toBeInTheDocument();
-		expect(linkElement).toHaveAttribute('href', '/internal');
+		expect(linkElement).toHaveAttribute("href", "/internal");
 	});
 
-	test('renders a button with onClick handler correctly', () => {
+	test("renders a button with onClick handler correctly", () => {
 		const handleClick = jest.fn();
 		render(
-			<MenuItem
-				text="Button"
-				className="button"
-				onClick={handleClick}
-				i={3}
-			/>
+			<MenuItem text="Button" className="button" onClick={handleClick} i={3} />,
 		);
-		const buttonElement = screen.getByText('Button');
+		const buttonElement = screen.getByText("Button");
 		expect(buttonElement).toBeInTheDocument();
 		fireEvent.click(buttonElement);
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
 
-	test('toggles menu on mobile when link is clicked', () => {
+	test("toggles menu on mobile when link is clicked", () => {
 		const toggleMenu = jest.fn();
 		render(
 			<MenuItem
@@ -64,9 +59,9 @@ describe('MenuItem', () => {
 				isMobile={true}
 				toggleMenu={toggleMenu}
 				i={4}
-			/>
+			/>,
 		);
-		const linkElement = screen.getByText('Mobile Link');
+		const linkElement = screen.getByText("Mobile Link");
 		fireEvent.click(linkElement);
 		expect(toggleMenu).toHaveBeenCalledTimes(1);
 	});

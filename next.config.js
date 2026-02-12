@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 const applyWebpackConfig = (test = /\.jsx/) => {
 	return (config, options) => {
@@ -13,10 +13,10 @@ const applyWebpackConfig = (test = /\.jsx/) => {
 module.exports = {
 	sassOptions: {
 		includePaths: [
-			path.resolve('node_modules'),
-			path.resolve('src/components'),
-			path.resolve('design-system'),
-			path.join(__dirname, 'styles'),
+			path.resolve("node_modules"),
+			path.resolve("src/components"),
+			path.resolve("design-system"),
+			path.join(__dirname, "styles"),
 		],
 	},
 	webpack: applyWebpackConfig(),

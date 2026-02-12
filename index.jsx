@@ -1,19 +1,19 @@
-import Button from './src/components/button/Button';
-import Input from './src/components/input/Input';
-import Select from './src/components/select/Select';
-import Checkbox from './src/components/checkbox/Checkbox';
-import RadioButton from './src/components/radio-button/RadioButton';
-import Dropdown from './src/components/dropdown/Dropdown';
-import FormField from './src/components/form-field/FormField';
-import NavBar from './src/components/nav-bar/NavBar';
-import Terminal from './src/components/terminal/Terminal';
-import Code from './src/components/code/Code';
-import Page from './src/components/page/Page';
-import Hero from './src/components/hero/Hero';
-import Textarea from './src/components/textarea/Textarea';
-import Footer from './src/components/footer/Footer';
+import Button from "./src/components/button/Button";
+import Input from "./src/components/input/Input";
+import Select from "./src/components/select/Select";
+import Checkbox from "./src/components/checkbox/Checkbox";
+import RadioButton from "./src/components/radio-button/RadioButton";
+import Dropdown from "./src/components/dropdown/Dropdown";
+import FormField from "./src/components/form-field/FormField";
+import NavBar from "./src/components/nav-bar/NavBar";
+import Terminal from "./src/components/terminal/Terminal";
+import Code from "./src/components/code/Code";
+import Page from "./src/components/page/Page";
+import Hero from "./src/components/hero/Hero";
+import Textarea from "./src/components/textarea/Textarea";
+import Footer from "./src/components/footer/Footer";
 
-import './design-system/index.scss';
+import "./design-system/index.scss";
 
 const handleErrors = (setError, err) => {
 	const errors = [];
