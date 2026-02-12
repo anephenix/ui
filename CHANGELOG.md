@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 0.1.19 - Thursday 12th February, 2026
+
+- Updated the build
+- Removing unused dependencies
+
 ### 0.1.18 - Thursday 12th February, 2026
 
 - Replaced eslint with biome
