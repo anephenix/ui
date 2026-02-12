@@ -1,5 +1,55 @@
 # CHANGELOG
 
+### 0.1.18 - Thursday 12th February, 2026
+
+- Replaced eslint with biome
+- Updated dependencies
+- Merge pull request #334 from anephenix/dependabot/npm_and_yarn/esbuild-0.27.3
+- Bump esbuild from 0.27.2 to 0.27.3
+- Merge pull request #333 from anephenix/dependabot/npm_and_yarn/eslint-plugin-jest-29.12.2
+- Bump eslint-plugin-jest from 29.12.1 to 29.12.2
+- Merge pull request #328 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.2.4
+- Merge branch 'master' into dependabot/npm_and_yarn/react-test-renderer-19.2.4
+- Updated dependencies
+- Merge pull request #332 from anephenix/dependabot/npm_and_yarn/next-16.1.6
+- Bump next from 16.1.5 to 16.1.6
+- Merge pull request #331 from anephenix/dependabot/npm_and_yarn/globals-17.2.0
+- Bump globals from 17.1.0 to 17.2.0
+- Merge pull request #327 from anephenix/dependabot/npm_and_yarn/react-dom-19.2.4
+- Merge pull request #330 from anephenix/dependabot/npm_and_yarn/next-16.1.5
+- Bump next from 16.1.4 to 16.1.5
+- Bump react-test-renderer from 19.2.3 to 19.2.4
+- Bump react-dom from 19.2.3 to 19.2.4
+- Merge pull request #323 from anephenix/dependabot/npm_and_yarn/prettier-3.8.1
+- Merge pull request #322 from anephenix/dependabot/npm_and_yarn/publint-0.3.17
+- Merge pull request #324 from anephenix/dependabot/npm_and_yarn/lodash-4.17.23
+- Merge pull request #325 from anephenix/dependabot/npm_and_yarn/sass-1.97.3
+- Merge pull request #326 from anephenix/dependabot/npm_and_yarn/globals-17.1.0
+- Bump globals from 17.0.0 to 17.1.0
+- Bump sass from 1.97.2 to 1.97.3
+- Bump lodash from 4.17.21 to 4.17.23
+- Bump prettier from 3.8.0 to 3.8.1
+- Bump publint from 0.3.16 to 0.3.17
+- Merge pull request #321 from anephenix/dependabot/npm_and_yarn/next-16.1.4
+- Bump next from 16.1.3 to 16.1.4
+- Merge pull request #320 from anephenix/dependabot/npm_and_yarn/testing-library/react-16.3.2
+- Bump @testing-library/react from 16.3.1 to 16.3.2
+- Merge pull request #318 from anephenix/dependabot/npm_and_yarn/next-16.1.3
+- Bump next from 16.1.2 to 16.1.3
+- Merge pull request #317 from anephenix/dependabot/npm_and_yarn/next-16.1.2
+- Merge pull request #316 from anephenix/dependabot/npm_and_yarn/prettier-3.8.0
+- Bump next from 16.1.1 to 16.1.2
+- Bump prettier from 3.7.4 to 3.8.0
+- Merge pull request #315 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.28.6
+- Merge pull request #314 from anephenix/dependabot/npm_and_yarn/babel/eslint-parser-7.28.6
+- Bump @babel/preset-env from 7.28.5 to 7.28.6
+- Bump @babel/eslint-parser from 7.28.5 to 7.28.6
+- Updated dependencies
+- Merge pull request #313 from anephenix/dependabot/npm_and_yarn/sass-1.97.2
+- Bump sass from 1.97.1 to 1.97.2
+- Merge pull request #312 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.25
+- Bump @anephenix/rcg from 0.0.24 to 0.0.25
+
 ### 0.1.17 - Sunday 4th January, 2026
 
 - Tweaks for new publish workflow
