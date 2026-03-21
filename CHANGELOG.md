@@ -1,5 +1,52 @@
 # CHANGELOG
 
+### 0.1.20 - Saturday 21st March, 2026
+
+- Updated dependencies
+- Merge pull request #362 from anephenix/dependabot/npm_and_yarn/next-16.2.0
+- Merge pull request #361 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.8
+- Bump next from 16.1.7 to 16.2.0
+- Bump @biomejs/biome from 2.4.7 to 2.4.8
+- Merge pull request #360 from anephenix/dependabot/npm_and_yarn/next-16.1.7
+- Merge pull request #359 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.29.2
+- Merge pull request #358 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.26
+- Bump next from 16.1.6 to 16.1.7
+- Bump @babel/preset-env from 7.29.0 to 7.29.2
+- Bump @anephenix/rcg from 0.0.25 to 0.0.26
+- Merge pull request #357 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.7
+- Bump @biomejs/biome from 2.4.6 to 2.4.7
+- Merge pull request #356 from anephenix/dependabot/npm_and_yarn/esbuild-0.27.4
+- Bump esbuild from 0.27.3 to 0.27.4
+- Merge pull request #355 from anephenix/dependabot/npm_and_yarn/sass-1.98.0
+- Bump sass from 1.97.3 to 1.98.0
+- Merge pull request #353 from anephenix/dependabot/npm_and_yarn/jest-30.3.0
+- Bump jest from 30.2.0 to 30.3.0
+- Merge pull request #352 from anephenix/dependabot/npm_and_yarn/jest-environment-jsdom-30.3.0
+- Merge pull request #354 from anephenix/dependabot/npm_and_yarn/babel-jest-30.3.0
+- Bump babel-jest from 30.2.0 to 30.3.0
+- Bump jest-environment-jsdom from 30.2.0 to 30.3.0
+- Updated dependencies and versions of actions in GitHub workflows
+- Merge pull request #347 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.6
+- Bump @biomejs/biome from 2.4.5 to 2.4.6
+- Merge pull request #346 from anephenix/dependabot/npm_and_yarn/multi-5d8a4d985d
+- Bump immutable
+- Merge pull request #344 from anephenix/dependabot/npm_and_yarn/publint-0.3.18
+- Merge pull request #345 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.5
+- Merge pull request #343 from anephenix/dependabot/npm_and_yarn/globals-17.4.0
+- Bump @biomejs/biome from 2.4.4 to 2.4.5
+- Bump publint from 0.3.17 to 0.3.18
+- Bump globals from 17.3.0 to 17.4.0
+- Merge pull request #342 from anephenix/dependabot/npm_and_yarn/multi-770cfcd984
+- Bump minimatch
+- Merge pull request #341 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.4
+- Bump @biomejs/biome from 2.4.3 to 2.4.4
+- Merge pull request #340 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.3
+- Bump @biomejs/biome from 2.4.2 to 2.4.3
+- Merge pull request #339 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.2
+- Bump @biomejs/biome from 2.4.1 to 2.4.2
+- Merge pull request #338 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.1
+- Bump @biomejs/biome from 2.3.15 to 2.4.1
+
 ### 0.1.19 - Thursday 12th February, 2026
 
 - Updated the build
