@@ -1,6 +1,6 @@
 // RCG is used to aid in creating React components from the CLI fast
 
-const path = require("path");
+import path from "node:path";
 
 const config = {
 	directory: path.join(process.cwd(), "src", "components"),
@@ -8,4 +8,4 @@ const config = {
 	cssExtension: "scss",
 };
 
-module.exports = config;
+export default config;

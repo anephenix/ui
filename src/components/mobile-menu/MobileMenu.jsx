@@ -1,15 +1,14 @@
-import React from "react";
-import MenuItem from "../menu-item/MenuItem";
 import CloseIcon from "../close-icon/CloseIcon";
+import MenuItem from "../menu-item/MenuItem";
 import "./MobileMenu.scss";
 
 const MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 	return (
 		<div id="mobile-menu" className={menuOpen ? "open" : "closed"}>
 			<div id="mobile-menu-header">
-				<div id="close-icon" onClick={toggleMenu}>
+				<button type="button" id="close-icon" onClick={toggleMenu}>
 					<CloseIcon width="20px" />
-				</div>
+				</button>
 			</div>
 			{menuOpen && (
 				<ul>
@@ -18,7 +17,7 @@ const MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 						.map((link, i) => {
 							return (
 								<MenuItem
-									key={i}
+									key={link.id}
 									{...link}
 									isMobile={true}
 									toggleMenu={toggleMenu}

@@ -1,5 +1,4 @@
-import React from "react";
-import { Terminal, Code } from "../dist";
+import { Code, Terminal } from "../dist";
 
 const appCode = `
 import App from 'next/app';

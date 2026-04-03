@@ -1,12 +1,13 @@
-import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import MobileMenu from "./MobileMenu";
-import MenuItem from "../menu-item/MenuItem";
-import CloseIcon from "../close-icon/CloseIcon";
 
-vi.mock("../menu-item/MenuItem", () => ({ default: vi.fn(() => <div>MenuItem</div>) }));
-vi.mock("../close-icon/CloseIcon", () => ({ default: vi.fn(() => <div>CloseIcon</div>) }));
+vi.mock("../menu-item/MenuItem", () => ({
+	default: vi.fn(() => <div>MenuItem</div>),
+}));
+vi.mock("../close-icon/CloseIcon", () => ({
+	default: vi.fn(() => <div>CloseIcon</div>),
+}));
 
 describe("MobileMenu", () => {
 	const mockToggleMenu = vi.fn();

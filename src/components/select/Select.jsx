@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import "./Select.scss";
 
 const Option = ({ value, label }, index) => (
@@ -15,7 +15,7 @@ const Select = forwardRef(function select(
 		<select
 			ref={ref}
 			name={name}
-			className={"select " + className}
+			className={`select ${className}`}
 			defaultValue={defaultValue}
 			onChange={onChange}
 		>

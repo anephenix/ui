@@ -1,12 +1,9 @@
 import App from "next/app";
-import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-
-import { NavBar, Page, Footer } from "../dist";
-
 // Data
 import links from "../data/navbar-links.js";
+import { Footer, NavBar, Page } from "../dist";
 
 // Styling
 import "../dist/index.css";

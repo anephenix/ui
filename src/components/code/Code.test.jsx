@@ -1,8 +1,7 @@
 import "@testing-library/jest-dom";
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import Code from "./Code";
+import { fireEvent, render, screen } from "@testing-library/react";
 import copy from "clipboard-copy";
+import Code from "./Code";
 
 vi.mock("clipboard-copy");
 

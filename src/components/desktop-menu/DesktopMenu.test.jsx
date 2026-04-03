@@ -1,10 +1,11 @@
-import React from "react";
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import DesktopMenu from "./DesktopMenu";
 import MenuItem from "../menu-item/MenuItem";
+import DesktopMenu from "./DesktopMenu";
 
-vi.mock("../menu-item/MenuItem", () => ({ default: vi.fn(() => <div>MenuItem</div>) }));
+vi.mock("../menu-item/MenuItem", () => ({
+	default: vi.fn(() => <div>MenuItem</div>),
+}));
 
 describe("DesktopMenu", () => {
 	const links = [

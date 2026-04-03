@@ -1,4 +1,3 @@
-import React from "react";
 import "./Terminal.scss";
 import copy from "clipboard-copy";
 
@@ -13,9 +12,13 @@ const Terminal = ({ title, code }) => {
 				</div>
 				<div id="title-bar-title">{title}</div>
 				<div id="title-bar-actions">
-					<div className="title-bar-action" onClick={() => copy(code)}>
+					<button
+						type="button"
+						className="title-bar-action"
+						onClick={() => copy(code)}
+					>
 						Copy
-					</div>
+					</button>
 				</div>
 			</div>
 			<pre>

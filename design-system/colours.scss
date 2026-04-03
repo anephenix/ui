@@ -48,18 +48,18 @@ $window-title-bar-close: rgb(255, 95, 87);
 $window-title-bar-minimize: rgb(254, 188, 47);
 $window-title-bar-maximize: rgb(40, 200, 64);
 
-:export {
-	primaryColour: $primary-colour;
-	secondaryColour: $secondary-colour;
-	tertiaryColour: $tertiary-colour;
+:root {
+	--primary-colour: #{$primary-colour};
+	--secondary-colour: #{$secondary-colour};
+	--tertiary-colour: #{$tertiary-colour};
 
 	// Green colour palette
-	greenOneColour: $green-one-colour;
-	greenTwoColour: $green-two-colour;
-	greenThreeColour: $green-three-colour;
+	--green-one-colour: #{$green-one-colour};
+	--green-two-colour: #{$green-two-colour};
+	--green-three-colour: #{$green-three-colour};
 
 	// Blue colour palette
-	blueOneColour: $blue-one-colour;
-	blueTwoColour: $blue-two-colour;
-	blueThreeColour: $blue-three-colour;
+	--blue-one-colour: #{$blue-one-colour};
+	--blue-two-colour: #{$blue-two-colour};
+	--blue-three-colour: #{$blue-three-colour};
 }

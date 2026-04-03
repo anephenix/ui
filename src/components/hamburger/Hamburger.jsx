@@ -1,8 +1,12 @@
-import React from "react";
 import "./Hamburger.scss";
 
 const Hamburger = ({ width, height, onClick }) => (
-	<div id="hamburger" onClick={onClick} data-testid="hamburger">
+	<button
+		type="button"
+		id="hamburger"
+		onClick={onClick}
+		data-testid="hamburger"
+	>
 		<svg
 			width={width || "33px"}
 			height={height || "26px"}
@@ -11,6 +15,7 @@ const Hamburger = ({ width, height, onClick }) => (
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 		>
+			<title>Menu</title>
 			<g
 				id="hamburger-container"
 				stroke="none"
@@ -34,7 +39,7 @@ const Hamburger = ({ width, height, onClick }) => (
 				</g>
 			</g>
 		</svg>
-	</div>
+	</button>
 );
 
 export default Hamburger;

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 // const Option = (value, text) => <option value={value}>{text}</option>;
 
@@ -16,8 +16,8 @@ const Dropdown = forwardRef(function dropdown(
 				ref={ref}
 				defaultValue={defaultValue}
 			>
-				{options.map(({ value, text }, key) => (
-					<option key={key} value={value}>
+				{options.map(({ value, text }) => (
+					<option key={value} value={value}>
 						{text}
 					</option>
 				))}

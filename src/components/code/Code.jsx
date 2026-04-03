@@ -1,7 +1,6 @@
-import React from "react";
 import "./Code.scss";
-import Highlight from "react-highlight";
 import copy from "clipboard-copy";
+import Highlight from "react-highlight";
 
 const TitleBarButton = (id) => (
 	<div className="title-bar-button" key={id} id={id} />
@@ -19,21 +18,25 @@ const TitleBar = ({ title, code }) => (
 		<TitleBarButtons />
 		<div id="title-bar-title">{title}</div>
 		<div id="title-bar-actions">
-			<div className="title-bar-action" onClick={() => copy(code)}>
+			<button
+				type="button"
+				className="title-bar-action"
+				onClick={() => copy(code)}
+			>
 				Copy
-			</div>
+			</button>
 		</div>
 	</div>
 );
 
 const LineCount = ({ code }) => {
 	const numberOfLines = code.split("\n").length;
-	const lineCountArray = new Array(numberOfLines).fill(null);
+	const lineNumbers = Array.from({ length: numberOfLines }, (_, i) => i + 1);
 	return (
 		<div id="line-count">
-			{lineCountArray.map((a, i) => (
-				<div key={i} className={"line-count-item"}>
-					{i + 1}
+			{lineNumbers.map((lineNum) => (
+				<div key={lineNum} className={"line-count-item"}>
+					{lineNum}
 				</div>
 			))}
 		</div>

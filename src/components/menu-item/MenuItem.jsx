@@ -1,5 +1,3 @@
-import React from "react";
-
 const MenuItem = ({
 	text,
 	id,
@@ -17,21 +15,29 @@ const MenuItem = ({
 		if (url.startsWith("http") || url.startsWith("mailto")) {
 			// Need to check if this is external domain (i.e. github)
 			return (
-				<li key={i} onClick={isMobile ? toggleMenu : null}>
-					<a id={id} href={url} className={className} target={target} rel={rel}>
+				<li key={i}>
+					<a
+						id={id}
+						href={url}
+						className={className}
+						target={target}
+						rel={rel}
+						onClick={isMobile ? toggleMenu : undefined}
+					>
 						{text}
 					</a>
 				</li>
 			);
 		} else {
 			return (
-				<li key={i} onClick={isMobile ? toggleMenu : null}>
+				<li key={i}>
 					<Link
 						id={id}
 						href={url}
 						className={className}
 						target={target}
 						rel={rel}
+						onClick={isMobile ? toggleMenu : undefined}
 					>
 						{text}
 					</Link>
@@ -41,9 +47,9 @@ const MenuItem = ({
 	} else {
 		return (
 			<li key={i}>
-				<a id={id} className={className} onClick={onClick}>
+				<button type="button" id={id} className={className} onClick={onClick}>
 					{text}
-				</a>
+				</button>
 			</li>
 		);
 	}

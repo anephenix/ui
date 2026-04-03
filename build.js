@@ -1,5 +1,5 @@
-const esbuild = require("esbuild");
-const sassPlugin = require("esbuild-plugin-sass");
+import esbuild from "esbuild";
+import sassPlugin from "esbuild-plugin-sass";
 
 esbuild
 	.build({
@@ -7,6 +7,9 @@ esbuild
 		bundle: true,
 		outfile: "dist/index.js",
 		plugins: [sassPlugin()],
-		platform: "node",
+		platform: "browser",
+		format: "esm",
+		jsx: "automatic",
+		external: ["react", "react-dom", "react-highlight", "clipboard-copy"],
 	})
 	.catch((e) => console.error(e.message));

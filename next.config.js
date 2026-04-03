@@ -1,16 +1,9 @@
-const path = require("path");
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const applyWebpackConfig = (test = /\.jsx/) => {
-	return (config, options) => {
-		config.module.rules.push({
-			test,
-			use: [options.defaultLoaders.babel],
-		});
-		return config;
-	};
-};
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-module.exports = {
+export default {
 	sassOptions: {
 		includePaths: [
 			path.resolve("node_modules"),
@@ -19,5 +12,4 @@ module.exports = {
 			path.join(__dirname, "styles"),
 		],
 	},
-	webpack: applyWebpackConfig(),
 };

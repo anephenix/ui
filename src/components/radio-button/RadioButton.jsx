@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 const RadioButton = forwardRef(function radioButton(
 	{ name, label, className, defaultValue },

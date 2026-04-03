@@ -1,23 +1,23 @@
 import Button from "./src/components/button/Button";
-import Input from "./src/components/input/Input";
-import Select from "./src/components/select/Select";
 import Checkbox from "./src/components/checkbox/Checkbox";
-import RadioButton from "./src/components/radio-button/RadioButton";
-import Dropdown from "./src/components/dropdown/Dropdown";
-import FormField from "./src/components/form-field/FormField";
-import NavBar from "./src/components/nav-bar/NavBar";
-import Terminal from "./src/components/terminal/Terminal";
 import Code from "./src/components/code/Code";
-import Page from "./src/components/page/Page";
-import Hero from "./src/components/hero/Hero";
-import Textarea from "./src/components/textarea/Textarea";
+import Dropdown from "./src/components/dropdown/Dropdown";
 import Footer from "./src/components/footer/Footer";
+import FormField from "./src/components/form-field/FormField";
+import Hero from "./src/components/hero/Hero";
+import Input from "./src/components/input/Input";
+import NavBar from "./src/components/nav-bar/NavBar";
+import Page from "./src/components/page/Page";
+import RadioButton from "./src/components/radio-button/RadioButton";
+import Select from "./src/components/select/Select";
+import Terminal from "./src/components/terminal/Terminal";
+import Textarea from "./src/components/textarea/Textarea";
 
 import "./design-system/index.scss";
 
 const handleErrors = (setError, err) => {
 	const errors = [];
-	if (err && err.response && err.response.data && err.response.data.errors) {
+	if (err?.response?.data?.errors) {
 		// eslint-disable-next-line no-unused-vars
 		for (const key in err.response.data.errors) {
 			// eslint-disable-next-line no-unused-vars
@@ -43,20 +43,20 @@ const applyWebpackConfig = (test = /\.jsx/) => {
 };
 
 export {
-	Button,
-	Input,
-	Select,
-	Checkbox,
-	RadioButton,
-	Dropdown,
-	FormField,
-	NavBar,
-	Terminal,
-	Code,
-	Page,
-	Hero,
-	Footer,
-	Textarea,
 	applyWebpackConfig,
+	Button,
+	Checkbox,
+	Code,
+	Dropdown,
+	Footer,
+	FormField,
+	Hero,
 	handleErrors,
+	Input,
+	NavBar,
+	Page,
+	RadioButton,
+	Select,
+	Terminal,
+	Textarea,
 };

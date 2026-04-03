@@ -1,5 +1,3 @@
-import React from "react";
-
 const CloseIcon = ({ width, height }) => (
 	<svg
 		width={width || "26px"}
@@ -9,6 +7,7 @@ const CloseIcon = ({ width, height }) => (
 		xmlns="http://www.w3.org/2000/svg"
 		xmlnsXlink="http://www.w3.org/1999/xlink"
 	>
+		<title>Close</title>
 		<g
 			id="containing-group"
 			stroke="none"

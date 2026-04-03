@@ -1,10 +1,9 @@
 // Dependencies
-import React, { Component } from "react";
-
+import { Component } from "react";
+import DesktopMenu from "../desktop-menu/DesktopMenu";
 // Components
 import Hamburger from "../hamburger/Hamburger";
 import MobileMenu from "../mobile-menu/MobileMenu";
-import DesktopMenu from "../desktop-menu/DesktopMenu";
 
 // Styling
 import "./NavBar.scss";
