@@ -1,13 +1,10 @@
-/**
- * @jest-environment jsdom
- */
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Code from "./Code";
 import copy from "clipboard-copy";
 
-jest.mock("clipboard-copy");
+vi.mock("clipboard-copy");
 
 describe("Code", () => {
 	const code = `const a = 1;\nconst b = 2;`;

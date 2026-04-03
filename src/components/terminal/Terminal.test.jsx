@@ -1,13 +1,10 @@
-/**
- * @jest-environment jsdom
- */
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Terminal from "./Terminal";
 import copy from "clipboard-copy";
 
-jest.mock("clipboard-copy");
+vi.mock("clipboard-copy");
 
 describe("Terminal", () => {
 	const title = "Test Terminal";

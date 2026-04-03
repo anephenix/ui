@@ -4,15 +4,15 @@ import { render } from "@testing-library/react";
 import DesktopMenu from "./DesktopMenu";
 import MenuItem from "../menu-item/MenuItem";
 
-jest.mock("../menu-item/MenuItem", () => jest.fn(() => <div>MenuItem</div>));
+vi.mock("../menu-item/MenuItem", () => ({ default: vi.fn(() => <div>MenuItem</div>) }));
 
 describe("DesktopMenu", () => {
 	const links = [
-		{ hideOnDesktop: false, hideOptions: jest.fn(() => true), name: "Link1" },
-		{ hideOnDesktop: true, hideOptions: jest.fn(() => true), name: "Link2" },
-		{ hideOnDesktop: false, hideOptions: jest.fn(() => false), name: "Link3" },
+		{ hideOnDesktop: false, hideOptions: vi.fn(() => true), name: "Link1" },
+		{ hideOnDesktop: true, hideOptions: vi.fn(() => true), name: "Link2" },
+		{ hideOnDesktop: false, hideOptions: vi.fn(() => false), name: "Link3" },
 	];
-	const Link = jest.fn();
+	const Link = vi.fn();
 
 	test("renders without crashing", () => {
 		const { container } = render(

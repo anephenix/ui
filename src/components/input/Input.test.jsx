@@ -30,7 +30,7 @@ describe("Input", () => {
 	});
 
 	test("calls onChange when value changes", () => {
-		const handleChange = jest.fn();
+		const handleChange = vi.fn();
 		const { getByPlaceholderText } = render(
 			<Input placeholder="Enter text" onChange={handleChange} />,
 		);

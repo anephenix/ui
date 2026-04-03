@@ -10,7 +10,7 @@ describe("Button", () => {
 	});
 
 	test("calls onClick when clicked", () => {
-		const handleClick = jest.fn();
+		const handleClick = vi.fn();
 		const { getByText } = render(
 			<Button text="Click me" onClick={handleClick} />,
 		);

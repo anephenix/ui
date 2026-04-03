@@ -5,19 +5,19 @@ import MobileMenu from "./MobileMenu";
 import MenuItem from "../menu-item/MenuItem";
 import CloseIcon from "../close-icon/CloseIcon";
 
-jest.mock("../menu-item/MenuItem", () => jest.fn(() => <div>MenuItem</div>));
-jest.mock("../close-icon/CloseIcon", () => jest.fn(() => <div>CloseIcon</div>));
+vi.mock("../menu-item/MenuItem", () => ({ default: vi.fn(() => <div>MenuItem</div>) }));
+vi.mock("../close-icon/CloseIcon", () => ({ default: vi.fn(() => <div>CloseIcon</div>) }));
 
 describe("MobileMenu", () => {
-	const mockToggleMenu = jest.fn();
+	const mockToggleMenu = vi.fn();
 	const mockLinks = [
-		{ hideOptions: jest.fn(() => true), name: "Link1" },
-		{ hideOptions: jest.fn(() => false), name: "Link2" },
+		{ hideOptions: vi.fn(() => true), name: "Link1" },
+		{ hideOptions: vi.fn(() => false), name: "Link2" },
 	];
-	const mockLinkComponent = jest.fn();
+	const mockLinkComponent = vi.fn();
 
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	test("renders correctly when menu is open", () => {

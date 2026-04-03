@@ -39,7 +39,7 @@ describe("MenuItem", () => {
 	});
 
 	test("renders a button with onClick handler correctly", () => {
-		const handleClick = jest.fn();
+		const handleClick = vi.fn();
 		render(
 			<MenuItem text="Button" className="button" onClick={handleClick} i={3} />,
 		);
@@ -50,7 +50,7 @@ describe("MenuItem", () => {
 	});
 
 	test("toggles menu on mobile when link is clicked", () => {
-		const toggleMenu = jest.fn();
+		const toggleMenu = vi.fn();
 		render(
 			<MenuItem
 				text="Mobile Link"
