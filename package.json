@@ -77,7 +77,7 @@
 		"react-test-renderer": "^19.0.0",
 		"sass": "^1.77.0",
 		"size-limit": "^12.0.0",
-		"vitest": "^3.2.4"
+		"vitest": "^4.1.2"
 	},
 	"dependencies": {
 		"clipboard-copy": "^4.0.1",
