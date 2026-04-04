@@ -8,7 +8,7 @@
 		"build": "npx next build",
 		"build-lib": "node build.js",
 		"cover": "npx vitest run --coverage",
-		"dev": "next --webpack",
+		"dev": "next",
 		"format": "npx @biomejs/biome check . --write",
 		"lint": "npx @biomejs/biome check .",
 		"lint:package": "npx publint",

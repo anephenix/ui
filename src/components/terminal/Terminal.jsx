@@ -3,7 +3,7 @@ import copy from "clipboard-copy";
 
 const Terminal = ({ title, code }) => {
 	return (
-		<div id="terminal">
+		<div className="terminal">
 			<div id="title-bar">
 				<div id="title-bar-buttons">
 					<div className="title-bar-button" id="close" />

@@ -72,7 +72,7 @@ var CodeEditor = ({ code, language }) => {
     /* @__PURE__ */ jsx3(Highlight, { language, children: code })
   ] });
 };
-var Code = ({ title, code, language = "javascript" }) => /* @__PURE__ */ jsxs2("div", { id: "code", children: [
+var Code = ({ title, code, language = "javascript" }) => /* @__PURE__ */ jsxs2("div", { className: "code", children: [
   /* @__PURE__ */ jsx3(TitleBar, { title, code }),
   /* @__PURE__ */ jsx3(CodeEditor, { code, language })
 ] });
@@ -443,7 +443,7 @@ var Select_default = Select;
 import copy2 from "clipboard-copy";
 import { jsx as jsx18, jsxs as jsxs11 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs11("div", { id: "terminal", children: [
+  return /* @__PURE__ */ jsxs11("div", { className: "terminal", children: [
     /* @__PURE__ */ jsxs11("div", { id: "title-bar", children: [
       /* @__PURE__ */ jsxs11("div", { id: "title-bar-buttons", children: [
         /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "close" }),
