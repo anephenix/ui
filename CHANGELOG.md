@@ -1,5 +1,33 @@
 # CHANGELOG
 
+### 0.2.0 - Wednesday 8th April, 2026
+
+- Replaced esbuild-plugin-sass with esbuild-sass-plugin and updated dependencies
+- Merge pull request #373 from anephenix/dependabot/npm_and_yarn/vite-7.3.2
+- Bump vite from 7.3.1 to 7.3.2
+- Updated vitest and @vitest/coverage-v8
+- Updated dependencies
+- Some tweaks
+- Merge pull request #369 from anephenix/dependabot/npm_and_yarn/jsdom-29.0.1
+- Bump jsdom from 26.1.0 to 29.0.1
+- Updated dependencies
+- Changed package to ESM and replaced use of :export with css variables
+- Merge pull request #368 from anephenix/dependabot/npm_and_yarn/esbuild-0.28.0
+- Bump esbuild from 0.27.7 to 0.28.0
+- Replaced jest with vitest
+- Updated dependencies
+- Updated dependencies
+- Merge pull request #367 from anephenix/dependabot/npm_and_yarn/next-16.2.2
+- Merge pull request #366 from anephenix/dependabot/npm_and_yarn/esbuild-0.27.5
+- Bump next from 16.2.1 to 16.2.2
+- Bump esbuild from 0.27.4 to 0.27.5
+- Merge pull request #365 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.10
+- Bump @biomejs/biome from 2.4.9 to 2.4.10
+- Merge pull request #364 from anephenix/dependabot/npm_and_yarn/picomatch-2.3.2
+- Merge pull request #363 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.9
+- Bump picomatch from 2.3.1 to 2.3.2
+- Bump @biomejs/biome from 2.4.8 to 2.4.9
+
 ### 0.1.20 - Saturday 21st March, 2026
 
 - Updated dependencies
