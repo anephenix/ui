@@ -1,5 +1,5 @@
-@import '../../../design-system/spacing.scss';
-@import '../../../design-system/colours.scss';
+@use '../../../design-system/spacing.scss' as *;
+@use '../../../design-system/colours.scss' as *;
 
 .form-field {
 	&.error {

@@ -1,5 +1,5 @@
 import esbuild from "esbuild";
-import sassPlugin from "esbuild-plugin-sass";
+import { sassPlugin } from "esbuild-sass-plugin";
 
 esbuild
 	.build({

@@ -1,4 +1,4 @@
-@import '../../../design-system/colours.scss';
+@use '../../../design-system/colours.scss' as *;
 
 .code {
 	display: flex;

@@ -1,5 +1,6 @@
-@import '../../../design-system/spacing.scss';
-@import '../../../design-system/colours.scss';
+@use 'sass:color';
+@use '../../../design-system/spacing.scss' as *;
+@use '../../../design-system/colours.scss' as *;
 
 #mobile-menu {
 	background: $light;
@@ -25,7 +26,7 @@
 		li {
 			font-size: 18pt;
 			border-bottom: solid 1px $dark;
-			border-bottom-color: lighten($dark, 80);
+			border-bottom-color: color.adjust($dark, $lightness: 80%);
 
 			a {
 				display: block;
@@ -59,7 +60,7 @@
 		#close-icon {
 			&:hover {
 				path {
-					stroke: darken($light, 20);
+					stroke: color.adjust($light, $lightness: -20%);
 				}
 			}
 
@@ -74,7 +75,7 @@
 					color: $light;
 
 					&:hover {
-						color: darken($light, 20);
+						color: color.adjust($light, $lightness: -20%);
 					}
 				}
 			}
@@ -83,7 +84,7 @@
 
 	#hamburger {
 		&:hover path {
-			stroke: darken($light, 20);
+			stroke: color.adjust($light, $lightness: -20%);
 		}
 
 		path {

@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $foreground: rgb(17, 17, 17);
 
 #desktop-menu {
@@ -17,7 +19,7 @@ $foreground: rgb(17, 17, 17);
 			cursor: pointer;
 			color: $foreground;
 			&:hover {
-				color: lighten($foreground, 25);
+				color: color.adjust($foreground, $lightness: 25%);
 			}
 		}
 

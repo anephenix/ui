@@ -1,5 +1,6 @@
-@import '../../../design-system/spacing.scss';
-@import '../../../design-system/colours.scss';
+@use 'sass:color';
+@use '../../../design-system/spacing.scss' as *;
+@use '../../../design-system/colours.scss' as *;
 
 /* TODO items
 
@@ -74,7 +75,7 @@ $foreground: rgb(17, 17, 17);
 					cursor: pointer;
 					color: $foreground;
 					&:hover {
-						color: lighten($foreground, 25);
+						color: color.adjust($foreground, $lightness: 25%);
 					}
 				}
 			}
@@ -95,7 +96,7 @@ $foreground: rgb(17, 17, 17);
 						a {
 							color: $light;
 							&:hover {
-								color: darken($light, 25);
+								color: color.adjust($light, $lightness: -25%);
 							}
 						}
 					}
