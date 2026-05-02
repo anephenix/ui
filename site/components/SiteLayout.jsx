@@ -1,17 +1,11 @@
-import App from "next/app";
-import Head from "next/head";
-import Link from "next/link";
-// Data
-import links from "../data/navbar-links.js";
-import { Footer, NavBar, Page } from "../dist";
+import links from "../../data/navbar-links.js";
+import { Footer, NavBar, Page } from "../../dist/index.js";
 
-// Styling
-import "../dist/index.css";
-
-// Other files
-import "../styles/docs.scss";
-import "../styles/get-started.scss";
-import "../styles/index.scss";
+const Link = ({ href, children, ...props }) => (
+	<a href={href} {...props}>
+		{children}
+	</a>
+);
 
 const UKFlag = ({ width = 60, height = 30 }) => (
 	<svg
@@ -59,6 +53,7 @@ const LeftSection = () => (
 		.
 	</div>
 );
+
 const RightSection = () => (
 	<div className="made-in-location">
 		<UKFlag width={24} height={12} />
@@ -68,43 +63,20 @@ const RightSection = () => (
 	</div>
 );
 
-class MyApp extends App {
-	render() {
-		const { Component, pageProps } = this.props;
-		const logo = (
-			<Link href="/">
-				<div
-					style={{
-						fontWeight: "bold",
-						cursor: "pointer",
-					}}
-					id="logo"
-				>
-					UI
-				</div>
-			</Link>
-		);
-		return (
-			<>
-				<Head>
-					<meta
-						name="viewport"
-						content="initial-scale=1.0, width=device-width"
-					/>
-					<title>UI - a design system from Anephenix</title>
-				</Head>
-				<Page>
-					<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
-					<div className="page container withSidePadding">
-						<Component {...pageProps} />
-					</div>
-					<Footer
-						leftSection={<LeftSection />}
-						rightSection={<RightSection />}
-					/>
-				</Page>
-			</>
-		);
-	}
+export default function SiteLayout({ children }) {
+	const logo = (
+		<Link href="/">
+			<div style={{ fontWeight: "bold", cursor: "pointer" }} id="logo">
+				UI
+			</div>
+		</Link>
+	);
+
+	return (
+		<Page>
+			<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
+			<div className="page container withSidePadding">{children}</div>
+			<Footer leftSection={<LeftSection />} rightSection={<RightSection />} />
+		</Page>
+	);
 }
-export default MyApp;

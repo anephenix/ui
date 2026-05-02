@@ -2,3 +2,6 @@ node_modules
 coverage
 .next
 out
+site-dist
+.wrangler
+.astro

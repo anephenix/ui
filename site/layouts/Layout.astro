@@ -1,0 +1,23 @@
+---
+const { title = "UI - a design system from Anephenix" } = Astro.props;
+import "../../dist/index.css";
+import "../../styles/index.scss";
+import "../../styles/docs.scss";
+import "../../styles/get-started.scss";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<script
+			defer
+			data-domain="ui.anephenix.com"
+			src="https://plausible.io/js/script.js"></script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
