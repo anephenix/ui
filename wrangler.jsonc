@@ -4,7 +4,7 @@
 	"name": "anephenix-ui",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
-		"directory": "./sit-dist",
+		"directory": "./site-dist",
 		"binding": "ASSETS"
 	},
 	"observability": {
