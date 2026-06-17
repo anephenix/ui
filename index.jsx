@@ -32,18 +32,7 @@ const handleErrors = (setError, err) => {
 	setError(errors);
 };
 
-const applyWebpackConfig = (test = /\.jsx/) => {
-	return (config, options) => {
-		config.module.rules.push({
-			test,
-			use: [options.defaultLoaders.babel],
-		});
-		return config;
-	};
-};
-
 export {
-	applyWebpackConfig,
 	Button,
 	Checkbox,
 	Code,

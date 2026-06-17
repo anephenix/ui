@@ -1,6 +1,6 @@
 # UI
 
-A design system for Next.js applications, using Sass as the CSS preprocessor.
+A design system using Sass as the CSS preprocessor.
 
 [![npm version](https://badge.fury.io/js/%40anephenix%2Fui.svg)](https://badge.fury.io/js/%40anephenix%2Fui) [![Node.js CI](https://github.com/anephenix/ui/actions/workflows/node.js.yml/badge.svg)](https://github.com/anephenix/ui/actions/workflows/node.js.yml) [![Socket Badge](https://socket.dev/api/badge/npm/package/@anephenix/ui)](https://socket.dev/npm/package/@anephenix/ui)
 
@@ -12,33 +12,9 @@ npm i @anephenix/ui --save
 
 ### Dependencies
 
--   Node.js (22+)
+-   Node.js (24+)
 -   React (Version 18+)
 -   Sass (V 5.0+)
-
-### Setup
-
-In order to use Anephenix's React UI within your Next.js applications, you will need to adjust your Webpack configuration in order to load the react components.
-
-Make sure that the next.config.js file for your Next.js app has this code:
-
-```javascript
-const applyWebpackConfig = (test = /\.jsx/) => {
-	return (config, options) => {
-		config.module.rules.push({
-			test,
-			use: [options.defaultLoaders.babel],
-		});
-		return config;
-	};
-};
-
-module.exports = {
-	webpack: applyWebpackConfig(),
-};
-```
-
-The `applyWebpackConfig` function ensures that you can load the React components from the node_modules folder.
 
 ### Usage
 
@@ -52,4 +28,4 @@ npm t
 
 ### License and credits
 
-&copy;2025 Anephenix Ltd. UI is licenced under the MIT Licence.
+&copy;2026 Anephenix Ltd. UI is licenced under the MIT Licence.

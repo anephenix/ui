@@ -499,15 +499,6 @@ var handleErrors = (setError, err) => {
   }
   setError(errors);
 };
-var applyWebpackConfig = (test = /\.jsx/) => {
-  return (config, options) => {
-    config.module.rules.push({
-      test,
-      use: [options.defaultLoaders.babel]
-    });
-    return config;
-  };
-};
 export {
   Button_default as Button,
   Checkbox_default as Checkbox,
@@ -523,6 +514,5 @@ export {
   Select_default as Select,
   Terminal_default as Terminal,
   Textarea_default as Textarea,
-  applyWebpackConfig,
   handleErrors
 };
