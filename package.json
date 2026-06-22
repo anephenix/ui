@@ -80,7 +80,7 @@
 		"wrangler": "^4.87.0"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^13.3.0",
+		"@astrojs/cloudflare": "^14.0.0",
 		"clipboard-copy": "^4.0.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
