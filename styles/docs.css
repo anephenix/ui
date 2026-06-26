@@ -1,0 +1,38 @@
+.colour-key {
+	width: 96px;
+	height: 96px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+
+.colour-key.primary {
+	background: var(--primary-colour);
+}
+
+.colour-key.secondary {
+	background: var(--secondary-colour);
+}
+
+.colour-key.tertiary {
+	background: var(--tertiary-colour);
+}
+
+.colour-key.green-two {
+	background: var(--green-two-colour);
+}
+
+.colour-key.green-one {
+	background: var(--green-one-colour);
+}
+
+.colour-key.blue-two {
+	background: var(--blue-two-colour);
+}
+
+.colour-key.blue-one {
+	background: var(--blue-one-colour);
+}

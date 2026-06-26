@@ -5,8 +5,10 @@
 #nav-bar .container .withSidePadding a:first-of-type {
 	text-decoration: none;
 	color: black;
+}
 
-	@media screen and (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
+	#nav-bar .container .withSidePadding a:first-of-type {
 		color: white;
 	}
 }
@@ -14,12 +16,14 @@
 .made-in-location {
 	display: flex;
 	align-items: center;
+}
 
-	a {
-		border-bottom: none;
-	}
+.made-in-location a {
+	border-bottom: none;
+}
 
-	@media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
+	.made-in-location {
 		padding-top: 10px;
 	}
 }

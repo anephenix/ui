@@ -1,4 +1,4 @@
-import "./Terminal.scss";
+import "./Terminal.css";
 import copy from "clipboard-copy";
 
 const Terminal = ({ title, code }) => {

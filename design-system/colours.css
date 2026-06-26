@@ -1,0 +1,24 @@
+:root {
+	--primary-colour: #fd5548;
+	--secondary-colour: #fd9448;
+	--tertiary-colour: #ffc61a;
+
+	--green-one-colour: #69b65c;
+	--green-two-colour: #95e388;
+	--green-three-colour: #c5fdbb;
+
+	--blue-one-colour: #279ae1;
+	--blue-two-colour: #7bccff;
+	--blue-three-colour: #c8eaff;
+
+	--light: #fff;
+	--dark: #111;
+
+	--form-field-border-colour: #cfcfcf;
+	--form-field-colour: #414141;
+	--form-field-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+
+	--window-title-bar-close: rgb(255, 95, 87);
+	--window-title-bar-minimize: rgb(254, 188, 47);
+	--window-title-bar-maximize: rgb(40, 200, 64);
+}

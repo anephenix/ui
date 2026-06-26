@@ -1,12 +1,10 @@
 import esbuild from "esbuild";
-import { sassPlugin } from "esbuild-sass-plugin";
 
 esbuild
 	.build({
 		entryPoints: ["index.jsx"],
 		bundle: true,
 		outfile: "dist/index.js",
-		plugins: [sassPlugin()],
 		platform: "browser",
 		format: "esm",
 		jsx: "automatic",

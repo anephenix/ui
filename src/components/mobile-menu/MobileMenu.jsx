@@ -1,6 +1,6 @@
 import CloseIcon from "../close-icon/CloseIcon";
 import MenuItem from "../menu-item/MenuItem";
-import "./MobileMenu.scss";
+import "./MobileMenu.css";
 
 const MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 	return (

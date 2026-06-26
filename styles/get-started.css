@@ -1,0 +1,17 @@
+.section-gap {
+	margin: 40px 0px 80px;
+}
+
+.section-gap h2 {
+	padding-bottom: 20px;
+}
+
+.section-gap #terminal,
+.section-gap #code {
+	margin: 40px 0px;
+}
+
+.section-gap ul li,
+.section-gap ol li {
+	line-height: 1.6em;
+}

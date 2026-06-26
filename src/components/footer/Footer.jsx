@@ -1,7 +1,7 @@
 // Components
 
 // Styling
-import "./Footer.scss";
+import "./Footer.css";
 
 const Footer = ({ leftSection, rightSection }) => (
 	<div id="footer">

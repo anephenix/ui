@@ -1,0 +1,10 @@
+.form-field.error input {
+	border-color: var(--primary-colour);
+	color: var(--primary-colour);
+}
+
+.error-message {
+	padding: calc(var(--grid-base) / 2);
+	font-size: 8pt;
+	color: var(--primary-colour);
+}

@@ -13,7 +13,7 @@ import Select from "./src/components/select/Select";
 import Terminal from "./src/components/terminal/Terminal";
 import Textarea from "./src/components/textarea/Textarea";
 
-import "./design-system/index.scss";
+import "./design-system/index.css";
 
 const handleErrors = (setError, err) => {
 	const errors = [];

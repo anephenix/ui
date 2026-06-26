@@ -1,4 +1,4 @@
-import "./Page.scss";
+import "./Page.css";
 
 const Page = ({ children }) => <div className="page">{children}</div>;
 

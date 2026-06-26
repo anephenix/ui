@@ -6,7 +6,7 @@ import Hamburger from "../hamburger/Hamburger";
 import MobileMenu from "../mobile-menu/MobileMenu";
 
 // Styling
-import "./NavBar.scss";
+import "./NavBar.css";
 
 /*
   NOTES

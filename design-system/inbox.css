@@ -1,0 +1,24 @@
+code .hljs-comment,
+code .hljs-attr {
+	color: gold;
+}
+
+code .hljs-keyword {
+	color: #9be1ff;
+}
+
+code .hljs-keyword > span {
+	color: white;
+}
+
+code .hljs-string {
+	color: #c3e091;
+}
+
+code .hljs-built_in {
+	color: #7d9add;
+}
+
+code .hljs-function {
+	color: lightcoral;
+}

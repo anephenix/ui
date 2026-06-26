@@ -1,0 +1,30 @@
+#desktop-menu {
+	display: flex;
+	list-style-type: none;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0;
+}
+
+#desktop-menu li a {
+	color: rgb(17, 17, 17);
+	text-decoration: none;
+	font-size: 10pt;
+	margin: 0px 10px;
+	transition: all 0.3s linear;
+	cursor: pointer;
+}
+
+#desktop-menu li a:hover {
+	color: #515151;
+}
+
+#desktop-menu li:last-of-type a {
+	margin-right: 0px;
+}
+
+@media screen and (max-width: 767px) {
+	#desktop-menu {
+		display: none;
+	}
+}

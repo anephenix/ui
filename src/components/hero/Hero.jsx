@@ -1,4 +1,4 @@
-import "./Hero.scss";
+import "./Hero.css";
 
 const CTA = (Link) => {
 	const f = ({ href, text, buttonClass }, i) => {

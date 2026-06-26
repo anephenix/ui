@@ -1,0 +1,60 @@
+/* Screen size definitions:
+   mobile   < 480px
+   small    481px – 768px
+   medium   769px – 1024px
+   large    >= 1025px
+*/
+
+body {
+	padding: 0;
+	margin: 0;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.container.debug {
+	border: dotted 1px rgba(255, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 480px) {
+	.container {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	.container {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.container {
+		width: 760px;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.container {
+		width: 1024px;
+	}
+}
+
+.withSidePadding {
+	padding: 0px var(--spacer-two);
+}

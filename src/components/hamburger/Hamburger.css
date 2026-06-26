@@ -1,0 +1,17 @@
+#hamburger {
+	cursor: pointer;
+	display: none;
+}
+
+@media screen and (max-width: 767px) {
+	#hamburger {
+		display: flex;
+		justify-self: flex-end;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	#hamburger g#hamburger-layers {
+		stroke: var(--light);
+	}
+}

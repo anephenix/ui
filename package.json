@@ -66,7 +66,6 @@
 		"@vitest/coverage-v8": "^4.1.2",
 		"astro": "^6.2.1",
 		"esbuild": "^0.28.0",
-		"esbuild-sass-plugin": "^3.7.0",
 		"globals": "^17.0.0",
 		"husky": "^9.1.7",
 		"identity-obj-proxy": "^3.0.0",
@@ -74,7 +73,6 @@
 		"jsdom": "^29.0.1",
 		"publint": "^0.3.14",
 		"react-test-renderer": "^19.0.0",
-		"sass": "^1.77.0",
 		"size-limit": "^12.1.0",
 		"vitest": "^4.1.2",
 		"wrangler": "^4.87.0"

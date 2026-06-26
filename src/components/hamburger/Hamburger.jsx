@@ -1,4 +1,4 @@
-import "./Hamburger.scss";
+import "./Hamburger.css";
 
 const Hamburger = ({ width, height, onClick }) => (
 	<button

@@ -1,0 +1,109 @@
+.terminal {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	border: solid 1px rgba(0, 0, 0, 0.05);
+	border-radius: 8px;
+	background: rgba(0, 0, 0, 0.95);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 720px) {
+	.terminal {
+		width: 100%;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.terminal {
+		border: solid 1px rgba(255, 255, 255, 0.175);
+		box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.025);
+	}
+}
+
+.terminal #title-bar {
+	padding: 4px;
+	display: grid;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	grid-template-columns: 20% 60% 20%;
+}
+
+.terminal #title-bar #title-bar-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10pt;
+	color: white;
+	font-weight: 700;
+}
+
+.terminal #title-bar #title-bar-buttons {
+	display: flex;
+	padding: 4px;
+	width: 56px;
+	justify-content: space-between;
+}
+
+.terminal #title-bar #title-bar-buttons .title-bar-button {
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+}
+
+.terminal #title-bar #title-bar-buttons #close {
+	background: var(--window-title-bar-close);
+}
+
+.terminal #title-bar #title-bar-buttons #minimize {
+	background: var(--window-title-bar-minimize);
+}
+
+.terminal #title-bar #title-bar-buttons #maximize {
+	background: var(--window-title-bar-maximize);
+}
+
+.terminal #title-bar #title-bar-actions {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.terminal #title-bar #title-bar-actions .title-bar-action {
+	cursor: pointer;
+	font-size: 8pt;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 4px 8px;
+	border: none;
+	border-radius: 4px;
+	color: rgb(143, 236, 174);
+	background: rgba(143, 236, 174, 0.2);
+	transition: all 0.2s linear;
+}
+
+.terminal #title-bar #title-bar-actions .title-bar-action:hover {
+	background: rgba(143, 236, 174, 0.3);
+	color: rgb(205, 255, 222);
+}
+
+.terminal pre {
+	display: flex;
+	padding: 30px 10px;
+	margin: 0;
+	background-color: transparent !important;
+	color: rgb(180, 240, 131) !important;
+	font-size: 10pt;
+}
+
+@media screen and (max-width: 720px) {
+	.terminal pre {
+		overflow-x: scroll;
+	}
+}
+
+.terminal pre code {
+	font-family: "Menlo", "Monaco", "Courier New", Courier, monospace;
+	font-weight: 400;
+}

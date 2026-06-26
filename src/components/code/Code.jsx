@@ -1,4 +1,4 @@
-import "./Code.scss";
+import "./Code.css";
 import copy from "clipboard-copy";
 import Highlight from "react-highlight";
 

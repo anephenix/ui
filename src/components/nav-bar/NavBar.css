@@ -1,0 +1,81 @@
+#nav-bar {
+	background: rgba(255, 255, 255, 0.8);
+	border-bottom: solid 1px rgba(255, 255, 255, 0.75);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.0375);
+	color: rgb(17, 17, 17);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	padding: var(--spacer-one) 0px;
+	top: 0px;
+	left: 0px;
+	position: fixed;
+	z-index: 2;
+}
+
+@media screen and (max-width: 767px) {
+	#nav-bar {
+		width: 100%;
+		padding: var(--spacer-one) 0px;
+	}
+
+	#nav-bar .container #links {
+		display: none;
+	}
+}
+
+#nav-bar .container .withSidePadding {
+	width: 100%;
+	padding: 0px var(--spacer-one);
+	display: grid;
+	grid-template-columns: 40% 20% 40%;
+	align-items: center;
+}
+
+#nav-bar .container .withSidePadding #logo {
+	justify-self: start;
+}
+
+#nav-bar .container .withSidePadding form {
+	justify-self: center;
+}
+
+#nav-bar .container .withSidePadding ul {
+	margin: 0;
+}
+
+#nav-bar .container .withSidePadding #links {
+	justify-self: end;
+}
+
+#nav-bar .container .withSidePadding #links a {
+	text-decoration: none;
+	font-size: 10pt;
+	margin: 0px var(--spacer-one);
+	transition: all 0.3s linear;
+	cursor: pointer;
+	color: rgb(17, 17, 17);
+}
+
+#nav-bar .container .withSidePadding #links a:hover {
+	color: #515151;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	#nav-bar {
+		background: var(--dark);
+		border-bottom: solid 1px var(--dark);
+		color: var(--light);
+	}
+
+	#nav-bar .container .withSidePadding ul#desktop-menu li a {
+		color: var(--light);
+	}
+
+	#nav-bar .container .withSidePadding ul#desktop-menu li a:hover {
+		color: #bfbfbf;
+	}
+}

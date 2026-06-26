@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import "./Select.scss";
+import "./Select.css";
 
 const Option = ({ value, label }, index) => (
 	<option key={index} value={value}>

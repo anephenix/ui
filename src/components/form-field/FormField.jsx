@@ -1,4 +1,4 @@
-import "./FormField.scss";
+import "./FormField.css";
 
 const ErrorMessage = ({ error }) => (
 	<div className="error-message">{error}</div>

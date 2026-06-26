@@ -1,0 +1,89 @@
+:root {
+	--button-second-colour: var(--light);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--button-second-colour: var(--dark);
+	}
+}
+
+button.theme-default,
+.button.theme-default {
+	padding: var(--grid-base) var(--spacer-three);
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 14px;
+	cursor: pointer;
+	transition: all 0.3s linear;
+	text-decoration: none;
+	background-color: var(--button-first-colour);
+	border: solid 1px var(--button-first-colour);
+	color: var(--button-second-colour);
+}
+
+button.theme-default:hover,
+.button.theme-default:hover {
+	background-color: var(--button-second-colour);
+	border: solid 1px var(--button-first-colour);
+	color: var(--button-first-colour);
+}
+
+button.theme-default.alternate,
+.button.theme-default.alternate {
+	background-color: var(--button-second-colour);
+	border: solid 1px var(--button-first-colour);
+	color: var(--button-first-colour);
+}
+
+button.theme-default.alternate:hover,
+.button.theme-default.alternate:hover {
+	background-color: var(--button-first-colour);
+	border: solid 1px var(--button-first-colour);
+	color: var(--button-second-colour);
+}
+
+button.theme-default.primary,
+.button.theme-default.primary {
+	--button-first-colour: var(--primary-colour);
+}
+
+button.theme-default.secondary,
+.button.theme-default.secondary {
+	--button-first-colour: var(--secondary-colour);
+}
+
+button.theme-default.tertiary,
+.button.theme-default.tertiary {
+	--button-first-colour: var(--tertiary-colour);
+}
+
+button.theme-default.green-one,
+.button.theme-default.green-one {
+	--button-first-colour: var(--green-one-colour);
+}
+
+button.theme-default.green-two,
+.button.theme-default.green-two {
+	--button-first-colour: var(--green-two-colour);
+}
+
+button.theme-default.green-three,
+.button.theme-default.green-three {
+	--button-first-colour: var(--green-three-colour);
+}
+
+button.theme-default.blue-one,
+.button.theme-default.blue-one {
+	--button-first-colour: var(--blue-one-colour);
+}
+
+button.theme-default.blue-two,
+.button.theme-default.blue-two {
+	--button-first-colour: var(--blue-two-colour);
+}
+
+button.theme-default.blue-three,
+.button.theme-default.blue-three {
+	--button-first-colour: var(--blue-three-colour);
+}

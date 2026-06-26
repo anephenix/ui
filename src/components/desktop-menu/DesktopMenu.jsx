@@ -1,5 +1,5 @@
 import MenuItem from "../menu-item/MenuItem";
-import "./DesktopMenu.scss";
+import "./DesktopMenu.css";
 
 const DesktopMenu = ({ links, loggedIn, Link }) => (
 	<ul id="desktop-menu">
