@@ -62,9 +62,9 @@
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.1.0",
 		"@testing-library/user-event": "^14.6.1",
-		"@vitejs/plugin-react": "^5.0.0",
+		"@vitejs/plugin-react": "^6.0.3",
 		"@vitest/coverage-v8": "^4.1.2",
-		"astro": "^6.2.1",
+		"astro": "^7.0.3",
 		"esbuild": "^0.28.0",
 		"globals": "^17.0.0",
 		"husky": "^9.1.7",
@@ -78,14 +78,14 @@
 		"wrangler": "^4.87.0"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^13.3.0",
+		"@astrojs/cloudflare": "^14.0.1",
 		"clipboard-copy": "^4.0.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-highlight": "^0.15.0"
 	},
 	"overrides": {
-		"vite": "^7"
+		"vite": "^8"
 	},
 	"allowScripts": {
 		"esbuild@0.28.1": true

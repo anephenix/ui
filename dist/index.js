@@ -41,8 +41,9 @@ var Checkbox_default = Checkbox;
 
 // src/components/code/Code.jsx
 import copy from "clipboard-copy";
-import Highlight from "react-highlight";
+import HighlightLib from "react-highlight";
 import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+var Highlight = HighlightLib?.default ?? HighlightLib;
 var TitleBarButton = (id) => /* @__PURE__ */ jsx3("div", { className: "title-bar-button", id }, id);
 var TitleBarButtons = () => {
   const titleBarButtons = ["close", "minimize", "maximize"];

@@ -1,6 +1,9 @@
 import "./Code.css";
 import copy from "clipboard-copy";
-import Highlight from "react-highlight";
+import HighlightLib from "react-highlight";
+
+// react-highlight is CJS; Vite 8 no longer auto-unwraps __esModule interop
+const Highlight = HighlightLib?.default ?? HighlightLib;
 
 const TitleBarButton = (id) => (
 	<div className="title-bar-button" key={id} id={id} />
