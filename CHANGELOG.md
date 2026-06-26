@@ -1,5 +1,158 @@
 # CHANGELOG
 
+### 0.3.0 - Friday 26th June, 2026
+
+- Replaced the use of SASS with css variables
+- Merge pull request #463 from anephenix/dependabot/npm_and_yarn/wrangler-4.104.0
+- Merge pull request #460 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.1
+- Bump wrangler from 4.103.0 to 4.104.0
+- Bump @biomejs/biome from 2.5.0 to 2.5.1
+- Merge pull request #458 from anephenix/dependabot/npm_and_yarn/astrojs/react-6.0.0
+- Merge pull request #459 from anephenix/dependabot/npm_and_yarn/globals-17.7.0
+- Bump globals from 17.6.0 to 17.7.0
+- Bump @astrojs/react from 5.0.7 to 6.0.0
+- Merge pull request #455 from anephenix/dependabot/npm_and_yarn/wrangler-4.103.0
+- Bump wrangler from 4.101.0 to 4.103.0
+- Removed some legacy dependencies and no longer supporting webpack
+- Updated dependencies
+- Merge pull request #451 from anephenix/dependabot/npm_and_yarn/wrangler-4.101.0
+- Bump wrangler from 4.100.0 to 4.101.0
+- Applied another update to the biome config
+- Updated biome config
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies and a lint fix
+- Merge pull request #450 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.0
+- Merge pull request #449 from anephenix/dependabot/npm_and_yarn/esbuild-0.28.1
+- Bump @biomejs/biome from 2.4.16 to 2.5.0
+- Bump esbuild from 0.28.0 to 0.28.1
+- Merge pull request #447 from anephenix/dependabot/npm_and_yarn/sass-1.101.0
+- Merge pull request #448 from anephenix/dependabot/npm_and_yarn/wrangler-4.100.0
+- Bump wrangler from 4.99.0 to 4.100.0
+- Bump sass from 1.100.0 to 1.101.0
+- Merge pull request #446 from anephenix/dependabot/npm_and_yarn/astro-6.4.6
+- Bump astro from 6.4.5 to 6.4.6
+- Merge pull request #444 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.7.0
+- Merge pull request #443 from anephenix/dependabot/npm_and_yarn/astro-6.4.5
+- Merge pull request #445 from anephenix/dependabot/npm_and_yarn/wrangler-4.99.0
+- Bump wrangler from 4.98.0 to 4.99.0
+- Bump @astrojs/cloudflare from 13.6.1 to 13.7.0
+- Bump astro from 6.4.4 to 6.4.5
+- Updated wrangler config
+- Updated biome schema
+- Updated dependencies
+- Updated dependencies
+- Merge pull request #438 from anephenix/dependabot/npm_and_yarn/astrojs/react-5.0.6
+- Bump @astrojs/react from 5.0.5 to 5.0.6
+- Merge pull request #437 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.16
+- Bump @biomejs/biome from 2.4.15 to 2.4.16
+- Merge pull request #436 from anephenix/dependabot/npm_and_yarn/astro-6.3.8
+- Merge pull request #435 from anephenix/dependabot/npm_and_yarn/wrangler-4.95.0
+- Merge pull request #434 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.5.5
+- Bump astro from 6.3.7 to 6.3.8
+- Bump wrangler from 4.94.0 to 4.95.0
+- Bump @astrojs/cloudflare from 13.5.4 to 13.5.5
+- Merge pull request #433 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.29.7
+- Merge pull request #432 from anephenix/dependabot/npm_and_yarn/babel/preset-react-7.29.7
+- Bump @babel/preset-env from 7.29.5 to 7.29.7
+- Bump @babel/preset-react from 7.28.5 to 7.29.7
+- Merge pull request #431 from anephenix/dependabot/npm_and_yarn/wrangler-4.94.0
+- Merge pull request #430 from anephenix/dependabot/npm_and_yarn/sass-1.100.0
+- Bump wrangler from 4.93.1 to 4.94.0
+- Bump sass from 1.99.0 to 1.100.0
+- Merge pull request #429 from anephenix/dependabot/npm_and_yarn/astro-6.3.7
+- Merge pull request #428 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.5.4
+- Merge pull request #427 from anephenix/dependabot/npm_and_yarn/wrangler-4.93.1
+- Bump astro from 6.3.6 to 6.3.7
+- Bump @astrojs/cloudflare from 13.5.3 to 13.5.4
+- Bump wrangler from 4.93.0 to 4.93.1
+- Merge pull request #426 from anephenix/dependabot/npm_and_yarn/astro-6.3.6
+- Merge pull request #425 from anephenix/dependabot/npm_and_yarn/vitest-4.1.7
+- Merge pull request #424 from anephenix/dependabot/npm_and_yarn/vitest/coverage-v8-4.1.7
+- Merge pull request #423 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.5.3
+- Bump astro from 6.3.5 to 6.3.6
+- Bump vitest from 4.1.6 to 4.1.7
+- Bump @vitest/coverage-v8 from 4.1.6 to 4.1.7
+- Bump @astrojs/cloudflare from 13.5.2 to 13.5.3
+- Merge pull request #422 from anephenix/dependabot/npm_and_yarn/wrangler-4.93.0
+- Bump wrangler from 4.92.0 to 4.93.0
+- Merge pull request #421 from anephenix/dependabot/npm_and_yarn/astro-6.3.5
+- Merge pull request #420 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.5.2
+- Bump astro from 6.3.3 to 6.3.5
+- Bump @astrojs/cloudflare from 13.5.1 to 13.5.2
+- Merge pull request #419 from anephenix/dependabot/npm_and_yarn/wrangler-4.92.0
+- Bump wrangler from 4.91.0 to 4.92.0
+- Merge pull request #418 from anephenix/dependabot/npm_and_yarn/devalue-5.8.1
+- Merge pull request #417 from anephenix/dependabot/npm_and_yarn/wrangler-4.91.0
+- Merge pull request #416 from anephenix/dependabot/npm_and_yarn/astro-6.3.3
+- Bump devalue from 5.8.0 to 5.8.1
+- Bump wrangler from 4.90.1 to 4.91.0
+- Bump astro from 6.3.2 to 6.3.3
+- Updated the package-lock.json file
+- Merge pull request #414 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-13.5.1
+- Merge pull request #412 from anephenix/dependabot/npm_and_yarn/astrojs/react-5.0.5
+- Merge pull request #411 from anephenix/dependabot/npm_and_yarn/astro-6.3.2
+- Bump @astrojs/cloudflare from 13.5.0 to 13.5.1
+- Bump @astrojs/react from 5.0.4 to 5.0.5
+- Bump astro from 6.3.1 to 6.3.2
+- Merge pull request #413 from anephenix/dependabot/npm_and_yarn/publint-0.3.21
+- Bump publint from 0.3.20 to 0.3.21
+- Fixed a typo in the wrangler.jsonc file
+- Updated biome schema
+- Updated dependencies
+- updated dependencies
+- More tweaks
+- Small tweaks
+- Updated dependencies
+- Migrated from next.js to Astro, and moved from vercel to Cloudflare pages
+- Updated dependencies
+- Merge pull request #400 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.14
+- Merge pull request #399 from anephenix/dependabot/npm_and_yarn/babel/preset-env-7.29.3
+- Merge pull request #398 from anephenix/dependabot/npm_and_yarn/globals-17.6.0
+- Bump @biomejs/biome from 2.4.13 to 2.4.14
+- Bump @babel/preset-env from 7.29.2 to 7.29.3
+- Bump globals from 17.5.0 to 17.6.0
+- Merge pull request #397 from anephenix/dependabot/npm_and_yarn/jsdom-29.1.1
+- Bump jsdom from 29.1.0 to 29.1.1
+- Merge pull request #396 from anephenix/dependabot/npm_and_yarn/jsdom-29.1.0
+- Bump jsdom from 29.0.2 to 29.1.0
+- Merge pull request #395 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.13
+- Bump @biomejs/biome from 2.4.12 to 2.4.13
+- Merge pull request #394 from anephenix/dependabot/npm_and_yarn/vitest-4.1.5
+- Merge pull request #393 from anephenix/dependabot/npm_and_yarn/vitest/coverage-v8-4.1.5
+- Bump vitest from 4.1.4 to 4.1.5
+- Bump @vitest/coverage-v8 from 4.1.4 to 4.1.5
+- Merge pull request #392 from anephenix/dependabot/npm_and_yarn/next-16.2.4
+- Bump next from 16.2.3 to 16.2.4
+- Merge pull request #391 from anephenix/dependabot/npm_and_yarn/globals-17.5.0
+- Merge pull request #390 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.12
+- Bump globals from 17.4.0 to 17.5.0
+- Bump @biomejs/biome from 2.4.11 to 2.4.12
+- Merge pull request #387 from anephenix/dependabot/npm_and_yarn/size-limit/esbuild-why-12.1.0
+- Merge branch 'master' into dependabot/npm_and_yarn/size-limit/esbuild-why-12.1.0
+- Updated related dependencies
+- Merge pull request #385 from anephenix/dependabot/npm_and_yarn/size-limit/preset-small-lib-12.1.0
+- Merge pull request #389 from anephenix/dependabot/npm_and_yarn/globals-17.5.0
+- Bump globals from 17.4.0 to 17.5.0
+- Bump @size-limit/esbuild-why from 12.0.1 to 12.1.0
+- Bump @size-limit/preset-small-lib from 12.0.1 to 12.1.0
+- Merge pull request #384 from anephenix/dependabot/npm_and_yarn/vitest/coverage-v8-4.1.4
+- Merge pull request #383 from anephenix/dependabot/npm_and_yarn/vitest-4.1.4
+- Merge pull request #382 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.4.11
+- Bump @vitest/coverage-v8 from 4.1.3 to 4.1.4
+- Bump vitest from 4.1.3 to 4.1.4
+- Bump @biomejs/biome from 2.4.10 to 2.4.11
+- Merge pull request #377 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.2.5
+- Bump react-test-renderer from 19.2.4 to 19.2.5
+- Merge pull request #379 from anephenix/dependabot/npm_and_yarn/next-16.2.3
+- Merge pull request #381 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.27
+- Merge pull request #378 from anephenix/dependabot/npm_and_yarn/react-dom-19.2.5
+- Bump @anephenix/rcg from 0.0.26 to 0.0.27
+- Bump next from 16.2.2 to 16.2.3
+- Bump react-dom from 19.2.4 to 19.2.5
+- Merge pull request #371 from anephenix/dependabot/npm_and_yarn/vitejs/plugin-react-6.0.1
+- Bump @vitejs/plugin-react from 4.7.0 to 6.0.1
+
 ### 0.2.0 - Wednesday 8th April, 2026
 
 - Replaced esbuild-plugin-sass with esbuild-sass-plugin and updated dependencies
