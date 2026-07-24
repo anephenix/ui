@@ -77,6 +77,11 @@ const categories = [
 				desc: "Styled dropdown with optional multiple selection",
 			},
 			{
+				href: "/docs/combo-box",
+				name: "ComboBox",
+				desc: "A searchable combo box with optional multiple selection",
+			},
+			{
 				href: "/docs/textarea",
 				name: "Textarea",
 				desc: "Multi-line text area",

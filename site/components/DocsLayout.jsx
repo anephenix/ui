@@ -94,6 +94,7 @@ const sidebarGroups = [
 			{ href: "/docs/radio-button", label: "RadioButton" },
 			{ href: "/docs/select", label: "Select" },
 			{ href: "/docs/dropdown", label: "Dropdown" },
+			{ href: "/docs/combo-box", label: "ComboBox" },
 			{ href: "/docs/textarea", label: "Textarea" },
 			{ href: "/docs/form-field", label: "FormField" },
 		],

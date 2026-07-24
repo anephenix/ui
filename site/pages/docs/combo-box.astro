@@ -1,0 +1,8 @@
+---
+import ComboBoxPage from "../../components/docs/ComboBoxPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="ComboBox - UI Docs">
+    <ComboBoxPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
