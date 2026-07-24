@@ -180,11 +180,58 @@ var Input = forwardRef4(function input({ type = "text", className, defaultValue,
 });
 var Input_default = Input;
 
+// src/components/modal/Modal.jsx
+import { useEffect, useRef } from "react";
+import { jsx as jsx9, jsxs as jsxs6 } from "react/jsx-runtime";
+var Modal = ({ isOpen, onClose, title, children, footer }) => {
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (isOpen) {
+      if (!dialog.open) dialog.showModal();
+    } else {
+      if (dialog.open) dialog.close();
+    }
+  }, [isOpen]);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const handleCancel = () => onClose?.();
+    dialog.addEventListener("cancel", handleCancel);
+    return () => dialog.removeEventListener("cancel", handleCancel);
+  }, [onClose]);
+  const handleBackdropClick = (e) => {
+    if (e.target === dialogRef.current) onClose?.();
+  };
+  return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <dialog> handles keyboard interaction natively via the cancel event (Escape key)
+    /* @__PURE__ */ jsx9("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs6("div", { className: "modal-content", children: [
+      /* @__PURE__ */ jsxs6("div", { className: "modal-header", children: [
+        /* @__PURE__ */ jsx9("h2", { className: "modal-title", children: title }),
+        /* @__PURE__ */ jsx9(
+          "button",
+          {
+            type: "button",
+            className: "modal-close",
+            onClick: onClose,
+            "aria-label": "Close",
+            children: "\xD7"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsx9("div", { className: "modal-body", children }),
+      footer && /* @__PURE__ */ jsx9("div", { className: "modal-footer", children: footer })
+    ] }) })
+  );
+};
+var Modal_default = Modal;
+
 // src/components/nav-bar/NavBar.jsx
 import { Component } from "react";
 
 // src/components/menu-item/MenuItem.jsx
-import { jsx as jsx9 } from "react/jsx-runtime";
+import { jsx as jsx10 } from "react/jsx-runtime";
 var MenuItem = ({
   text,
   id,
@@ -200,7 +247,7 @@ var MenuItem = ({
 }) => {
   if (url && !onClick) {
     if (url.startsWith("http") || url.startsWith("mailto")) {
-      return /* @__PURE__ */ jsx9("li", { children: /* @__PURE__ */ jsx9(
+      return /* @__PURE__ */ jsx10("li", { children: /* @__PURE__ */ jsx10(
         "a",
         {
           id,
@@ -213,7 +260,7 @@ var MenuItem = ({
         }
       ) }, i);
     } else {
-      return /* @__PURE__ */ jsx9("li", { children: /* @__PURE__ */ jsx9(
+      return /* @__PURE__ */ jsx10("li", { children: /* @__PURE__ */ jsx10(
         Link,
         {
           id,
@@ -227,29 +274,29 @@ var MenuItem = ({
       ) }, i);
     }
   } else {
-    return /* @__PURE__ */ jsx9("li", { children: /* @__PURE__ */ jsx9("button", { type: "button", id, className, onClick, children: text }) }, i);
+    return /* @__PURE__ */ jsx10("li", { children: /* @__PURE__ */ jsx10("button", { type: "button", id, className, onClick, children: text }) }, i);
   }
 };
 var MenuItem_default = MenuItem;
 
 // src/components/desktop-menu/DesktopMenu.jsx
-import { jsx as jsx10 } from "react/jsx-runtime";
+import { jsx as jsx11 } from "react/jsx-runtime";
 import { createElement } from "react";
-var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx10("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx11("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
   return /* @__PURE__ */ createElement(MenuItem_default, { ...link, i, key: link.id, Link });
 }) });
 var DesktopMenu_default = DesktopMenu;
 
 // src/components/hamburger/Hamburger.jsx
-import { jsx as jsx11, jsxs as jsxs6 } from "react/jsx-runtime";
-var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx11(
+import { jsx as jsx12, jsxs as jsxs7 } from "react/jsx-runtime";
+var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx12(
   "button",
   {
     type: "button",
     id: "hamburger",
     onClick,
     "data-testid": "hamburger",
-    children: /* @__PURE__ */ jsxs6(
+    children: /* @__PURE__ */ jsxs7(
       "svg",
       {
         width: width || "33px",
@@ -259,8 +306,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx11(
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         children: [
-          /* @__PURE__ */ jsx11("title", { children: "Menu" }),
-          /* @__PURE__ */ jsx11(
+          /* @__PURE__ */ jsx12("title", { children: "Menu" }),
+          /* @__PURE__ */ jsx12(
             "g",
             {
               id: "hamburger-container",
@@ -270,17 +317,17 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx11(
               fillRule: "evenodd",
               strokeLinecap: "end",
               strokeLinejoin: "end",
-              children: /* @__PURE__ */ jsx11(
+              children: /* @__PURE__ */ jsx12(
                 "g",
                 {
                   id: "hamburger-layers",
                   transform: "translate(-328.000000, -19.000000)",
                   stroke: "#000",
                   strokeWidth: "2",
-                  children: /* @__PURE__ */ jsxs6("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
-                    /* @__PURE__ */ jsx11("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
-                    /* @__PURE__ */ jsx11("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
-                    /* @__PURE__ */ jsx11("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
+                  children: /* @__PURE__ */ jsxs7("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
+                    /* @__PURE__ */ jsx12("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
+                    /* @__PURE__ */ jsx12("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
+                    /* @__PURE__ */ jsx12("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
                   ] })
                 }
               )
@@ -294,8 +341,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx11(
 var Hamburger_default = Hamburger;
 
 // src/components/close-icon/CloseIcon.jsx
-import { jsx as jsx12, jsxs as jsxs7 } from "react/jsx-runtime";
-var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs7(
+import { jsx as jsx13, jsxs as jsxs8 } from "react/jsx-runtime";
+var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs8(
   "svg",
   {
     width: width || "26px",
@@ -305,8 +352,8 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs7(
     xmlns: "http://www.w3.org/2000/svg",
     xmlnsXlink: "http://www.w3.org/1999/xlink",
     children: [
-      /* @__PURE__ */ jsx12("title", { children: "Close" }),
-      /* @__PURE__ */ jsx12(
+      /* @__PURE__ */ jsx13("title", { children: "Close" }),
+      /* @__PURE__ */ jsx13(
         "g",
         {
           id: "containing-group",
@@ -316,16 +363,16 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs7(
           fillRule: "evenodd",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          children: /* @__PURE__ */ jsx12(
+          children: /* @__PURE__ */ jsx13(
             "g",
             {
               id: "9.7\u201D-iPad",
               transform: "translate(-681.000000, -23.000000)",
               stroke: "#000",
               strokeWidth: "3",
-              children: /* @__PURE__ */ jsxs7("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
-                /* @__PURE__ */ jsx12("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
-                /* @__PURE__ */ jsx12("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
+              children: /* @__PURE__ */ jsxs8("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
+                /* @__PURE__ */ jsx13("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
+                /* @__PURE__ */ jsx13("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
               ] })
             }
           )
@@ -337,12 +384,12 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs7(
 var CloseIcon_default = CloseIcon;
 
 // src/components/mobile-menu/MobileMenu.jsx
-import { jsx as jsx13, jsxs as jsxs8 } from "react/jsx-runtime";
+import { jsx as jsx14, jsxs as jsxs9 } from "react/jsx-runtime";
 var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
-  return /* @__PURE__ */ jsxs8("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
-    /* @__PURE__ */ jsx13("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx13("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx13(CloseIcon_default, { width: "20px" }) }) }),
-    menuOpen && /* @__PURE__ */ jsx13("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
-      return /* @__PURE__ */ jsx13(
+  return /* @__PURE__ */ jsxs9("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
+    /* @__PURE__ */ jsx14("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx14("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx14(CloseIcon_default, { width: "20px" }) }) }),
+    menuOpen && /* @__PURE__ */ jsx14("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+      return /* @__PURE__ */ jsx14(
         MenuItem_default,
         {
           ...link,
@@ -359,7 +406,7 @@ var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 var MobileMenu_default = MobileMenu;
 
 // src/components/nav-bar/NavBar.jsx
-import { Fragment, jsx as jsx14, jsxs as jsxs9 } from "react/jsx-runtime";
+import { Fragment, jsx as jsx15, jsxs as jsxs10 } from "react/jsx-runtime";
 var NavBar = class extends Component {
   constructor(props) {
     super(props);
@@ -376,17 +423,17 @@ var NavBar = class extends Component {
       Link,
       loggedIn,
       className,
-      midSection = /* @__PURE__ */ jsx14("div", {})
+      midSection = /* @__PURE__ */ jsx15("div", {})
     } = this.props;
     const { menuOpen } = this.state;
-    return /* @__PURE__ */ jsxs9(Fragment, { children: [
-      /* @__PURE__ */ jsx14("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx14("div", { className: "container", children: /* @__PURE__ */ jsxs9("div", { className: "withSidePadding", children: [
+    return /* @__PURE__ */ jsxs10(Fragment, { children: [
+      /* @__PURE__ */ jsx15("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx15("div", { className: "container", children: /* @__PURE__ */ jsxs10("div", { className: "withSidePadding", children: [
         logo,
         midSection,
-        /* @__PURE__ */ jsx14(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
-        /* @__PURE__ */ jsx14(DesktopMenu_default, { ...{ links, loggedIn, Link } })
+        /* @__PURE__ */ jsx15(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
+        /* @__PURE__ */ jsx15(DesktopMenu_default, { ...{ links, loggedIn, Link } })
       ] }) }) }),
-      /* @__PURE__ */ jsx14(
+      /* @__PURE__ */ jsx15(
         MobileMenu_default,
         {
           ...{
@@ -404,18 +451,18 @@ var NavBar = class extends Component {
 var NavBar_default = NavBar;
 
 // src/components/page/Page.jsx
-import { jsx as jsx15 } from "react/jsx-runtime";
-var Page = ({ children }) => /* @__PURE__ */ jsx15("div", { className: "page", children });
+import { jsx as jsx16 } from "react/jsx-runtime";
+var Page = ({ children }) => /* @__PURE__ */ jsx16("div", { className: "page", children });
 var Page_default = Page;
 
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
   const isControlled = checked !== void 0;
-  return /* @__PURE__ */ jsxs10("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx16(
+  return /* @__PURE__ */ jsxs11("label", { className: classNames, children: [
+    /* @__PURE__ */ jsx17(
       "input",
       {
         type: "radio",
@@ -425,18 +472,18 @@ var RadioButton = forwardRef5(function radioButton({ name, label, className, def
         ...isControlled ? { checked, onChange } : {}
       }
     ),
-    /* @__PURE__ */ jsx16("div", { className: "radio-element", children: /* @__PURE__ */ jsx16("div", { className: "selected" }) }),
-    /* @__PURE__ */ jsx16("span", { children: label })
+    /* @__PURE__ */ jsx17("div", { className: "radio-element", children: /* @__PURE__ */ jsx17("div", { className: "selected" }) }),
+    /* @__PURE__ */ jsx17("span", { children: label })
   ] });
 });
 var RadioButton_default = RadioButton;
 
 // src/components/select/Select.jsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx17 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx17("option", { value, children: label }, index);
+import { jsx as jsx18 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx18("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx17(
+  return /* @__PURE__ */ jsx18(
     "select",
     {
       ref,
@@ -452,17 +499,17 @@ var Select_default = Select;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx18, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs11("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs11("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs11("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs12("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs12("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs12("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx18("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx18("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx18(
+      /* @__PURE__ */ jsx19("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx19("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx19(
         "button",
         {
           type: "button",
@@ -472,16 +519,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx18("pre", { children: /* @__PURE__ */ jsx18("code", { children: code }) })
+    /* @__PURE__ */ jsx19("pre", { children: /* @__PURE__ */ jsx19("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef7 } from "react";
-import { jsx as jsx19 } from "react/jsx-runtime";
+import { jsx as jsx20 } from "react/jsx-runtime";
 var Textarea = forwardRef7(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx19(
+  return /* @__PURE__ */ jsx20(
     "textarea",
     {
       ref,
@@ -519,6 +566,7 @@ export {
   FormField_default as FormField,
   Hero_default as Hero,
   Input_default as Input,
+  Modal_default as Modal,
   NavBar_default as NavBar,
   Page_default as Page,
   RadioButton_default as RadioButton,

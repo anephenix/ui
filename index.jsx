@@ -6,6 +6,7 @@ import Footer from "./src/components/footer/Footer";
 import FormField from "./src/components/form-field/FormField";
 import Hero from "./src/components/hero/Hero";
 import Input from "./src/components/input/Input";
+import Modal from "./src/components/modal/Modal";
 import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import RadioButton from "./src/components/radio-button/RadioButton";
@@ -42,6 +43,7 @@ export {
 	Hero,
 	handleErrors,
 	Input,
+	Modal,
 	NavBar,
 	Page,
 	RadioButton,

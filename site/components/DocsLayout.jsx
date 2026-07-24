@@ -100,6 +100,10 @@ const sidebarGroups = [
 			{ href: "/docs/terminal", label: "Terminal" },
 		],
 	},
+	{
+		label: "Overlays",
+		items: [{ href: "/docs/modal", label: "Modal" }],
+	},
 ];
 
 export default function DocsLayout({ children, currentPath }) {
