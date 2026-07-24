@@ -1,4 +1,5 @@
 import Alert from "./src/components/alert/Alert";
+import Badge from "./src/components/badge/Badge";
 import Button from "./src/components/button/Button";
 import Card from "./src/components/card/Card";
 import Checkbox from "./src/components/checkbox/Checkbox";
@@ -41,6 +42,7 @@ const handleErrors = (setError, err) => {
 
 export {
 	Alert,
+	Badge,
 	Button,
 	Card,
 	Checkbox,

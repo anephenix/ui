@@ -98,6 +98,7 @@ const sidebarGroups = [
 		label: "Display",
 		items: [
 			{ href: "/docs/alert", label: "Alert" },
+			{ href: "/docs/badge", label: "Badge" },
 			{ href: "/docs/card", label: "Card" },
 			{ href: "/docs/code", label: "Code" },
 			{ href: "/docs/table", label: "Table" },
