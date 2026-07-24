@@ -497,23 +497,65 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 });
 var Select_default = Select;
 
-// src/components/table/Table.jsx
+// src/components/switch/Switch.jsx
+import { forwardRef as forwardRef7, useState } from "react";
 import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
+var Switch = forwardRef7(function switchInput({
+  name,
+  label,
+  className,
+  checked,
+  defaultChecked = false,
+  onChange,
+  disabled
+}, ref) {
+  const isControlled = checked !== void 0;
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const isChecked = isControlled ? checked : internalChecked;
+  const handleChange = (e) => {
+    if (!isControlled) {
+      setInternalChecked(e.target.checked);
+    }
+    onChange?.(e);
+  };
+  const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsxs12("label", { className: labelClass, children: [
+    /* @__PURE__ */ jsx19(
+      "input",
+      {
+        type: "checkbox",
+        role: "switch",
+        "aria-checked": isChecked,
+        name,
+        ref,
+        checked: isChecked,
+        onChange: handleChange,
+        disabled
+      }
+    ),
+    /* @__PURE__ */ jsx19("div", { className: "switch-track", children: /* @__PURE__ */ jsx19("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx19("span", { className: "switch-label", children: label })
+  ] });
+});
+var Switch_default = Switch;
+
+// src/components/table/Table.jsx
+import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
 var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx19("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs12("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx19("caption", { children: caption }),
-    /* @__PURE__ */ jsx19("thead", { children: /* @__PURE__ */ jsx19("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx19("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx19("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx19("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx19("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx20("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs13("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx20("caption", { children: caption }),
+    /* @__PURE__ */ jsx20("thead", { children: /* @__PURE__ */ jsx20("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx20("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx20("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx20("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx20("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.jsx
-import { useRef as useRef2, useState } from "react";
-import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
+import { useRef as useRef2, useState as useState2 } from "react";
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
-  const [activeTab, setActiveTab] = useState(defaultTab ?? tabs[0]?.id);
+  const [activeTab, setActiveTab] = useState2(defaultTab ?? tabs[0]?.id);
   const tabRefs = useRef2({});
   const handleSelect = (id) => {
     setActiveTab(id);
@@ -534,8 +576,8 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
     }
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs13("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx20("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx20(
+  return /* @__PURE__ */ jsxs14("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx21("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx21(
       "button",
       {
         ref: (el) => {
@@ -554,7 +596,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx20(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx21(
       "div",
       {
         id: `panel-${id}`,
@@ -572,17 +614,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs15 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs14("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs14("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs14("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs15("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs15("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs15("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx22("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx22("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx22("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx21("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx21("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx21(
+      /* @__PURE__ */ jsx22("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx22("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx22(
         "button",
         {
           type: "button",
@@ -592,16 +634,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx21("pre", { children: /* @__PURE__ */ jsx21("code", { children: code }) })
+    /* @__PURE__ */ jsx22("pre", { children: /* @__PURE__ */ jsx22("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
-import { forwardRef as forwardRef7 } from "react";
-import { jsx as jsx22 } from "react/jsx-runtime";
-var Textarea = forwardRef7(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx22(
+import { forwardRef as forwardRef8 } from "react";
+import { jsx as jsx23 } from "react/jsx-runtime";
+var Textarea = forwardRef8(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
+  return /* @__PURE__ */ jsx23(
     "textarea",
     {
       ref,
@@ -617,7 +659,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect2 } from "react";
-import { jsx as jsx23, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx24, jsxs as jsxs16 } from "react/jsx-runtime";
 var variantIcons = {
   success: "\u2713",
   error: "\u2715",
@@ -639,19 +681,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs15(
+  return /* @__PURE__ */ jsxs16(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx23("div", { className: "toast-icon", children: variantIcons[variant] }),
-        /* @__PURE__ */ jsxs15("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx23("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx23("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx24("div", { className: "toast-icon", children: variantIcons[variant] }),
+        /* @__PURE__ */ jsxs16("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx24("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx24("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx23(
+        /* @__PURE__ */ jsx24(
           "button",
           {
             type: "button",
@@ -696,6 +738,7 @@ export {
   Page_default as Page,
   RadioButton_default as RadioButton,
   Select_default as Select,
+  Switch_default as Switch,
   Table_default as Table,
   Tabs_default as Tabs,
   Terminal_default as Terminal,

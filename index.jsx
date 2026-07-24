@@ -11,6 +11,7 @@ import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
+import Switch from "./src/components/switch/Switch";
 import Table from "./src/components/table/Table";
 import Tabs from "./src/components/tabs/Tabs";
 import Terminal from "./src/components/terminal/Terminal";
@@ -51,6 +52,7 @@ export {
 	Page,
 	RadioButton,
 	Select,
+	Switch,
 	Table,
 	Tabs,
 	Terminal,

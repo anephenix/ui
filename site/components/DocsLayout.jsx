@@ -85,6 +85,7 @@ const sidebarGroups = [
 		items: [
 			{ href: "/docs/button", label: "Button" },
 			{ href: "/docs/checkbox", label: "Checkbox" },
+			{ href: "/docs/switch", label: "Switch" },
 			{ href: "/docs/input", label: "Input" },
 			{ href: "/docs/radio-button", label: "RadioButton" },
 			{ href: "/docs/select", label: "Select" },

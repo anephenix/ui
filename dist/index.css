@@ -502,6 +502,58 @@ dialog.modal::backdrop {
 
 /* src/components/select/Select.css */
 
+/* src/components/switch/Switch.css */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--grid-base);
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+.switch-disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.switch-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--form-field-border-colour);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+.switch-label {
+  font-size: 14px;
+}
+input[type=checkbox]:checked + .switch-track {
+  background: var(--green-one-colour);
+}
+input[type=checkbox]:checked + .switch-track .switch-thumb {
+  transform: translateX(16px);
+}
+input[type=checkbox]:focus-visible + .switch-track {
+  outline: 2px solid var(--blue-one-colour);
+  outline-offset: 2px;
+}
+@media screen and (prefers-color-scheme: dark) {
+  .switch-thumb {
+    background: #e0e0e0;
+  }
+}
+
 /* src/components/table/Table.css */
 .table-wrapper {
   overflow-x: auto;
