@@ -1,3 +1,4 @@
+import Alert from "./src/components/alert/Alert";
 import Button from "./src/components/button/Button";
 import Checkbox from "./src/components/checkbox/Checkbox";
 import Code from "./src/components/code/Code";
@@ -38,6 +39,7 @@ const handleErrors = (setError, err) => {
 };
 
 export {
+	Alert,
 	Button,
 	Checkbox,
 	Code,
