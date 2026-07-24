@@ -16,6 +16,7 @@ import Modal from "./src/components/modal/Modal";
 import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import Pagination from "./src/components/pagination/Pagination";
+import Popover from "./src/components/popover/Popover";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
 import Skeleton from "./src/components/skeleton/Skeleton";
@@ -67,6 +68,7 @@ export {
 	NavBar,
 	Page,
 	Pagination,
+	Popover,
 	RadioButton,
 	Select,
 	Skeleton,
