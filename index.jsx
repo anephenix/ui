@@ -1,5 +1,6 @@
 import Accordion from "./src/components/accordion/Accordion";
 import Alert from "./src/components/alert/Alert";
+import Avatar from "./src/components/avatar/Avatar";
 import Badge from "./src/components/badge/Badge";
 import Breadcrumb from "./src/components/breadcrumb/Breadcrumb";
 import Button from "./src/components/button/Button";
@@ -48,6 +49,7 @@ const handleErrors = (setError, err) => {
 export {
 	Accordion,
 	Alert,
+	Avatar,
 	Badge,
 	Breadcrumb,
 	Button,

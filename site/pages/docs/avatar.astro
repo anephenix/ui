@@ -1,0 +1,8 @@
+---
+import AvatarPage from "../../components/docs/AvatarPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Avatar - UI Docs">
+    <AvatarPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
