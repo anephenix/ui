@@ -1,5 +1,67 @@
-// src/components/alert/Alert.jsx
+// src/components/accordion/Accordion.jsx
+import { useState } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
+var Accordion = ({
+  items,
+  allowMultiple = false,
+  defaultOpen,
+  onChange,
+  className
+}) => {
+  const initialOpen = defaultOpen ? new Set(Array.isArray(defaultOpen) ? defaultOpen : [defaultOpen]) : /* @__PURE__ */ new Set();
+  const [openItems, setOpenItems] = useState(initialOpen);
+  const toggle = (id) => {
+    const next = new Set(openItems);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      if (!allowMultiple) next.clear();
+      next.add(id);
+    }
+    setOpenItems(next);
+    onChange?.([...next]);
+  };
+  const wrapperClass = `accordion${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsx("div", { className: wrapperClass, children: items.map(({ id, title, content }) => {
+    const isOpen = openItems.has(id);
+    return /* @__PURE__ */ jsxs("div", { className: "accordion-item", children: [
+      /* @__PURE__ */ jsx("h3", { className: "accordion-heading", children: /* @__PURE__ */ jsxs(
+        "button",
+        {
+          type: "button",
+          id: `trigger-${id}`,
+          "aria-expanded": isOpen,
+          "aria-controls": `panel-${id}`,
+          className: `accordion-trigger${isOpen ? " accordion-trigger-open" : ""}`,
+          onClick: () => toggle(id),
+          children: [
+            /* @__PURE__ */ jsx("span", { className: "accordion-title", children: title }),
+            /* @__PURE__ */ jsx(
+              "span",
+              {
+                className: `accordion-chevron${isOpen ? " accordion-chevron-open" : ""}`,
+                "aria-hidden": "true"
+              }
+            )
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ jsx(
+        "section",
+        {
+          id: `panel-${id}`,
+          "aria-labelledby": `trigger-${id}`,
+          className: `accordion-panel${isOpen ? " accordion-panel-open" : ""}`,
+          children: /* @__PURE__ */ jsx("div", { className: "accordion-panel-inner", children: content })
+        }
+      )
+    ] }, id);
+  }) });
+};
+var Accordion_default = Accordion;
+
+// src/components/alert/Alert.jsx
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var variantIcons = {
   success: "\u2713",
   error: "\u2715",
@@ -9,13 +71,13 @@ var variantIcons = {
 var Alert = ({ variant = "info", title, children, onClose, className }) => {
   const role = variant === "error" || variant === "warning" ? "alert" : "status";
   const classNames = `alert alert-${variant}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs("div", { className: classNames, role, children: [
-    /* @__PURE__ */ jsx("div", { className: "alert-icon", children: variantIcons[variant] }),
-    /* @__PURE__ */ jsxs("div", { className: "alert-content", children: [
-      title && /* @__PURE__ */ jsx("div", { className: "alert-title", children: title }),
-      /* @__PURE__ */ jsx("div", { className: "alert-body", children })
+  return /* @__PURE__ */ jsxs2("div", { className: classNames, role, children: [
+    /* @__PURE__ */ jsx2("div", { className: "alert-icon", children: variantIcons[variant] }),
+    /* @__PURE__ */ jsxs2("div", { className: "alert-content", children: [
+      title && /* @__PURE__ */ jsx2("div", { className: "alert-title", children: title }),
+      /* @__PURE__ */ jsx2("div", { className: "alert-body", children })
     ] }),
-    onClose && /* @__PURE__ */ jsx(
+    onClose && /* @__PURE__ */ jsx2(
       "button",
       {
         type: "button",
@@ -30,18 +92,18 @@ var Alert = ({ variant = "info", title, children, onClose, className }) => {
 var Alert_default = Alert;
 
 // src/components/badge/Badge.jsx
-import { jsx as jsx2 } from "react/jsx-runtime";
+import { jsx as jsx3 } from "react/jsx-runtime";
 var Badge = ({ children, variant = "default", size = "md", className }) => {
   const classNames = `badge badge-${variant} badge-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx2("span", { className: classNames, children });
+  return /* @__PURE__ */ jsx3("span", { className: classNames, children });
 };
 var Badge_default = Badge;
 
 // src/components/button/Button.jsx
 import { forwardRef } from "react";
-import { jsx as jsx3 } from "react/jsx-runtime";
+import { jsx as jsx4 } from "react/jsx-runtime";
 var Button = forwardRef(function button({ className, text, name, onClick }, ref) {
-  return /* @__PURE__ */ jsx3(
+  return /* @__PURE__ */ jsx4(
     "button",
     {
       type: "button",
@@ -56,7 +118,7 @@ var Button = forwardRef(function button({ className, text, name, onClick }, ref)
 var Button_default = Button;
 
 // src/components/card/Card.jsx
-import { jsx as jsx4, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx5, jsxs as jsxs3 } from "react/jsx-runtime";
 var Card = ({
   image,
   imageAlt = "",
@@ -67,26 +129,26 @@ var Card = ({
   className
 }) => {
   const classNames = `card${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs2("div", { className: classNames, children: [
-    image && /* @__PURE__ */ jsx4("img", { className: "card-image", src: image, alt: imageAlt }),
-    (title || subtitle) && /* @__PURE__ */ jsxs2("div", { className: "card-header", children: [
-      title && /* @__PURE__ */ jsx4("h3", { className: "card-title", children: title }),
-      subtitle && /* @__PURE__ */ jsx4("p", { className: "card-subtitle", children: subtitle })
+  return /* @__PURE__ */ jsxs3("div", { className: classNames, children: [
+    image && /* @__PURE__ */ jsx5("img", { className: "card-image", src: image, alt: imageAlt }),
+    (title || subtitle) && /* @__PURE__ */ jsxs3("div", { className: "card-header", children: [
+      title && /* @__PURE__ */ jsx5("h3", { className: "card-title", children: title }),
+      subtitle && /* @__PURE__ */ jsx5("p", { className: "card-subtitle", children: subtitle })
     ] }),
-    /* @__PURE__ */ jsx4("div", { className: "card-body", children }),
-    footer && /* @__PURE__ */ jsx4("div", { className: "card-footer", children: footer })
+    /* @__PURE__ */ jsx5("div", { className: "card-body", children }),
+    footer && /* @__PURE__ */ jsx5("div", { className: "card-footer", children: footer })
   ] });
 };
 var Card_default = Card;
 
 // src/components/checkbox/Checkbox.jsx
 import { forwardRef as forwardRef2 } from "react";
-import { jsx as jsx5, jsxs as jsxs3 } from "react/jsx-runtime";
+import { jsx as jsx6, jsxs as jsxs4 } from "react/jsx-runtime";
 var Checkbox = forwardRef2(function checkbox({ label, className, name, defaultValue }, ref) {
   {
     const classNames = `checkbox ${className}`;
-    return /* @__PURE__ */ jsxs3("label", { className: classNames, children: [
-      /* @__PURE__ */ jsx5(
+    return /* @__PURE__ */ jsxs4("label", { className: classNames, children: [
+      /* @__PURE__ */ jsx6(
         "input",
         {
           type: "checkbox",
@@ -95,8 +157,8 @@ var Checkbox = forwardRef2(function checkbox({ label, className, name, defaultVa
           defaultChecked: defaultValue
         }
       ),
-      /* @__PURE__ */ jsx5("div", { className: "checkbox-element", children: /* @__PURE__ */ jsx5("div", { className: "tick" }) }),
-      /* @__PURE__ */ jsx5("span", { children: label })
+      /* @__PURE__ */ jsx6("div", { className: "checkbox-element", children: /* @__PURE__ */ jsx6("div", { className: "tick" }) }),
+      /* @__PURE__ */ jsx6("span", { children: label })
     ] });
   }
 });
@@ -105,17 +167,17 @@ var Checkbox_default = Checkbox;
 // src/components/code/Code.jsx
 import copy from "clipboard-copy";
 import HighlightLib from "react-highlight";
-import { jsx as jsx6, jsxs as jsxs4 } from "react/jsx-runtime";
+import { jsx as jsx7, jsxs as jsxs5 } from "react/jsx-runtime";
 var Highlight = HighlightLib?.default ?? HighlightLib;
-var TitleBarButton = (id) => /* @__PURE__ */ jsx6("div", { className: "title-bar-button", id }, id);
+var TitleBarButton = (id) => /* @__PURE__ */ jsx7("div", { className: "title-bar-button", id }, id);
 var TitleBarButtons = () => {
   const titleBarButtons = ["close", "minimize", "maximize"];
-  return /* @__PURE__ */ jsx6("div", { id: "title-bar-buttons", children: titleBarButtons.map(TitleBarButton) });
+  return /* @__PURE__ */ jsx7("div", { id: "title-bar-buttons", children: titleBarButtons.map(TitleBarButton) });
 };
-var TitleBar = ({ title, code }) => /* @__PURE__ */ jsxs4("div", { id: "title-bar", children: [
-  /* @__PURE__ */ jsx6(TitleBarButtons, {}),
-  /* @__PURE__ */ jsx6("div", { id: "title-bar-title", children: title }),
-  /* @__PURE__ */ jsx6("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx6(
+var TitleBar = ({ title, code }) => /* @__PURE__ */ jsxs5("div", { id: "title-bar", children: [
+  /* @__PURE__ */ jsx7(TitleBarButtons, {}),
+  /* @__PURE__ */ jsx7("div", { id: "title-bar-title", children: title }),
+  /* @__PURE__ */ jsx7("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx7(
     "button",
     {
       type: "button",
@@ -128,26 +190,26 @@ var TitleBar = ({ title, code }) => /* @__PURE__ */ jsxs4("div", { id: "title-ba
 var LineCount = ({ code }) => {
   const numberOfLines = code.split("\n").length;
   const lineNumbers = Array.from({ length: numberOfLines }, (_, i) => i + 1);
-  return /* @__PURE__ */ jsx6("div", { id: "line-count", children: lineNumbers.map((lineNum) => /* @__PURE__ */ jsx6("div", { className: "line-count-item", children: lineNum }, lineNum)) });
+  return /* @__PURE__ */ jsx7("div", { id: "line-count", children: lineNumbers.map((lineNum) => /* @__PURE__ */ jsx7("div", { className: "line-count-item", children: lineNum }, lineNum)) });
 };
 var CodeEditor = ({ code, language }) => {
-  return /* @__PURE__ */ jsxs4("div", { id: "code-editor", children: [
-    /* @__PURE__ */ jsx6(LineCount, { code }),
-    /* @__PURE__ */ jsx6(Highlight, { language, children: code })
+  return /* @__PURE__ */ jsxs5("div", { id: "code-editor", children: [
+    /* @__PURE__ */ jsx7(LineCount, { code }),
+    /* @__PURE__ */ jsx7(Highlight, { language, children: code })
   ] });
 };
-var Code = ({ title, code, language = "javascript" }) => /* @__PURE__ */ jsxs4("div", { className: "code", children: [
-  /* @__PURE__ */ jsx6(TitleBar, { title, code }),
-  /* @__PURE__ */ jsx6(CodeEditor, { code, language })
+var Code = ({ title, code, language = "javascript" }) => /* @__PURE__ */ jsxs5("div", { className: "code", children: [
+  /* @__PURE__ */ jsx7(TitleBar, { title, code }),
+  /* @__PURE__ */ jsx7(CodeEditor, { code, language })
 ] });
 var Code_default = Code;
 
 // src/components/dropdown/Dropdown.jsx
 import { forwardRef as forwardRef3 } from "react";
-import { jsx as jsx7 } from "react/jsx-runtime";
+import { jsx as jsx8 } from "react/jsx-runtime";
 var Dropdown = forwardRef3(function dropdown({ options, multiple, id, className, name, defaultValue }, ref) {
   const classNames = `dropdown ${className}`;
-  return /* @__PURE__ */ jsx7("div", { className: classNames, children: /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ jsx8("div", { className: classNames, children: /* @__PURE__ */ jsx8(
     "select",
     {
       name,
@@ -155,28 +217,28 @@ var Dropdown = forwardRef3(function dropdown({ options, multiple, id, className,
       id,
       ref,
       defaultValue,
-      children: options.map(({ value, text }) => /* @__PURE__ */ jsx7("option", { value, children: text }, value))
+      children: options.map(({ value, text }) => /* @__PURE__ */ jsx8("option", { value, children: text }, value))
     }
   ) });
 });
 var Dropdown_default = Dropdown;
 
 // src/components/footer/Footer.jsx
-import { jsx as jsx8, jsxs as jsxs5 } from "react/jsx-runtime";
-var Footer = ({ leftSection, rightSection }) => /* @__PURE__ */ jsx8("div", { id: "footer", children: /* @__PURE__ */ jsx8("div", { className: "container", children: /* @__PURE__ */ jsxs5("div", { className: "withSidePadding", children: [
+import { jsx as jsx9, jsxs as jsxs6 } from "react/jsx-runtime";
+var Footer = ({ leftSection, rightSection }) => /* @__PURE__ */ jsx9("div", { id: "footer", children: /* @__PURE__ */ jsx9("div", { className: "container", children: /* @__PURE__ */ jsxs6("div", { className: "withSidePadding", children: [
   leftSection,
   rightSection
 ] }) }) });
 var Footer_default = Footer;
 
 // src/components/form-field/FormField.jsx
-import { jsx as jsx9, jsxs as jsxs6 } from "react/jsx-runtime";
-var ErrorMessage = ({ error }) => /* @__PURE__ */ jsx9("div", { className: "error-message", children: error });
+import { jsx as jsx10, jsxs as jsxs7 } from "react/jsx-runtime";
+var ErrorMessage = ({ error }) => /* @__PURE__ */ jsx10("div", { className: "error-message", children: error });
 var FormField = ({ children, error }) => {
   const errorClass = error ? "error" : null;
-  const errorMessage = error ? /* @__PURE__ */ jsx9(ErrorMessage, { error }) : null;
+  const errorMessage = error ? /* @__PURE__ */ jsx10(ErrorMessage, { error }) : null;
   const classNames = `form-field ${errorClass}`;
-  return /* @__PURE__ */ jsxs6("div", { className: classNames, children: [
+  return /* @__PURE__ */ jsxs7("div", { className: classNames, children: [
     children,
     errorMessage
   ] });
@@ -184,11 +246,11 @@ var FormField = ({ children, error }) => {
 var FormField_default = FormField;
 
 // src/components/hero/Hero.jsx
-import { jsx as jsx10, jsxs as jsxs7 } from "react/jsx-runtime";
+import { jsx as jsx11, jsxs as jsxs8 } from "react/jsx-runtime";
 var CTA = (Link) => {
   const f = ({ href, text, buttonClass }, i) => {
     if (!Link)
-      return /* @__PURE__ */ jsx10(
+      return /* @__PURE__ */ jsx11(
         "a",
         {
           href,
@@ -197,7 +259,7 @@ var CTA = (Link) => {
         },
         i
       );
-    return /* @__PURE__ */ jsx10(
+    return /* @__PURE__ */ jsx11(
       Link,
       {
         href,
@@ -212,23 +274,23 @@ var CTA = (Link) => {
 var Hero = ({ title, description, ctas, Link }) => {
   const ctaFunk = CTA(Link);
   if (typeof description === "string") {
-    description = /* @__PURE__ */ jsx10("p", { children: description });
+    description = /* @__PURE__ */ jsx11("p", { children: description });
   }
-  return /* @__PURE__ */ jsxs7("div", { id: "hero", children: [
-    /* @__PURE__ */ jsxs7("div", { id: "heading-and-lead", children: [
-      /* @__PURE__ */ jsx10("h1", { children: title }),
+  return /* @__PURE__ */ jsxs8("div", { id: "hero", children: [
+    /* @__PURE__ */ jsxs8("div", { id: "heading-and-lead", children: [
+      /* @__PURE__ */ jsx11("h1", { children: title }),
       description
     ] }),
-    /* @__PURE__ */ jsx10("div", { id: "hero-ctas", children: ctas.map(ctaFunk) })
+    /* @__PURE__ */ jsx11("div", { id: "hero-ctas", children: ctas.map(ctaFunk) })
   ] });
 };
 var Hero_default = Hero;
 
 // src/components/input/Input.jsx
 import { forwardRef as forwardRef4 } from "react";
-import { jsx as jsx11 } from "react/jsx-runtime";
+import { jsx as jsx12 } from "react/jsx-runtime";
 var Input = forwardRef4(function input({ type = "text", className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx11(
+  return /* @__PURE__ */ jsx12(
     "input",
     {
       ref,
@@ -245,7 +307,7 @@ var Input_default = Input;
 
 // src/components/modal/Modal.jsx
 import { useEffect, useRef } from "react";
-import { jsx as jsx12, jsxs as jsxs8 } from "react/jsx-runtime";
+import { jsx as jsx13, jsxs as jsxs9 } from "react/jsx-runtime";
 var Modal = ({ isOpen, onClose, title, children, footer }) => {
   const dialogRef = useRef(null);
   useEffect(() => {
@@ -269,10 +331,10 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
   };
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <dialog> handles keyboard interaction natively via the cancel event (Escape key)
-    /* @__PURE__ */ jsx12("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs8("div", { className: "modal-content", children: [
-      /* @__PURE__ */ jsxs8("div", { className: "modal-header", children: [
-        /* @__PURE__ */ jsx12("h2", { className: "modal-title", children: title }),
-        /* @__PURE__ */ jsx12(
+    /* @__PURE__ */ jsx13("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs9("div", { className: "modal-content", children: [
+      /* @__PURE__ */ jsxs9("div", { className: "modal-header", children: [
+        /* @__PURE__ */ jsx13("h2", { className: "modal-title", children: title }),
+        /* @__PURE__ */ jsx13(
           "button",
           {
             type: "button",
@@ -283,8 +345,8 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
           }
         )
       ] }),
-      /* @__PURE__ */ jsx12("div", { className: "modal-body", children }),
-      footer && /* @__PURE__ */ jsx12("div", { className: "modal-footer", children: footer })
+      /* @__PURE__ */ jsx13("div", { className: "modal-body", children }),
+      footer && /* @__PURE__ */ jsx13("div", { className: "modal-footer", children: footer })
     ] }) })
   );
 };
@@ -294,7 +356,7 @@ var Modal_default = Modal;
 import { Component } from "react";
 
 // src/components/menu-item/MenuItem.jsx
-import { jsx as jsx13 } from "react/jsx-runtime";
+import { jsx as jsx14 } from "react/jsx-runtime";
 var MenuItem = ({
   text,
   id,
@@ -310,7 +372,7 @@ var MenuItem = ({
 }) => {
   if (url && !onClick) {
     if (url.startsWith("http") || url.startsWith("mailto")) {
-      return /* @__PURE__ */ jsx13("li", { children: /* @__PURE__ */ jsx13(
+      return /* @__PURE__ */ jsx14("li", { children: /* @__PURE__ */ jsx14(
         "a",
         {
           id,
@@ -323,7 +385,7 @@ var MenuItem = ({
         }
       ) }, i);
     } else {
-      return /* @__PURE__ */ jsx13("li", { children: /* @__PURE__ */ jsx13(
+      return /* @__PURE__ */ jsx14("li", { children: /* @__PURE__ */ jsx14(
         Link,
         {
           id,
@@ -337,29 +399,29 @@ var MenuItem = ({
       ) }, i);
     }
   } else {
-    return /* @__PURE__ */ jsx13("li", { children: /* @__PURE__ */ jsx13("button", { type: "button", id, className, onClick, children: text }) }, i);
+    return /* @__PURE__ */ jsx14("li", { children: /* @__PURE__ */ jsx14("button", { type: "button", id, className, onClick, children: text }) }, i);
   }
 };
 var MenuItem_default = MenuItem;
 
 // src/components/desktop-menu/DesktopMenu.jsx
-import { jsx as jsx14 } from "react/jsx-runtime";
+import { jsx as jsx15 } from "react/jsx-runtime";
 import { createElement } from "react";
-var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx14("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx15("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
   return /* @__PURE__ */ createElement(MenuItem_default, { ...link, i, key: link.id, Link });
 }) });
 var DesktopMenu_default = DesktopMenu;
 
 // src/components/hamburger/Hamburger.jsx
-import { jsx as jsx15, jsxs as jsxs9 } from "react/jsx-runtime";
-var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx15(
+import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
+var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx16(
   "button",
   {
     type: "button",
     id: "hamburger",
     onClick,
     "data-testid": "hamburger",
-    children: /* @__PURE__ */ jsxs9(
+    children: /* @__PURE__ */ jsxs10(
       "svg",
       {
         width: width || "33px",
@@ -369,8 +431,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx15(
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         children: [
-          /* @__PURE__ */ jsx15("title", { children: "Menu" }),
-          /* @__PURE__ */ jsx15(
+          /* @__PURE__ */ jsx16("title", { children: "Menu" }),
+          /* @__PURE__ */ jsx16(
             "g",
             {
               id: "hamburger-container",
@@ -380,17 +442,17 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx15(
               fillRule: "evenodd",
               strokeLinecap: "end",
               strokeLinejoin: "end",
-              children: /* @__PURE__ */ jsx15(
+              children: /* @__PURE__ */ jsx16(
                 "g",
                 {
                   id: "hamburger-layers",
                   transform: "translate(-328.000000, -19.000000)",
                   stroke: "#000",
                   strokeWidth: "2",
-                  children: /* @__PURE__ */ jsxs9("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
-                    /* @__PURE__ */ jsx15("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
-                    /* @__PURE__ */ jsx15("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
-                    /* @__PURE__ */ jsx15("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
+                  children: /* @__PURE__ */ jsxs10("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
+                    /* @__PURE__ */ jsx16("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
+                    /* @__PURE__ */ jsx16("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
+                    /* @__PURE__ */ jsx16("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
                   ] })
                 }
               )
@@ -404,8 +466,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx15(
 var Hamburger_default = Hamburger;
 
 // src/components/close-icon/CloseIcon.jsx
-import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
-var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs10(
+import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
+var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs11(
   "svg",
   {
     width: width || "26px",
@@ -415,8 +477,8 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs10(
     xmlns: "http://www.w3.org/2000/svg",
     xmlnsXlink: "http://www.w3.org/1999/xlink",
     children: [
-      /* @__PURE__ */ jsx16("title", { children: "Close" }),
-      /* @__PURE__ */ jsx16(
+      /* @__PURE__ */ jsx17("title", { children: "Close" }),
+      /* @__PURE__ */ jsx17(
         "g",
         {
           id: "containing-group",
@@ -426,16 +488,16 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs10(
           fillRule: "evenodd",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          children: /* @__PURE__ */ jsx16(
+          children: /* @__PURE__ */ jsx17(
             "g",
             {
               id: "9.7\u201D-iPad",
               transform: "translate(-681.000000, -23.000000)",
               stroke: "#000",
               strokeWidth: "3",
-              children: /* @__PURE__ */ jsxs10("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
-                /* @__PURE__ */ jsx16("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
-                /* @__PURE__ */ jsx16("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
+              children: /* @__PURE__ */ jsxs11("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
+                /* @__PURE__ */ jsx17("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
+                /* @__PURE__ */ jsx17("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
               ] })
             }
           )
@@ -447,12 +509,12 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs10(
 var CloseIcon_default = CloseIcon;
 
 // src/components/mobile-menu/MobileMenu.jsx
-import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx18, jsxs as jsxs12 } from "react/jsx-runtime";
 var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
-  return /* @__PURE__ */ jsxs11("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
-    /* @__PURE__ */ jsx17("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx17("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx17(CloseIcon_default, { width: "20px" }) }) }),
-    menuOpen && /* @__PURE__ */ jsx17("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
-      return /* @__PURE__ */ jsx17(
+  return /* @__PURE__ */ jsxs12("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
+    /* @__PURE__ */ jsx18("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx18("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx18(CloseIcon_default, { width: "20px" }) }) }),
+    menuOpen && /* @__PURE__ */ jsx18("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+      return /* @__PURE__ */ jsx18(
         MenuItem_default,
         {
           ...link,
@@ -469,7 +531,7 @@ var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 var MobileMenu_default = MobileMenu;
 
 // src/components/nav-bar/NavBar.jsx
-import { Fragment, jsx as jsx18, jsxs as jsxs12 } from "react/jsx-runtime";
+import { Fragment, jsx as jsx19, jsxs as jsxs13 } from "react/jsx-runtime";
 var NavBar = class extends Component {
   constructor(props) {
     super(props);
@@ -486,17 +548,17 @@ var NavBar = class extends Component {
       Link,
       loggedIn,
       className,
-      midSection = /* @__PURE__ */ jsx18("div", {})
+      midSection = /* @__PURE__ */ jsx19("div", {})
     } = this.props;
     const { menuOpen } = this.state;
-    return /* @__PURE__ */ jsxs12(Fragment, { children: [
-      /* @__PURE__ */ jsx18("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx18("div", { className: "container", children: /* @__PURE__ */ jsxs12("div", { className: "withSidePadding", children: [
+    return /* @__PURE__ */ jsxs13(Fragment, { children: [
+      /* @__PURE__ */ jsx19("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx19("div", { className: "container", children: /* @__PURE__ */ jsxs13("div", { className: "withSidePadding", children: [
         logo,
         midSection,
-        /* @__PURE__ */ jsx18(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
-        /* @__PURE__ */ jsx18(DesktopMenu_default, { ...{ links, loggedIn, Link } })
+        /* @__PURE__ */ jsx19(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
+        /* @__PURE__ */ jsx19(DesktopMenu_default, { ...{ links, loggedIn, Link } })
       ] }) }) }),
-      /* @__PURE__ */ jsx18(
+      /* @__PURE__ */ jsx19(
         MobileMenu_default,
         {
           ...{
@@ -514,18 +576,18 @@ var NavBar = class extends Component {
 var NavBar_default = NavBar;
 
 // src/components/page/Page.jsx
-import { jsx as jsx19 } from "react/jsx-runtime";
-var Page = ({ children }) => /* @__PURE__ */ jsx19("div", { className: "page", children });
+import { jsx as jsx20 } from "react/jsx-runtime";
+var Page = ({ children }) => /* @__PURE__ */ jsx20("div", { className: "page", children });
 var Page_default = Page;
 
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
   const isControlled = checked !== void 0;
-  return /* @__PURE__ */ jsxs13("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx20(
+  return /* @__PURE__ */ jsxs14("label", { className: classNames, children: [
+    /* @__PURE__ */ jsx21(
       "input",
       {
         type: "radio",
@@ -535,18 +597,18 @@ var RadioButton = forwardRef5(function radioButton({ name, label, className, def
         ...isControlled ? { checked, onChange } : {}
       }
     ),
-    /* @__PURE__ */ jsx20("div", { className: "radio-element", children: /* @__PURE__ */ jsx20("div", { className: "selected" }) }),
-    /* @__PURE__ */ jsx20("span", { children: label })
+    /* @__PURE__ */ jsx21("div", { className: "radio-element", children: /* @__PURE__ */ jsx21("div", { className: "selected" }) }),
+    /* @__PURE__ */ jsx21("span", { children: label })
   ] });
 });
 var RadioButton_default = RadioButton;
 
 // src/components/select/Select.jsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx21 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx21("option", { value, children: label }, index);
+import { jsx as jsx22 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx22("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx21(
+  return /* @__PURE__ */ jsx22(
     "select",
     {
       ref,
@@ -561,9 +623,9 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 var Select_default = Select;
 
 // src/components/skeleton/Skeleton.jsx
-import { jsx as jsx22 } from "react/jsx-runtime";
+import { jsx as jsx23 } from "react/jsx-runtime";
 var toCSS = (value) => typeof value === "number" ? `${value}px` : value;
-var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx22(
+var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx23(
   "div",
   {
     className: "skeleton",
@@ -579,7 +641,7 @@ var Skeleton = ({
   className
 }) => {
   if (lines === 1) {
-    return /* @__PURE__ */ jsx22(
+    return /* @__PURE__ */ jsx23(
       "div",
       {
         className: `skeleton${className ? ` ${className}` : ""}`,
@@ -592,7 +654,7 @@ var Skeleton = ({
     id: `line-${i}`,
     isLast: i === lines - 1
   }));
-  return /* @__PURE__ */ jsx22("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx22(
+  return /* @__PURE__ */ jsx23("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx23(
     SkeletonLine,
     {
       width: isLast ? "70%" : width,
@@ -605,16 +667,16 @@ var Skeleton = ({
 var Skeleton_default = Skeleton;
 
 // src/components/spinner/Spinner.jsx
-import { jsx as jsx23 } from "react/jsx-runtime";
+import { jsx as jsx24 } from "react/jsx-runtime";
 var Spinner = ({ size = "md", label = "Loading...", className }) => {
   const classNames = `spinner spinner-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx23("div", { className: classNames, role: "status", "aria-label": label });
+  return /* @__PURE__ */ jsx24("div", { className: classNames, role: "status", "aria-label": label });
 };
 var Spinner_default = Spinner;
 
 // src/components/switch/Switch.jsx
-import { forwardRef as forwardRef7, useState } from "react";
-import { jsx as jsx24, jsxs as jsxs14 } from "react/jsx-runtime";
+import { forwardRef as forwardRef7, useState as useState2 } from "react";
+import { jsx as jsx25, jsxs as jsxs15 } from "react/jsx-runtime";
 var Switch = forwardRef7(function switchInput({
   name,
   label,
@@ -625,7 +687,7 @@ var Switch = forwardRef7(function switchInput({
   disabled
 }, ref) {
   const isControlled = checked !== void 0;
-  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+  const [internalChecked, setInternalChecked] = useState2(defaultChecked);
   const isChecked = isControlled ? checked : internalChecked;
   const handleChange = (e) => {
     if (!isControlled) {
@@ -634,8 +696,8 @@ var Switch = forwardRef7(function switchInput({
     onChange?.(e);
   };
   const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs14("label", { className: labelClass, children: [
-    /* @__PURE__ */ jsx24(
+  return /* @__PURE__ */ jsxs15("label", { className: labelClass, children: [
+    /* @__PURE__ */ jsx25(
       "input",
       {
         type: "checkbox",
@@ -648,29 +710,29 @@ var Switch = forwardRef7(function switchInput({
         disabled
       }
     ),
-    /* @__PURE__ */ jsx24("div", { className: "switch-track", children: /* @__PURE__ */ jsx24("div", { className: "switch-thumb" }) }),
-    label && /* @__PURE__ */ jsx24("span", { className: "switch-label", children: label })
+    /* @__PURE__ */ jsx25("div", { className: "switch-track", children: /* @__PURE__ */ jsx25("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx25("span", { className: "switch-label", children: label })
   ] });
 });
 var Switch_default = Switch;
 
 // src/components/table/Table.jsx
-import { jsx as jsx25, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs16 } from "react/jsx-runtime";
 var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx25("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs15("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx25("caption", { children: caption }),
-    /* @__PURE__ */ jsx25("thead", { children: /* @__PURE__ */ jsx25("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx25("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx25("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx25("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx25("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx26("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs16("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx26("caption", { children: caption }),
+    /* @__PURE__ */ jsx26("thead", { children: /* @__PURE__ */ jsx26("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx26("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx26("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx26("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx26("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.jsx
-import { useRef as useRef2, useState as useState2 } from "react";
-import { jsx as jsx26, jsxs as jsxs16 } from "react/jsx-runtime";
+import { useRef as useRef2, useState as useState3 } from "react";
+import { jsx as jsx27, jsxs as jsxs17 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
-  const [activeTab, setActiveTab] = useState2(defaultTab ?? tabs[0]?.id);
+  const [activeTab, setActiveTab] = useState3(defaultTab ?? tabs[0]?.id);
   const tabRefs = useRef2({});
   const handleSelect = (id) => {
     setActiveTab(id);
@@ -691,8 +753,8 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
     }
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs16("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx26("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx26(
+  return /* @__PURE__ */ jsxs17("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx27("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx27(
       "button",
       {
         ref: (el) => {
@@ -711,7 +773,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx26(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx27(
       "div",
       {
         id: `panel-${id}`,
@@ -729,17 +791,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx27, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs18 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs17("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs17("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs17("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx27("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx27("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx27("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs18("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs18("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs18("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx27("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx27("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx27(
+      /* @__PURE__ */ jsx28("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx28("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx28(
         "button",
         {
           type: "button",
@@ -749,16 +811,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx27("pre", { children: /* @__PURE__ */ jsx27("code", { children: code }) })
+    /* @__PURE__ */ jsx28("pre", { children: /* @__PURE__ */ jsx28("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef8 } from "react";
-import { jsx as jsx28 } from "react/jsx-runtime";
+import { jsx as jsx29 } from "react/jsx-runtime";
 var Textarea = forwardRef8(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx29(
     "textarea",
     {
       ref,
@@ -774,7 +836,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect2 } from "react";
-import { jsx as jsx29, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx30, jsxs as jsxs19 } from "react/jsx-runtime";
 var variantIcons2 = {
   success: "\u2713",
   error: "\u2715",
@@ -796,19 +858,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs18(
+  return /* @__PURE__ */ jsxs19(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx29("div", { className: "toast-icon", children: variantIcons2[variant] }),
-        /* @__PURE__ */ jsxs18("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx29("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx29("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx30("div", { className: "toast-icon", children: variantIcons2[variant] }),
+        /* @__PURE__ */ jsxs19("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx30("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx30("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx29(
+        /* @__PURE__ */ jsx30(
           "button",
           {
             type: "button",
@@ -840,6 +902,7 @@ var handleErrors = (setError, err) => {
   setError(errors);
 };
 export {
+  Accordion_default as Accordion,
   Alert_default as Alert,
   Badge_default as Badge,
   Button_default as Button,

@@ -1,0 +1,8 @@
+---
+import AccordionPage from "../../components/docs/AccordionPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Accordion - UI Docs">
+    <AccordionPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
