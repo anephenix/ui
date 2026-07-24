@@ -1,5 +1,27 @@
 # CHANGELOG
 
+### 0.4.0 - Friday 24th July, 2026
+
+- Bumped to minor version (0.4.0)
+- Updated the documentation in the Readme and the site
+- Fixed the popover when showing on the left
+- Added the Popover component
+- Added the Tooltip component
+- Added the Avatar component
+- Added the Breadcrumb component
+- Added the Pagination component
+- Added the Accordion component
+- Added the Spinner and Skeleton components
+- Added the Badge component
+- Added the Card component
+- Added the Alert component
+- Added the Switch component
+- Added the Tabs component
+- Added the Table component
+- Added the Toast component
+- Added Modal component
+- Updated Documentation in the Readme and the site
+
 ### 0.3.1 - Friday 24th July, 2026
 
 - Updated biome schema
