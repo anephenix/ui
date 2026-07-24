@@ -1,0 +1,8 @@
+---
+import SelectPage from "../../components/docs/SelectPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Select - UI Docs">
+    <SelectPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

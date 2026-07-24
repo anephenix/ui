@@ -1,0 +1,8 @@
+---
+import FormFieldPage from "../../components/docs/FormFieldPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="FormField - UI Docs">
+    <FormFieldPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

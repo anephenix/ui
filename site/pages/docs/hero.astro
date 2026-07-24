@@ -1,0 +1,8 @@
+---
+import HeroPage from "../../components/docs/HeroPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Hero - UI Docs">
+    <HeroPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

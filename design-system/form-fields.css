@@ -40,6 +40,7 @@ input[type="radio"] {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	position: relative;
 }
 
 .checkbox-element,
@@ -72,6 +73,20 @@ input[type="radio"] {
 	border-radius: var(--spacer-two);
 }
 
+.tick,
+.selected {
+	width: var(--grid-base);
+	height: var(--grid-base);
+	border-radius: 1px;
+	background-color: var(--green-one-colour);
+	opacity: 0;
+	transition: opacity 0.2s linear;
+}
+
+.selected {
+	border-radius: var(--spacer-one);
+}
+
 .large .tick {
 	border-radius: 2px;
 }
@@ -80,31 +95,19 @@ input[type="radio"] {
 	border-radius: var(--spacer-one);
 }
 
-.tick,
-.selected {
-	width: 0px;
-	height: 0px;
-	border-radius: 1px;
-	background-color: var(--green-one-colour);
-	opacity: 0;
-	transition: all 0.2s linear;
-}
-
-.selected {
-	border-radius: var(--spacer-one);
+.large .tick,
+.large .selected {
+	width: var(--spacer-two);
+	height: var(--spacer-two);
 }
 
 input[type="checkbox"]:checked + .checkbox-element .tick,
 input[type="radio"]:checked + .radio-element .selected {
-	width: var(--grid-base);
-	height: var(--grid-base);
 	opacity: 1;
 }
 
 .large input[type="checkbox"]:checked + .checkbox-element .tick,
 .large input[type="radio"]:checked + .radio-element .selected {
-	width: var(--spacer-two);
-	height: var(--spacer-two);
 	opacity: 1;
 }
 

@@ -1,0 +1,8 @@
+---
+import TerminalPage from "../../components/docs/TerminalPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Terminal - UI Docs">
+    <TerminalPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

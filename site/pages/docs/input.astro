@@ -1,0 +1,8 @@
+---
+import InputPage from "../../components/docs/InputPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Input - UI Docs">
+    <InputPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

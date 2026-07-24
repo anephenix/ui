@@ -1,0 +1,8 @@
+---
+import NavBarPage from "../../components/docs/NavBarPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="NavBar - UI Docs">
+    <NavBarPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

@@ -1,3 +1,231 @@
+/* ── Docs sidebar layout ────────────────────────────────────────── */
+
+.docs-layout-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: var(--spacer-five);
+	padding-top: var(--spacer-five);
+	padding-bottom: 80px;
+	align-items: flex-start;
+	margin: 0 auto;
+}
+
+.docs-sidebar {
+	width: 200px;
+	flex-shrink: 0;
+	position: sticky;
+	top: 24px;
+}
+
+.docs-main {
+	flex: 1;
+	min-width: 0;
+}
+
+.docs-sidebar nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.docs-sidebar-group {
+	margin-bottom: 20px;
+}
+
+.docs-sidebar-group-label {
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #999;
+	margin-bottom: 6px;
+	padding-left: 8px;
+}
+
+.docs-sidebar nav a {
+	display: block;
+	padding: 4px 8px;
+	color: inherit;
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 0.9rem;
+}
+
+.docs-sidebar nav a:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.docs-sidebar nav a.active {
+	font-weight: 700;
+	background: rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.docs-sidebar-group-label {
+		color: #666;
+	}
+	.docs-sidebar nav a:hover {
+		background: rgba(255, 255, 255, 0.08);
+	}
+	.docs-sidebar nav a.active {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.docs-layout-wrapper {
+		flex-direction: column;
+		gap: var(--spacer-three);
+		padding-top: var(--spacer-three);
+	}
+	.docs-sidebar {
+		width: 100%;
+		position: static;
+	}
+}
+
+/* ── Component page content ─────────────────────────────────────── */
+
+.docs-content h1 {
+	margin-bottom: 0.4rem;
+}
+
+.docs-content h2 {
+	margin-top: 2.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.docs-content p {
+	line-height: 1.6;
+	margin-bottom: 1rem;
+}
+
+.docs-content code {
+	background: rgba(0, 0, 0, 0.06);
+	padding: 2px 5px;
+	border-radius: 3px;
+	font-family: monospace;
+	font-size: 0.875em;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.docs-content code {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.docs-example {
+	margin-top: 1rem;
+	padding: 1.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.docs-example {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.docs-component-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--spacer-two);
+	margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+	.docs-component-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.docs-component-card {
+	display: block;
+	padding: var(--spacer-two);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
+}
+
+.docs-component-card:hover {
+	border-color: rgba(0, 0, 0, 0.25);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.docs-component-card strong {
+	display: block;
+	margin-bottom: 0.4rem;
+}
+
+.docs-component-card p {
+	font-size: 0.85rem;
+	color: #666;
+	margin: 0;
+	line-height: 1.5;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.docs-component-card {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+	.docs-component-card:hover {
+		border-color: rgba(255, 255, 255, 0.3);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	}
+	.docs-component-card p {
+		color: #999;
+	}
+}
+
+/* ── Prop table ─────────────────────────────────────────────────── */
+
+.prop-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0.5rem 0 1.5rem;
+	font-size: 0.875rem;
+}
+
+.prop-table th {
+	text-align: left;
+	padding: 0.4rem 0.75rem;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+	font-weight: 700;
+}
+
+.prop-table td {
+	padding: 0.35rem 0.75rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+	vertical-align: top;
+}
+
+.prop-table td:first-child,
+.prop-table td:nth-child(2) {
+	font-family: monospace;
+	font-size: 0.82rem;
+}
+
+.prop-table td:nth-child(2) {
+	color: #666;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.prop-table th {
+		border-color: rgba(255, 255, 255, 0.2);
+	}
+	.prop-table td {
+		border-color: rgba(255, 255, 255, 0.06);
+	}
+	.prop-table td:nth-child(2) {
+		color: #999;
+	}
+}
+
 .colour-key {
 	width: 96px;
 	height: 96px;

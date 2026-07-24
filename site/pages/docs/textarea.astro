@@ -1,0 +1,8 @@
+---
+import TextareaPage from "../../components/docs/TextareaPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Textarea - UI Docs">
+    <TextareaPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

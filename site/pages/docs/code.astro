@@ -1,0 +1,8 @@
+---
+import CodePage from "../../components/docs/CodePage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Code - UI Docs">
+    <CodePage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

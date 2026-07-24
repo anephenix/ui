@@ -411,10 +411,20 @@ var Page_default = Page;
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
 import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
-var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue }, ref) {
+var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
+  const isControlled = checked !== void 0;
   return /* @__PURE__ */ jsxs10("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx16("input", { type: "radio", name, ref, defaultValue }),
+    /* @__PURE__ */ jsx16(
+      "input",
+      {
+        type: "radio",
+        name,
+        ref,
+        value: isControlled ? value : defaultValue,
+        ...isControlled ? { checked, onChange } : {}
+      }
+    ),
     /* @__PURE__ */ jsx16("div", { className: "radio-element", children: /* @__PURE__ */ jsx16("div", { className: "selected" }) }),
     /* @__PURE__ */ jsx16("span", { children: label })
   ] });

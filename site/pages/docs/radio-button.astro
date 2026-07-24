@@ -1,0 +1,8 @@
+---
+import RadioButtonPage from "../../components/docs/RadioButtonPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="RadioButton - UI Docs">
+    <RadioButtonPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

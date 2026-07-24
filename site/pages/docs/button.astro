@@ -1,0 +1,8 @@
+---
+import ButtonPage from "../../components/docs/ButtonPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Button - UI Docs">
+    <ButtonPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

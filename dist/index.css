@@ -313,22 +313,22 @@
 #mobile-menu #close-icon {
   cursor: pointer;
 }
-#mobile-menu #hamburger:hover path {
-  stroke: #cccccc;
-}
 #mobile-menu #hamburger path {
   stroke: var(--light);
+}
+#mobile-menu #hamburger:hover path {
+  stroke: #cccccc;
 }
 @media screen and (prefers-color-scheme: dark) {
   #mobile-menu {
     background: var(--dark);
     color: var(--light);
   }
-  #mobile-menu #close-icon:hover path {
-    stroke: #cccccc;
-  }
   #mobile-menu #close-icon path {
     stroke: var(--light);
+  }
+  #mobile-menu #close-icon:hover path {
+    stroke: #cccccc;
   }
   #mobile-menu ul li a {
     color: var(--light);
@@ -503,8 +503,8 @@
   display: flex;
   padding: 30px 10px;
   margin: 0;
-  background-color: transparent !important;
-  color: rgb(180, 240, 131) !important;
+  background-color: transparent;
+  color: rgb(180, 240, 131);
   font-size: 10pt;
 }
 @media screen and (max-width: 720px) {
@@ -591,6 +591,7 @@ input[type=radio] {
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 .checkbox-element,
 .radio-element {
@@ -618,34 +619,35 @@ input[type=radio] {
 .large .radio-element {
   border-radius: var(--spacer-two);
 }
+.tick,
+.selected {
+  width: var(--grid-base);
+  height: var(--grid-base);
+  border-radius: 1px;
+  background-color: var(--green-one-colour);
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.selected {
+  border-radius: var(--spacer-one);
+}
 .large .tick {
   border-radius: 2px;
 }
 .large .selected {
   border-radius: var(--spacer-one);
 }
-.tick,
-.selected {
-  width: 0px;
-  height: 0px;
-  border-radius: 1px;
-  background-color: var(--green-one-colour);
-  opacity: 0;
-  transition: all 0.2s linear;
-}
-.selected {
-  border-radius: var(--spacer-one);
+.large .tick,
+.large .selected {
+  width: var(--spacer-two);
+  height: var(--spacer-two);
 }
 input[type=checkbox]:checked + .checkbox-element .tick,
 input[type=radio]:checked + .radio-element .selected {
-  width: var(--grid-base);
-  height: var(--grid-base);
   opacity: 1;
 }
 .large input[type=checkbox]:checked + .checkbox-element .tick,
 .large input[type=radio]:checked + .radio-element .selected {
-  width: var(--spacer-two);
-  height: var(--spacer-two);
   opacity: 1;
 }
 input[type=checkbox]:disabled + .checkbox-element,

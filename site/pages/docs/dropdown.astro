@@ -1,0 +1,8 @@
+---
+import DropdownPage from "../../components/docs/DropdownPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Dropdown - UI Docs">
+    <DropdownPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

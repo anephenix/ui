@@ -1,0 +1,8 @@
+---
+import PageComponentPage from "../../components/docs/PageComponentPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Page - UI Docs">
+    <PageComponentPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

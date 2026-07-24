@@ -49,12 +49,12 @@
 	cursor: pointer;
 }
 
-#mobile-menu #hamburger:hover path {
-	stroke: #cccccc;
-}
-
 #mobile-menu #hamburger path {
 	stroke: var(--light);
+}
+
+#mobile-menu #hamburger:hover path {
+	stroke: #cccccc;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -63,12 +63,12 @@
 		color: var(--light);
 	}
 
-	#mobile-menu #close-icon:hover path {
-		stroke: #cccccc;
-	}
-
 	#mobile-menu #close-icon path {
 		stroke: var(--light);
+	}
+
+	#mobile-menu #close-icon:hover path {
+		stroke: #cccccc;
 	}
 
 	#mobile-menu ul li a {

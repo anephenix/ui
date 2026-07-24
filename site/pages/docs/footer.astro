@@ -1,0 +1,8 @@
+---
+import FooterPage from "../../components/docs/FooterPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Footer - UI Docs">
+    <FooterPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

@@ -1,0 +1,8 @@
+---
+import CheckboxPage from "../../components/docs/CheckboxPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Checkbox - UI Docs">
+    <CheckboxPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
