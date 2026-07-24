@@ -1,0 +1,8 @@
+---
+import ToastPage from "../../components/docs/ToastPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Toast - UI Docs">
+    <ToastPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

@@ -542,6 +542,58 @@ var Textarea = forwardRef7(function textarea({ className, defaultValue, placehol
 });
 var Textarea_default = Textarea;
 
+// src/components/toast/Toast.jsx
+import { useEffect as useEffect2 } from "react";
+import { jsx as jsx21, jsxs as jsxs13 } from "react/jsx-runtime";
+var variantIcons = {
+  success: "\u2713",
+  error: "\u2715",
+  warning: "\u26A0",
+  info: "\u2139"
+};
+var Toast = ({
+  isVisible,
+  title,
+  message,
+  variant = "info",
+  position = "top-right",
+  onClose,
+  duration = 4e3
+}) => {
+  useEffect2(() => {
+    if (!isVisible || !duration) return;
+    const timer = setTimeout(() => onClose?.(), duration);
+    return () => clearTimeout(timer);
+  }, [isVisible, duration, onClose]);
+  if (!isVisible) return null;
+  return /* @__PURE__ */ jsxs13(
+    "div",
+    {
+      className: `toast toast-${variant} toast-${position}`,
+      role: "alert",
+      "aria-live": "polite",
+      children: [
+        /* @__PURE__ */ jsx21("div", { className: "toast-icon", children: variantIcons[variant] }),
+        /* @__PURE__ */ jsxs13("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx21("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx21("div", { className: "toast-message", children: message })
+        ] }),
+        /* @__PURE__ */ jsx21(
+          "button",
+          {
+            type: "button",
+            className: "toast-close",
+            onClick: onClose,
+            "aria-label": "Close",
+            children: "\xD7"
+          }
+        )
+      ]
+    }
+  );
+};
+var Toast_default = Toast;
+
 // index.jsx
 var handleErrors = (setError, err) => {
   const errors = [];
@@ -573,5 +625,6 @@ export {
   Select_default as Select,
   Terminal_default as Terminal,
   Textarea_default as Textarea,
+  Toast_default as Toast,
   handleErrors
 };

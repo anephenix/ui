@@ -13,6 +13,7 @@ import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
 import Terminal from "./src/components/terminal/Terminal";
 import Textarea from "./src/components/textarea/Textarea";
+import Toast from "./src/components/toast/Toast";
 
 import "./design-system/index.css";
 
@@ -50,4 +51,5 @@ export {
 	Select,
 	Terminal,
 	Textarea,
+	Toast,
 };

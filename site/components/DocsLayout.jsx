@@ -102,7 +102,10 @@ const sidebarGroups = [
 	},
 	{
 		label: "Overlays",
-		items: [{ href: "/docs/modal", label: "Modal" }],
+		items: [
+			{ href: "/docs/modal", label: "Modal" },
+			{ href: "/docs/toast", label: "Toast" },
+		],
 	},
 ];
 
