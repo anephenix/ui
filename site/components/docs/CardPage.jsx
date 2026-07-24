@@ -13,7 +13,7 @@ const usageSnippet = `// Minimal — body content only
   subtitle="Read the docs and install in minutes"
   footer={
     <Button
-      text="View docs"
+      text="Docs"
       className="button theme-default primary"
     />
   }

@@ -1,0 +1,8 @@
+---
+import SkeletonPage from "../../../components/docs/SkeletonPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Skeleton - UI Docs">
+    <SkeletonPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

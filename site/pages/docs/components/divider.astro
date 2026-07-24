@@ -1,0 +1,8 @@
+---
+import DividerPage from "../../../components/docs/DividerPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Divider - UI Docs">
+    <DividerPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

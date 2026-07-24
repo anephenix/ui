@@ -1,0 +1,8 @@
+---
+import BreadcrumbPage from "../../../components/docs/BreadcrumbPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Breadcrumb - UI Docs">
+    <BreadcrumbPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

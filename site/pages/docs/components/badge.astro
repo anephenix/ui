@@ -1,0 +1,8 @@
+---
+import BadgePage from "../../../components/docs/BadgePage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Badge - UI Docs">
+    <BadgePage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

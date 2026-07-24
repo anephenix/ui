@@ -1,0 +1,301 @@
+{
+	"viewport": {
+		"width": 1280,
+		"height": 1024
+	},
+	"outputDir": "public/screenshots",
+	"defaults": {
+		"strategy": "element",
+		"selector": ".preview-ready > *"
+	},
+	"components": {
+		"Accordion": {
+			"strategy": "clip",
+			"clip": {
+				"x": 412,
+				"y": 0,
+				"width": 457,
+				"height": 298
+			}
+		},
+		"Alert": {
+			"strategy": "clip",
+			"clip": {
+				"x": 432,
+				"y": 0,
+				"width": 417,
+				"height": 393
+			}
+		},
+		"Avatar": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Badge": {
+			"strategy": "clip",
+			"clip": {
+				"x": 397,
+				"y": 0,
+				"width": 485,
+				"height": 220
+			}
+		},
+		"Breadcrumb": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Button": {
+			"strategy": "clip",
+			"clip": {
+				"x": 365,
+				"y": 0,
+				"width": 551,
+				"height": 220
+			}
+		},
+		"Card": {
+			"strategy": "clip",
+			"clip": {
+				"x": 217,
+				"y": 0,
+				"width": 846,
+				"height": 244
+			}
+		},
+		"Checkbox": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Code": {
+			"strategy": "clip",
+			"clip": {
+				"x": 300,
+				"y": 0,
+				"width": 680,
+				"height": 220
+			}
+		},
+		"ComboBox": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Divider": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Dropdown": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Footer": {
+			"strategy": "clip",
+			"clip": {
+				"x": 78,
+				"y": 48,
+				"width": 1124,
+				"height": 220
+			}
+		},
+		"FormField": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Hero": {
+			"strategy": "clip",
+			"clip": {
+				"x": 287,
+				"y": 200,
+				"width": 705,
+				"height": 444
+			}
+		},
+		"Input": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Modal": {
+			"strategy": "clip",
+			"clip": {
+				"x": 360,
+				"y": 352,
+				"width": 560,
+				"height": 321
+			}
+		},
+		"NavBar": {
+			"strategy": "clip",
+			"clip": {
+				"x": 0,
+				"y": 0,
+				"width": 1280,
+				"height": 220
+			}
+		},
+		"Pagination": {
+			"strategy": "clip",
+			"clip": {
+				"x": 383,
+				"y": 0,
+				"width": 514,
+				"height": 220
+			}
+		},
+		"Popover": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"ProgressBar": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 248
+			}
+		},
+		"RadioButton": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Select": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Skeleton": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 240
+			}
+		},
+		"Spinner": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Switch": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Table": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 244
+			}
+		},
+		"Tabs": {
+			"strategy": "clip",
+			"clip": {
+				"x": 427,
+				"y": 0,
+				"width": 427,
+				"height": 220
+			}
+		},
+		"Terminal": {
+			"strategy": "clip",
+			"clip": {
+				"x": 400,
+				"y": 0,
+				"width": 480,
+				"height": 220
+			}
+		},
+		"Textarea": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		},
+		"Toast": {
+			"strategy": "clip",
+			"clip": {
+				"x": 916,
+				"y": 0,
+				"width": 364,
+				"height": 220
+			}
+		},
+		"Tooltip": {
+			"strategy": "clip",
+			"clip": {
+				"x": 440,
+				"y": 0,
+				"width": 400,
+				"height": 220
+			}
+		}
+	}
+}

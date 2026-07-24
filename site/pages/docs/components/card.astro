@@ -1,0 +1,8 @@
+---
+import CardPage from "../../../components/docs/CardPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Card - UI Docs">
+    <CardPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

@@ -1,0 +1,9 @@
+---
+import config from "../../scripts/screenshot-config.json";
+import PreviewPage from "../components/PreviewPage.jsx";
+import PreviewLayout from "../layouts/PreviewLayout.astro";
+---
+
+<PreviewLayout>
+	<PreviewPage client:only="react" viewport={config.viewport} />
+</PreviewLayout>

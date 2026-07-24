@@ -1,0 +1,8 @@
+---
+import ProgressBarPage from "../../../components/docs/ProgressBarPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ProgressBar - UI Docs">
+    <ProgressBarPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

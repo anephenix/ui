@@ -29,6 +29,7 @@
 }
 
 .docs-sidebar-group {
+	margin-top: 32px;
 	margin-bottom: 20px;
 }
 
@@ -129,7 +130,7 @@
 
 .docs-component-grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	gap: var(--spacer-two);
 	margin-bottom: 2rem;
 }
@@ -140,45 +141,74 @@
 	}
 }
 
-.docs-component-card {
-	display: block;
-	padding: var(--spacer-two);
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
-	text-decoration: none;
-	color: inherit;
-	transition:
-		border-color 0.2s,
-		box-shadow 0.2s;
+.docs-component-card-wrapper {
+	display: flex;
+	flex-direction: column;
 }
 
-.docs-component-card:hover {
-	border-color: rgba(0, 0, 0, 0.25);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.docs-component-card-wrapper .card {
+	flex: 1;
 }
 
-.docs-component-card strong {
-	display: block;
-	margin-bottom: 0.4rem;
+.docs-component-card-wrapper .card-image {
+	height: 140px;
+	object-fit: contain;
+	object-position: center center;
 }
 
-.docs-component-card p {
+.docs-component-card-wrapper .card-body {
 	font-size: 0.85rem;
-	color: #666;
-	margin: 0;
-	line-height: 1.5;
+	color: #555;
+}
+
+.docs-card-actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.docs-card-action {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.3rem 0.75rem;
+	border-radius: 4px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background 0.15s;
+}
+
+.docs-card-action-docs {
+	background: var(--blue-one-colour);
+	color: #fff;
+}
+
+.docs-card-action-docs:hover {
+	background: var(--blue-two-colour);
+	color: var(--dark);
+}
+
+.docs-card-action-preview {
+	background: transparent;
+	color: var(--blue-one-colour);
+	border: 1px solid var(--blue-one-colour);
+}
+
+.docs-card-action-preview:hover {
+	background: rgba(39, 154, 225, 0.1);
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.docs-component-card {
-		border-color: rgba(255, 255, 255, 0.1);
+	.docs-component-card-wrapper .card-body {
+		color: #aaa;
 	}
-	.docs-component-card:hover {
-		border-color: rgba(255, 255, 255, 0.3);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+	.docs-card-action-docs {
+		color: var(--dark);
 	}
-	.docs-component-card p {
-		color: #999;
+
+	.docs-card-action-docs:hover {
+		background: var(--blue-one-colour);
+		color: #fff;
 	}
 }
 

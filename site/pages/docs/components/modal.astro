@@ -1,0 +1,8 @@
+---
+import ModalPage from "../../../components/docs/ModalPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Modal - UI Docs">
+    <ModalPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
