@@ -102,6 +102,11 @@ const categories = [
 				desc: "Collapsible sections with animated panels",
 			},
 			{
+				href: "/docs/divider",
+				name: "Divider",
+				desc: "Horizontal or vertical separator with solid, dashed, and dotted variants",
+			},
+			{
 				href: "/docs/alert",
 				name: "Alert",
 				desc: "Inline status banner with info, success, warning, and error variants",

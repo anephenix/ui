@@ -1,0 +1,121 @@
+.divider {
+	flex-shrink: 0;
+	border: none;
+	background: transparent;
+}
+
+/* Horizontal */
+
+.divider-horizontal {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: var(--form-field-border-colour);
+}
+
+.divider-horizontal.divider-dashed {
+	border-top-style: dashed;
+}
+
+.divider-horizontal.divider-dotted {
+	border-top-style: dotted;
+}
+
+/* Labeled horizontal — use flex + pseudo lines */
+
+.divider-horizontal:has(.divider-label) {
+	border-top: none;
+	gap: 12px;
+}
+
+.divider-horizontal:has(.divider-label)::before,
+.divider-horizontal:has(.divider-label)::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--form-field-border-colour);
+}
+
+.divider-horizontal.divider-dashed:has(.divider-label)::before,
+.divider-horizontal.divider-dashed:has(.divider-label)::after {
+	background: repeating-linear-gradient(
+		90deg,
+		var(--form-field-border-colour) 0,
+		var(--form-field-border-colour) 4px,
+		transparent 4px,
+		transparent 8px
+	);
+}
+
+.divider-horizontal.divider-dotted:has(.divider-label)::before,
+.divider-horizontal.divider-dotted:has(.divider-label)::after {
+	background: repeating-linear-gradient(
+		90deg,
+		var(--form-field-border-colour) 0,
+		var(--form-field-border-colour) 2px,
+		transparent 2px,
+		transparent 6px
+	);
+}
+
+/* Vertical */
+
+.divider-vertical {
+	display: inline-block;
+	align-self: stretch;
+	width: 1px;
+	background-color: var(--form-field-border-colour);
+	min-height: 1em;
+}
+
+.divider-vertical.divider-dashed {
+	background-image: repeating-linear-gradient(
+		180deg,
+		var(--form-field-border-colour) 0,
+		var(--form-field-border-colour) 4px,
+		transparent 4px,
+		transparent 8px
+	);
+	background-color: transparent;
+}
+
+.divider-vertical.divider-dotted {
+	background-image: repeating-linear-gradient(
+		180deg,
+		var(--form-field-border-colour) 0,
+		var(--form-field-border-colour) 2px,
+		transparent 2px,
+		transparent 6px
+	);
+	background-color: transparent;
+}
+
+/* Label */
+
+.divider-label {
+	font-size: 12px;
+	color: var(--form-field-colour);
+	opacity: 0.6;
+	white-space: nowrap;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.divider-horizontal {
+		border-top-color: rgba(255, 255, 255, 0.12);
+	}
+
+	.divider-horizontal:has(.divider-label)::before,
+	.divider-horizontal:has(.divider-label)::after {
+		background: rgba(255, 255, 255, 0.12);
+	}
+
+	.divider-vertical {
+		background-color: rgba(255, 255, 255, 0.12);
+	}
+
+	.divider-label {
+		color: var(--light);
+	}
+}

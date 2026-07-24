@@ -517,6 +517,39 @@ import { Alert } from '@anephenix/ui';
 
 ---
 
+**Divider**
+
+A visual separator between sections of content. Supports horizontal and vertical orientations, three line styles, and an optional centred text label.
+
+```jsx
+import { Divider } from '@anephenix/ui';
+
+// Basic horizontal divider
+<Divider />
+
+// With a centred label
+<Divider label="or" />
+
+// Dashed variant
+<Divider variant="dashed" />
+
+// Vertical (inside a flex container)
+<div style={{ display: 'flex', height: '2rem', alignItems: 'center', gap: '1rem' }}>
+    <span>Left</span>
+    <Divider orientation="vertical" />
+    <span>Right</span>
+</div>
+```
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | Direction of the divider. Defaults to `"horizontal"` |
+| `variant` | `"solid" \| "dashed" \| "dotted"` | Line style. Defaults to `"solid"` |
+| `label` | `string` | Optional text centred on the divider line |
+| `className` | `string` | Optional additional CSS class on the wrapper |
+
+---
+
 **Avatar**
 
 A user profile picture with three automatic states: image, initials (derived from `name`), and a generic icon fallback. The initials background colour is consistently derived from the name.

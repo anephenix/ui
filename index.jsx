@@ -8,6 +8,7 @@ import Card from "./src/components/card/Card";
 import Checkbox from "./src/components/checkbox/Checkbox";
 import Code from "./src/components/code/Code";
 import ComboBox from "./src/components/combo-box/ComboBox";
+import Divider from "./src/components/divider/Divider";
 import Dropdown from "./src/components/dropdown/Dropdown";
 import Footer from "./src/components/footer/Footer";
 import FormField from "./src/components/form-field/FormField";
@@ -61,6 +62,7 @@ export {
 	Checkbox,
 	Code,
 	ComboBox,
+	Divider,
 	Dropdown,
 	Footer,
 	FormField,

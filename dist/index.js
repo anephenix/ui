@@ -395,12 +395,28 @@ var ComboBox = ({
 };
 var ComboBox_default = ComboBox;
 
+// src/components/divider/Divider.jsx
+import { jsx as jsx11 } from "react/jsx-runtime";
+var Divider = ({
+  orientation = "horizontal",
+  variant = "solid",
+  label,
+  className = ""
+}) => {
+  const classNames = `divider divider-${orientation} divider-${variant}${className ? ` ${className}` : ""}`;
+  if (orientation === "horizontal" && !label) {
+    return /* @__PURE__ */ jsx11("hr", { className: classNames });
+  }
+  return /* @__PURE__ */ jsx11("div", { "aria-hidden": "true", className: classNames, children: label && /* @__PURE__ */ jsx11("span", { className: "divider-label", children: label }) });
+};
+var Divider_default = Divider;
+
 // src/components/dropdown/Dropdown.jsx
 import { forwardRef as forwardRef3 } from "react";
-import { jsx as jsx11 } from "react/jsx-runtime";
+import { jsx as jsx12 } from "react/jsx-runtime";
 var Dropdown = forwardRef3(function dropdown({ options, multiple, id, className, name, defaultValue }, ref) {
   const classNames = `dropdown ${className}`;
-  return /* @__PURE__ */ jsx11("div", { className: classNames, children: /* @__PURE__ */ jsx11(
+  return /* @__PURE__ */ jsx12("div", { className: classNames, children: /* @__PURE__ */ jsx12(
     "select",
     {
       name,
@@ -408,26 +424,26 @@ var Dropdown = forwardRef3(function dropdown({ options, multiple, id, className,
       id,
       ref,
       defaultValue,
-      children: options.map(({ value, text }) => /* @__PURE__ */ jsx11("option", { value, children: text }, value))
+      children: options.map(({ value, text }) => /* @__PURE__ */ jsx12("option", { value, children: text }, value))
     }
   ) });
 });
 var Dropdown_default = Dropdown;
 
 // src/components/footer/Footer.jsx
-import { jsx as jsx12, jsxs as jsxs8 } from "react/jsx-runtime";
-var Footer = ({ leftSection, rightSection }) => /* @__PURE__ */ jsx12("div", { id: "footer", children: /* @__PURE__ */ jsx12("div", { className: "container", children: /* @__PURE__ */ jsxs8("div", { className: "withSidePadding", children: [
+import { jsx as jsx13, jsxs as jsxs8 } from "react/jsx-runtime";
+var Footer = ({ leftSection, rightSection }) => /* @__PURE__ */ jsx13("div", { id: "footer", children: /* @__PURE__ */ jsx13("div", { className: "container", children: /* @__PURE__ */ jsxs8("div", { className: "withSidePadding", children: [
   leftSection,
   rightSection
 ] }) }) });
 var Footer_default = Footer;
 
 // src/components/form-field/FormField.jsx
-import { jsx as jsx13, jsxs as jsxs9 } from "react/jsx-runtime";
-var ErrorMessage = ({ error }) => /* @__PURE__ */ jsx13("div", { className: "error-message", children: error });
+import { jsx as jsx14, jsxs as jsxs9 } from "react/jsx-runtime";
+var ErrorMessage = ({ error }) => /* @__PURE__ */ jsx14("div", { className: "error-message", children: error });
 var FormField = ({ children, error }) => {
   const errorClass = error ? "error" : null;
-  const errorMessage = error ? /* @__PURE__ */ jsx13(ErrorMessage, { error }) : null;
+  const errorMessage = error ? /* @__PURE__ */ jsx14(ErrorMessage, { error }) : null;
   const classNames = `form-field ${errorClass}`;
   return /* @__PURE__ */ jsxs9("div", { className: classNames, children: [
     children,
@@ -437,11 +453,11 @@ var FormField = ({ children, error }) => {
 var FormField_default = FormField;
 
 // src/components/hero/Hero.jsx
-import { jsx as jsx14, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx15, jsxs as jsxs10 } from "react/jsx-runtime";
 var CTA = (Link) => {
   const f = ({ href, text, buttonClass }, i) => {
     if (!Link)
-      return /* @__PURE__ */ jsx14(
+      return /* @__PURE__ */ jsx15(
         "a",
         {
           href,
@@ -450,7 +466,7 @@ var CTA = (Link) => {
         },
         i
       );
-    return /* @__PURE__ */ jsx14(
+    return /* @__PURE__ */ jsx15(
       Link,
       {
         href,
@@ -465,23 +481,23 @@ var CTA = (Link) => {
 var Hero = ({ title, description, ctas, Link }) => {
   const ctaFunk = CTA(Link);
   if (typeof description === "string") {
-    description = /* @__PURE__ */ jsx14("p", { children: description });
+    description = /* @__PURE__ */ jsx15("p", { children: description });
   }
   return /* @__PURE__ */ jsxs10("div", { id: "hero", children: [
     /* @__PURE__ */ jsxs10("div", { id: "heading-and-lead", children: [
-      /* @__PURE__ */ jsx14("h1", { children: title }),
+      /* @__PURE__ */ jsx15("h1", { children: title }),
       description
     ] }),
-    /* @__PURE__ */ jsx14("div", { id: "hero-ctas", children: ctas.map(ctaFunk) })
+    /* @__PURE__ */ jsx15("div", { id: "hero-ctas", children: ctas.map(ctaFunk) })
   ] });
 };
 var Hero_default = Hero;
 
 // src/components/input/Input.jsx
 import { forwardRef as forwardRef4 } from "react";
-import { jsx as jsx15 } from "react/jsx-runtime";
+import { jsx as jsx16 } from "react/jsx-runtime";
 var Input = forwardRef4(function input({ type = "text", className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx15(
+  return /* @__PURE__ */ jsx16(
     "input",
     {
       ref,
@@ -498,7 +514,7 @@ var Input_default = Input;
 
 // src/components/modal/Modal.jsx
 import { useEffect as useEffect2, useRef as useRef2 } from "react";
-import { jsx as jsx16, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
 var Modal = ({ isOpen, onClose, title, children, footer }) => {
   const dialogRef = useRef2(null);
   useEffect2(() => {
@@ -522,10 +538,10 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
   };
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <dialog> handles keyboard interaction natively via the cancel event (Escape key)
-    /* @__PURE__ */ jsx16("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs11("div", { className: "modal-content", children: [
+    /* @__PURE__ */ jsx17("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs11("div", { className: "modal-content", children: [
       /* @__PURE__ */ jsxs11("div", { className: "modal-header", children: [
-        /* @__PURE__ */ jsx16("h2", { className: "modal-title", children: title }),
-        /* @__PURE__ */ jsx16(
+        /* @__PURE__ */ jsx17("h2", { className: "modal-title", children: title }),
+        /* @__PURE__ */ jsx17(
           "button",
           {
             type: "button",
@@ -536,8 +552,8 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
           }
         )
       ] }),
-      /* @__PURE__ */ jsx16("div", { className: "modal-body", children }),
-      footer && /* @__PURE__ */ jsx16("div", { className: "modal-footer", children: footer })
+      /* @__PURE__ */ jsx17("div", { className: "modal-body", children }),
+      footer && /* @__PURE__ */ jsx17("div", { className: "modal-footer", children: footer })
     ] }) })
   );
 };
@@ -547,7 +563,7 @@ var Modal_default = Modal;
 import { Component } from "react";
 
 // src/components/menu-item/MenuItem.jsx
-import { jsx as jsx17 } from "react/jsx-runtime";
+import { jsx as jsx18 } from "react/jsx-runtime";
 var MenuItem = ({
   text,
   id,
@@ -563,7 +579,7 @@ var MenuItem = ({
 }) => {
   if (url && !onClick) {
     if (url.startsWith("http") || url.startsWith("mailto")) {
-      return /* @__PURE__ */ jsx17("li", { children: /* @__PURE__ */ jsx17(
+      return /* @__PURE__ */ jsx18("li", { children: /* @__PURE__ */ jsx18(
         "a",
         {
           id,
@@ -576,7 +592,7 @@ var MenuItem = ({
         }
       ) }, i);
     } else {
-      return /* @__PURE__ */ jsx17("li", { children: /* @__PURE__ */ jsx17(
+      return /* @__PURE__ */ jsx18("li", { children: /* @__PURE__ */ jsx18(
         Link,
         {
           id,
@@ -590,22 +606,22 @@ var MenuItem = ({
       ) }, i);
     }
   } else {
-    return /* @__PURE__ */ jsx17("li", { children: /* @__PURE__ */ jsx17("button", { type: "button", id, className, onClick, children: text }) }, i);
+    return /* @__PURE__ */ jsx18("li", { children: /* @__PURE__ */ jsx18("button", { type: "button", id, className, onClick, children: text }) }, i);
   }
 };
 var MenuItem_default = MenuItem;
 
 // src/components/desktop-menu/DesktopMenu.jsx
-import { jsx as jsx18 } from "react/jsx-runtime";
+import { jsx as jsx19 } from "react/jsx-runtime";
 import { createElement } from "react";
-var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx18("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx19("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
   return /* @__PURE__ */ createElement(MenuItem_default, { ...link, i, key: link.id, Link });
 }) });
 var DesktopMenu_default = DesktopMenu;
 
 // src/components/hamburger/Hamburger.jsx
-import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
-var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx19(
+import { jsx as jsx20, jsxs as jsxs12 } from "react/jsx-runtime";
+var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx20(
   "button",
   {
     type: "button",
@@ -622,8 +638,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx19(
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         children: [
-          /* @__PURE__ */ jsx19("title", { children: "Menu" }),
-          /* @__PURE__ */ jsx19(
+          /* @__PURE__ */ jsx20("title", { children: "Menu" }),
+          /* @__PURE__ */ jsx20(
             "g",
             {
               id: "hamburger-container",
@@ -633,7 +649,7 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx19(
               fillRule: "evenodd",
               strokeLinecap: "end",
               strokeLinejoin: "end",
-              children: /* @__PURE__ */ jsx19(
+              children: /* @__PURE__ */ jsx20(
                 "g",
                 {
                   id: "hamburger-layers",
@@ -641,9 +657,9 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx19(
                   stroke: "#000",
                   strokeWidth: "2",
                   children: /* @__PURE__ */ jsxs12("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
-                    /* @__PURE__ */ jsx19("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
-                    /* @__PURE__ */ jsx19("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
-                    /* @__PURE__ */ jsx19("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
+                    /* @__PURE__ */ jsx20("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
+                    /* @__PURE__ */ jsx20("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
+                    /* @__PURE__ */ jsx20("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
                   ] })
                 }
               )
@@ -657,7 +673,7 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx19(
 var Hamburger_default = Hamburger;
 
 // src/components/close-icon/CloseIcon.jsx
-import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx21, jsxs as jsxs13 } from "react/jsx-runtime";
 var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs13(
   "svg",
   {
@@ -668,8 +684,8 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs13(
     xmlns: "http://www.w3.org/2000/svg",
     xmlnsXlink: "http://www.w3.org/1999/xlink",
     children: [
-      /* @__PURE__ */ jsx20("title", { children: "Close" }),
-      /* @__PURE__ */ jsx20(
+      /* @__PURE__ */ jsx21("title", { children: "Close" }),
+      /* @__PURE__ */ jsx21(
         "g",
         {
           id: "containing-group",
@@ -679,7 +695,7 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs13(
           fillRule: "evenodd",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          children: /* @__PURE__ */ jsx20(
+          children: /* @__PURE__ */ jsx21(
             "g",
             {
               id: "9.7\u201D-iPad",
@@ -687,8 +703,8 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs13(
               stroke: "#000",
               strokeWidth: "3",
               children: /* @__PURE__ */ jsxs13("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
-                /* @__PURE__ */ jsx20("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
-                /* @__PURE__ */ jsx20("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
+                /* @__PURE__ */ jsx21("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
+                /* @__PURE__ */ jsx21("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
               ] })
             }
           )
@@ -700,12 +716,12 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs13(
 var CloseIcon_default = CloseIcon;
 
 // src/components/mobile-menu/MobileMenu.jsx
-import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs14 } from "react/jsx-runtime";
 var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
   return /* @__PURE__ */ jsxs14("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
-    /* @__PURE__ */ jsx21("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx21("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx21(CloseIcon_default, { width: "20px" }) }) }),
-    menuOpen && /* @__PURE__ */ jsx21("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
-      return /* @__PURE__ */ jsx21(
+    /* @__PURE__ */ jsx22("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx22("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx22(CloseIcon_default, { width: "20px" }) }) }),
+    menuOpen && /* @__PURE__ */ jsx22("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+      return /* @__PURE__ */ jsx22(
         MenuItem_default,
         {
           ...link,
@@ -722,7 +738,7 @@ var MobileMenu = ({ menuOpen, toggleMenu, links, loggedIn, Link }) => {
 var MobileMenu_default = MobileMenu;
 
 // src/components/nav-bar/NavBar.jsx
-import { Fragment, jsx as jsx22, jsxs as jsxs15 } from "react/jsx-runtime";
+import { Fragment, jsx as jsx23, jsxs as jsxs15 } from "react/jsx-runtime";
 var NavBar = class extends Component {
   constructor(props) {
     super(props);
@@ -739,17 +755,17 @@ var NavBar = class extends Component {
       Link,
       loggedIn,
       className,
-      midSection = /* @__PURE__ */ jsx22("div", {})
+      midSection = /* @__PURE__ */ jsx23("div", {})
     } = this.props;
     const { menuOpen } = this.state;
     return /* @__PURE__ */ jsxs15(Fragment, { children: [
-      /* @__PURE__ */ jsx22("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx22("div", { className: "container", children: /* @__PURE__ */ jsxs15("div", { className: "withSidePadding", children: [
+      /* @__PURE__ */ jsx23("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx23("div", { className: "container", children: /* @__PURE__ */ jsxs15("div", { className: "withSidePadding", children: [
         logo,
         midSection,
-        /* @__PURE__ */ jsx22(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
-        /* @__PURE__ */ jsx22(DesktopMenu_default, { ...{ links, loggedIn, Link } })
+        /* @__PURE__ */ jsx23(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
+        /* @__PURE__ */ jsx23(DesktopMenu_default, { ...{ links, loggedIn, Link } })
       ] }) }) }),
-      /* @__PURE__ */ jsx22(
+      /* @__PURE__ */ jsx23(
         MobileMenu_default,
         {
           ...{
@@ -767,12 +783,12 @@ var NavBar = class extends Component {
 var NavBar_default = NavBar;
 
 // src/components/page/Page.jsx
-import { jsx as jsx23 } from "react/jsx-runtime";
-var Page = ({ children }) => /* @__PURE__ */ jsx23("div", { className: "page", children });
+import { jsx as jsx24 } from "react/jsx-runtime";
+var Page = ({ children }) => /* @__PURE__ */ jsx24("div", { className: "page", children });
 var Page_default = Page;
 
 // src/components/pagination/Pagination.jsx
-import { jsx as jsx24, jsxs as jsxs16 } from "react/jsx-runtime";
+import { jsx as jsx25, jsxs as jsxs16 } from "react/jsx-runtime";
 var getPageNumbers = (currentPage, totalPages, siblingCount) => {
   const totalShown = 2 * siblingCount + 5;
   if (totalPages <= totalShown) {
@@ -799,7 +815,7 @@ var Pagination = ({
   const pages = getPageNumbers(currentPage, totalPages, siblingCount);
   const classNames = `pagination${className ? ` ${className}` : ""}`;
   return /* @__PURE__ */ jsxs16("nav", { className: classNames, "aria-label": "Pagination", children: [
-    showFirstLast && /* @__PURE__ */ jsx24(
+    showFirstLast && /* @__PURE__ */ jsx25(
       "button",
       {
         type: "button",
@@ -810,7 +826,7 @@ var Pagination = ({
         children: "\xAB"
       }
     ),
-    /* @__PURE__ */ jsx24(
+    /* @__PURE__ */ jsx25(
       "button",
       {
         type: "button",
@@ -823,10 +839,10 @@ var Pagination = ({
     ),
     pages.map((page) => {
       if (page === "left-ellipsis" || page === "right-ellipsis") {
-        return /* @__PURE__ */ jsx24("span", { className: "pagination-ellipsis", children: "\u2026" }, page);
+        return /* @__PURE__ */ jsx25("span", { className: "pagination-ellipsis", children: "\u2026" }, page);
       }
       const isActive = page === currentPage;
-      return /* @__PURE__ */ jsx24(
+      return /* @__PURE__ */ jsx25(
         "button",
         {
           type: "button",
@@ -838,7 +854,7 @@ var Pagination = ({
         page
       );
     }),
-    /* @__PURE__ */ jsx24(
+    /* @__PURE__ */ jsx25(
       "button",
       {
         type: "button",
@@ -849,7 +865,7 @@ var Pagination = ({
         children: "\u203A"
       }
     ),
-    showFirstLast && /* @__PURE__ */ jsx24(
+    showFirstLast && /* @__PURE__ */ jsx25(
       "button",
       {
         type: "button",
@@ -866,7 +882,7 @@ var Pagination_default = Pagination;
 
 // src/components/popover/Popover.jsx
 import { cloneElement, useEffect as useEffect3, useRef as useRef3, useState as useState4 } from "react";
-import { jsx as jsx25, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs17 } from "react/jsx-runtime";
 var Popover = ({
   trigger,
   content,
@@ -914,8 +930,8 @@ var Popover = ({
         "aria-modal": "false",
         children: [
           /* @__PURE__ */ jsxs17("div", { className: "popover-header", children: [
-            title && /* @__PURE__ */ jsx25("div", { className: "popover-title", children: title }),
-            /* @__PURE__ */ jsx25(
+            title && /* @__PURE__ */ jsx26("div", { className: "popover-title", children: title }),
+            /* @__PURE__ */ jsx26(
               "button",
               {
                 type: "button",
@@ -926,7 +942,7 @@ var Popover = ({
               }
             )
           ] }),
-          /* @__PURE__ */ jsx25("div", { className: "popover-body", children: content })
+          /* @__PURE__ */ jsx26("div", { className: "popover-body", children: content })
         ]
       }
     )
@@ -935,7 +951,7 @@ var Popover = ({
 var Popover_default = Popover;
 
 // src/components/progress-bar/ProgressBar.jsx
-import { jsx as jsx26, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs18 } from "react/jsx-runtime";
 var ProgressBar = ({
   value = 0,
   max = 100,
@@ -949,13 +965,13 @@ var ProgressBar = ({
   const percentage = indeterminate ? null : Math.min(100, Math.max(0, value / max * 100));
   return /* @__PURE__ */ jsxs18("div", { className: `progress-bar-wrapper${className ? ` ${className}` : ""}`, children: [
     (label || showValue && !indeterminate) && /* @__PURE__ */ jsxs18("div", { className: "progress-bar-header", children: [
-      label && /* @__PURE__ */ jsx26("span", { className: "progress-bar-label", children: label }),
+      label && /* @__PURE__ */ jsx27("span", { className: "progress-bar-label", children: label }),
       showValue && !indeterminate && /* @__PURE__ */ jsxs18("span", { className: "progress-bar-value", children: [
         Math.round(percentage),
         "%"
       ] })
     ] }),
-    /* @__PURE__ */ jsx26(
+    /* @__PURE__ */ jsx27(
       "div",
       {
         className: `progress-bar progress-bar-${size}`,
@@ -964,7 +980,7 @@ var ProgressBar = ({
         "aria-valuemin": 0,
         "aria-valuemax": max,
         "aria-label": label ?? "Progress",
-        children: /* @__PURE__ */ jsx26(
+        children: /* @__PURE__ */ jsx27(
           "div",
           {
             className: `progress-bar-fill progress-bar-${variant}${indeterminate ? " progress-bar-indeterminate" : ""}`,
@@ -979,12 +995,12 @@ var ProgressBar_default = ProgressBar;
 
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx27, jsxs as jsxs19 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs19 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
   const isControlled = checked !== void 0;
   return /* @__PURE__ */ jsxs19("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx27(
+    /* @__PURE__ */ jsx28(
       "input",
       {
         type: "radio",
@@ -994,18 +1010,18 @@ var RadioButton = forwardRef5(function radioButton({ name, label, className, def
         ...isControlled ? { checked, onChange } : {}
       }
     ),
-    /* @__PURE__ */ jsx27("div", { className: "radio-element", children: /* @__PURE__ */ jsx27("div", { className: "selected" }) }),
-    /* @__PURE__ */ jsx27("span", { children: label })
+    /* @__PURE__ */ jsx28("div", { className: "radio-element", children: /* @__PURE__ */ jsx28("div", { className: "selected" }) }),
+    /* @__PURE__ */ jsx28("span", { children: label })
   ] });
 });
 var RadioButton_default = RadioButton;
 
 // src/components/select/Select.jsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx28 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx28("option", { value, children: label }, index);
+import { jsx as jsx29 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx29("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx29(
     "select",
     {
       ref,
@@ -1020,9 +1036,9 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 var Select_default = Select;
 
 // src/components/skeleton/Skeleton.jsx
-import { jsx as jsx29 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 var toCSS = (value) => typeof value === "number" ? `${value}px` : value;
-var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx29(
+var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx30(
   "div",
   {
     className: "skeleton",
@@ -1038,7 +1054,7 @@ var Skeleton = ({
   className
 }) => {
   if (lines === 1) {
-    return /* @__PURE__ */ jsx29(
+    return /* @__PURE__ */ jsx30(
       "div",
       {
         className: `skeleton${className ? ` ${className}` : ""}`,
@@ -1051,7 +1067,7 @@ var Skeleton = ({
     id: `line-${i}`,
     isLast: i === lines - 1
   }));
-  return /* @__PURE__ */ jsx29("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx29(
+  return /* @__PURE__ */ jsx30("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx30(
     SkeletonLine,
     {
       width: isLast ? "70%" : width,
@@ -1064,16 +1080,16 @@ var Skeleton = ({
 var Skeleton_default = Skeleton;
 
 // src/components/spinner/Spinner.jsx
-import { jsx as jsx30 } from "react/jsx-runtime";
+import { jsx as jsx31 } from "react/jsx-runtime";
 var Spinner = ({ size = "md", label = "Loading...", className }) => {
   const classNames = `spinner spinner-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx30("div", { className: classNames, role: "status", "aria-label": label });
+  return /* @__PURE__ */ jsx31("div", { className: classNames, role: "status", "aria-label": label });
 };
 var Spinner_default = Spinner;
 
 // src/components/switch/Switch.jsx
 import { forwardRef as forwardRef7, useState as useState5 } from "react";
-import { jsx as jsx31, jsxs as jsxs20 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs20 } from "react/jsx-runtime";
 var Switch = forwardRef7(function switchInput({
   name,
   label,
@@ -1094,7 +1110,7 @@ var Switch = forwardRef7(function switchInput({
   };
   const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
   return /* @__PURE__ */ jsxs20("label", { className: labelClass, children: [
-    /* @__PURE__ */ jsx31(
+    /* @__PURE__ */ jsx32(
       "input",
       {
         type: "checkbox",
@@ -1107,27 +1123,27 @@ var Switch = forwardRef7(function switchInput({
         disabled
       }
     ),
-    /* @__PURE__ */ jsx31("div", { className: "switch-track", children: /* @__PURE__ */ jsx31("div", { className: "switch-thumb" }) }),
-    label && /* @__PURE__ */ jsx31("span", { className: "switch-label", children: label })
+    /* @__PURE__ */ jsx32("div", { className: "switch-track", children: /* @__PURE__ */ jsx32("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx32("span", { className: "switch-label", children: label })
   ] });
 });
 var Switch_default = Switch;
 
 // src/components/table/Table.jsx
-import { jsx as jsx32, jsxs as jsxs21 } from "react/jsx-runtime";
+import { jsx as jsx33, jsxs as jsxs21 } from "react/jsx-runtime";
 var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx32("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs21("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx32("caption", { children: caption }),
-    /* @__PURE__ */ jsx32("thead", { children: /* @__PURE__ */ jsx32("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx32("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx32("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx32("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx32("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx33("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs21("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx33("caption", { children: caption }),
+    /* @__PURE__ */ jsx33("thead", { children: /* @__PURE__ */ jsx33("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx33("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx33("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx33("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx33("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.jsx
 import { useRef as useRef4, useState as useState6 } from "react";
-import { jsx as jsx33, jsxs as jsxs22 } from "react/jsx-runtime";
+import { jsx as jsx34, jsxs as jsxs22 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
   const [activeTab, setActiveTab] = useState6(defaultTab ?? tabs[0]?.id);
   const tabRefs = useRef4({});
@@ -1151,7 +1167,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
   return /* @__PURE__ */ jsxs22("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx33("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx33(
+    /* @__PURE__ */ jsx34("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx34(
       "button",
       {
         ref: (el) => {
@@ -1170,7 +1186,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx33(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx34(
       "div",
       {
         id: `panel-${id}`,
@@ -1188,17 +1204,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx34, jsxs as jsxs23 } from "react/jsx-runtime";
+import { jsx as jsx35, jsxs as jsxs23 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
   return /* @__PURE__ */ jsxs23("div", { className: "terminal", children: [
     /* @__PURE__ */ jsxs23("div", { id: "title-bar", children: [
       /* @__PURE__ */ jsxs23("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "maximize" })
+        /* @__PURE__ */ jsx35("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx35("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx35("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx34("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx34("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx34(
+      /* @__PURE__ */ jsx35("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx35("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx35(
         "button",
         {
           type: "button",
@@ -1208,16 +1224,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx34("pre", { children: /* @__PURE__ */ jsx34("code", { children: code }) })
+    /* @__PURE__ */ jsx35("pre", { children: /* @__PURE__ */ jsx35("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef8 } from "react";
-import { jsx as jsx35 } from "react/jsx-runtime";
+import { jsx as jsx36 } from "react/jsx-runtime";
 var Textarea = forwardRef8(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx35(
+  return /* @__PURE__ */ jsx36(
     "textarea",
     {
       ref,
@@ -1233,7 +1249,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect4 } from "react";
-import { jsx as jsx36, jsxs as jsxs24 } from "react/jsx-runtime";
+import { jsx as jsx37, jsxs as jsxs24 } from "react/jsx-runtime";
 var variantIcons2 = {
   success: "\u2713",
   error: "\u2715",
@@ -1262,12 +1278,12 @@ var Toast = ({
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx36("div", { className: "toast-icon", children: variantIcons2[variant] }),
+        /* @__PURE__ */ jsx37("div", { className: "toast-icon", children: variantIcons2[variant] }),
         /* @__PURE__ */ jsxs24("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx36("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx36("div", { className: "toast-message", children: message })
+          title && /* @__PURE__ */ jsx37("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx37("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx36(
+        /* @__PURE__ */ jsx37(
           "button",
           {
             type: "button",
@@ -1284,12 +1300,12 @@ var Toast = ({
 var Toast_default = Toast;
 
 // src/components/tooltip/Tooltip.jsx
-import { jsx as jsx37, jsxs as jsxs25 } from "react/jsx-runtime";
+import { jsx as jsx38, jsxs as jsxs25 } from "react/jsx-runtime";
 var Tooltip = ({ children, content, position = "top", className }) => {
   const tooltipClass = `tooltip tooltip-${position}${className ? ` ${className}` : ""}`;
   return /* @__PURE__ */ jsxs25("span", { className: "tooltip-wrapper", children: [
     children,
-    /* @__PURE__ */ jsx37("span", { role: "tooltip", className: tooltipClass, children: content })
+    /* @__PURE__ */ jsx38("span", { role: "tooltip", className: tooltipClass, children: content })
   ] });
 };
 var Tooltip_default = Tooltip;
@@ -1320,6 +1336,7 @@ export {
   Checkbox_default as Checkbox,
   Code_default as Code,
   ComboBox_default as ComboBox,
+  Divider_default as Divider,
   Dropdown_default as Dropdown,
   Footer_default as Footer,
   FormField_default as FormField,
