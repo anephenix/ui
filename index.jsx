@@ -1,5 +1,6 @@
 import Alert from "./src/components/alert/Alert";
 import Button from "./src/components/button/Button";
+import Card from "./src/components/card/Card";
 import Checkbox from "./src/components/checkbox/Checkbox";
 import Code from "./src/components/code/Code";
 import Dropdown from "./src/components/dropdown/Dropdown";
@@ -41,6 +42,7 @@ const handleErrors = (setError, err) => {
 export {
 	Alert,
 	Button,
+	Card,
 	Checkbox,
 	Code,
 	Dropdown,

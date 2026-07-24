@@ -80,6 +80,65 @@
   opacity: 1;
 }
 
+/* src/components/card/Card.css */
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: solid 1px var(--form-field-border-colour);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background: var(--light);
+  color: var(--dark);
+}
+@media screen and (prefers-color-scheme: dark) {
+  .card {
+    background: var(--dark);
+    color: var(--light);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+.card-image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card-header {
+  padding: var(--spacer-two) var(--spacer-two) 0;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 var(--grid-base);
+}
+.card-subtitle {
+  font-size: 13px;
+  opacity: 0.6;
+  margin: 0;
+}
+.card-body {
+  padding: var(--spacer-two);
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.card-header + .card-body {
+  padding-top: var(--spacer-one);
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-one);
+  padding: var(--spacer-one) var(--spacer-two) var(--spacer-two);
+  border-top: solid 1px var(--form-field-border-colour);
+}
+@media screen and (prefers-color-scheme: dark) {
+  .card-footer {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
 /* src/components/code/Code.css */
 .code {
   display: flex;
