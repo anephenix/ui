@@ -1,0 +1,42 @@
+.tabs {
+	display: flex;
+	flex-direction: column;
+}
+
+.tabs-list {
+	display: flex;
+	border-bottom: solid 2px var(--form-field-border-colour);
+	overflow-x: auto;
+}
+
+.tabs-tab {
+	background: none;
+	border: none;
+	border-bottom: solid 2px transparent;
+	margin-bottom: -2px;
+	cursor: pointer;
+	padding: var(--spacer-one) var(--spacer-two);
+	font-size: 14px;
+	font-weight: 600;
+	color: inherit;
+	opacity: 0.55;
+	white-space: nowrap;
+	transition:
+		opacity 0.15s linear,
+		border-color 0.15s linear,
+		color 0.15s linear;
+}
+
+.tabs-tab:hover {
+	opacity: 0.85;
+}
+
+.tabs-tab-active {
+	opacity: 1;
+	color: var(--primary-colour);
+	border-bottom-color: var(--primary-colour);
+}
+
+.tabs-panel {
+	padding: var(--spacer-three) 0;
+}

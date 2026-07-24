@@ -509,19 +509,80 @@ var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
 };
 var Table_default = Table;
 
+// src/components/tabs/Tabs.jsx
+import { useRef as useRef2, useState } from "react";
+import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
+var Tabs = ({ tabs, defaultTab, onChange, className }) => {
+  const [activeTab, setActiveTab] = useState(defaultTab ?? tabs[0]?.id);
+  const tabRefs = useRef2({});
+  const handleSelect = (id) => {
+    setActiveTab(id);
+    onChange?.(id);
+  };
+  const handleKeyDown = (e, index) => {
+    let nextIndex = null;
+    if (e.key === "ArrowRight") {
+      nextIndex = (index + 1) % tabs.length;
+    } else if (e.key === "ArrowLeft") {
+      nextIndex = (index - 1 + tabs.length) % tabs.length;
+    }
+    if (nextIndex !== null) {
+      e.preventDefault();
+      const nextId = tabs[nextIndex].id;
+      handleSelect(nextId);
+      tabRefs.current[nextId]?.focus();
+    }
+  };
+  const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsxs13("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx20("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx20(
+      "button",
+      {
+        ref: (el) => {
+          tabRefs.current[id] = el;
+        },
+        id: `tab-${id}`,
+        type: "button",
+        role: "tab",
+        "aria-selected": activeTab === id,
+        "aria-controls": `panel-${id}`,
+        className: `tabs-tab${activeTab === id ? " tabs-tab-active" : ""}`,
+        tabIndex: activeTab === id ? 0 : -1,
+        onClick: () => handleSelect(id),
+        onKeyDown: (e) => handleKeyDown(e, index),
+        children: label
+      },
+      id
+    )) }),
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx20(
+      "div",
+      {
+        id: `panel-${id}`,
+        role: "tabpanel",
+        "aria-labelledby": `tab-${id}`,
+        className: "tabs-panel",
+        hidden: activeTab !== id,
+        children: content
+      },
+      id
+    ))
+  ] });
+};
+var Tabs_default = Tabs;
+
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs13("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs13("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs13("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs14("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs14("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs14("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx21("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx20("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx20("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx20(
+      /* @__PURE__ */ jsx21("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx21("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx21(
         "button",
         {
           type: "button",
@@ -531,16 +592,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx20("pre", { children: /* @__PURE__ */ jsx20("code", { children: code }) })
+    /* @__PURE__ */ jsx21("pre", { children: /* @__PURE__ */ jsx21("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef7 } from "react";
-import { jsx as jsx21 } from "react/jsx-runtime";
+import { jsx as jsx22 } from "react/jsx-runtime";
 var Textarea = forwardRef7(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx21(
+  return /* @__PURE__ */ jsx22(
     "textarea",
     {
       ref,
@@ -556,7 +617,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect2 } from "react";
-import { jsx as jsx22, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx23, jsxs as jsxs15 } from "react/jsx-runtime";
 var variantIcons = {
   success: "\u2713",
   error: "\u2715",
@@ -578,19 +639,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs14(
+  return /* @__PURE__ */ jsxs15(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx22("div", { className: "toast-icon", children: variantIcons[variant] }),
-        /* @__PURE__ */ jsxs14("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx22("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx22("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx23("div", { className: "toast-icon", children: variantIcons[variant] }),
+        /* @__PURE__ */ jsxs15("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx23("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx23("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx22(
+        /* @__PURE__ */ jsx23(
           "button",
           {
             type: "button",
@@ -636,6 +697,7 @@ export {
   RadioButton_default as RadioButton,
   Select_default as Select,
   Table_default as Table,
+  Tabs_default as Tabs,
   Terminal_default as Terminal,
   Textarea_default as Textarea,
   Toast_default as Toast,

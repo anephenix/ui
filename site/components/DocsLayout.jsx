@@ -98,6 +98,7 @@ const sidebarGroups = [
 		items: [
 			{ href: "/docs/code", label: "Code" },
 			{ href: "/docs/table", label: "Table" },
+			{ href: "/docs/tabs", label: "Tabs" },
 			{ href: "/docs/terminal", label: "Terminal" },
 		],
 	},

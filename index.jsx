@@ -12,6 +12,7 @@ import Page from "./src/components/page/Page";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
 import Table from "./src/components/table/Table";
+import Tabs from "./src/components/tabs/Tabs";
 import Terminal from "./src/components/terminal/Terminal";
 import Textarea from "./src/components/textarea/Textarea";
 import Toast from "./src/components/toast/Toast";
@@ -51,6 +52,7 @@ export {
 	RadioButton,
 	Select,
 	Table,
+	Tabs,
 	Terminal,
 	Textarea,
 	Toast,
