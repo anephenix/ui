@@ -147,6 +147,7 @@
 	height: 140px;
 	object-fit: contain;
 	object-position: center center;
+	background-color: white;
 }
 
 .docs-component-card-wrapper .card-body {
