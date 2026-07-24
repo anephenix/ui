@@ -1,0 +1,8 @@
+---
+import TooltipPage from "../../components/docs/TooltipPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Tooltip - UI Docs">
+    <TooltipPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

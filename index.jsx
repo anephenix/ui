@@ -26,6 +26,7 @@ import Tabs from "./src/components/tabs/Tabs";
 import Terminal from "./src/components/terminal/Terminal";
 import Textarea from "./src/components/textarea/Textarea";
 import Toast from "./src/components/toast/Toast";
+import Tooltip from "./src/components/tooltip/Tooltip";
 
 import "./design-system/index.css";
 
@@ -76,4 +77,5 @@ export {
 	Terminal,
 	Textarea,
 	Toast,
+	Tooltip,
 };

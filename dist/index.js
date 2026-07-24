@@ -1069,6 +1069,17 @@ var Toast = ({
 };
 var Toast_default = Toast;
 
+// src/components/tooltip/Tooltip.jsx
+import { jsx as jsx34, jsxs as jsxs22 } from "react/jsx-runtime";
+var Tooltip = ({ children, content, position = "top", className }) => {
+  const tooltipClass = `tooltip tooltip-${position}${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsxs22("span", { className: "tooltip-wrapper", children: [
+    children,
+    /* @__PURE__ */ jsx34("span", { role: "tooltip", className: tooltipClass, children: content })
+  ] });
+};
+var Tooltip_default = Tooltip;
+
 // index.jsx
 var handleErrors = (setError, err) => {
   const errors = [];
@@ -1113,5 +1124,6 @@ export {
   Terminal_default as Terminal,
   Textarea_default as Textarea,
   Toast_default as Toast,
+  Tooltip_default as Tooltip,
   handleErrors
 };

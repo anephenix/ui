@@ -112,6 +112,7 @@ const sidebarGroups = [
 			{ href: "/docs/table", label: "Table" },
 			{ href: "/docs/tabs", label: "Tabs" },
 			{ href: "/docs/terminal", label: "Terminal" },
+			{ href: "/docs/tooltip", label: "Tooltip" },
 		],
 	},
 	{
