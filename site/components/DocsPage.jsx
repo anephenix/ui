@@ -132,6 +132,11 @@ const categories = [
 				desc: "Click-triggered floating panel for rich interactive content",
 			},
 			{
+				href: "/docs/progress-bar",
+				name: "ProgressBar",
+				desc: "Horizontal bar showing completion state with determinate and indeterminate modes",
+			},
+			{
 				href: "/docs/skeleton",
 				name: "Skeleton",
 				desc: "Shimmer placeholder that mimics content shape while loading",

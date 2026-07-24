@@ -18,6 +18,7 @@ import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import Pagination from "./src/components/pagination/Pagination";
 import Popover from "./src/components/popover/Popover";
+import ProgressBar from "./src/components/progress-bar/ProgressBar";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
 import Skeleton from "./src/components/skeleton/Skeleton";
@@ -71,6 +72,7 @@ export {
 	Page,
 	Pagination,
 	Popover,
+	ProgressBar,
 	RadioButton,
 	Select,
 	Skeleton,

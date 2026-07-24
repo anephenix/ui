@@ -114,6 +114,7 @@ const sidebarGroups = [
 			{ href: "/docs/tabs", label: "Tabs" },
 			{ href: "/docs/terminal", label: "Terminal" },
 			{ href: "/docs/popover", label: "Popover" },
+			{ href: "/docs/progress-bar", label: "ProgressBar" },
 			{ href: "/docs/tooltip", label: "Tooltip" },
 		],
 	},

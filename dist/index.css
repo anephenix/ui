@@ -1116,6 +1116,79 @@ dialog.modal::backdrop {
   }
 }
 
+/* src/components/progress-bar/ProgressBar.css */
+.progress-bar-wrapper {
+  width: 100%;
+}
+.progress-bar-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.progress-bar-label {
+  font-size: 14px;
+  color: var(--form-field-colour);
+}
+.progress-bar-value {
+  font-size: 12px;
+  color: var(--form-field-colour);
+  opacity: 0.7;
+}
+.progress-bar {
+  width: 100%;
+  background: var(--form-field-border-colour);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar-sm {
+  height: 4px;
+}
+.progress-bar-md {
+  height: 8px;
+}
+.progress-bar-lg {
+  height: 14px;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.progress-bar-default {
+  background: var(--blue-one-colour);
+}
+.progress-bar-success {
+  background: var(--green-one-colour);
+}
+.progress-bar-warning {
+  background: var(--tertiary-colour);
+}
+.progress-bar-error {
+  background: var(--primary-colour);
+}
+.progress-bar-indeterminate {
+  width: 40%;
+  animation: progress-bar-slide 1.4s ease-in-out infinite;
+}
+@keyframes progress-bar-slide {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+@media screen and (prefers-color-scheme: dark) {
+  .progress-bar {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .progress-bar-label,
+  .progress-bar-value {
+    color: var(--light);
+  }
+}
+
 /* src/components/select/Select.css */
 
 /* src/components/skeleton/Skeleton.css */

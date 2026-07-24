@@ -639,6 +639,33 @@ import { Popover } from '@anephenix/ui';
 
 ---
 
+**ProgressBar**
+
+A horizontal bar that communicates the completion state of an operation. Supports four colour variants, three sizes, an optional label and percentage display, and an indeterminate animated state for operations of unknown duration.
+
+```jsx
+import { ProgressBar } from '@anephenix/ui';
+
+<ProgressBar value={75} label="Uploading..." showValue />
+
+<ProgressBar value={100} variant="success" label="Complete" showValue />
+
+<ProgressBar indeterminate label="Processing..." />
+```
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `value` | `number` | Current progress value. Defaults to `0` |
+| `max` | `number` | Maximum value. Defaults to `100` |
+| `variant` | `"default" \| "success" \| "warning" \| "error"` | Colour of the fill. Defaults to `"default"` |
+| `size` | `"sm" \| "md" \| "lg"` | Height of the bar. Defaults to `"md"` |
+| `label` | `string` | Optional label rendered above the bar |
+| `showValue` | `bool` | Show the computed percentage to the right of the label. Defaults to `false` |
+| `indeterminate` | `bool` | Animates the bar for operations of unknown duration. Defaults to `false` |
+| `className` | `string` | Optional additional CSS class on the wrapper |
+
+---
+
 **Skeleton**
 
 A shimmer placeholder that mimics the shape of content while it loads.

@@ -934,14 +934,57 @@ var Popover = ({
 };
 var Popover_default = Popover;
 
+// src/components/progress-bar/ProgressBar.jsx
+import { jsx as jsx26, jsxs as jsxs18 } from "react/jsx-runtime";
+var ProgressBar = ({
+  value = 0,
+  max = 100,
+  variant = "default",
+  size = "md",
+  label,
+  showValue = false,
+  indeterminate = false,
+  className = ""
+}) => {
+  const percentage = indeterminate ? null : Math.min(100, Math.max(0, value / max * 100));
+  return /* @__PURE__ */ jsxs18("div", { className: `progress-bar-wrapper${className ? ` ${className}` : ""}`, children: [
+    (label || showValue && !indeterminate) && /* @__PURE__ */ jsxs18("div", { className: "progress-bar-header", children: [
+      label && /* @__PURE__ */ jsx26("span", { className: "progress-bar-label", children: label }),
+      showValue && !indeterminate && /* @__PURE__ */ jsxs18("span", { className: "progress-bar-value", children: [
+        Math.round(percentage),
+        "%"
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx26(
+      "div",
+      {
+        className: `progress-bar progress-bar-${size}`,
+        role: "progressbar",
+        "aria-valuenow": indeterminate ? void 0 : value,
+        "aria-valuemin": 0,
+        "aria-valuemax": max,
+        "aria-label": label ?? "Progress",
+        children: /* @__PURE__ */ jsx26(
+          "div",
+          {
+            className: `progress-bar-fill progress-bar-${variant}${indeterminate ? " progress-bar-indeterminate" : ""}`,
+            style: indeterminate ? void 0 : { width: `${percentage}%` }
+          }
+        )
+      }
+    )
+  ] });
+};
+var ProgressBar_default = ProgressBar;
+
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx26, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs19 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
   const isControlled = checked !== void 0;
-  return /* @__PURE__ */ jsxs18("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx26(
+  return /* @__PURE__ */ jsxs19("label", { className: classNames, children: [
+    /* @__PURE__ */ jsx27(
       "input",
       {
         type: "radio",
@@ -951,18 +994,18 @@ var RadioButton = forwardRef5(function radioButton({ name, label, className, def
         ...isControlled ? { checked, onChange } : {}
       }
     ),
-    /* @__PURE__ */ jsx26("div", { className: "radio-element", children: /* @__PURE__ */ jsx26("div", { className: "selected" }) }),
-    /* @__PURE__ */ jsx26("span", { children: label })
+    /* @__PURE__ */ jsx27("div", { className: "radio-element", children: /* @__PURE__ */ jsx27("div", { className: "selected" }) }),
+    /* @__PURE__ */ jsx27("span", { children: label })
   ] });
 });
 var RadioButton_default = RadioButton;
 
 // src/components/select/Select.jsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx27 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx27("option", { value, children: label }, index);
+import { jsx as jsx28 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx28("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx27(
+  return /* @__PURE__ */ jsx28(
     "select",
     {
       ref,
@@ -977,9 +1020,9 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 var Select_default = Select;
 
 // src/components/skeleton/Skeleton.jsx
-import { jsx as jsx28 } from "react/jsx-runtime";
+import { jsx as jsx29 } from "react/jsx-runtime";
 var toCSS = (value) => typeof value === "number" ? `${value}px` : value;
-var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx28(
+var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx29(
   "div",
   {
     className: "skeleton",
@@ -995,7 +1038,7 @@ var Skeleton = ({
   className
 }) => {
   if (lines === 1) {
-    return /* @__PURE__ */ jsx28(
+    return /* @__PURE__ */ jsx29(
       "div",
       {
         className: `skeleton${className ? ` ${className}` : ""}`,
@@ -1008,7 +1051,7 @@ var Skeleton = ({
     id: `line-${i}`,
     isLast: i === lines - 1
   }));
-  return /* @__PURE__ */ jsx28("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx29("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx29(
     SkeletonLine,
     {
       width: isLast ? "70%" : width,
@@ -1021,16 +1064,16 @@ var Skeleton = ({
 var Skeleton_default = Skeleton;
 
 // src/components/spinner/Spinner.jsx
-import { jsx as jsx29 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 var Spinner = ({ size = "md", label = "Loading...", className }) => {
   const classNames = `spinner spinner-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx29("div", { className: classNames, role: "status", "aria-label": label });
+  return /* @__PURE__ */ jsx30("div", { className: classNames, role: "status", "aria-label": label });
 };
 var Spinner_default = Spinner;
 
 // src/components/switch/Switch.jsx
 import { forwardRef as forwardRef7, useState as useState5 } from "react";
-import { jsx as jsx30, jsxs as jsxs19 } from "react/jsx-runtime";
+import { jsx as jsx31, jsxs as jsxs20 } from "react/jsx-runtime";
 var Switch = forwardRef7(function switchInput({
   name,
   label,
@@ -1050,8 +1093,8 @@ var Switch = forwardRef7(function switchInput({
     onChange?.(e);
   };
   const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs19("label", { className: labelClass, children: [
-    /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsxs20("label", { className: labelClass, children: [
+    /* @__PURE__ */ jsx31(
       "input",
       {
         type: "checkbox",
@@ -1064,27 +1107,27 @@ var Switch = forwardRef7(function switchInput({
         disabled
       }
     ),
-    /* @__PURE__ */ jsx30("div", { className: "switch-track", children: /* @__PURE__ */ jsx30("div", { className: "switch-thumb" }) }),
-    label && /* @__PURE__ */ jsx30("span", { className: "switch-label", children: label })
+    /* @__PURE__ */ jsx31("div", { className: "switch-track", children: /* @__PURE__ */ jsx31("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx31("span", { className: "switch-label", children: label })
   ] });
 });
 var Switch_default = Switch;
 
 // src/components/table/Table.jsx
-import { jsx as jsx31, jsxs as jsxs20 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs21 } from "react/jsx-runtime";
 var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx31("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs20("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx31("caption", { children: caption }),
-    /* @__PURE__ */ jsx31("thead", { children: /* @__PURE__ */ jsx31("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx31("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx31("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx31("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx31("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx32("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs21("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx32("caption", { children: caption }),
+    /* @__PURE__ */ jsx32("thead", { children: /* @__PURE__ */ jsx32("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx32("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx32("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx32("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx32("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.jsx
 import { useRef as useRef4, useState as useState6 } from "react";
-import { jsx as jsx32, jsxs as jsxs21 } from "react/jsx-runtime";
+import { jsx as jsx33, jsxs as jsxs22 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
   const [activeTab, setActiveTab] = useState6(defaultTab ?? tabs[0]?.id);
   const tabRefs = useRef4({});
@@ -1107,8 +1150,8 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
     }
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs21("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx32("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx32(
+  return /* @__PURE__ */ jsxs22("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx33("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx33(
       "button",
       {
         ref: (el) => {
@@ -1127,7 +1170,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx32(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx33(
       "div",
       {
         id: `panel-${id}`,
@@ -1145,17 +1188,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx33, jsxs as jsxs22 } from "react/jsx-runtime";
+import { jsx as jsx34, jsxs as jsxs23 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs22("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs22("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs22("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx33("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx33("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx33("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs23("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs23("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs23("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx34("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx33("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx33("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx33(
+      /* @__PURE__ */ jsx34("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx34("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx34(
         "button",
         {
           type: "button",
@@ -1165,16 +1208,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx33("pre", { children: /* @__PURE__ */ jsx33("code", { children: code }) })
+    /* @__PURE__ */ jsx34("pre", { children: /* @__PURE__ */ jsx34("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef8 } from "react";
-import { jsx as jsx34 } from "react/jsx-runtime";
+import { jsx as jsx35 } from "react/jsx-runtime";
 var Textarea = forwardRef8(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx34(
+  return /* @__PURE__ */ jsx35(
     "textarea",
     {
       ref,
@@ -1190,7 +1233,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect4 } from "react";
-import { jsx as jsx35, jsxs as jsxs23 } from "react/jsx-runtime";
+import { jsx as jsx36, jsxs as jsxs24 } from "react/jsx-runtime";
 var variantIcons2 = {
   success: "\u2713",
   error: "\u2715",
@@ -1212,19 +1255,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs23(
+  return /* @__PURE__ */ jsxs24(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx35("div", { className: "toast-icon", children: variantIcons2[variant] }),
-        /* @__PURE__ */ jsxs23("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx35("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx35("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx36("div", { className: "toast-icon", children: variantIcons2[variant] }),
+        /* @__PURE__ */ jsxs24("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx36("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx36("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx35(
+        /* @__PURE__ */ jsx36(
           "button",
           {
             type: "button",
@@ -1241,12 +1284,12 @@ var Toast = ({
 var Toast_default = Toast;
 
 // src/components/tooltip/Tooltip.jsx
-import { jsx as jsx36, jsxs as jsxs24 } from "react/jsx-runtime";
+import { jsx as jsx37, jsxs as jsxs25 } from "react/jsx-runtime";
 var Tooltip = ({ children, content, position = "top", className }) => {
   const tooltipClass = `tooltip tooltip-${position}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs24("span", { className: "tooltip-wrapper", children: [
+  return /* @__PURE__ */ jsxs25("span", { className: "tooltip-wrapper", children: [
     children,
-    /* @__PURE__ */ jsx36("span", { role: "tooltip", className: tooltipClass, children: content })
+    /* @__PURE__ */ jsx37("span", { role: "tooltip", className: tooltipClass, children: content })
   ] });
 };
 var Tooltip_default = Tooltip;
@@ -1287,6 +1330,7 @@ export {
   Page_default as Page,
   Pagination_default as Pagination,
   Popover_default as Popover,
+  ProgressBar_default as ProgressBar,
   RadioButton_default as RadioButton,
   Select_default as Select,
   Skeleton_default as Skeleton,
