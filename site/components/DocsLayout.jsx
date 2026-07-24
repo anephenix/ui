@@ -79,6 +79,7 @@ const sidebarGroups = [
 	{
 		label: "Navigation",
 		items: [
+			{ href: "/docs/breadcrumb", label: "Breadcrumb" },
 			{ href: "/docs/nav-bar", label: "NavBar" },
 			{ href: "/docs/pagination", label: "Pagination" },
 		],

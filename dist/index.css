@@ -216,6 +216,41 @@
   color: #fff;
 }
 
+/* src/components/breadcrumb/Breadcrumb.css */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  font-size: 14px;
+}
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb-separator {
+  padding: 0 var(--grid-base);
+  opacity: 0.4;
+  user-select: none;
+}
+.breadcrumb-link {
+  color: var(--blue-one-colour);
+  text-decoration: none;
+  transition: opacity 0.15s linear;
+}
+.breadcrumb-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+.breadcrumb-current {
+  color: inherit;
+  opacity: 0.6;
+  font-weight: 500;
+}
+
 /* src/components/card/Card.css */
 .card {
   display: flex;

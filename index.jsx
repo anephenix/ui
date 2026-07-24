@@ -1,6 +1,7 @@
 import Accordion from "./src/components/accordion/Accordion";
 import Alert from "./src/components/alert/Alert";
 import Badge from "./src/components/badge/Badge";
+import Breadcrumb from "./src/components/breadcrumb/Breadcrumb";
 import Button from "./src/components/button/Button";
 import Card from "./src/components/card/Card";
 import Checkbox from "./src/components/checkbox/Checkbox";
@@ -48,6 +49,7 @@ export {
 	Accordion,
 	Alert,
 	Badge,
+	Breadcrumb,
 	Button,
 	Card,
 	Checkbox,
