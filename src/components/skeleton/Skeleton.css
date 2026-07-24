@@ -1,0 +1,27 @@
+.skeleton {
+	background: linear-gradient(90deg, #e8e8e8 25%, #f4f4f4 50%, #e8e8e8 75%);
+	background-size: 200% 100%;
+	animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacer-one);
+}
+
+@keyframes skeleton-shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.skeleton {
+		background: linear-gradient(90deg, #2a2a2a 25%, #383838 50%, #2a2a2a 75%);
+		background-size: 200% 100%;
+	}
+}

@@ -14,6 +14,8 @@ import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
+import Skeleton from "./src/components/skeleton/Skeleton";
+import Spinner from "./src/components/spinner/Spinner";
 import Switch from "./src/components/switch/Switch";
 import Table from "./src/components/table/Table";
 import Tabs from "./src/components/tabs/Tabs";
@@ -58,6 +60,8 @@ export {
 	Page,
 	RadioButton,
 	Select,
+	Skeleton,
+	Spinner,
 	Switch,
 	Table,
 	Tabs,

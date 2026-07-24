@@ -101,6 +101,8 @@ const sidebarGroups = [
 			{ href: "/docs/badge", label: "Badge" },
 			{ href: "/docs/card", label: "Card" },
 			{ href: "/docs/code", label: "Code" },
+			{ href: "/docs/skeleton", label: "Skeleton" },
+			{ href: "/docs/spinner", label: "Spinner" },
 			{ href: "/docs/table", label: "Table" },
 			{ href: "/docs/tabs", label: "Tabs" },
 			{ href: "/docs/terminal", label: "Terminal" },

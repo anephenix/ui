@@ -694,6 +694,79 @@ dialog.modal::backdrop {
 
 /* src/components/select/Select.css */
 
+/* src/components/skeleton/Skeleton.css */
+.skeleton {
+  background:
+    linear-gradient(
+      90deg,
+      #e8e8e8 25%,
+      #f4f4f4 50%,
+      #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+.skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-one);
+}
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media screen and (prefers-color-scheme: dark) {
+  .skeleton {
+    background:
+      linear-gradient(
+        90deg,
+        #2a2a2a 25%,
+        #383838 50%,
+        #2a2a2a 75%);
+    background-size: 200% 100%;
+  }
+}
+
+/* src/components/spinner/Spinner.css */
+.spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-top-color: var(--primary-colour);
+  animation: spinner-rotate 0.7s linear infinite;
+  flex-shrink: 0;
+}
+.spinner-sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+.spinner-md {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+.spinner-lg {
+  width: 36px;
+  height: 36px;
+  border-width: 4px;
+}
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (prefers-color-scheme: dark) {
+  .spinner {
+    border-color: rgba(255, 255, 255, 0.15);
+    border-top-color: var(--primary-colour);
+  }
+}
+
 /* src/components/switch/Switch.css */
 .switch {
   display: inline-flex;
