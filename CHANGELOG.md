@@ -1,5 +1,69 @@
 # CHANGELOG
 
+### 0.3.1 - Friday 24th July, 2026
+
+- Updated biome schema
+- Updated dependencies
+- Merge pull request #495 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.2.8
+- Bump react-test-renderer from 19.2.7 to 19.2.8
+- Merge pull request #496 from anephenix/dependabot/npm_and_yarn/multi-f975fade2d
+- Bump sharp, wrangler and @cloudflare/vite-plugin
+- Merge pull request #494 from anephenix/dependabot/npm_and_yarn/react-dom-19.2.8
+- Merge pull request #492 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.5
+- Merge pull request #491 from anephenix/dependabot/npm_and_yarn/wrangler-4.113.0
+- Bump react-dom from 19.2.7 to 19.2.8
+- Bump @biomejs/biome from 2.5.4 to 2.5.5
+- Bump wrangler from 4.112.0 to 4.113.0
+- Merge pull request #490 from anephenix/dependabot/npm_and_yarn/testing-library/jest-dom-7.0.0
+- Merge pull request #489 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.4
+- Merge pull request #488 from anephenix/dependabot/npm_and_yarn/astro-7.1.3
+- Bump @testing-library/jest-dom from 6.9.1 to 7.0.0
+- Bump @astrojs/cloudflare from 14.1.3 to 14.1.4
+- Bump astro from 7.1.1 to 7.1.3
+- Merge pull request #487 from anephenix/dependabot/npm_and_yarn/astro-7.1.1
+- Merge pull request #486 from anephenix/dependabot/npm_and_yarn/wrangler-4.112.0
+- Bump astro from 7.0.9 to 7.1.1
+- Bump wrangler from 4.111.0 to 4.112.0
+- Updated dependencies
+- Merge pull request #484 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.4
+- Bump @biomejs/biome from 2.5.3 to 2.5.4
+- Merge pull request #482 from anephenix/dependabot/npm_and_yarn/astro-7.0.9
+- Merge pull request #481 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.3
+- Bump astro from 7.0.7 to 7.0.9
+- Bump @astrojs/cloudflare from 14.1.2 to 14.1.3
+- Merge pull request #480 from anephenix/dependabot/npm_and_yarn/wrangler-4.110.0
+- Bump wrangler from 4.108.0 to 4.110.0
+- Updated dependencies
+- Merge pull request #479 from anephenix/dependabot/npm_and_yarn/wrangler-4.108.0
+- Bump wrangler from 4.107.0 to 4.108.0
+- Merge pull request #478 from anephenix/dependabot/npm_and_yarn/vitest-4.1.10
+- Merge pull request #477 from anephenix/dependabot/npm_and_yarn/vitest/coverage-v8-4.1.10
+- Bump vitest from 4.1.9 to 4.1.10
+- Bump @vitest/coverage-v8 from 4.1.9 to 4.1.10
+- Merge pull request #474 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.1
+- Merge pull request #476 from anephenix/dependabot/npm_and_yarn/wrangler-4.107.0
+- Merge pull request #473 from anephenix/dependabot/npm_and_yarn/astro-7.0.6
+- Merge pull request #475 from anephenix/dependabot/npm_and_yarn/astrojs/react-6.0.1
+- Bump wrangler from 4.106.0 to 4.107.0
+- Bump @astrojs/react from 6.0.0 to 6.0.1
+- Bump @astrojs/cloudflare from 14.1.0 to 14.1.1
+- Bump astro from 7.0.5 to 7.0.6
+- Merge pull request #472 from anephenix/dependabot/npm_and_yarn/astro-7.0.5
+- Merge pull request #471 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.0
+- Merge pull request #470 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.2
+- Bump astro from 7.0.4 to 7.0.5
+- Bump @astrojs/cloudflare from 14.0.2 to 14.1.0
+- Bump @biomejs/biome from 2.5.1 to 2.5.2
+- Merge pull request #469 from anephenix/dependabot/npm_and_yarn/wrangler-4.106.0
+- Merge pull request #467 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.0.2
+- Merge pull request #468 from anephenix/dependabot/npm_and_yarn/astro-7.0.4
+- Bump wrangler from 4.105.0 to 4.106.0
+- Bump astro from 7.0.3 to 7.0.4
+- Bump @astrojs/cloudflare from 14.0.1 to 14.0.2
+- Updated dependencies and resolved an issue rendering the code editor
+- Merge pull request #464 from anephenix/dependabot/npm_and_yarn/wrangler-4.105.0
+- Bump wrangler from 4.104.0 to 4.105.0
+
 ### 0.3.0 - Friday 26th June, 2026
 
 - Replaced the use of SASS with css variables
