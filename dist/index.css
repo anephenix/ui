@@ -777,6 +777,73 @@ dialog.modal::backdrop {
   margin-top: 48px;
 }
 
+/* src/components/pagination/Pagination.css */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--grid-base);
+  flex-wrap: wrap;
+}
+.pagination-page,
+.pagination-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--grid-base);
+  border-radius: 4px;
+  border: solid 1px var(--form-field-border-colour);
+  background: var(--light);
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s linear,
+    border-color 0.15s linear,
+    color 0.15s linear;
+}
+.pagination-page-active {
+  background: var(--primary-colour);
+  border-color: var(--primary-colour);
+  color: #fff;
+  cursor: default;
+  font-weight: 700;
+}
+.pagination-page:not(.pagination-page-active):hover {
+  border-color: var(--primary-colour);
+  color: var(--primary-colour);
+}
+.pagination-nav:not(:disabled):hover {
+  border-color: var(--primary-colour);
+  color: var(--primary-colour);
+}
+.pagination-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+@media screen and (prefers-color-scheme: dark) {
+  .pagination-page,
+  .pagination-nav {
+    background: var(--dark);
+    color: var(--light);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .pagination-ellipsis {
+    color: var(--light);
+  }
+}
+
 /* src/components/select/Select.css */
 
 /* src/components/skeleton/Skeleton.css */

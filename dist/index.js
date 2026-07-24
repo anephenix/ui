@@ -580,14 +580,107 @@ import { jsx as jsx20 } from "react/jsx-runtime";
 var Page = ({ children }) => /* @__PURE__ */ jsx20("div", { className: "page", children });
 var Page_default = Page;
 
+// src/components/pagination/Pagination.jsx
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
+var getPageNumbers = (currentPage, totalPages, siblingCount) => {
+  const totalShown = 2 * siblingCount + 5;
+  if (totalPages <= totalShown) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  const left = Math.max(2, currentPage - siblingCount);
+  const right = Math.min(totalPages - 1, currentPage + siblingCount);
+  const pages = [1];
+  if (left > 2) pages.push("left-ellipsis");
+  for (let i = left; i <= right; i++) pages.push(i);
+  if (right < totalPages - 1) pages.push("right-ellipsis");
+  pages.push(totalPages);
+  return pages;
+};
+var Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+  siblingCount = 1,
+  showFirstLast = true,
+  className
+}) => {
+  if (totalPages < 2) return null;
+  const pages = getPageNumbers(currentPage, totalPages, siblingCount);
+  const classNames = `pagination${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsxs14("nav", { className: classNames, "aria-label": "Pagination", children: [
+    showFirstLast && /* @__PURE__ */ jsx21(
+      "button",
+      {
+        type: "button",
+        className: "pagination-nav",
+        "aria-label": "First page",
+        onClick: () => onPageChange(1),
+        disabled: currentPage === 1,
+        children: "\xAB"
+      }
+    ),
+    /* @__PURE__ */ jsx21(
+      "button",
+      {
+        type: "button",
+        className: "pagination-nav",
+        "aria-label": "Previous page",
+        onClick: () => onPageChange(currentPage - 1),
+        disabled: currentPage === 1,
+        children: "\u2039"
+      }
+    ),
+    pages.map((page) => {
+      if (page === "left-ellipsis" || page === "right-ellipsis") {
+        return /* @__PURE__ */ jsx21("span", { className: "pagination-ellipsis", children: "\u2026" }, page);
+      }
+      const isActive = page === currentPage;
+      return /* @__PURE__ */ jsx21(
+        "button",
+        {
+          type: "button",
+          className: `pagination-page${isActive ? " pagination-page-active" : ""}`,
+          "aria-current": isActive ? "page" : void 0,
+          onClick: () => onPageChange(page),
+          children: page
+        },
+        page
+      );
+    }),
+    /* @__PURE__ */ jsx21(
+      "button",
+      {
+        type: "button",
+        className: "pagination-nav",
+        "aria-label": "Next page",
+        onClick: () => onPageChange(currentPage + 1),
+        disabled: currentPage === totalPages,
+        children: "\u203A"
+      }
+    ),
+    showFirstLast && /* @__PURE__ */ jsx21(
+      "button",
+      {
+        type: "button",
+        className: "pagination-nav",
+        "aria-label": "Last page",
+        onClick: () => onPageChange(totalPages),
+        disabled: currentPage === totalPages,
+        children: "\xBB"
+      }
+    )
+  ] });
+};
+var Pagination_default = Pagination;
+
 // src/components/radio-button/RadioButton.jsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs15 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
   const classNames = `radio ${className}`;
   const isControlled = checked !== void 0;
-  return /* @__PURE__ */ jsxs14("label", { className: classNames, children: [
-    /* @__PURE__ */ jsx21(
+  return /* @__PURE__ */ jsxs15("label", { className: classNames, children: [
+    /* @__PURE__ */ jsx22(
       "input",
       {
         type: "radio",
@@ -597,18 +690,18 @@ var RadioButton = forwardRef5(function radioButton({ name, label, className, def
         ...isControlled ? { checked, onChange } : {}
       }
     ),
-    /* @__PURE__ */ jsx21("div", { className: "radio-element", children: /* @__PURE__ */ jsx21("div", { className: "selected" }) }),
-    /* @__PURE__ */ jsx21("span", { children: label })
+    /* @__PURE__ */ jsx22("div", { className: "radio-element", children: /* @__PURE__ */ jsx22("div", { className: "selected" }) }),
+    /* @__PURE__ */ jsx22("span", { children: label })
   ] });
 });
 var RadioButton_default = RadioButton;
 
 // src/components/select/Select.jsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx22 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx22("option", { value, children: label }, index);
+import { jsx as jsx23 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx23("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx22(
+  return /* @__PURE__ */ jsx23(
     "select",
     {
       ref,
@@ -623,9 +716,9 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 var Select_default = Select;
 
 // src/components/skeleton/Skeleton.jsx
-import { jsx as jsx23 } from "react/jsx-runtime";
+import { jsx as jsx24 } from "react/jsx-runtime";
 var toCSS = (value) => typeof value === "number" ? `${value}px` : value;
-var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx23(
+var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx24(
   "div",
   {
     className: "skeleton",
@@ -641,7 +734,7 @@ var Skeleton = ({
   className
 }) => {
   if (lines === 1) {
-    return /* @__PURE__ */ jsx23(
+    return /* @__PURE__ */ jsx24(
       "div",
       {
         className: `skeleton${className ? ` ${className}` : ""}`,
@@ -654,7 +747,7 @@ var Skeleton = ({
     id: `line-${i}`,
     isLast: i === lines - 1
   }));
-  return /* @__PURE__ */ jsx23("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx23(
+  return /* @__PURE__ */ jsx24("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx24(
     SkeletonLine,
     {
       width: isLast ? "70%" : width,
@@ -667,16 +760,16 @@ var Skeleton = ({
 var Skeleton_default = Skeleton;
 
 // src/components/spinner/Spinner.jsx
-import { jsx as jsx24 } from "react/jsx-runtime";
+import { jsx as jsx25 } from "react/jsx-runtime";
 var Spinner = ({ size = "md", label = "Loading...", className }) => {
   const classNames = `spinner spinner-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx24("div", { className: classNames, role: "status", "aria-label": label });
+  return /* @__PURE__ */ jsx25("div", { className: classNames, role: "status", "aria-label": label });
 };
 var Spinner_default = Spinner;
 
 // src/components/switch/Switch.jsx
 import { forwardRef as forwardRef7, useState as useState2 } from "react";
-import { jsx as jsx25, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs16 } from "react/jsx-runtime";
 var Switch = forwardRef7(function switchInput({
   name,
   label,
@@ -696,8 +789,8 @@ var Switch = forwardRef7(function switchInput({
     onChange?.(e);
   };
   const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs15("label", { className: labelClass, children: [
-    /* @__PURE__ */ jsx25(
+  return /* @__PURE__ */ jsxs16("label", { className: labelClass, children: [
+    /* @__PURE__ */ jsx26(
       "input",
       {
         type: "checkbox",
@@ -710,27 +803,27 @@ var Switch = forwardRef7(function switchInput({
         disabled
       }
     ),
-    /* @__PURE__ */ jsx25("div", { className: "switch-track", children: /* @__PURE__ */ jsx25("div", { className: "switch-thumb" }) }),
-    label && /* @__PURE__ */ jsx25("span", { className: "switch-label", children: label })
+    /* @__PURE__ */ jsx26("div", { className: "switch-track", children: /* @__PURE__ */ jsx26("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx26("span", { className: "switch-label", children: label })
   ] });
 });
 var Switch_default = Switch;
 
 // src/components/table/Table.jsx
-import { jsx as jsx26, jsxs as jsxs16 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs17 } from "react/jsx-runtime";
 var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx26("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs16("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx26("caption", { children: caption }),
-    /* @__PURE__ */ jsx26("thead", { children: /* @__PURE__ */ jsx26("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx26("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx26("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx26("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx26("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx27("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs17("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx27("caption", { children: caption }),
+    /* @__PURE__ */ jsx27("thead", { children: /* @__PURE__ */ jsx27("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx27("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx27("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx27("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx27("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.jsx
 import { useRef as useRef2, useState as useState3 } from "react";
-import { jsx as jsx27, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs18 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
   const [activeTab, setActiveTab] = useState3(defaultTab ?? tabs[0]?.id);
   const tabRefs = useRef2({});
@@ -753,8 +846,8 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
     }
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs17("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx27("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx27(
+  return /* @__PURE__ */ jsxs18("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx28("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx28(
       "button",
       {
         ref: (el) => {
@@ -773,7 +866,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx27(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx28(
       "div",
       {
         id: `panel-${id}`,
@@ -791,17 +884,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx28, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs19 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs18("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs18("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs18("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx28("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs19("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs19("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs19("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx29("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx29("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx29("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx28("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx28("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx28(
+      /* @__PURE__ */ jsx29("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx29("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx29(
         "button",
         {
           type: "button",
@@ -811,16 +904,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx28("pre", { children: /* @__PURE__ */ jsx28("code", { children: code }) })
+    /* @__PURE__ */ jsx29("pre", { children: /* @__PURE__ */ jsx29("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef8 } from "react";
-import { jsx as jsx29 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 var Textarea = forwardRef8(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx29(
+  return /* @__PURE__ */ jsx30(
     "textarea",
     {
       ref,
@@ -836,7 +929,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect2 } from "react";
-import { jsx as jsx30, jsxs as jsxs19 } from "react/jsx-runtime";
+import { jsx as jsx31, jsxs as jsxs20 } from "react/jsx-runtime";
 var variantIcons2 = {
   success: "\u2713",
   error: "\u2715",
@@ -858,19 +951,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs19(
+  return /* @__PURE__ */ jsxs20(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx30("div", { className: "toast-icon", children: variantIcons2[variant] }),
-        /* @__PURE__ */ jsxs19("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx30("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx30("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx31("div", { className: "toast-icon", children: variantIcons2[variant] }),
+        /* @__PURE__ */ jsxs20("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx31("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx31("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx30(
+        /* @__PURE__ */ jsx31(
           "button",
           {
             type: "button",
@@ -917,6 +1010,7 @@ export {
   Modal_default as Modal,
   NavBar_default as NavBar,
   Page_default as Page,
+  Pagination_default as Pagination,
   RadioButton_default as RadioButton,
   Select_default as Select,
   Skeleton_default as Skeleton,

@@ -1,0 +1,8 @@
+---
+import PaginationPage from "../../components/docs/PaginationPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Pagination - UI Docs">
+    <PaginationPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

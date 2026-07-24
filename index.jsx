@@ -13,6 +13,7 @@ import Input from "./src/components/input/Input";
 import Modal from "./src/components/modal/Modal";
 import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
+import Pagination from "./src/components/pagination/Pagination";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
 import Skeleton from "./src/components/skeleton/Skeleton";
@@ -60,6 +61,7 @@ export {
 	Modal,
 	NavBar,
 	Page,
+	Pagination,
 	RadioButton,
 	Select,
 	Skeleton,
