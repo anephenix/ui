@@ -11,6 +11,7 @@ import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
 import RadioButton from "./src/components/radio-button/RadioButton";
 import Select from "./src/components/select/Select";
+import Table from "./src/components/table/Table";
 import Terminal from "./src/components/terminal/Terminal";
 import Textarea from "./src/components/textarea/Textarea";
 import Toast from "./src/components/toast/Toast";
@@ -49,6 +50,7 @@ export {
 	Page,
 	RadioButton,
 	Select,
+	Table,
 	Terminal,
 	Textarea,
 	Toast,

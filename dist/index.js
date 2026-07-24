@@ -497,19 +497,31 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 });
 var Select_default = Select;
 
+// src/components/table/Table.jsx
+import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
+var Table = ({ columns, rows, rowKey = "id", caption, className }) => {
+  const classNames = `table${className ? ` ${className}` : ""}`;
+  return /* @__PURE__ */ jsx19("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs12("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx19("caption", { children: caption }),
+    /* @__PURE__ */ jsx19("thead", { children: /* @__PURE__ */ jsx19("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx19("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx19("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx19("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx19("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  ] }) });
+};
+var Table_default = Table;
+
 // src/components/terminal/Terminal.jsx
 import copy2 from "clipboard-copy";
-import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
+import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs12("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs12("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs12("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx19("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs13("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs13("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs13("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx20("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx19("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx19("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx19(
+      /* @__PURE__ */ jsx20("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx20("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx20(
         "button",
         {
           type: "button",
@@ -519,16 +531,16 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx19("pre", { children: /* @__PURE__ */ jsx19("code", { children: code }) })
+    /* @__PURE__ */ jsx20("pre", { children: /* @__PURE__ */ jsx20("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.jsx
 import { forwardRef as forwardRef7 } from "react";
-import { jsx as jsx20 } from "react/jsx-runtime";
+import { jsx as jsx21 } from "react/jsx-runtime";
 var Textarea = forwardRef7(function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-  return /* @__PURE__ */ jsx20(
+  return /* @__PURE__ */ jsx21(
     "textarea",
     {
       ref,
@@ -544,7 +556,7 @@ var Textarea_default = Textarea;
 
 // src/components/toast/Toast.jsx
 import { useEffect as useEffect2 } from "react";
-import { jsx as jsx21, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs14 } from "react/jsx-runtime";
 var variantIcons = {
   success: "\u2713",
   error: "\u2715",
@@ -566,19 +578,19 @@ var Toast = ({
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs13(
+  return /* @__PURE__ */ jsxs14(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx21("div", { className: "toast-icon", children: variantIcons[variant] }),
-        /* @__PURE__ */ jsxs13("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx21("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx21("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx22("div", { className: "toast-icon", children: variantIcons[variant] }),
+        /* @__PURE__ */ jsxs14("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx22("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx22("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx21(
+        /* @__PURE__ */ jsx22(
           "button",
           {
             type: "button",
@@ -623,6 +635,7 @@ export {
   Page_default as Page,
   RadioButton_default as RadioButton,
   Select_default as Select,
+  Table_default as Table,
   Terminal_default as Terminal,
   Textarea_default as Textarea,
   Toast_default as Toast,
