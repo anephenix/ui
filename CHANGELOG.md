@@ -1,5 +1,26 @@
 # CHANGELOG
 
+### 0.4.1 - Saturday 25th July, 2026
+
+- Improved the code component so that the styling is better and you can select multiple lines without the line number
+- Improved documentation
+- Improved the documentation styling
+- Applied some aesthetic changes for the components
+- Updated the typography with some tweaks
+- Updated the colours
+- Updated the grid to include an extra large breakpoint
+- Added some more pages for documenting the design system
+- Added a page for colours
+- Updated the README with instructions on how to make screenshots of the components for the documentation
+- More styling tweaks
+- Updated docs styling
+- Added a way to display previews of the components, so that we can see what they look like
+- Fixed a visual bug in the Code component
+- Added the Divider component
+- Added the ProgressBar component
+- Added the ComboBox component
+- Updated Changelog.md
+
 ### 0.4.0 - Friday 24th July, 2026
 
 - Bumped to minor version (0.4.0)
