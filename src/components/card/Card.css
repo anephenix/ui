@@ -1,9 +1,11 @@
 .card {
 	display: flex;
 	flex-direction: column;
-	border-radius: 8px;
+	border-radius: 10px;
 	border: solid 1px var(--form-field-border-colour);
-	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.08),
+		0 4px 12px rgba(0, 0, 0, 0.06);
 	overflow: hidden;
 	background: var(--light);
 	color: var(--dark);
@@ -14,7 +16,9 @@
 		background: var(--dark);
 		color: var(--light);
 		border-color: rgba(255, 255, 255, 0.12);
-		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.3),
+			0 4px 12px rgba(0, 0, 0, 0.4);
 	}
 }
 

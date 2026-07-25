@@ -13,11 +13,22 @@ input[type="password"],
 input[type="search"],
 textarea {
 	padding: var(--grid-base);
-	border-radius: 3px;
+	border-radius: 6px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 	border: solid 1px var(--form-field-border-colour);
 	color: var(--form-field-colour);
 	font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+	outline: 2px solid var(--blue-one-colour);
+	outline-offset: 0px;
+	border-color: var(--blue-one-colour);
+	box-shadow: none;
 }
 
 input[type="text"].large,
@@ -55,8 +66,11 @@ input[type="radio"] {
 	margin-right: var(--grid-base);
 	background: var(--light);
 	border: solid 1px var(--form-field-border-colour);
-	border-radius: 3px;
+	border-radius: 6px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
 }
 
 .radio-element {
@@ -73,32 +87,46 @@ input[type="radio"] {
 	border-radius: var(--spacer-two);
 }
 
-.tick,
-.selected {
-	width: var(--grid-base);
-	height: var(--grid-base);
-	border-radius: 1px;
-	background-color: var(--green-one-colour);
-	opacity: 0;
-	transition: opacity 0.2s linear;
-}
+/* Checkmark — white L-shape rotated 45° on a green background */
 
-.selected {
-	border-radius: var(--spacer-one);
+.tick {
+	width: 3px;
+	height: 6px;
+	border-right: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+	border-radius: 0;
+	background: none;
+	transform: rotate(45deg) translate(0px, -1px);
+	opacity: 0;
+	transition: opacity 0.15s ease;
 }
 
 .large .tick {
-	border-radius: 2px;
+	width: 5px;
+	height: 9px;
+	border-right: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+	border-radius: 0;
+}
+
+.selected {
+	width: var(--grid-base);
+	height: var(--grid-base);
+	border-radius: var(--spacer-one);
+	background-color: var(--green-one-colour);
+	opacity: 0;
+	transition: opacity 0.15s ease;
 }
 
 .large .selected {
 	border-radius: var(--spacer-one);
-}
-
-.large .tick,
-.large .selected {
 	width: var(--spacer-two);
 	height: var(--spacer-two);
+}
+
+input[type="checkbox"]:checked + .checkbox-element {
+	background-color: var(--green-one-colour);
+	border-color: var(--green-one-colour);
 }
 
 input[type="checkbox"]:checked + .checkbox-element .tick,
@@ -109,6 +137,12 @@ input[type="radio"]:checked + .radio-element .selected {
 .large input[type="checkbox"]:checked + .checkbox-element .tick,
 .large input[type="radio"]:checked + .radio-element .selected {
 	opacity: 1;
+}
+
+input[type="checkbox"]:focus-visible + .checkbox-element,
+input[type="radio"]:focus-visible + .radio-element {
+	outline: 2px solid var(--blue-one-colour);
+	outline-offset: 2px;
 }
 
 input[type="checkbox"]:disabled + .checkbox-element,
@@ -136,7 +170,7 @@ input[type="radio"]:disabled + .radio-element {
 	background-size:
 		0.65em auto,
 		100%;
-	border-radius: 3px;
+	border-radius: 6px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 	border: solid 1px var(--form-field-border-colour);
 	color: var(--form-field-colour);
@@ -152,10 +186,11 @@ input[type="radio"]:disabled + .radio-element {
 }
 
 .select:focus {
-	border-color: #aaa;
-	box-shadow: 0 0 1px 1px rgba(59, 153, 252, 0.7);
+	outline: 2px solid var(--blue-one-colour);
+	outline-offset: 0px;
+	border-color: var(--blue-one-colour);
+	box-shadow: none;
 	color: var(--form-field-colour);
-	outline: none;
 }
 
 .select > option {

@@ -13,7 +13,7 @@
 	min-width: 32px;
 	height: 32px;
 	padding: 0 var(--grid-base);
-	border-radius: 4px;
+	border-radius: 6px;
 	border: solid 1px var(--form-field-border-colour);
 	background: var(--light);
 	color: var(--dark);
@@ -47,6 +47,12 @@
 .pagination-nav:disabled {
 	opacity: 0.35;
 	cursor: not-allowed;
+}
+
+.pagination-page:focus-visible,
+.pagination-nav:focus-visible {
+	outline: 2px solid var(--blue-one-colour);
+	outline-offset: 2px;
 }
 
 .pagination-ellipsis {

@@ -55,7 +55,7 @@
 	text-decoration: none;
 	font-size: 10pt;
 	margin: 0px var(--spacer-one);
-	transition: all 0.3s linear;
+	transition: color 0.15s ease-out;
 	cursor: pointer;
 	color: rgb(17, 17, 17);
 }

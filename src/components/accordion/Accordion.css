@@ -1,8 +1,10 @@
 .accordion {
 	border: solid 1px var(--form-field-border-colour);
-	border-radius: 8px;
+	border-radius: 10px;
 	overflow: hidden;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.06),
+		0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .accordion-item {
@@ -33,7 +35,12 @@
 	color: inherit;
 	text-align: left;
 	gap: var(--spacer-two);
-	transition: background 0.15s linear;
+	transition: background 0.15s ease-out;
+}
+
+.accordion-trigger:focus-visible {
+	outline: 2px solid var(--blue-one-colour);
+	outline-offset: -2px;
 }
 
 .accordion-trigger:hover {
@@ -89,7 +96,9 @@
 
 	.accordion {
 		border-color: rgba(255, 255, 255, 0.12);
-		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.2),
+			0 2px 8px rgba(0, 0, 0, 0.4);
 	}
 
 	.accordion-item {

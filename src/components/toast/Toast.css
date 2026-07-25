@@ -5,8 +5,10 @@
 	align-items: flex-start;
 	gap: var(--spacer-one);
 	padding: var(--spacer-two) var(--spacer-two);
-	border-radius: 8px;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+	border-radius: 10px;
+	box-shadow:
+		0 1px 4px rgba(0, 0, 0, 0.1),
+		0 4px 16px rgba(0, 0, 0, 0.12);
 	border: solid 1px transparent;
 	min-width: 280px;
 	max-width: 400px;

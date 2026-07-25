@@ -1,8 +1,10 @@
 .table-wrapper {
 	overflow-x: auto;
-	border-radius: 8px;
+	border-radius: 10px;
 	border: solid 1px var(--form-field-border-colour);
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.06),
+		0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 table.table {
@@ -39,14 +41,20 @@ table.table tbody tr:last-child td {
 	border-bottom: none;
 }
 
+table.table tbody tr:nth-child(even) {
+	background: rgba(0, 0, 0, 0.025);
+}
+
 table.table tbody tr:hover {
-	background: rgba(0, 0, 0, 0.02);
+	background: rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (prefers-color-scheme: dark) {
 	.table-wrapper {
 		border-color: rgba(255, 255, 255, 0.12);
-		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.2),
+			0 2px 8px rgba(0, 0, 0, 0.3);
 	}
 
 	table.table th {
@@ -57,7 +65,11 @@ table.table tbody tr:hover {
 		border-bottom-color: rgba(255, 255, 255, 0.06);
 	}
 
+	table.table tbody tr:nth-child(even) {
+		background: rgba(255, 255, 255, 0.03);
+	}
+
 	table.table tbody tr:hover {
-		background: rgba(255, 255, 255, 0.04);
+		background: rgba(255, 255, 255, 0.07);
 	}
 }
