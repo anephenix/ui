@@ -10,7 +10,9 @@ export const PropTable = ({ rows }) => (
 		<tbody>
 			{rows.map(([prop, type, desc]) => (
 				<tr key={prop}>
-					<td>{prop}</td>
+					<td>
+						<code>{prop}</code>
+					</td>
 					<td>{type}</td>
 					<td>{desc}</td>
 				</tr>
