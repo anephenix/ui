@@ -3,7 +3,7 @@ import DocsLayout from "./DocsLayout.jsx";
 
 const palette = [
 	{
-		group: "Brand",
+		group: "Brand — Red",
 		colours: [
 			{
 				variable: "--primary-colour",
@@ -13,6 +13,25 @@ const palette = [
 				usage: "Error states, destructive actions, primary CTA button",
 			},
 			{
+				variable: "--primary-two-colour",
+				hex: "#ff9187",
+				label: "Primary Two",
+				lightText: false,
+				usage: "Error text in dark mode",
+			},
+			{
+				variable: "--primary-three-colour",
+				hex: "#ffd4d0",
+				label: "Primary Three",
+				lightText: false,
+				usage: "Error tints and backgrounds",
+			},
+		],
+	},
+	{
+		group: "Brand — Orange",
+		colours: [
+			{
 				variable: "--secondary-colour",
 				hex: "#fd9448",
 				label: "Secondary",
@@ -20,11 +39,44 @@ const palette = [
 				usage: "Secondary CTA button, accent highlights",
 			},
 			{
+				variable: "--secondary-two-colour",
+				hex: "#ffb884",
+				label: "Secondary Two",
+				lightText: false,
+				usage: "Lighter orange for dark mode",
+			},
+			{
+				variable: "--secondary-three-colour",
+				hex: "#ffe4cc",
+				label: "Secondary Three",
+				lightText: false,
+				usage: "Orange tints and backgrounds",
+			},
+		],
+	},
+	{
+		group: "Brand — Yellow",
+		colours: [
+			{
 				variable: "--tertiary-colour",
 				hex: "#ffc61a",
 				label: "Tertiary",
 				lightText: false,
 				usage: "Warning states, tertiary CTA button",
+			},
+			{
+				variable: "--tertiary-two-colour",
+				hex: "#ffd966",
+				label: "Tertiary Two",
+				lightText: false,
+				usage: "Lighter yellow for dark mode",
+			},
+			{
+				variable: "--tertiary-three-colour",
+				hex: "#fff3c2",
+				label: "Tertiary Three",
+				lightText: false,
+				usage: "Warning tints and backgrounds",
 			},
 		],
 	},
@@ -77,6 +129,84 @@ const palette = [
 				label: "Blue Three",
 				lightText: false,
 				usage: "Info tints and backgrounds",
+			},
+		],
+	},
+	{
+		group: "Teal",
+		colours: [
+			{
+				variable: "--teal-one-colour",
+				hex: "#1aa89e",
+				label: "Teal One",
+				lightText: true,
+				usage: "Bridges green and blue; useful for neutral tags and accents",
+			},
+			{
+				variable: "--teal-two-colour",
+				hex: "#5dd4cc",
+				label: "Teal Two",
+				lightText: false,
+				usage: "Lighter teal for dark mode text",
+			},
+			{
+				variable: "--teal-three-colour",
+				hex: "#b8f0ed",
+				label: "Teal Three",
+				lightText: false,
+				usage: "Teal tints and backgrounds",
+			},
+		],
+	},
+	{
+		group: "Purple",
+		colours: [
+			{
+				variable: "--purple-one-colour",
+				hex: "#8b44d4",
+				label: "Purple One",
+				lightText: true,
+				usage: "Tags, pricing tiers, creative accents",
+			},
+			{
+				variable: "--purple-two-colour",
+				hex: "#b88aff",
+				label: "Purple Two",
+				lightText: false,
+				usage: "Lighter purple for dark mode text",
+			},
+			{
+				variable: "--purple-three-colour",
+				hex: "#e5d4ff",
+				label: "Purple Three",
+				lightText: false,
+				usage: "Purple tints and backgrounds",
+			},
+		],
+	},
+	{
+		group: "Pink",
+		colours: [
+			{
+				variable: "--pink-one-colour",
+				hex: "#e8389e",
+				label: "Pink One",
+				lightText: true,
+				usage: "Highlights, social features, promotional accents",
+			},
+			{
+				variable: "--pink-two-colour",
+				hex: "#ff80c4",
+				label: "Pink Two",
+				lightText: false,
+				usage: "Lighter pink for dark mode text",
+			},
+			{
+				variable: "--pink-three-colour",
+				hex: "#ffd4ec",
+				label: "Pink Three",
+				lightText: false,
+				usage: "Pink tints and backgrounds",
 			},
 		],
 	},
@@ -189,9 +319,19 @@ export default function ColoursPage({ currentPath }) {
 					theme the system.
 				</p>
 				<Code
-					code={`:root {\n  --primary-colour: #fd5548;\n  --blue-one-colour: #279ae1;\n  /* … */\n}`}
+					code={`:root {\n  --primary-colour:        #fd5548;\n  --primary-two-colour:    #ff9187;\n  --primary-three-colour:  #ffd4d0;\n  /* … */\n}`}
 					language="css"
 				/>
+
+				<p>
+					Each hue family follows a three-tier pattern: <strong>one</strong> is
+					the saturated base used in components, <strong>two</strong> is lighter
+					and suits dark-mode text, and <strong>three</strong> is the lightest
+					tint for backgrounds and fills. The brand colours (
+					<code>--primary-colour</code>, <code>--secondary-colour</code>,{" "}
+					<code>--tertiary-colour</code>) are the original single-value aliases
+					and remain unchanged for compatibility.
+				</p>
 
 				{palette.map(({ group, colours }) => (
 					<div key={group}>

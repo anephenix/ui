@@ -1852,14 +1852,29 @@ table.table tbody tr:hover {
 /* design-system/colours.css */
 :root {
   --primary-colour: #fd5548;
+  --primary-two-colour: #ff9187;
+  --primary-three-colour: #ffd4d0;
   --secondary-colour: #fd9448;
+  --secondary-two-colour: #ffb884;
+  --secondary-three-colour: #ffe4cc;
   --tertiary-colour: #ffc61a;
+  --tertiary-two-colour: #ffd966;
+  --tertiary-three-colour: #fff3c2;
   --green-one-colour: #69b65c;
   --green-two-colour: #95e388;
   --green-three-colour: #c5fdbb;
   --blue-one-colour: #279ae1;
   --blue-two-colour: #7bccff;
   --blue-three-colour: #c8eaff;
+  --teal-one-colour: #1aa89e;
+  --teal-two-colour: #5dd4cc;
+  --teal-three-colour: #b8f0ed;
+  --purple-one-colour: #8b44d4;
+  --purple-two-colour: #b88aff;
+  --purple-three-colour: #e5d4ff;
+  --pink-one-colour: #e8389e;
+  --pink-two-colour: #ff80c4;
+  --pink-three-colour: #ffd4ec;
   --light: #fff;
   --dark: #111;
   --form-field-border-colour: #cfcfcf;

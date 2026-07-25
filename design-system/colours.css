@@ -1,16 +1,45 @@
 :root {
+	/* Brand — red */
 	--primary-colour: #fd5548;
-	--secondary-colour: #fd9448;
-	--tertiary-colour: #ffc61a;
+	--primary-two-colour: #ff9187;
+	--primary-three-colour: #ffd4d0;
 
+	/* Brand — orange */
+	--secondary-colour: #fd9448;
+	--secondary-two-colour: #ffb884;
+	--secondary-three-colour: #ffe4cc;
+
+	/* Brand — yellow */
+	--tertiary-colour: #ffc61a;
+	--tertiary-two-colour: #ffd966;
+	--tertiary-three-colour: #fff3c2;
+
+	/* Green */
 	--green-one-colour: #69b65c;
 	--green-two-colour: #95e388;
 	--green-three-colour: #c5fdbb;
 
+	/* Blue */
 	--blue-one-colour: #279ae1;
 	--blue-two-colour: #7bccff;
 	--blue-three-colour: #c8eaff;
 
+	/* Teal */
+	--teal-one-colour: #1aa89e;
+	--teal-two-colour: #5dd4cc;
+	--teal-three-colour: #b8f0ed;
+
+	/* Purple */
+	--purple-one-colour: #8b44d4;
+	--purple-two-colour: #b88aff;
+	--purple-three-colour: #e5d4ff;
+
+	/* Pink */
+	--pink-one-colour: #e8389e;
+	--pink-two-colour: #ff80c4;
+	--pink-three-colour: #ffd4ec;
+
+	/* Neutrals */
 	--light: #fff;
 	--dark: #111;
 
@@ -18,6 +47,7 @@
 	--form-field-colour: #414141;
 	--form-field-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
+	/* Window title bar */
 	--window-title-bar-close: rgb(255, 95, 87);
 	--window-title-bar-minimize: rgb(254, 188, 47);
 	--window-title-bar-maximize: rgb(40, 200, 64);
