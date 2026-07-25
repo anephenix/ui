@@ -942,6 +942,53 @@ try {
 npm t
 ```
 
+### Component screenshots
+
+Screenshots of each component are stored in `public/screenshots/` and displayed on the docs overview page. Two scripts manage them.
+
+#### Compute clip regions
+
+```
+npm run compute-clips
+```
+
+Visits every component's preview page at the configured viewport size (set in `scripts/screenshot-config.json`), measures each component element's bounding box via Puppeteer, adds padding, enforces a minimum size, and writes a `"clip"` entry for every component back into the config. Run this whenever a new component is added or an existing preview layout changes.
+
+#### Generate screenshots
+
+```
+npm run screenshots
+```
+
+Reads `scripts/screenshot-config.json`, boots the Astro dev server, and captures a screenshot for each component using the configured strategy:
+
+| Strategy | Behaviour |
+|----------|-----------|
+| `"clip"` | Crops to the `{ x, y, width, height }` region |
+| `"element"` | Crops to the bounding box of a CSS selector |
+| `"full"` | Captures the full viewport |
+
+The output files are saved to `public/screenshots/<ComponentName>.png`.
+
+#### Fine-tuning a clip manually
+
+Open the preview page for a component in your browser:
+
+```
+http://localhost:4321/preview?component=Button
+```
+
+A **Crop Tool** panel appears in the bottom-right corner. Click **Draw crop**, drag a rectangle over the component, then click **Copy config snippet** to copy a ready-to-paste entry for `scripts/screenshot-config.json`. After saving the config, re-run `npm run screenshots` to regenerate.
+
+#### Typical workflow for a new component
+
+1. Add the component preview to `site/components/PreviewPage.jsx`
+2. Run `npm run compute-clips` to auto-measure the clip region
+3. Run `npm run screenshots` to generate the screenshot
+4. Optionally open the preview page, use the Crop Tool to fine-tune, update the config, and re-run `npm run screenshots`
+
+---
+
 ### License and credits
 
 &copy;2026 Anephenix Ltd. UI is licenced under the MIT Licence.
