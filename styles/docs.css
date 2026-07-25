@@ -115,6 +115,15 @@
 	margin-bottom: 0.75rem;
 }
 
+/* Prevent the broad h2 rule from bleeding into components that control
+   their own heading styles (e.g. Modal, Popover, Card). */
+.docs-content dialog h2,
+.docs-content .popover h2,
+.docs-content .card h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 /* Cap line length on prose for comfortable reading */
 .docs-content p,
 .docs-content li {
