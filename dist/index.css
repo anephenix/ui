@@ -2059,9 +2059,14 @@ body {
     width: 760px;
   }
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) and (max-width: 1279px) {
   .container {
     width: 1024px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1200px;
   }
 }
 .withSidePadding {

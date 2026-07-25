@@ -1,8 +1,9 @@
 /* Screen size definitions:
-   mobile   < 480px
-   small    481px – 768px
-   medium   769px – 1024px
-   large    >= 1025px
+   mobile      < 480px
+   small       481px – 768px
+   medium      769px – 1024px
+   large       1025px – 1279px
+   extra-large >= 1280px
 */
 
 body {
@@ -49,9 +50,15 @@ body {
 	}
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) and (max-width: 1279px) {
 	.container {
 		width: 1024px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.container {
+		width: 1200px;
 	}
 }
 

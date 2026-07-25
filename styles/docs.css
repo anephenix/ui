@@ -414,23 +414,27 @@
 }
 
 .docs-card-action-docs {
-	background: var(--blue-one-colour);
+	background: var(--primary-colour);
 	color: #fff;
+	border: 1px solid var(--primary-colour);
 }
 
 .docs-card-action-docs:hover {
-	background: var(--blue-two-colour);
-	color: var(--dark);
+	background-color: transparent;
+	color: var(--primary-colour);
+	border: 1px solid var(--primary-colour);
 }
 
 .docs-card-action-preview {
-	background: transparent;
-	color: var(--blue-one-colour);
-	border: 1px solid var(--blue-one-colour);
+	background: var(--secondary-colour);
+	color: #fff;
+	border: 1px solid var(--secondary-colour);
 }
 
 .docs-card-action-preview:hover {
-	background: rgba(39, 154, 225, 0.1);
+	background-color: transparent;
+	color: var(--secondary-colour);
+	border: 1px solid var(--secondary-colour);
 }
 
 @media screen and (prefers-color-scheme: dark) {

@@ -35,9 +35,15 @@ const breakpoints = [
 	},
 	{
 		name: "Large",
-		rule: "≥ 1025px",
+		rule: "1025px – 1279px",
 		container: "1024px",
-		notes: "Fixed container, max content width",
+		notes: "Fixed container",
+	},
+	{
+		name: "Extra-large",
+		rule: "≥ 1280px",
+		container: "1200px",
+		notes: "Wider fixed container for large desktop screens",
 	},
 ];
 
