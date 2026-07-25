@@ -134,6 +134,106 @@
 	}
 }
 
+/* ── Docs index (overview) page ─────────────────────────────────── */
+
+.docs-index-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--spacer-two);
+	margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+	.docs-index-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.docs-index-card-link {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: inherit;
+	border-radius: 8px;
+	transition:
+		box-shadow 0.2s,
+		transform 0.15s;
+}
+
+.docs-index-card-link .card {
+	flex: 1;
+}
+
+.docs-index-card-link:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+.docs-index-card-disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.docs-index-badge {
+	display: inline-block;
+	padding: 0.15rem 0.5rem;
+	border-radius: 99px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	background: rgba(0, 0, 0, 0.08);
+	color: inherit;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.docs-index-card-link:hover {
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+	}
+
+	.docs-index-badge {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* ── Colour swatches ─────────────────────────────────────────────── */
+
+.colour-swatch-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--spacer-two);
+	margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+	.colour-swatch-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.colour-swatch-meta {
+	padding: 0.5rem 0;
+}
+
+.colour-swatch-meta code {
+	display: block;
+	font-size: 0.8rem;
+	margin-bottom: 0.25rem;
+}
+
+.colour-swatch-meta p {
+	font-size: 0.8rem;
+	color: #666;
+	margin: 0;
+	line-height: 1.4;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.colour-swatch-meta p {
+		color: #999;
+	}
+}
+
+/* ── Component overview grid ─────────────────────────────────────── */
+
 .docs-component-card-wrapper {
 	display: flex;
 	flex-direction: column;

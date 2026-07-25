@@ -66,7 +66,14 @@ const RightSection = () => (
 const sidebarGroups = [
 	{
 		label: null,
-		items: [{ href: "/docs", label: "Overview" }],
+		items: [
+			{ href: "/docs", label: "Overview" },
+			{ href: "/docs/components", label: "Components" },
+		],
+	},
+	{
+		label: "Design System",
+		items: [{ href: "/docs/colours", label: "Colours" }],
 	},
 	{
 		label: "Layout",

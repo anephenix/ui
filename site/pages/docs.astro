@@ -1,8 +1,8 @@
 ---
-import DocsPage from "../components/DocsPage.jsx";
+import DocsIndexPage from "../components/DocsIndexPage.jsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Docs - UI">
-    <DocsPage client:only="react" currentPath={Astro.url.pathname} />
+	<DocsIndexPage client:only="react" currentPath={Astro.url.pathname} />
 </Layout>

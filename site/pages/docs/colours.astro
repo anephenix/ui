@@ -1,0 +1,8 @@
+---
+import ColoursPage from "../../components/ColoursPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Colours - UI Docs">
+	<ColoursPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
