@@ -11,6 +11,8 @@ body {
 	font-family:
 		"Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen, Cantarell, "Open Sans", sans-serif;
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-relaxed);
 	background: var(--light);
 	color: var(--dark);
 }
