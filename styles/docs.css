@@ -138,7 +138,7 @@
 	padding: 2px 6px;
 	border-radius: 4px;
 	font-family: "Menlo", "Monaco", "Courier New", monospace;
-	font-size: 0.82em;
+	font-size: 10pt;
 }
 
 @media screen and (prefers-color-scheme: dark) {

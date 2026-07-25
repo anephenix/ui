@@ -1,9 +1,7 @@
 import "./Code.css";
 import copy from "clipboard-copy";
-import HighlightLib from "react-highlight";
-
-// react-highlight is CJS; Vite 8 no longer auto-unwraps __esModule interop
-const Highlight = HighlightLib?.default ?? HighlightLib;
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const TitleBarButton = (id) => (
 	<div className="title-bar-button" key={id} id={id} />
@@ -32,34 +30,43 @@ const TitleBar = ({ title, code }) => (
 	</div>
 );
 
-const LineCount = ({ code }) => {
-	const numberOfLines = code.split("\n").length;
-	const lineNumbers = Array.from({ length: numberOfLines }, (_, i) => i + 1);
+const LineNumbers = ({ code }) => {
+	const count = code.split("\n").length;
+	const numbers = [];
+	for (let i = 1; i <= count; i++) numbers.push(i);
 	return (
-		<div id="line-count">
-			{lineNumbers.map((lineNum) => (
-				<div key={lineNum} className={"line-count-item"}>
-					{lineNum}
-				</div>
+		<div className="code-line-numbers" aria-hidden="true">
+			{numbers.map((n) => (
+				<span key={n} className="code-line-number">
+					{n}
+				</span>
 			))}
 		</div>
 	);
 };
 
-const CodeEditor = ({ code, language }) => {
-	return (
-		<div id="code-editor">
-			<LineCount code={code} />
-			<Highlight language={language}>{code}</Highlight>
-		</div>
-	);
-};
-
-// NOTE - ID is not best if you have multiple Code components on the same page
 const Code = ({ title, code, language = "javascript" }) => (
 	<div className="code">
 		<TitleBar title={title} code={code} />
-		<CodeEditor code={code} language={language} />
+		<div className="code-editor">
+			<LineNumbers code={code} />
+			<SyntaxHighlighter
+				language={language}
+				style={oneDark}
+				customStyle={{
+					background: "transparent",
+					margin: 0,
+					padding: "10px 12px",
+					fontSize: "10pt",
+					borderRadius: 0,
+					overflowX: "auto",
+					flex: 1,
+					minWidth: 0,
+				}}
+			>
+				{code}
+			</SyntaxHighlighter>
+		</div>
 	</div>
 );
 

@@ -10,12 +10,10 @@ describe("Code", () => {
 	const title = "Sample Code";
 	const language = "javascript";
 
-	test("renders the Code component with title and code", () => {
+	test("renders the Code component with title and copy button", () => {
 		render(<Code title={title} code={code} language={language} />);
 		expect(screen.getByText(title)).toBeInTheDocument();
 		expect(screen.getByText("Copy")).toBeInTheDocument();
-		expect(screen.getByText("1")).toBeInTheDocument();
-		expect(screen.getByText("2")).toBeInTheDocument();
 	});
 
 	test("copies code to clipboard when Copy button is clicked", () => {
@@ -24,13 +22,39 @@ describe("Code", () => {
 		expect(copy).toHaveBeenCalledWith(code);
 	});
 
-	test("renders the correct number of lines", () => {
+	test("renders the correct number of line numbers", () => {
 		const { container } = render(
 			<Code title={title} code={code} language={language} />,
 		);
-		const lineCountItems = container.querySelectorAll(".line-count-item");
-		expect(lineCountItems.length).toBe(2);
-		expect(lineCountItems[0].textContent).toBe("1");
-		expect(lineCountItems[1].textContent).toBe("2");
+		const lineNumbers = container.querySelectorAll(".code-line-number");
+		expect(lineNumbers.length).toBe(2);
+		expect(lineNumbers[0].textContent.trim()).toBe("1");
+		expect(lineNumbers[1].textContent.trim()).toBe("2");
+	});
+
+	test("line numbers are in a separate element from the code", () => {
+		const { container } = render(
+			<Code title={title} code={code} language={language} />,
+		);
+		const lineNumbersDiv = container.querySelector(".code-line-numbers");
+		const codeEl = container.querySelector("pre");
+		expect(lineNumbersDiv).toBeInTheDocument();
+		expect(codeEl).toBeInTheDocument();
+		expect(lineNumbersDiv.contains(codeEl)).toBe(false);
+	});
+
+	test("renders the code content", () => {
+		const { container } = render(
+			<Code title={title} code={code} language={language} />,
+		);
+		expect(container.querySelector("pre")).toBeInTheDocument();
+		expect(container.querySelector("code")).toBeInTheDocument();
+	});
+
+	test("applies the given language", () => {
+		const { container } = render(
+			<Code title={title} code={code} language="css" />,
+		);
+		expect(container.querySelector(".language-css")).toBeInTheDocument();
 	});
 });
