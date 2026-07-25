@@ -15,18 +15,22 @@ const sections = [
 			"The colour palette, CSS custom properties, and how colours map to component variants and button classes.",
 	},
 	{
-		href: null,
+		href: "/docs/grid",
 		title: "Grid",
 		description:
-			"Layout grid, spacing scale, container utilities, and responsive breakpoints.",
-		comingSoon: true,
+			"The 8px base grid, spacing scale (--spacer-one through --spacer-five), and responsive breakpoints.",
 	},
 	{
-		href: null,
+		href: "/docs/layout",
+		title: "Layout",
+		description:
+			"The .page, .container, and .withSidePadding utility classes that structure pages at the macro level.",
+	},
+	{
+		href: "/docs/typography",
 		title: "Typography",
 		description:
-			"Type scale, font families, font weights, and text utility classes.",
-		comingSoon: true,
+			"Font families, heading scale (h1–h4 under .theme-default), body text, and monospace styles.",
 	},
 ];
 

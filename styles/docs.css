@@ -194,6 +194,148 @@
 	}
 }
 
+/* ── Grid spacer visualiser ─────────────────────────────────────── */
+
+.grid-spacer-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+}
+
+.grid-spacer-row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.grid-spacer-label {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	width: 160px;
+	flex-shrink: 0;
+}
+
+.grid-spacer-label code {
+	font-size: 0.8rem;
+}
+
+.grid-spacer-px {
+	font-size: 0.75rem;
+	color: #888;
+	font-family: monospace;
+}
+
+.grid-spacer-bar {
+	height: 20px;
+	background: var(--blue-one-colour);
+	border-radius: 3px;
+	flex-shrink: 0;
+}
+
+.grid-spacer-name {
+	font-size: 0.8rem;
+	color: #888;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.grid-spacer-px,
+	.grid-spacer-name {
+		color: #666;
+	}
+}
+
+/* ── Typography scale ────────────────────────────────────────────── */
+
+.typography-scale {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	margin-bottom: 1.5rem;
+	padding: 1.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.typography-scale {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.typography-scale-row {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding-bottom: 1.25rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.typography-scale-row:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.typography-scale-row {
+		border-color: rgba(255, 255, 255, 0.06);
+	}
+}
+
+.typography-scale-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: 0.78rem;
+	color: #888;
+	margin-bottom: 0.25rem;
+}
+
+.typography-scale-meta code {
+	background: none;
+	padding: 0;
+}
+
+.typography-samples {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.typography-sample {
+	padding: 1rem 1.25rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.typography-sample {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.typography-sample-meta {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-bottom: 0.6rem;
+	font-size: 0.8rem;
+	color: #888;
+}
+
+.typography-sample-meta strong {
+	color: inherit;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.typography-scale-meta,
+	.typography-sample-meta {
+		color: #666;
+	}
+}
+
 /* ── Colour swatches ─────────────────────────────────────────────── */
 
 .colour-swatch-grid {

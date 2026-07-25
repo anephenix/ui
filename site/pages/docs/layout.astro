@@ -1,0 +1,8 @@
+---
+import LayoutPage from "../../components/LayoutPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Layout - UI Docs">
+	<LayoutPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

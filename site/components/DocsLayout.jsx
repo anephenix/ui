@@ -73,7 +73,12 @@ const sidebarGroups = [
 	},
 	{
 		label: "Design System",
-		items: [{ href: "/docs/colours", label: "Colours" }],
+		items: [
+			{ href: "/docs/colours", label: "Colours" },
+			{ href: "/docs/grid", label: "Grid" },
+			{ href: "/docs/layout", label: "Layout" },
+			{ href: "/docs/typography", label: "Typography" },
+		],
 	},
 	{
 		label: "Layout",

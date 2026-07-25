@@ -1,0 +1,8 @@
+---
+import GridPage from "../../components/GridPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Grid - UI Docs">
+	<GridPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

@@ -1,0 +1,8 @@
+---
+import TypographyPage from "../../components/TypographyPage.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Typography - UI Docs">
+	<TypographyPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
