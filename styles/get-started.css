@@ -1,17 +1,160 @@
-.section-gap {
-	margin: 40px 0px 80px;
+.gs-content {
+	padding-top: var(--spacer-five);
+	padding-bottom: 80px;
+	max-width: 760px;
 }
 
-.section-gap h2 {
-	padding-bottom: 20px;
+.gs-content h1 {
+	margin-bottom: 0.75rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px solid var(--form-field-border-colour);
 }
 
-.section-gap #terminal,
-.section-gap #code {
-	margin: 40px 0px;
+.gs-lead {
+	font-size: 1.05rem;
+	color: #555;
+	line-height: 1.7;
+	margin-bottom: 2.5rem;
 }
 
-.section-gap ul li,
-.section-gap ol li {
-	line-height: 1.6em;
+@media screen and (prefers-color-scheme: dark) {
+	.gs-content h1 {
+		border-bottom-color: rgba(255, 255, 255, 0.12);
+	}
+
+	.gs-lead {
+		color: #aaa;
+	}
+}
+
+.gs-section {
+	margin-bottom: 3rem;
+}
+
+.gs-section h2 {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	margin-bottom: 0.75rem;
+}
+
+.gs-section p {
+	line-height: 1.6;
+	margin-bottom: 1rem;
+	max-width: 68ch;
+}
+
+.gs-section p code,
+.gs-section li code {
+	background: rgba(0, 0, 0, 0.06);
+	border: 1px solid rgba(0, 0, 0, 0.09);
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-family: "Menlo", "Monaco", "Courier New", monospace;
+	font-size: 0.82em;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.gs-section p code,
+	.gs-section li code {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+}
+
+.gs-section .alert {
+	margin-top: 1rem;
+}
+
+.gs-section .tabs {
+	margin-bottom: 1rem;
+}
+
+/* Requirements table */
+
+.gs-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+	margin-bottom: 1rem;
+	border-radius: 8px;
+	overflow: hidden;
+	border: 1px solid var(--form-field-border-colour);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.06),
+		0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.gs-table th {
+	text-align: left;
+	padding: var(--spacer-one) var(--spacer-two);
+	font-weight: 700;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-bottom: 2px solid var(--form-field-border-colour);
+	background: rgba(0, 0, 0, 0.02);
+}
+
+.gs-table td {
+	padding: var(--spacer-one) var(--spacer-two);
+	border-bottom: 1px solid var(--form-field-border-colour);
+	vertical-align: middle;
+}
+
+.gs-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.gs-table {
+		border-color: rgba(255, 255, 255, 0.12);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.3),
+			0 2px 8px rgba(0, 0, 0, 0.2);
+	}
+
+	.gs-table th {
+		border-bottom-color: rgba(255, 255, 255, 0.12);
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	.gs-table td {
+		border-bottom-color: rgba(255, 255, 255, 0.06);
+	}
+}
+
+/* Next steps list */
+
+.gs-next-steps {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.gs-next-steps li {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.gs-next-steps li::before {
+	content: "→";
+	color: var(--blue-one-colour);
+	flex-shrink: 0;
+	font-weight: 700;
+}
+
+.gs-next-steps a {
+	color: var(--blue-one-colour);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.gs-next-steps a:hover {
+	text-decoration: underline;
 }

@@ -24,7 +24,7 @@
 				"x": 432,
 				"y": 0,
 				"width": 417,
-				"height": 393
+				"height": 413
 			}
 		},
 		"Avatar": {
@@ -69,7 +69,7 @@
 				"x": 217,
 				"y": 0,
 				"width": 846,
-				"height": 244
+				"height": 256
 			}
 		},
 		"Checkbox": {
@@ -87,7 +87,7 @@
 				"x": 300,
 				"y": 0,
 				"width": 680,
-				"height": 220
+				"height": 239
 			}
 		},
 		"ComboBox": {
@@ -120,9 +120,9 @@
 		"Footer": {
 			"strategy": "clip",
 			"clip": {
-				"x": 78,
-				"y": 48,
-				"width": 1124,
+				"x": 0,
+				"y": 51,
+				"width": 1280,
 				"height": 220
 			}
 		},
@@ -141,7 +141,7 @@
 				"x": 287,
 				"y": 200,
 				"width": 705,
-				"height": 444
+				"height": 456
 			}
 		},
 		"Input": {
@@ -157,9 +157,9 @@
 			"strategy": "clip",
 			"clip": {
 				"x": 360,
-				"y": 352,
+				"y": 346,
 				"width": 560,
-				"height": 321
+				"height": 332
 			}
 		},
 		"NavBar": {
@@ -195,7 +195,7 @@
 				"x": 440,
 				"y": 0,
 				"width": 400,
-				"height": 248
+				"height": 274
 			}
 		},
 		"RadioButton": {
@@ -249,15 +249,15 @@
 				"x": 440,
 				"y": 0,
 				"width": 400,
-				"height": 244
+				"height": 273
 			}
 		},
 		"Tabs": {
 			"strategy": "clip",
 			"clip": {
-				"x": 427,
+				"x": 440,
 				"y": 0,
-				"width": 427,
+				"width": 400,
 				"height": 220
 			}
 		},
