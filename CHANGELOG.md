@@ -1,5 +1,21 @@
 # CHANGELOG
 
+### 0.4.2 - Tuesday 28th July, 2026
+
+- Updated dependencies
+- Merge pull request #500 from anephenix/dependabot/npm_and_yarn/size-limit/esbuild-13.0.1
+- Merge branch 'master' into dependabot/npm_and_yarn/size-limit/esbuild-13.0.1
+- Added react-syntax-highlighter to build.js
+- Updated dependencies for size-limit
+- Merge pull request #498 from anephenix/dependabot/npm_and_yarn/astro-7.1.4
+- Bump astro from 7.1.3 to 7.1.4
+- Merge pull request #499 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.5
+- Merge pull request #497 from anephenix/dependabot/npm_and_yarn/globals-17.8.0
+- Bump @size-limit/esbuild from 12.1.0 to 13.0.1
+- Bump @astrojs/cloudflare from 14.1.4 to 14.1.5
+- Bump globals from 17.7.0 to 17.8.0
+- Adjusted the styling so that the modal does not get affected by the h2 css rule on docs content
+
 ### 0.4.1 - Saturday 25th July, 2026
 
 - Improved the code component so that the styling is better and you can select multiple lines without the line number
