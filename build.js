@@ -8,6 +8,12 @@ esbuild
 		platform: "browser",
 		format: "esm",
 		jsx: "automatic",
-		external: ["react", "react-dom", "react-highlight", "clipboard-copy"],
+		external: [
+			"react",
+			"react-dom",
+			"react-highlight",
+			"clipboard-copy",
+			"react-syntax-highlighter",
+		],
 	})
 	.catch((e) => console.error(e.message));
