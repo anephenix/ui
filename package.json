@@ -59,7 +59,7 @@
 		"@astrojs/react": "^6.0.0",
 		"@biomejs/biome": "^2.4.14",
 		"@size-limit/esbuild": "^13.0.1",
-		"@size-limit/esbuild-why": "^12.1.0",
+		"@size-limit/esbuild-why": "^13.0.1",
 		"@size-limit/preset-small-lib": "^12.1.0",
 		"@testing-library/jest-dom": "^7.0.0",
 		"@testing-library/react": "^16.1.0",
@@ -76,7 +76,7 @@
 		"publint": "^0.3.14",
 		"puppeteer": "^25.3.0",
 		"react-test-renderer": "^19.0.0",
-		"size-limit": "^12.1.0",
+		"size-limit": "^13.0.1",
 		"vitest": "^4.1.2",
 		"wrangler": "^4.87.0"
 	},
