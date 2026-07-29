@@ -20,7 +20,7 @@ describe("Skeleton", () => {
 
 	test("applies the default height as a style", () => {
 		const { container } = render(<Skeleton />);
-		expect(container.firstChild).toHaveStyle({ height: "1rem" });
+		expect(container.firstChild).toHaveStyle({ height: "16px" });
 	});
 
 	test("applies a string width", () => {
