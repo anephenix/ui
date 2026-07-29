@@ -60,7 +60,7 @@
 		"@biomejs/biome": "^2.4.14",
 		"@size-limit/esbuild": "^13.0.1",
 		"@size-limit/esbuild-why": "^13.0.1",
-		"@size-limit/preset-small-lib": "^12.1.0",
+		"@size-limit/preset-small-lib": "^13.0.2",
 		"@testing-library/jest-dom": "^7.0.0",
 		"@testing-library/react": "^16.1.0",
 		"@testing-library/user-event": "^14.6.1",
