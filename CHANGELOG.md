@@ -1,5 +1,25 @@
 # CHANGELOG
 
+### 0.4.3 - Saturday 1st August, 2026
+
+- Converted the components to TypeScript
+- Merge pull request #506 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.1.7
+- Merge pull request #507 from anephenix/dependabot/npm_and_yarn/astro-7.1.6
+- Merge pull request #508 from anephenix/dependabot/npm_and_yarn/jsdom-30.0.1
+- Bump jsdom from 30.0.0 to 30.0.1
+- Bump astro from 7.1.5 to 7.1.6
+- Bump @astrojs/cloudflare from 14.1.6 to 14.1.7
+- Merge pull request #504 from anephenix/dependabot/npm_and_yarn/jsdom-30.0.0
+- Resolved a failing unit test for the Skeleton component
+- Merge pull request #503 from anephenix/dependabot/npm_and_yarn/size-limit/preset-small-lib-13.0.2
+- Merge branch 'master' into dependabot/npm_and_yarn/jsdom-30.0.0
+- Bump @size-limit/preset-small-lib from 12.1.0 to 13.0.2
+- Merge pull request #505 from anephenix/dependabot/npm_and_yarn/size-limit-13.0.2
+- Updated dependencies
+- Bump size-limit from 13.0.1 to 13.0.2
+- Bump jsdom from 29.1.1 to 30.0.0
+- Updated biome schema version
+
 ### 0.4.2 - Tuesday 28th July, 2026
 
 - Updated dependencies
