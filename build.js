@@ -2,7 +2,7 @@ import esbuild from "esbuild";
 
 esbuild
 	.build({
-		entryPoints: ["index.jsx"],
+		entryPoints: ["index.tsx"],
 		bundle: true,
 		outfile: "dist/index.js",
 		platform: "browser",
