@@ -22,12 +22,13 @@ in Svelte's reactivity model rather than copied.
 
 ## Svelte port status
 
-Ported (`packages/svelte/src/lib/components/`): **Badge, Button, Card, Divider, Page** (first
-slice) plus **CloseIcon, Hamburger, MenuItem, DesktopMenu, MobileMenu, NavBar, Breadcrumb,
-Pagination, Hero, Footer, Checkbox, Input, RadioButton, Select, Dropdown, Textarea, FormField,
-Alert, ProgressBar, Skeleton, Spinner, Table, Terminal, Tooltip** — every `Simple`-rated
-component except **Code** (deferred, see below). Conventions established, to guide any
-remaining/future ports:
+Ported (`packages/svelte/src/lib/components/`): every component except **Code** — all 29
+`Simple`-rated ones (first-slice **Badge, Button, Card, Divider, Page**, then **CloseIcon,
+Hamburger, MenuItem, DesktopMenu, MobileMenu, NavBar, Breadcrumb, Pagination, Hero, Footer,
+Checkbox, Input, RadioButton, Select, Dropdown, Textarea, FormField, Alert, ProgressBar,
+Skeleton, Spinner, Table, Terminal, Tooltip**) plus all 8 genuinely `Stateful` ones (Phase 4:
+**Switch, Accordion, Avatar, Tabs, ComboBox, Popover, Modal, Toast**, ordered easiest to
+hardest). Conventions established, to guide any remaining/future ports:
 
 - Svelte components render class names only — **no per-component CSS import**. `@sveltejs/package`
   copies `.svelte` files as-is rather than bundling them, so a source-level
@@ -64,6 +65,39 @@ remaining/future ports:
   test-only `.svelte` fixtures `*.test.svelte` so they're excluded from the publish tarball by
   the same `package.json` `files` globs that exclude `*.test.ts`, and are never picked up by
   vitest (which only matches `src/**/*.test.ts`).
+
+**Phase 4 (stateful component) conventions, on top of the above:**
+
+- `useState`/`useRef` → `$state`/plain `let` bound via `bind:this`; `useEffect` (with its
+  cleanup-function return) → `$effect` (same cleanup-return shape). Reactive dependencies are
+  inferred automatically from what the effect body reads synchronously — no dependency array.
+  When seeding `$state` from a prop that's only meant to set an *initial* value (React's
+  `useState(someProp)` pattern, e.g. `defaultOpen`/`defaultTab`), Svelte's compiler warns
+  (`state_referenced_locally`) since it can't tell that's deliberate; suppress with
+  `// svelte-ignore state_referenced_locally` and a comment explaining why, rather than
+  silencing it blindly — see `Accordion.svelte`, `Tabs.svelte`, `ComboBox.svelte`.
+- `useId()` → `$props.id()`.
+- Controlled/uncontrolled dual-mode props (React's `checked`/`defaultChecked` pattern, manually
+  tracked with an `isControlled` boolean) collapse into a single `$bindable` prop in Svelte —
+  `$bindable` already covers both cases (parent-bound = controlled, unbound = the component's
+  own local state seeded from that prop's initial value). See `Switch.svelte`, which merges
+  React's two props into one `checked` prop as a result; documented as a real, intentional API
+  simplification, not an oversight.
+- React's `onChange` on a plain `<input>`/`<textarea>` actually tracks the native `input` event
+  (fires on every keystroke), not `change` (fires on blur/commit). The Svelte equivalent for
+  "notify on every keystroke" behaviour is `oninput`, not `onchange` — using `onchange` would be
+  a silent UX regression (filtering/live-search wouldn't update until the field lost focus). See
+  `ComboBox.svelte`; its tests use `fireEvent.input`, not `fireEvent.change`, accordingly.
+- A React pattern of cloning an arbitrary caller-supplied element to inject props
+  (`cloneElement(trigger, { onClick, "aria-expanded": ... })`, as in `Popover`) has no Svelte
+  equivalent — Svelte has no runtime "element as cloneable data" concept. The idiomatic
+  replacement is a parameterized `Snippet<[Props]>`: the caller defines
+  `{#snippet trigger(props)}<button {...props}>...</button>{/snippet}` and spreads the given
+  props themselves. See `Popover.svelte`'s `trigger` prop and `PopoverHost.test.svelte` for a
+  full example of both defining and consuming one.
+- Fake-timer tests (`vi.useFakeTimers()` + `vi.advanceTimersByTime()`) don't need an `act()`
+  wrapper the way React Testing Library requires — `@testing-library/svelte` doesn't have an
+  equivalent requirement; call the timer APIs directly (see `Toast.test.ts`).
 
 **NavBar correction:** the original audit below (from grepping for `useState`/`useEffect`/etc.)
 missed that `NavBar` is a **class component** with `this.state.menuOpen` — genuinely stateful,
@@ -181,7 +215,8 @@ bundle and API shape. Left unported pending that decision. `Terminal` (which sha
   Dropdown, Input, MenuItem, RadioButton, Textarea) style purely through shared
   `design-system/` tokens — those are the simplest to verify for parity since there's no
   component-local CSS to cross-check.
-- Svelte port progress: 29 of 38 components ported — every `Simple` component except `Code`
-  (deferred pending a syntax-highlighter dependency decision), plus `NavBar` despite being
-  `Stateful` (simple enough to include now). Remaining: Accordion, Avatar, ComboBox, Switch,
-  Popover, Tabs, Modal, Toast (Phase 4), plus `Code`.
+- Svelte port progress: **37 of 38 components ported** — every component except `Code`, which
+  remains deferred pending a syntax-highlighter dependency decision (React's
+  `react-syntax-highlighter` has no Svelte equivalent to swap in mechanically). All 5 internal
+  `NavBar` sub-parts and all 9 `Stateful` components (including the reclassified `NavBar`) are
+  done. `Code` is the only remaining gap in `packages/svelte`.
