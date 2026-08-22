@@ -123,3 +123,128 @@
 	background: rgba(143, 236, 174, 0.3);
 	color: rgb(205, 255, 222);
 }
+
+/* ── Syntax highlighting (Prism "one-dark" token colours) ──────────
+ * Only the React package needs react-syntax-highlighter — it renders
+ * Prism's tokens as inline styles, never these classes. The Svelte
+ * package calls Prism.highlight() directly and renders its real
+ * `.token.*` output, which these rules style. Colours are transcribed
+ * from react-syntax-highlighter's bundled prism/one-dark theme
+ * (node_modules/react-syntax-highlighter/src/styles/prism/one-dark.js)
+ * so both packages render the same palette — scoped to the languages
+ * actually used in this codebase (javascript, jsx, css); extend this
+ * block, not a different theme, if another language is added. */
+
+.code-editor pre[class*="language-"],
+.code-editor code[class*="language-"] {
+	color: hsl(220, 14%, 71%);
+	font-family:
+		"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	tab-size: 2;
+	hyphens: none;
+}
+
+.code-editor pre[class*="language-"] {
+	background: transparent;
+	margin: 0;
+	padding: 10px 12px;
+	font-size: 10pt;
+	border-radius: 0;
+	overflow-x: auto;
+	flex: 1;
+	min-width: 0;
+}
+
+.code-editor .token.comment,
+.code-editor .token.prolog,
+.code-editor .token.cdata {
+	color: hsl(220, 10%, 40%);
+	font-style: italic;
+}
+
+.code-editor .token.doctype,
+.code-editor .token.punctuation,
+.code-editor .token.entity {
+	color: hsl(220, 14%, 71%);
+}
+
+.code-editor .token.attr-name,
+.code-editor .token.class-name,
+.code-editor .token.boolean,
+.code-editor .token.constant,
+.code-editor .token.number,
+.code-editor .token.atrule {
+	color: hsl(29, 54%, 61%);
+}
+
+.code-editor .token.keyword {
+	color: hsl(286, 60%, 67%);
+}
+
+.code-editor .token.property,
+.code-editor .token.tag,
+.code-editor .token.symbol,
+.code-editor .token.deleted,
+.code-editor .token.important {
+	color: hsl(355, 65%, 65%);
+}
+
+.code-editor .token.selector,
+.code-editor .token.string,
+.code-editor .token.char,
+.code-editor .token.builtin,
+.code-editor .token.inserted,
+.code-editor .token.regex,
+.code-editor .token.attr-value {
+	color: hsl(95, 38%, 62%);
+}
+
+.code-editor .token.variable,
+.code-editor .token.operator,
+.code-editor .token.function {
+	color: hsl(207, 82%, 66%);
+}
+
+.code-editor .token.url {
+	color: hsl(187, 47%, 55%);
+}
+
+.code-editor .token.bold {
+	font-weight: bold;
+}
+
+.code-editor .token.italic {
+	font-style: italic;
+}
+
+.code-editor .language-css .token.selector {
+	color: hsl(355, 65%, 65%);
+}
+
+.code-editor .language-css .token.property {
+	color: hsl(220, 14%, 71%);
+}
+
+.code-editor .language-css .token.function,
+.code-editor .language-css .token.url > .token.function {
+	color: hsl(187, 47%, 55%);
+}
+
+.code-editor .language-css .token.url > .token.string.url {
+	color: hsl(95, 38%, 62%);
+}
+
+.code-editor .language-css .token.important,
+.code-editor .language-css .token.atrule .token.rule {
+	color: hsl(286, 60%, 67%);
+}
+
+.code-editor .language-javascript .token.operator {
+	color: hsl(286, 60%, 67%);
+}

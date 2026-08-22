@@ -6,6 +6,7 @@ export { default as Breadcrumb } from "./components/breadcrumb/Breadcrumb.svelte
 export { default as Button } from "./components/button/Button.svelte";
 export { default as Card } from "./components/card/Card.svelte";
 export { default as Checkbox } from "./components/checkbox/Checkbox.svelte";
+export { default as Code } from "./components/code/Code.svelte";
 export { default as ComboBox } from "./components/combo-box/ComboBox.svelte";
 export { default as Divider } from "./components/divider/Divider.svelte";
 export { default as Dropdown } from "./components/dropdown/Dropdown.svelte";

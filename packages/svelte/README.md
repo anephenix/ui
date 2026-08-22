@@ -4,8 +4,8 @@ A design system for Anephenix — Svelte components.
 
 [![Node.js CI](https://github.com/anephenix/ui/actions/workflows/node.js.yml/badge.svg)](https://github.com/anephenix/ui/actions/workflows/node.js.yml)
 
-**Not yet published to npm.** This package is complete enough to use (37 of 38 components —
-see [Components](#components) below) but hasn't had its first release yet. In the meantime,
+**Not yet published to npm.** This package is complete (all 38 components — see
+[Components](#components) below) but hasn't had its first release yet. In the meantime,
 clone the [monorepo](https://github.com/anephenix/ui), run `npm i && npm run build-svelte`, and
 depend on it via a local path or `npm link` from `packages/svelte`.
 

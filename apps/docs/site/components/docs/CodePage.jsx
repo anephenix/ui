@@ -56,7 +56,7 @@ export default function CodePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Code" svelte={false} />
+				<LivePreview component="Code" />
 				<Code title="LoginForm.jsx" code={snippet} language="jsx" />
 			</div>
 		</DocsLayout>

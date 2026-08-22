@@ -50,7 +50,8 @@
 		"svelte": "^5.0.0"
 	},
 	"dependencies": {
-		"clipboard-copy": "^4.0.1"
+		"clipboard-copy": "^4.0.1",
+		"prismjs": "^1.30.0"
 	},
 	"devDependencies": {
 		"@anephenix/ui-tokens": "*",
@@ -59,6 +60,7 @@
 		"@testing-library/jest-dom": "^7.0.0",
 		"@testing-library/svelte": "^5.4.2",
 		"@testing-library/user-event": "^14.6.1",
+		"@types/prismjs": "^1.26.6",
 		"@vitest/coverage-v8": "^4.1.2",
 		"esbuild": "^0.28.0",
 		"jsdom": "^30.0.0",

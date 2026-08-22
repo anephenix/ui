@@ -22,13 +22,16 @@ in Svelte's reactivity model rather than copied.
 
 ## Svelte port status
 
-Ported (`packages/svelte/src/lib/components/`): every component except **Code** — all 29
-`Simple`-rated ones (first-slice **Badge, Button, Card, Divider, Page**, then **CloseIcon,
-Hamburger, MenuItem, DesktopMenu, MobileMenu, NavBar, Breadcrumb, Pagination, Hero, Footer,
-Checkbox, Input, RadioButton, Select, Dropdown, Textarea, FormField, Alert, ProgressBar,
-Skeleton, Spinner, Table, Terminal, Tooltip**) plus all 8 genuinely `Stateful` ones (Phase 4:
-**Switch, Accordion, Avatar, Tabs, ComboBox, Popover, Modal, Toast**, ordered easiest to
-hardest). Conventions established, to guide any remaining/future ports:
+Ported (`packages/svelte/src/lib/components/`): **all 38 components**. In order: a first slice
+(**Badge, Button, Card, Divider, Page**) to prove the toolchain; then every other `Simple`
+component plus **NavBar** (technically `Stateful` — see the correction below — but simple enough
+to fold into this round): **CloseIcon, Hamburger, MenuItem, DesktopMenu, MobileMenu, Breadcrumb,
+Pagination, Hero, Footer, Checkbox, Input, RadioButton, Select, Dropdown, Textarea, FormField,
+Alert, ProgressBar, Skeleton, Spinner, Table, Terminal, Tooltip**; then the remaining 8
+genuinely `Stateful` components, Phase 4, easiest to hardest: **Switch, Accordion, Avatar, Tabs,
+ComboBox, Popover, Modal, Toast**; then **Code** last, since — unlike every other component
+here — it needed a real dependency decision rather than a mechanical translation; see below.
+Conventions established, to guide any remaining/future ports:
 
 - Svelte components render class names only — **no per-component CSS import**. `@sveltejs/package`
   copies `.svelte` files as-is rather than bundling them, so a source-level
@@ -125,12 +128,41 @@ components; simple enough (one boolean toggle) to include in this pass rather th
 to Phase 4. Treat any remaining unaudited component with suspicion if it's a class component,
 not just for hooks.
 
-**Code deferred:** `Code.tsx` uses `react-syntax-highlighter`, a React-only rendering library —
-this isn't a mechanical port, it's a dependency decision (which Svelte-compatible syntax
-highlighter to adopt, e.g. `svelte-highlight` or a direct Prism.js integration) that changes the
-bundle and API shape. Left unported pending that decision. `Terminal` (which shares the
-`.title-bar-button`/`.title-bar-action` CSS classes but has no syntax highlighting, just
-`clipboard-copy`) is already ported.
+**Code — the dependency decision, resolved:** `Code.tsx` uses `react-syntax-highlighter`, a
+React-only rendering library, so this genuinely wasn't a mechanical port — it needed a decision
+on which Svelte-compatible syntax highlighter to adopt. Chose **`prismjs` directly** (the core
+tokenizer `react-syntax-highlighter` itself wraps — already a transitive dependency via that
+package, confirmed with `npm view prismjs version`) over a Svelte-specific wrapper library like
+`svelte-highlight` (which wraps `highlight.js`, a *different* tokenizer — switching engines would
+mean different token boundaries/classes and no guaranteed visual match to the React version).
+`Code.svelte` calls `Prism.highlight(code, Prism.languages[language], language)` directly and
+renders the real `<span class="token …">` HTML via `{@html}` — safe because `Prism.highlight()`
+HTML-escapes the source text itself before tokenizing, the same guarantee any plain Prism.js
+usage relies on; confirmed with a dedicated test asserting an unregistered language falls back to
+*escaped* plain text (via a hand-rolled `escapeHtml()`) rather than executing injected markup.
+
+Only `javascript`, `jsx`, and `css` Prism grammars are registered — the languages this codebase
+actually uses (checked with `grep` across every `<Code>`/`<LivePreview>` usage in `apps/docs`)
+— each as an explicit `import "prismjs/components/prism-x.js";` in `Code.svelte`; Prism's
+component loader pulls in each grammar's own dependency chain automatically (`jsx` registers
+`markup`, `clike`, and `javascript` too — confirmed empirically, not assumed).
+
+React's `Code` colours tokens via **inline styles** (react-syntax-highlighter applies its bundled
+`oneDark` theme object as a `style` prop per token, never touching CSS), so it needed no changes.
+Svelte's version needed a real CSS theme for Prism's actual `.token.*` classes — transcribed by
+hand from `node_modules/react-syntax-highlighter/src/styles/prism/one-dark.js` (JS style object
+→ real CSS, scoped under `.code-editor` so it can't leak onto unrelated `.token` elements on a
+host page) into `packages/tokens/components/code/Code.css`, shared with React even though React
+doesn't use it — it's inert there, harmless. **One known, deliberate colour difference**: the
+JavaScript `=` operator renders purple in Svelte, blue in React. `oneDark` defines a
+language-scoped override (`.language-javascript .token.operator`) that `react-syntax-highlighter`'s
+inline-style engine doesn't apply (confirmed by inspecting the actual rendered `color` via a
+headless browser on both frameworks' `/preview` pages side by side) — Svelte's CSS-based
+rendering correctly picks it up. Not treated as a bug to "fix" by degrading Svelte to match; if
+anything Svelte is more faithful to the theme's own definition here.
+
+`Terminal` (which shares the `.title-bar-button`/`.title-bar-action` CSS classes with `Code` but
+has no syntax highlighting, just `clipboard-copy`) was already ported earlier, unaffected.
 
 ## How to read the table
 
@@ -235,8 +267,8 @@ build output); that's sufficient for both, since the two packages' CSS is rule-f
 identical (see the Phase 3 commit). Each `/docs/components/*` page also embeds a
 `LivePreview` component (toggle + iframe onto `/preview`) directly inside its existing
 "Example" section, rather than linking out — see `apps/docs/site/components/docs/LivePreview.jsx`.
-`Code`'s toggle is hidden (`svelte={false}`) since it isn't ported; `Page` has no live preview on
-either framework side (it's just a wrapper `<div>`, nothing to demo) and wasn't given one.
+`Page` has no live preview on either framework side (it's just a wrapper `<div>`, nothing to
+demo) and wasn't given one — every other component, including `Code`, has a working toggle.
 
 The screenshot-generation scripts (`compute-clip-regions.js`, `generate-screenshots.js`) still
 default to React only — deliberately not extended to Svelte, since the exit criteria explicitly
@@ -327,8 +359,7 @@ excludes from the npm tarball) are gitignored so they don't pollute the git hist
   Dropdown, Input, MenuItem, RadioButton, Textarea) style purely through shared
   `design-system/` tokens — those are the simplest to verify for parity since there's no
   component-local CSS to cross-check.
-- Svelte port progress: **37 of 38 components ported** — every component except `Code`, which
-  remains deferred pending a syntax-highlighter dependency decision (React's
-  `react-syntax-highlighter` has no Svelte equivalent to swap in mechanically). All 5 internal
-  `NavBar` sub-parts and all 9 `Stateful` components (including the reclassified `NavBar`) are
-  done. `Code` is the only remaining gap in `packages/svelte`.
+- Svelte port progress: **38 of 38 components ported — complete.** `Code` was last, resolved by
+  calling `prismjs` (the tokenizer `react-syntax-highlighter` itself wraps) directly rather than
+  adopting a different-engine Svelte wrapper library — see the "Code" section above for the full
+  reasoning, the one known colour difference from React, and how it was verified.

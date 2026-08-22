@@ -12,7 +12,7 @@ Components are grouped below by category. This package mirrors [`@anephenix/ui`]
 - Native DOM event props are lowercase (`onclick`, `onchange`, `oninput`) and forwarded straight to the underlying element. Custom callback props a component defines itself keep their original camelCase name (`onChange`, `onClose`, `onSelect`, `onPageChange`, etc.) — they were never native DOM attributes.
 - `forwardRef` becomes a bindable `ref` prop: `<Input bind:ref={myInput} />`.
 - A prop that's a snippet of content is typed `Snippet` and rendered by the consumer as `{#snippet name()}...{/snippet}`, or filled implicitly by nesting content between a component's tags when the prop is named `children`.
-- One component isn't ported yet: **Code** (depends on `react-syntax-highlighter`, a React-only library). Everything else in the React package's component list is here.
+- Every component in the React package's list is here, including **Code** — see its entry below for the one deliberate API/behavioural difference from the React version.
 
 ---
 
@@ -636,6 +636,38 @@ A flexible content container with optional image, header, body, and footer secti
 | `children` | `snippet` | Main body content |
 | `footer` | `snippet` | Optional footer content |
 | `class` | `string` | Optional additional CSS class |
+
+---
+
+**Code**
+
+A code block with syntax highlighting, line numbers, a title bar, and a copy button.
+
+**API note:** React's version uses `react-syntax-highlighter`, a React-only library. This version
+calls [Prism](https://prismjs.com/) directly and renders its real `.token.*` HTML output, styled
+with plain CSS transcribed from `react-syntax-highlighter`'s bundled "one-dark" theme so both
+packages use the same palette. Only `javascript`, `jsx`, and `css` grammars are registered (the
+languages this codebase actually uses) — see the comment at the top of `Code.svelte` for how to
+register another one. An unregistered `language` value falls back to escaped plain text rather
+than throwing. One token (the `=` operator in JavaScript) renders a different colour than the
+React version: `react-syntax-highlighter`'s inline-style engine doesn't apply the theme's
+language-scoped `.language-javascript .token.operator` override, while this CSS-based
+implementation does — this version is arguably more faithful to the theme's own definition, not
+a bug to match.
+
+```svelte
+<script>
+	import { Code } from '@anephenix/ui-svelte';
+</script>
+
+<Code title="greet.js" code={snippet} language="javascript" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | | Title shown in the bar above the code |
+| `code` | `string` | | The code string to display |
+| `language` | `string` | `"javascript"` | Syntax highlighting language — must have a registered Prism grammar |
 
 ---
 
