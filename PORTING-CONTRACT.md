@@ -15,10 +15,35 @@ in Svelte's reactivity model rather than copied.
 ## Package naming decision
 
 - `@anephenix/ui` — stays the React package name (no breaking change for existing consumers).
-- `@anephenix/ui-svelte` — new Svelte package, once it exists.
+- `@anephenix/ui-svelte` — the Svelte package, at `packages/svelte`.
 - `@anephenix/ui-tokens` — the shared `design-system/` + per-component CSS, extracted as a
   workspace-internal package consumed by both. Not published to npm independently unless a
   standalone use case shows up later.
+
+## Svelte port status
+
+Ported so far (`packages/svelte/src/lib/components/`): **Badge, Button, Card, Divider, Page**
+— a deliberately small first slice picked to exercise a spread of cases (dynamic variant
+classes, ref forwarding, children/slots, conditional root elements) before porting the
+remaining ~28. Conventions established by that slice, to keep the rest consistent:
+
+- Svelte components render class names only — **no per-component CSS import**. `@sveltejs/package`
+  copies `.svelte` files as-is rather than bundling them, so a source-level
+  `import "@anephenix/ui-tokens/components/x/X.css"` would ship unresolved to real consumers
+  (`ui-tokens` is a private, unpublished workspace package). Instead `packages/svelte/scripts/build-css.js`
+  bundles every token stylesheet into one `dist/index.css` at build time — same shipped result
+  as React's `import '@anephenix/ui/dist/index.css'`, just built differently. This script needs
+  no changes as new components are ported; it globs `packages/tokens/components/*/*.css` directly.
+- `className` → `class` (renamed on destructure as `class: className` internally, since `class`
+  alone is a reserved word).
+- `onClick` → `onclick` (Svelte 5 uses plain DOM event attribute names).
+- `forwardRef` → a `$bindable` `ref` prop bound via `bind:this` — e.g. `Button.svelte`. Note this
+  isn't independently unit-tested (it's a Svelte-native mechanism, not app logic); tests just
+  assert the real DOM element renders.
+- Component tests use `@testing-library/svelte` + `createRawSnippet` (from `svelte`) to pass
+  `children`/other snippet props from test code — see any `*.test.ts` in that directory for the
+  pattern. One gotcha: a component whose root is an `{#if}/{:else}` block gets a comment-node
+  anchor as `container.firstChild`; use `container.firstElementChild` instead (see `Divider.test.ts`).
 
 ## How to read the table
 

@@ -6,4 +6,5 @@ out
 site-dist
 .wrangler
 .astro
+.svelte-kit
 .claude/settings.local.json

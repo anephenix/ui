@@ -10,6 +10,7 @@
 	"scripts": {
 		"build": "npm run build --workspace=apps/docs",
 		"build-lib": "npm run build --workspace=packages/react",
+		"build-svelte": "npm run build --workspace=packages/svelte",
 		"cover": "npm run cover --workspace=packages/react",
 		"dev": "npm run dev --workspace=apps/docs",
 		"format": "npx @biomejs/biome check . --write",
