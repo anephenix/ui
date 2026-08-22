@@ -36,7 +36,7 @@ const toQuery = (fw: string) => {
 		framework === "svelte" ? (
 			<SveltePreviewPage client:only="svelte" />
 		) : (
-			<PreviewPage client:only="react" viewport={config.viewport} />
+			<PreviewPage client:only="react" viewport={config.viewport} embed={embed} />
 		)
 	}
 </PreviewLayout>

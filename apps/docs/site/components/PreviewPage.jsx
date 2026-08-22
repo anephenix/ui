@@ -1012,6 +1012,7 @@ const previews = {
 
 export default function PreviewPage({
 	viewport = { width: 1280, height: 1024 },
+	embed = false,
 }) {
 	const [name, setName] = useState(null);
 
@@ -1020,7 +1021,8 @@ export default function PreviewPage({
 		setName(params.get("component"));
 	}, []);
 
-	if (!name) return <CropTool viewport={viewport} componentName={null} />;
+	if (!name)
+		return embed ? null : <CropTool viewport={viewport} componentName={null} />;
 
 	const preview = previews[name];
 
@@ -1030,7 +1032,7 @@ export default function PreviewPage({
 				<div className="preview-center preview-ready">
 					<p>No preview available for: {name}</p>
 				</div>
-				<CropTool viewport={viewport} componentName={name} />
+				{!embed && <CropTool viewport={viewport} componentName={name} />}
 			</>
 		);
 	}
@@ -1042,7 +1044,7 @@ export default function PreviewPage({
 			<div className={`${wrapper} preview-ready`}>
 				<Render />
 			</div>
-			<CropTool viewport={viewport} componentName={name} />
+			{!embed && <CropTool viewport={viewport} componentName={name} />}
 		</>
 	);
 }

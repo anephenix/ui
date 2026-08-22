@@ -292,9 +292,9 @@
 .live-preview-frame {
 	display: block;
 	width: 100%;
-	height: 420px;
 	border: none;
 	background: #fff;
+	transition: height 0.15s ease-out;
 }
 
 /* Combined Preview/Code example (framework toggle + Tabs) */
