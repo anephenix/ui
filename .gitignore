@@ -6,3 +6,4 @@ out
 site-dist
 .wrangler
 .astro
+.claude/settings.local.json
