@@ -1,4 +1,4 @@
-import "./Pagination.css";
+import "@anephenix/ui-tokens/components/pagination/Pagination.css";
 
 const getPageNumbers = (
 	currentPage: number,

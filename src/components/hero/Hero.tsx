@@ -1,4 +1,4 @@
-import "./Hero.css";
+import "@anephenix/ui-tokens/components/hero/Hero.css";
 
 interface CTAItem {
 	href: string;

@@ -32,7 +32,7 @@ import Textarea from "./src/components/textarea/Textarea";
 import Toast from "./src/components/toast/Toast";
 import Tooltip from "./src/components/tooltip/Tooltip";
 
-import "./design-system/index.css";
+import "@anephenix/ui-tokens/design-system/index.css";
 
 const handleErrors = (
 	setError: (errors: { name: string; message: string }[]) => void,

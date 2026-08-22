@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Avatar.css";
+import "@anephenix/ui-tokens/components/avatar/Avatar.css";
 
 const COLOURS = [
 	"#fd5548",

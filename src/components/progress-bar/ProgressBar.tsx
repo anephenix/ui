@@ -1,4 +1,4 @@
-import "./ProgressBar.css";
+import "@anephenix/ui-tokens/components/progress-bar/ProgressBar.css";
 
 interface ProgressBarProps {
 	value?: number;

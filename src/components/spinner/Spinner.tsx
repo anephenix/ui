@@ -1,4 +1,4 @@
-import "./Spinner.css";
+import "@anephenix/ui-tokens/components/spinner/Spinner.css";
 
 interface SpinnerProps {
 	size?: string;

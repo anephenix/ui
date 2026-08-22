@@ -1,4 +1,4 @@
-import "./Table.css";
+import "@anephenix/ui-tokens/components/table/Table.css";
 
 interface TableColumn {
 	key: string;

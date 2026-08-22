@@ -1,4 +1,4 @@
-import "./Badge.css";
+import "@anephenix/ui-tokens/components/badge/Badge.css";
 
 interface BadgeProps {
 	children: React.ReactNode;

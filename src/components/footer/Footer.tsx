@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "@anephenix/ui-tokens/components/footer/Footer.css";
 
 interface FooterProps {
 	leftSection?: React.ReactNode;

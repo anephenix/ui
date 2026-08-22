@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import "./ComboBox.css";
+import "@anephenix/ui-tokens/components/combo-box/ComboBox.css";
 
 interface ComboBoxOption {
 	label: string;

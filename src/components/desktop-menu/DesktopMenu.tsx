@@ -1,5 +1,5 @@
 import MenuItem from "../menu-item/MenuItem";
-import "./DesktopMenu.css";
+import "@anephenix/ui-tokens/components/desktop-menu/DesktopMenu.css";
 
 interface LinkItem {
 	id?: string;

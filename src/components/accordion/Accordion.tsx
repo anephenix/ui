@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Accordion.css";
+import "@anephenix/ui-tokens/components/accordion/Accordion.css";
 
 interface AccordionItem {
 	id: string;

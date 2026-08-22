@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import "./Switch.css";
+import "@anephenix/ui-tokens/components/switch/Switch.css";
 
 interface SwitchProps {
 	name?: string;

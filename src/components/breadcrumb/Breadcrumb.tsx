@@ -1,4 +1,4 @@
-import "./Breadcrumb.css";
+import "@anephenix/ui-tokens/components/breadcrumb/Breadcrumb.css";
 
 interface BreadcrumbItem {
 	href?: string;

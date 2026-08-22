@@ -1,4 +1,4 @@
-import "./Page.css";
+import "@anephenix/ui-tokens/components/page/Page.css";
 
 interface PageProps {
 	children: React.ReactNode;

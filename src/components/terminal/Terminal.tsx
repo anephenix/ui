@@ -1,4 +1,4 @@
-import "./Terminal.css";
+import "@anephenix/ui-tokens/components/terminal/Terminal.css";
 import copy from "clipboard-copy";
 
 interface TerminalProps {

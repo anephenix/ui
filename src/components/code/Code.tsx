@@ -1,4 +1,4 @@
-import "./Code.css";
+import "@anephenix/ui-tokens/components/code/Code.css";
 import copy from "clipboard-copy";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";

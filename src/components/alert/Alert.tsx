@@ -1,4 +1,4 @@
-import "./Alert.css";
+import "@anephenix/ui-tokens/components/alert/Alert.css";
 
 type AlertVariant = "info" | "success" | "error" | "warning";
 

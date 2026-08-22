@@ -1,4 +1,4 @@
-import "./Hamburger.css";
+import "@anephenix/ui-tokens/components/hamburger/Hamburger.css";
 
 interface HamburgerProps {
 	width?: string | number;

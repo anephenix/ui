@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./Tabs.css";
+import "@anephenix/ui-tokens/components/tabs/Tabs.css";
 
 interface Tab {
 	id: string;

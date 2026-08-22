@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "./Modal.css";
+import "@anephenix/ui-tokens/components/modal/Modal.css";
 
 interface ModalProps {
 	isOpen: boolean;

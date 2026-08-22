@@ -1,4 +1,4 @@
-import "./Card.css";
+import "@anephenix/ui-tokens/components/card/Card.css";
 
 interface CardProps {
 	image?: string;

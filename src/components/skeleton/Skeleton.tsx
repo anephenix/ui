@@ -1,4 +1,4 @@
-import "./Skeleton.css";
+import "@anephenix/ui-tokens/components/skeleton/Skeleton.css";
 
 const toCSS = (value: string | number) =>
 	typeof value === "number" ? `${value}px` : value;

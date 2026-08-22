@@ -1,5 +1,5 @@
 import { cloneElement, useEffect, useRef, useState } from "react";
-import "./Popover.css";
+import "@anephenix/ui-tokens/components/popover/Popover.css";
 
 interface PopoverProps {
 	trigger: React.ReactElement;

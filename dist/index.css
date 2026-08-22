@@ -1,4 +1,4 @@
-/* src/components/accordion/Accordion.css */
+/* packages/tokens/components/accordion/Accordion.css */
 .accordion {
   border: solid 1px var(--form-field-border-colour);
   border-radius: 10px;
@@ -87,7 +87,7 @@
   }
 }
 
-/* src/components/alert/Alert.css */
+/* packages/tokens/components/alert/Alert.css */
 .alert {
   display: flex;
   align-items: flex-start;
@@ -169,7 +169,7 @@
   opacity: 1;
 }
 
-/* src/components/avatar/Avatar.css */
+/* packages/tokens/components/avatar/Avatar.css */
 .avatar {
   display: inline-flex;
   align-items: center;
@@ -226,7 +226,7 @@
   opacity: 0.9;
 }
 
-/* src/components/badge/Badge.css */
+/* packages/tokens/components/badge/Badge.css */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -277,7 +277,7 @@
   color: #fff;
 }
 
-/* src/components/breadcrumb/Breadcrumb.css */
+/* packages/tokens/components/breadcrumb/Breadcrumb.css */
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -312,7 +312,7 @@
   font-weight: 500;
 }
 
-/* src/components/card/Card.css */
+/* packages/tokens/components/card/Card.css */
 .card {
   display: flex;
   flex-direction: column;
@@ -371,7 +371,7 @@
   }
 }
 
-/* src/components/code/Code.css */
+/* packages/tokens/components/code/Code.css */
 .code {
   display: flex;
   flex-direction: column;
@@ -483,7 +483,7 @@
   color: rgb(205, 255, 222);
 }
 
-/* src/components/combo-box/ComboBox.css */
+/* packages/tokens/components/combo-box/ComboBox.css */
 .combo-box {
   position: relative;
   display: inline-block;
@@ -564,7 +564,7 @@
   }
 }
 
-/* src/components/divider/Divider.css */
+/* packages/tokens/components/divider/Divider.css */
 .divider {
   flex-shrink: 0;
   border: none;
@@ -664,7 +664,7 @@
   }
 }
 
-/* src/components/footer/Footer.css */
+/* packages/tokens/components/footer/Footer.css */
 #footer {
   margin-top: 100px;
   padding: 80px 10px 20px;
@@ -702,7 +702,7 @@
   }
 }
 
-/* src/components/form-field/FormField.css */
+/* packages/tokens/components/form-field/FormField.css */
 .form-field.error input {
   border-color: var(--primary-colour);
   color: var(--primary-colour);
@@ -713,7 +713,7 @@
   color: var(--primary-colour);
 }
 
-/* src/components/hero/Hero.css */
+/* packages/tokens/components/hero/Hero.css */
 #hero {
   margin-top: 60px;
 }
@@ -767,7 +767,7 @@
   }
 }
 
-/* src/components/modal/Modal.css */
+/* packages/tokens/components/modal/Modal.css */
 dialog.modal {
   padding: 0;
   border: solid 1px rgba(0, 0, 0, 0.08);
@@ -848,7 +848,7 @@ dialog.modal::backdrop {
   border-top: solid 1px var(--form-field-border-colour);
 }
 
-/* src/components/desktop-menu/DesktopMenu.css */
+/* packages/tokens/components/desktop-menu/DesktopMenu.css */
 #desktop-menu {
   display: flex;
   list-style-type: none;
@@ -876,7 +876,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/hamburger/Hamburger.css */
+/* packages/tokens/components/hamburger/Hamburger.css */
 #hamburger {
   cursor: pointer;
   display: none;
@@ -893,7 +893,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/mobile-menu/MobileMenu.css */
+/* packages/tokens/components/mobile-menu/MobileMenu.css */
 #mobile-menu {
   background: var(--light);
   display: none;
@@ -962,7 +962,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/nav-bar/NavBar.css */
+/* packages/tokens/components/nav-bar/NavBar.css */
 #nav-bar {
   background: rgba(255, 255, 255, 0.8);
   border-bottom: solid 1px rgba(255, 255, 255, 0.75);
@@ -1033,7 +1033,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/page/Page.css */
+/* packages/tokens/components/page/Page.css */
 .page {
   margin: 0 auto;
   display: flex;
@@ -1043,7 +1043,7 @@ dialog.modal::backdrop {
   margin-top: 48px;
 }
 
-/* src/components/pagination/Pagination.css */
+/* packages/tokens/components/pagination/Pagination.css */
 .pagination {
   display: flex;
   align-items: center;
@@ -1115,7 +1115,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/popover/Popover.css */
+/* packages/tokens/components/popover/Popover.css */
 .popover-wrapper {
   position: relative;
   display: inline-flex;
@@ -1215,7 +1215,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/progress-bar/ProgressBar.css */
+/* packages/tokens/components/progress-bar/ProgressBar.css */
 .progress-bar-wrapper {
   width: 100%;
 }
@@ -1288,9 +1288,9 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/select/Select.css */
+/* packages/tokens/components/select/Select.css */
 
-/* src/components/skeleton/Skeleton.css */
+/* packages/tokens/components/skeleton/Skeleton.css */
 .skeleton {
   background:
     linear-gradient(
@@ -1326,7 +1326,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/spinner/Spinner.css */
+/* packages/tokens/components/spinner/Spinner.css */
 .spinner {
   display: inline-block;
   border-radius: 50%;
@@ -1363,7 +1363,7 @@ dialog.modal::backdrop {
   }
 }
 
-/* src/components/switch/Switch.css */
+/* packages/tokens/components/switch/Switch.css */
 .switch {
   display: inline-flex;
   align-items: center;
@@ -1415,7 +1415,7 @@ input[type=checkbox]:focus-visible + .switch-track {
   }
 }
 
-/* src/components/table/Table.css */
+/* packages/tokens/components/table/Table.css */
 .table-wrapper {
   overflow-x: auto;
   border-radius: 10px;
@@ -1476,7 +1476,7 @@ table.table tbody tr:hover {
   }
 }
 
-/* src/components/tabs/Tabs.css */
+/* packages/tokens/components/tabs/Tabs.css */
 .tabs {
   display: flex;
   flex-direction: column;
@@ -1519,7 +1519,7 @@ table.table tbody tr:hover {
   padding: var(--spacer-three) 0;
 }
 
-/* src/components/terminal/Terminal.css */
+/* packages/tokens/components/terminal/Terminal.css */
 .terminal {
   display: flex;
   flex-direction: column;
@@ -1620,7 +1620,7 @@ table.table tbody tr:hover {
   font-weight: 400;
 }
 
-/* src/components/toast/Toast.css */
+/* packages/tokens/components/toast/Toast.css */
 .toast {
   position: fixed;
   z-index: 1000;
@@ -1805,7 +1805,7 @@ table.table tbody tr:hover {
   }
 }
 
-/* src/components/tooltip/Tooltip.css */
+/* packages/tokens/components/tooltip/Tooltip.css */
 .tooltip-wrapper {
   position: relative;
   display: inline-flex;
@@ -1860,7 +1860,7 @@ table.table tbody tr:hover {
   }
 }
 
-/* design-system/colours.css */
+/* packages/tokens/design-system/colours.css */
 :root {
   --primary-colour: #fd5548;
   --primary-two-colour: #ff9187;
@@ -1896,7 +1896,7 @@ table.table tbody tr:hover {
   --window-title-bar-maximize: rgb(40, 200, 64);
 }
 
-/* design-system/spacing.css */
+/* packages/tokens/design-system/spacing.css */
 :root {
   --grid-base: 8px;
   --spacer-one: 8px;
@@ -1906,7 +1906,7 @@ table.table tbody tr:hover {
   --spacer-five: 40px;
 }
 
-/* design-system/form-fields.css */
+/* packages/tokens/design-system/form-fields.css */
 label {
   box-sizing: content-box;
   margin-right: var(--grid-base);
@@ -2076,7 +2076,7 @@ input[type=radio]:disabled + .radio-element {
   font-size: 14px;
 }
 
-/* design-system/grid.css */
+/* packages/tokens/design-system/grid.css */
 body {
   padding: 0;
   margin: 0;
@@ -2128,7 +2128,7 @@ body {
   padding: 0px var(--spacer-two);
 }
 
-/* design-system/typography.css */
+/* packages/tokens/design-system/typography.css */
 :root {
   --font-size-xs: 11px;
   --font-size-sm: 12px;
@@ -2183,7 +2183,7 @@ body {
   letter-spacing: 0.06em;
 }
 
-/* design-system/buttons.css */
+/* packages/tokens/design-system/buttons.css */
 :root {
   --button-second-colour: var(--light);
 }
@@ -2270,7 +2270,7 @@ button.theme-default.blue-three,
   --button-first-colour: var(--blue-three-colour);
 }
 
-/* design-system/inbox.css */
+/* packages/tokens/design-system/inbox.css */
 code .hljs-comment,
 code .hljs-attr {
   color: gold;
@@ -2291,7 +2291,7 @@ code .hljs-function {
   color: lightcoral;
 }
 
-/* design-system/index.css */
+/* packages/tokens/design-system/index.css */
 body {
   -webkit-font-smoothing: antialiased;
   font-family:

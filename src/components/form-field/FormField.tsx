@@ -1,4 +1,4 @@
-import "./FormField.css";
+import "@anephenix/ui-tokens/components/form-field/FormField.css";
 
 interface ErrorMessageProps {
 	error: string;

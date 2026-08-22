@@ -1,4 +1,4 @@
-import "./Tooltip.css";
+import "@anephenix/ui-tokens/components/tooltip/Tooltip.css";
 
 interface TooltipProps {
 	children: React.ReactNode;

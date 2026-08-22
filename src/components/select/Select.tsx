@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import "./Select.css";
+import "@anephenix/ui-tokens/components/select/Select.css";
 
 interface SelectOption {
 	value: string;

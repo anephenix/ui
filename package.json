@@ -4,6 +4,9 @@
 	"description": "A collection of UI components for React web applications",
 	"type": "module",
 	"main": "dist/",
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
 		"build": "astro build",
 		"build-lib": "node build.js",

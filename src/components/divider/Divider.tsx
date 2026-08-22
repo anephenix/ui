@@ -1,4 +1,4 @@
-import "./Divider.css";
+import "@anephenix/ui-tokens/components/divider/Divider.css";
 
 interface DividerProps {
 	orientation?: "horizontal" | "vertical";

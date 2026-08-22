@@ -2,7 +2,7 @@ import { Component } from "react";
 import DesktopMenu from "../desktop-menu/DesktopMenu";
 import Hamburger from "../hamburger/Hamburger";
 import MobileMenu from "../mobile-menu/MobileMenu";
-import "./NavBar.css";
+import "@anephenix/ui-tokens/components/nav-bar/NavBar.css";
 
 interface LinkItem {
 	id?: string;

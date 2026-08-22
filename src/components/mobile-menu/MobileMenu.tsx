@@ -1,6 +1,6 @@
 import CloseIcon from "../close-icon/CloseIcon";
 import MenuItem from "../menu-item/MenuItem";
-import "./MobileMenu.css";
+import "@anephenix/ui-tokens/components/mobile-menu/MobileMenu.css";
 
 interface LinkItem {
 	id?: string;
