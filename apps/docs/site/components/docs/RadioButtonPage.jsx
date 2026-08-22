@@ -1,6 +1,7 @@
 import { Code, RadioButton } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const colourOptions = [
@@ -82,6 +83,7 @@ export default function RadioButtonPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="RadioButton" />
 				<div className="docs-example">
 					<div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
 						{colourOptions.map(({ value, label }) => (

@@ -1,5 +1,6 @@
 import { Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const snippet = `import { Button, Input } from '@anephenix/ui';
@@ -55,6 +56,7 @@ export default function CodePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Code" svelte={false} />
 				<Code title="LoginForm.jsx" code={snippet} language="jsx" />
 			</div>
 		</DocsLayout>

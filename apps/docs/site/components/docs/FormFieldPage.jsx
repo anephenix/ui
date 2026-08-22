@@ -1,5 +1,6 @@
 import { Code, FormField, Input } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const exampleSnippet = `<FormField error="This field is required">
@@ -40,6 +41,7 @@ export default function FormFieldPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="FormField" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1rem" }}

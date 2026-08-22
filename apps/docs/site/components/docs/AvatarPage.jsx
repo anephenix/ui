@@ -1,5 +1,6 @@
 import { Avatar, Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Image
@@ -77,6 +78,7 @@ export default function AvatarPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Avatar" />
 
 				<h3>Initials — sizes</h3>
 				<div

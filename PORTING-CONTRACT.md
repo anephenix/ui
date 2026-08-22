@@ -202,6 +202,27 @@ bundle and API shape. Left unported pending that decision. `Terminal` (which sha
 |---|---|---|
 | `handleErrors` | Y | Plain function, not a component — framework-agnostic as-is, ports to the Svelte package with no changes needed. |
 
+## Docs site preview
+
+`apps/docs`'s `/preview?component=X` route (already used for manual preview + screenshot
+generation) now supports `&framework=svelte`, rendering `SveltePreviewPage.svelte` instead of
+the React `PreviewPage.jsx` — same wrapper CSS classes (`preview-center`/`preview-padded`/
+`preview-bare`), same example content per component, translated to the Svelte prop APIs
+documented above. A toggle at the top of the page switches frameworks while preserving the
+`component` param; each `/docs/components/*` page also links out to its Svelte preview (hidden
+for `Code`, which isn't ported). Astro supports multiple UI-framework integrations
+(`@astrojs/react` + `@astrojs/svelte`) in one project simultaneously — no conflict between the
+two. `PreviewLayout.astro` only imports `@anephenix/ui/dist/index.css` (React's build output);
+that's sufficient for both, since the two packages' CSS is rule-for-rule identical (see the
+Phase 3 commit). The screenshot-generation scripts (`compute-clip-regions.js`,
+`generate-screenshots.js`) still default to React only — not extended to Svelte.
+
+Since `apps/docs` now genuinely depends on `packages/svelte`'s built output (not just as an
+experiment), `packages/svelte/dist` is committed to git, same as `packages/react/dist`, and
+`.husky/pre-commit` rebuilds and stages both on every commit. `packages/svelte/dist/**/*.test.*`
+(the stray test-file copies `@sveltejs/package` includes but `package.json`'s `files` field
+excludes from the npm tarball) are gitignored so they don't pollute the git history.
+
 ---
 
 ## Summary

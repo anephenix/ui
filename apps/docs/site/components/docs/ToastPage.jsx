@@ -1,6 +1,7 @@
 import { Button, Code, Toast } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `const [isVisible, setIsVisible] = useState(false);
@@ -72,6 +73,7 @@ export default function ToastPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Toast" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}

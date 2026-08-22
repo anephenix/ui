@@ -1,5 +1,6 @@
 import { Badge, Button, Code, Tooltip } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `<Tooltip content="Save your changes">
@@ -58,6 +59,7 @@ export default function TooltipPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Tooltip" />
 
 				<h3>Positions</h3>
 				<div

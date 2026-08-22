@@ -1,5 +1,6 @@
 import { Button, Code, Spinner } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Standalone
@@ -51,6 +52,7 @@ export default function SpinnerPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Spinner" />
 
 				<h3>Sizes</h3>
 				<div

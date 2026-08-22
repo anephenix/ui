@@ -1,5 +1,6 @@
 import { Code, Divider } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Basic horizontal divider
@@ -61,6 +62,7 @@ export default function DividerPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Divider" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}

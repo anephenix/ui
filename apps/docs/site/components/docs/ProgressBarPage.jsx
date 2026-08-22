@@ -1,5 +1,6 @@
 import { Code, ProgressBar } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `<ProgressBar value={75} label="Uploading..." showValue />
@@ -64,6 +65,7 @@ export default function ProgressBarPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="ProgressBar" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}

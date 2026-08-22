@@ -1,5 +1,6 @@
 import { Code, Table } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const columns = [
@@ -136,6 +137,7 @@ export default function TablePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Table" />
 				<div className="docs-example">
 					<Table columns={columns} rows={rows} caption="Team members" />
 				</div>

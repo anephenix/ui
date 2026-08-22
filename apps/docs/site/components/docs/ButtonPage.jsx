@@ -1,5 +1,6 @@
 import { Button, Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const variants = [
@@ -44,6 +45,9 @@ export default function ButtonPage({ currentPath }) {
 						["onClick", "function", "Click handler"],
 					]}
 				/>
+
+				<h2>Example</h2>
+				<LivePreview component="Button" />
 
 				<h2>Variants</h2>
 				<p>

@@ -1,6 +1,7 @@
 import { Button, Code, Input, Popover, Switch } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `<Popover
@@ -60,6 +61,7 @@ export default function PopoverPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Popover" />
 
 				<h3>Positions</h3>
 				<div

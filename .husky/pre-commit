@@ -1,1 +1,1 @@
-npm run build-lib && git add packages/react/dist && npm run lint && npm test
+npm run build-lib && git add packages/react/dist && npm run build-svelte && git add packages/svelte/dist && npm run lint && npm test

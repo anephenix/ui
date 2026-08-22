@@ -1,5 +1,6 @@
 import { Code, Textarea } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const exampleSnippet = `<Textarea
@@ -38,6 +39,7 @@ export default function TextareaPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Textarea" />
 				<div className="docs-example">
 					<Textarea name="message" placeholder="Enter your message here…" />
 				</div>

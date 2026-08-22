@@ -1,5 +1,6 @@
 import { Code, Hero } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const Link = ({ href, children, ...props }) => (
@@ -62,6 +63,7 @@ export default function HeroPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Hero" />
 				<div
 					className="docs-example"
 					style={{ padding: 0, overflow: "hidden" }}

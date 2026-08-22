@@ -1,5 +1,6 @@
 import { Accordion, Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `const items = [
@@ -154,6 +155,7 @@ export default function AccordionPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Accordion" />
 
 				<h3>FAQ (single open)</h3>
 				<div className="docs-example">

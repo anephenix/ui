@@ -1,5 +1,6 @@
 import { Code, Skeleton } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Single text line
@@ -66,6 +67,7 @@ export default function SkeletonPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Skeleton" />
 
 				<h3>Text and paragraphs</h3>
 				<div

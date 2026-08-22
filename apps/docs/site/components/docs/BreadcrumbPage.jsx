@@ -1,5 +1,6 @@
 import { Breadcrumb, Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `<Breadcrumb
@@ -77,6 +78,7 @@ export default function BreadcrumbPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Breadcrumb" />
 
 				<h3>Default separator</h3>
 				<div className="docs-example">

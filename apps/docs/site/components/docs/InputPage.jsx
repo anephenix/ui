@@ -1,5 +1,6 @@
 import { Code, Input } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const exampleSnippet = `<Input
@@ -37,6 +38,7 @@ export default function InputPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Input" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}

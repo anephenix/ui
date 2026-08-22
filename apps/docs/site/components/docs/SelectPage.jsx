@@ -1,5 +1,6 @@
 import { Code, Select } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const options = [
@@ -49,6 +50,7 @@ export default function SelectPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Select" />
 				<div className="docs-example">
 					<Select name="country" options={options} className="" />
 				</div>

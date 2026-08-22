@@ -1,9 +1,60 @@
 ---
 import config from "../../scripts/screenshot-config.json";
 import PreviewPage from "../components/PreviewPage.jsx";
+import SveltePreviewPage from "../components/SveltePreviewPage.svelte";
 import PreviewLayout from "../layouts/PreviewLayout.astro";
+
+const componentParam = Astro.url.searchParams.get("component");
+const framework =
+	Astro.url.searchParams.get("framework") === "svelte" ? "svelte" : "react";
+
+const toQuery = (fw: string) => {
+	const params = new URLSearchParams();
+	if (componentParam) params.set("component", componentParam);
+	if (fw !== "react") params.set("framework", fw);
+	const qs = params.toString();
+	return qs ? `?${qs}` : "";
+};
 ---
 
 <PreviewLayout>
-	<PreviewPage client:only="react" viewport={config.viewport} />
+	<div class="framework-toggle">
+		<a href={`/preview${toQuery("react")}`} class:list={{ active: framework === "react" }}>
+			React
+		</a>
+		<a href={`/preview${toQuery("svelte")}`} class:list={{ active: framework === "svelte" }}>
+			Svelte
+		</a>
+	</div>
+	{
+		framework === "svelte" ? (
+			<SveltePreviewPage client:only="svelte" />
+		) : (
+			<PreviewPage client:only="react" viewport={config.viewport} />
+		)
+	}
 </PreviewLayout>
+
+<style>
+	.framework-toggle {
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 9999;
+		display: flex;
+		gap: 0.5rem;
+		font-family: system-ui, sans-serif;
+		font-size: 12px;
+	}
+	.framework-toggle a {
+		padding: 0.35rem 0.75rem;
+		border-radius: 4px;
+		text-decoration: none;
+		background: #eee;
+		color: #333;
+	}
+	.framework-toggle a.active {
+		background: #279ae1;
+		color: #fff;
+	}
+</style>

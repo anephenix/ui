@@ -1,5 +1,6 @@
 import { Code, Tabs } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `import { Tabs } from '@anephenix/ui';
@@ -145,6 +146,7 @@ export default function TabsPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Tabs" />
 				<div className="docs-example">
 					<Tabs tabs={exampleTabs} defaultTab="overview" />
 				</div>

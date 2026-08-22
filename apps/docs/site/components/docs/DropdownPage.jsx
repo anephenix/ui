@@ -1,5 +1,6 @@
 import { Code, Dropdown } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const options = [
@@ -53,6 +54,7 @@ export default function DropdownPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Dropdown" />
 				<div className="docs-example">
 					<Dropdown name="language" options={options} className="" />
 				</div>

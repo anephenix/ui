@@ -1,6 +1,7 @@
 import { Code, ComboBox } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const fruits = [
@@ -93,6 +94,7 @@ export default function ComboBoxPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="ComboBox" />
 				<div className="docs-example">
 					<ComboBox
 						options={fruits}

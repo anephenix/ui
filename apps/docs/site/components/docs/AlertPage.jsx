@@ -1,6 +1,7 @@
 import { Alert, Code } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Persistent
@@ -67,6 +68,7 @@ export default function AlertPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Alert" />
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}

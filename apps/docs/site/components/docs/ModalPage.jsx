@@ -1,6 +1,7 @@
 import { Button, Code, Modal } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +74,7 @@ export default function ModalPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Modal" />
 				<div className="docs-example">
 					<Button
 						text="Open modal"

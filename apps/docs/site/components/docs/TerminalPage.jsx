@@ -1,5 +1,6 @@
 import { Code, Terminal } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 export default function TerminalPage({ currentPath }) {
@@ -34,6 +35,7 @@ export default function TerminalPage({ currentPath }) {
 					]}
 				/>
 				<h2>Example</h2>
+				<LivePreview component="Terminal" />
 				<Terminal title="Install" code="npm i @anephenix/ui --save" />
 			</div>
 		</DocsLayout>

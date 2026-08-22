@@ -1,5 +1,6 @@
 import { Badge, Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `// Status label
@@ -59,6 +60,7 @@ export default function BadgePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Badge" />
 
 				<h3>Variants</h3>
 				<div

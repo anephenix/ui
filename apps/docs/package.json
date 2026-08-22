@@ -13,11 +13,14 @@
 	},
 	"dependencies": {
 		"@anephenix/ui": "*",
+		"@anephenix/ui-svelte": "*",
 		"@astrojs/cloudflare": "^14.0.1",
 		"@astrojs/react": "^6.0.0",
+		"@astrojs/svelte": "^9.0.1",
 		"astro": "^7.0.3",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-dom": "^19.0.0",
+		"svelte": "^5.56.10"
 	},
 	"devDependencies": {
 		"puppeteer": "^25.3.0",

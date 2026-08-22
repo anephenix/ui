@@ -1,5 +1,6 @@
 import { Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `import { NavBar } from '@anephenix/ui';
@@ -82,6 +83,9 @@ export default function NavBarPage({ currentPath }) {
 						],
 					]}
 				/>
+
+				<h2>Example</h2>
+				<LivePreview component="NavBar" />
 
 				<h2>Link object shape</h2>
 				<PropTable

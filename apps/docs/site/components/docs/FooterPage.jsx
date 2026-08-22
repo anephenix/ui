@@ -1,5 +1,6 @@
 import { Code, Footer } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const exampleSnippet = `<Footer
@@ -36,6 +37,7 @@ export default function FooterPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Footer" />
 				<div
 					className="docs-example"
 					style={{ padding: 0, overflow: "hidden" }}

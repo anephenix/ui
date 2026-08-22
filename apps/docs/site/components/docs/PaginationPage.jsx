@@ -1,6 +1,7 @@
 import { Code, Pagination } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
+import { LivePreview } from "./LivePreview.jsx";
 import { PropTable } from "./shared.jsx";
 
 const usageSnippet = `const [page, setPage] = useState(1);
@@ -60,6 +61,7 @@ export default function PaginationPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
+				<LivePreview component="Pagination" />
 
 				<h3>Standard (5 pages)</h3>
 				<div className="docs-example">
