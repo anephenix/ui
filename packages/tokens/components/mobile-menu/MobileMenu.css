@@ -58,24 +58,45 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	#mobile-menu {
+	:root:not([data-theme="light"]) #mobile-menu {
 		background: var(--dark);
 		color: var(--light);
 	}
 
-	#mobile-menu #close-icon path {
+	:root:not([data-theme="light"]) #mobile-menu #close-icon path {
 		stroke: var(--light);
 	}
 
-	#mobile-menu #close-icon:hover path {
+	:root:not([data-theme="light"]) #mobile-menu #close-icon:hover path {
 		stroke: #cccccc;
 	}
 
-	#mobile-menu ul li a {
+	:root:not([data-theme="light"]) #mobile-menu ul li a {
 		color: var(--light);
 	}
 
-	#mobile-menu ul li a:hover {
+	:root:not([data-theme="light"]) #mobile-menu ul li a:hover {
 		color: #cccccc;
 	}
+}
+
+:root[data-theme="dark"] #mobile-menu {
+	background: var(--dark);
+	color: var(--light);
+}
+
+:root[data-theme="dark"] #mobile-menu #close-icon path {
+	stroke: var(--light);
+}
+
+:root[data-theme="dark"] #mobile-menu #close-icon:hover path {
+	stroke: #cccccc;
+}
+
+:root[data-theme="dark"] #mobile-menu ul li a {
+	color: var(--light);
+}
+
+:root[data-theme="dark"] #mobile-menu ul li a:hover {
+	color: #cccccc;
 }

@@ -1,6 +1,6 @@
-import { Button, Code } from "@anephenix/ui";
+import { Button } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const variants = [
@@ -13,11 +13,19 @@ const variants = [
 	"blue-two",
 ];
 
-const exampleSnippet = `<Button
+const reactCode = `import { Button } from '@anephenix/ui';
+
+<Button
   text="Submit"
   className="button theme-default primary"
   onClick={() => console.log('clicked')}
 />`;
+
+const svelteCode = `<script>
+	import { Button } from "@anephenix/ui-svelte";
+</script>
+
+<Button text="Submit" class="button theme-default primary" onclick={() => console.log("clicked")} />`;
 
 export default function ButtonPage({ currentPath }) {
 	return (
@@ -30,12 +38,6 @@ export default function ButtonPage({ currentPath }) {
 					Accepts a <code>forwardRef</code>.
 				</p>
 
-				<h2>Import</h2>
-				<Code code={"import { Button } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -47,7 +49,11 @@ export default function ButtonPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Button" />
+				<ComponentExample
+					component="Button"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h2>Variants</h2>
 				<p>

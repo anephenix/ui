@@ -11,7 +11,11 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	#hamburger g#hamburger-layers {
+	:root:not([data-theme="light"]) #hamburger g#hamburger-layers {
 		stroke: var(--light);
 	}
+}
+
+:root[data-theme="dark"] #hamburger g#hamburger-layers {
+	stroke: var(--light);
 }

@@ -1,10 +1,12 @@
-import { Button, Code, Modal } from "@anephenix/ui";
+import { Button, Modal } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `const [isOpen, setIsOpen] = useState(false);
+const reactCode = `import { Button, Modal } from '@anephenix/ui';
+
+const [isOpen, setIsOpen] = useState(false);
 
 <Button
   text="Open modal"
@@ -34,6 +36,22 @@ const usageSnippet = `const [isOpen, setIsOpen] = useState(false);
   <p>Are you sure you want to do this?</p>
 </Modal>`;
 
+const svelteCode = `<script>
+	import { Button, Modal } from "@anephenix/ui-svelte";
+
+	let isOpen = $state(false);
+</script>
+
+<Button text="Open modal" class="button theme-default primary" onclick={() => (isOpen = true)} />
+
+<Modal isOpen={isOpen} onClose={() => (isOpen = false)} title="Confirm action">
+	{#snippet footer()}
+		<Button text="Cancel" class="button theme-default secondary alternate" onclick={() => (isOpen = false)} />
+		<Button text="Confirm" class="button theme-default primary" onclick={() => (isOpen = false)} />
+	{/snippet}
+	<p>Are you sure you want to do this?</p>
+</Modal>`;
+
 export default function ModalPage({ currentPath }) {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -47,12 +65,6 @@ export default function ModalPage({ currentPath }) {
 					optional footer for action buttons. Closes when the backdrop is
 					clicked.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Modal } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -74,7 +86,11 @@ export default function ModalPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Modal" />
+				<ComponentExample
+					component="Modal"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Button
 						text="Open modal"

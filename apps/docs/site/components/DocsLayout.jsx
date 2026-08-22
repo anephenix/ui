@@ -1,5 +1,6 @@
 import { Footer, NavBar, Page } from "@anephenix/ui";
 import links from "../../data/navbar-links.js";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const Link = ({ href, children, ...props }) => (
 	<a href={href} {...props}>
@@ -151,7 +152,13 @@ export default function DocsLayout({ children, currentPath }) {
 
 	return (
 		<Page>
-			<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
+			<NavBar
+				logo={logo}
+				links={links}
+				loggedIn={false}
+				Link={Link}
+				midSection={<ThemeToggle />}
+			/>
 			<div className="docs-layout-wrapper container withSidePadding">
 				<aside className="docs-sidebar">
 					<nav>

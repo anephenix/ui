@@ -34,25 +34,45 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.alert-info {
+	:root:not([data-theme="light"]) .alert-info {
 		background: #0d2b3e;
 		color: var(--blue-two-colour);
 	}
 
-	.alert-success {
+	:root:not([data-theme="light"]) .alert-success {
 		background: #0d2b1a;
 		color: var(--green-two-colour);
 	}
 
-	.alert-warning {
+	:root:not([data-theme="light"]) .alert-warning {
 		background: #2b2200;
 		color: var(--tertiary-colour);
 	}
 
-	.alert-error {
+	:root:not([data-theme="light"]) .alert-error {
 		background: #2b0d0d;
 		color: #ff9999;
 	}
+}
+
+:root[data-theme="dark"] .alert-info {
+	background: #0d2b3e;
+	color: var(--blue-two-colour);
+}
+
+:root[data-theme="dark"] .alert-success {
+	background: #0d2b1a;
+	color: var(--green-two-colour);
+}
+
+:root[data-theme="dark"] .alert-warning {
+	background: #2b2200;
+	color: var(--tertiary-colour);
+}
+
+:root[data-theme="dark"] .alert-error {
+	background: #2b0d0d;
+	color: #ff9999;
 }
 
 .alert-icon {

@@ -1,7 +1,7 @@
-import { Code, RadioButton } from "@anephenix/ui";
+import { RadioButton } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const colourOptions = [
@@ -10,7 +10,9 @@ const colourOptions = [
 	{ value: "green", label: "Green" },
 ];
 
-const exampleSnippet = `const [selected, setSelected] = useState('');
+const reactCode = `import { RadioButton } from '@anephenix/ui';
+
+const [selected, setSelected] = useState('');
 
 <RadioButton
   name="colour"
@@ -27,6 +29,20 @@ const exampleSnippet = `const [selected, setSelected] = useState('');
   onChange={() => setSelected('blue')}
 />`;
 
+const svelteCode = `<script>
+	import { RadioButton } from "@anephenix/ui-svelte";
+
+	let selected = $state("");
+</script>
+
+<RadioButton
+	name="colour"
+	label="Red"
+	value="red"
+	checked={selected === "red"}
+	onchange={() => (selected = "red")}
+/>`;
+
 export default function RadioButtonPage({ currentPath }) {
 	const [selected, setSelected] = useState("");
 
@@ -39,15 +55,6 @@ export default function RadioButtonPage({ currentPath }) {
 					giving them the same <code>name</code>. Accepts a{" "}
 					<code>forwardRef</code>.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { RadioButton } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -83,7 +90,11 @@ export default function RadioButtonPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="RadioButton" />
+				<ComponentExample
+					component="RadioButton"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
 						{colourOptions.map(({ value, label }) => (

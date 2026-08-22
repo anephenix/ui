@@ -1,9 +1,9 @@
-import { Code, Tabs } from "@anephenix/ui";
+import { Tabs } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `import { Tabs } from '@anephenix/ui';
+const reactCode = `import { Tabs } from '@anephenix/ui';
 
 const tabs = [
   {
@@ -25,6 +25,17 @@ const tabs = [
 
 <Tabs tabs={tabs} defaultTab="overview" onChange={(id) => console.log(id)} />`;
 
+const svelteCode = `<script>
+	import { Tabs } from "@anephenix/ui-svelte";
+
+	const tabs = [
+		{ id: "overview", label: "Overview", content: "Overview content." },
+		{ id: "specs", label: "Specifications", content: "Specs here." },
+	];
+</script>
+
+<Tabs {tabs} defaultTab="overview" onChange={(id) => console.log(id)} />`;
+
 const exampleTabs = [
 	{
 		id: "overview",
@@ -32,12 +43,13 @@ const exampleTabs = [
 		content: (
 			<div>
 				<p>
-					This component library provides a set of accessible, themeable React
-					components built on a plain-CSS design system.
+					This component library provides a set of accessible, themeable
+					components built on a plain-CSS design system, for both React and
+					Svelte.
 				</p>
 				<p style={{ marginTop: "0.75rem" }}>
 					Each component is designed to be small, composable, and easy to drop
-					into any React project.
+					into any React or Svelte project.
 				</p>
 			</div>
 		),
@@ -47,8 +59,8 @@ const exampleTabs = [
 		label: "Specifications",
 		content: (
 			<ul style={{ paddingLeft: "1.25rem", lineHeight: 1.8 }}>
-				<li>React 18+</li>
-				<li>Zero runtime dependencies beyond React</li>
+				<li>React 18+ or Svelte 5+</li>
+				<li>Zero runtime dependencies beyond the chosen framework</li>
 				<li>Plain CSS with custom properties — no preprocessor required</li>
 				<li>Full dark mode support via prefers-color-scheme</li>
 			</ul>
@@ -104,12 +116,6 @@ export default function TabsPage({ currentPath }) {
 					tabs and panels.
 				</p>
 
-				<h2>Import</h2>
-				<Code code={"import { Tabs } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -146,7 +152,11 @@ export default function TabsPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Tabs" />
+				<ComponentExample
+					component="Tabs"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Tabs tabs={exampleTabs} defaultTab="overview" />
 				</div>

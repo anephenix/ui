@@ -102,20 +102,39 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.divider-horizontal {
+	:root:not([data-theme="light"]) .divider-horizontal {
 		border-top-color: rgba(255, 255, 255, 0.12);
 	}
 
-	.divider-horizontal:has(.divider-label)::before,
-	.divider-horizontal:has(.divider-label)::after {
+	:root:not([data-theme="light"])
+		.divider-horizontal:has(.divider-label)::before,
+	:root:not([data-theme="light"])
+		.divider-horizontal:has(.divider-label)::after {
 		background: rgba(255, 255, 255, 0.12);
 	}
 
-	.divider-vertical {
+	:root:not([data-theme="light"]) .divider-vertical {
 		background-color: rgba(255, 255, 255, 0.12);
 	}
 
-	.divider-label {
+	:root:not([data-theme="light"]) .divider-label {
 		color: var(--light);
 	}
+}
+
+:root[data-theme="dark"] .divider-horizontal {
+	border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .divider-horizontal:has(.divider-label)::before,
+:root[data-theme="dark"] .divider-horizontal:has(.divider-label)::after {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .divider-vertical {
+	background-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .divider-label {
+	color: var(--light);
 }

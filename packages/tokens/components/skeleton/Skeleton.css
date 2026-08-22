@@ -20,8 +20,13 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.skeleton {
+	:root:not([data-theme="light"]) .skeleton {
 		background: linear-gradient(90deg, #2a2a2a 25%, #383838 50%, #2a2a2a 75%);
 		background-size: 200% 100%;
 	}
+}
+
+:root[data-theme="dark"] .skeleton {
+	background: linear-gradient(90deg, #2a2a2a 25%, #383838 50%, #2a2a2a 75%);
+	background-size: 200% 100%;
 }

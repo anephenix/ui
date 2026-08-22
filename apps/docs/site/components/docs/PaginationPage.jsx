@@ -1,16 +1,26 @@
-import { Code, Pagination } from "@anephenix/ui";
+import { Pagination } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `const [page, setPage] = useState(1);
+const reactCode = `import { Pagination } from '@anephenix/ui';
+
+const [page, setPage] = useState(1);
 
 <Pagination
   currentPage={page}
   totalPages={20}
   onPageChange={setPage}
 />`;
+
+const svelteCode = `<script>
+	import { Pagination } from "@anephenix/ui-svelte";
+
+	let page = $state(1);
+</script>
+
+<Pagination currentPage={page} totalPages={20} onPageChange={(p) => (page = p)} />`;
 
 export default function PaginationPage({ currentPath }) {
 	const [page, setPage] = useState(1);
@@ -26,15 +36,6 @@ export default function PaginationPage({ currentPath }) {
 					ellipsis. Returns <code>null</code> when <code>totalPages</code> is
 					less than 2.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Pagination } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -61,7 +62,11 @@ export default function PaginationPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Pagination" />
+				<ComponentExample
+					component="Pagination"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Standard (5 pages)</h3>
 				<div className="docs-example">

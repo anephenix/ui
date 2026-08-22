@@ -73,19 +73,35 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.combo-box-input {
+	:root:not([data-theme="light"]) .combo-box-input {
 		background: var(--dark);
 	}
 
-	.combo-box-listbox {
+	:root:not([data-theme="light"]) .combo-box-listbox {
 		background: var(--dark);
 		border-color: rgba(255, 255, 255, 0.12);
 		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 	}
 
-	.combo-box-option:hover,
-	.combo-box-option-active {
+	:root:not([data-theme="light"]) .combo-box-option:hover,
+	:root:not([data-theme="light"]) .combo-box-option-active {
 		background: var(--blue-two-colour);
 		color: var(--dark);
 	}
+}
+
+:root[data-theme="dark"] .combo-box-input {
+	background: var(--dark);
+}
+
+:root[data-theme="dark"] .combo-box-listbox {
+	background: var(--dark);
+	border-color: rgba(255, 255, 255, 0.12);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="dark"] .combo-box-option:hover,
+:root[data-theme="dark"] .combo-box-option-active {
+	background: var(--blue-two-colour);
+	color: var(--dark);
 }

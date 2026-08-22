@@ -3,9 +3,13 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		--button-second-colour: var(--dark);
 	}
+}
+
+:root[data-theme="dark"] {
+	--button-second-colour: var(--dark);
 }
 
 button.theme-default,

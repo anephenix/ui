@@ -8,9 +8,17 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	#nav-bar .container .withSidePadding a:first-of-type {
+	:root:not([data-theme="light"])
+		#nav-bar
+		.container
+		.withSidePadding
+		a:first-of-type {
 		color: white;
 	}
+}
+
+:root[data-theme="dark"] #nav-bar .container .withSidePadding a:first-of-type {
+	color: white;
 }
 
 .made-in-location {

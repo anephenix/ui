@@ -1,9 +1,11 @@
-import { Avatar, Code } from "@anephenix/ui";
+import { Avatar } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Image
+const reactCode = `import { Avatar } from '@anephenix/ui';
+
+// Image
 <Avatar src="/photo.jpg" alt="Alice Brown" />
 
 // Initials fallback (no image)
@@ -14,6 +16,14 @@ const usageSnippet = `// Image
 
 // Custom size and shape
 <Avatar name="Bob Smith" size="lg" shape="rounded" />`;
+
+const svelteCode = `<script>
+	import { Avatar } from "@anephenix/ui-svelte";
+</script>
+
+<Avatar src="/photo.jpg" alt="Alice Brown" />
+<Avatar name="Alice Brown" size="lg" />
+<Avatar size="md" shape="rounded" />`;
 
 const sizes = ["sm", "md", "lg", "xl"];
 const shapes = ["circle", "rounded", "square"];
@@ -38,12 +48,6 @@ export default function AvatarPage({ currentPath }) {
 					is set. The initials background colour is consistently derived from
 					the name so the same person always gets the same colour.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Avatar } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -78,7 +82,11 @@ export default function AvatarPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Avatar" />
+				<ComponentExample
+					component="Avatar"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Initials — sizes</h3>
 				<div

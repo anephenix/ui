@@ -1,7 +1,17 @@
-import { Code, Terminal } from "@anephenix/ui";
+import { Terminal } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
+
+const reactCode = `import { Terminal } from '@anephenix/ui';
+
+<Terminal title="Install" code="npm i @anephenix/ui --save" />`;
+
+const svelteCode = `<script>
+	import { Terminal } from "@anephenix/ui-svelte";
+</script>
+
+<Terminal title="Install" code="npm i @anephenix/ui-svelte" />`;
 
 export default function TerminalPage({ currentPath }) {
 	return (
@@ -14,19 +24,6 @@ export default function TerminalPage({ currentPath }) {
 					button.
 				</p>
 
-				<h2>Import</h2>
-				<Code
-					code={"import { Terminal } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-				<h2>Usage</h2>
-				<Code
-					code={
-						'<Terminal title="Install" code="npm i @anephenix/ui --save" />'
-					}
-					language="jsx"
-				/>
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -35,7 +32,11 @@ export default function TerminalPage({ currentPath }) {
 					]}
 				/>
 				<h2>Example</h2>
-				<LivePreview component="Terminal" />
+				<ComponentExample
+					component="Terminal"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<Terminal title="Install" code="npm i @anephenix/ui --save" />
 			</div>
 		</DocsLayout>

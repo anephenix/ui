@@ -16,10 +16,15 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.code {
+	:root:not([data-theme="light"]) .code {
 		border: solid 1px rgba(255, 255, 255, 0.175);
 		box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.025);
 	}
+}
+
+:root[data-theme="dark"] .code {
+	border: solid 1px rgba(255, 255, 255, 0.175);
+	box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.025);
 }
 
 /* ── Code editor body ────────────────────────────────────────────── */

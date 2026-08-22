@@ -1,13 +1,21 @@
-import { Checkbox, Code } from "@anephenix/ui";
+import { Checkbox } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const exampleSnippet = `<Checkbox
+const reactCode = `import { Checkbox } from '@anephenix/ui';
+
+<Checkbox
   name="agree"
   label="I agree to the terms"
   defaultValue={false}
 />`;
+
+const svelteCode = `<script>
+	import { Checkbox } from "@anephenix/ui-svelte";
+</script>
+
+<Checkbox name="agree" label="I agree to the terms" defaultValue={false} />`;
 
 export default function CheckboxPage({ currentPath }) {
 	return (
@@ -17,15 +25,6 @@ export default function CheckboxPage({ currentPath }) {
 				<p>
 					A styled checkbox with a label. Accepts a <code>forwardRef</code>.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Checkbox } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -38,7 +37,11 @@ export default function CheckboxPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Checkbox" />
+				<ComponentExample
+					component="Checkbox"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}

@@ -1,20 +1,25 @@
-import { Badge, Button, Code, Tooltip } from "@anephenix/ui";
+import { Badge, Button, Tooltip } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `<Tooltip content="Save your changes">
+const reactCode = `import { Tooltip } from '@anephenix/ui';
+
+<Tooltip content="Save your changes">
   <button type="button">Save</button>
 </Tooltip>
 
 // Custom position
 <Tooltip content="Opens in a new tab" position="right">
   <a href="/docs">Documentation</a>
-</Tooltip>
+</Tooltip>`;
 
-// Rich content
-<Tooltip content={<span>Shortcut: <strong>Ctrl+S</strong></span>}>
-  <button type="button">Save</button>
+const svelteCode = `<script>
+	import { Tooltip } from "@anephenix/ui-svelte";
+</script>
+
+<Tooltip content="Save your changes" position="top">
+	<button type="button">Save</button>
 </Tooltip>`;
 
 const positions = ["top", "right", "bottom", "left"];
@@ -30,15 +35,6 @@ export default function TooltipPage({ currentPath }) {
 					screen reader support and shows on both <code>mouseenter</code> and{" "}
 					<code>focus</code> so keyboard users are covered.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Tooltip } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -59,7 +55,11 @@ export default function TooltipPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Tooltip" />
+				<ComponentExample
+					component="Tooltip"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Positions</h3>
 				<div

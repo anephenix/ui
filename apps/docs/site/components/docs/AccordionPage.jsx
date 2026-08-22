@@ -1,9 +1,11 @@
-import { Accordion, Code } from "@anephenix/ui";
+import { Accordion } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `const items = [
+const reactCode = `import { Accordion } from '@anephenix/ui';
+
+const items = [
   {
     id: 'q1',
     title: 'What is this library?',
@@ -16,14 +18,18 @@ const usageSnippet = `const items = [
   },
 ];
 
-// Single open at a time (default)
-<Accordion items={items} />
-
-// Allow multiple open simultaneously
-<Accordion items={items} allowMultiple />
-
-// Start with an item open
 <Accordion items={items} defaultOpen="q1" />`;
+
+const svelteCode = `<script>
+	import { Accordion } from "@anephenix/ui-svelte";
+
+	const items = [
+		{ id: "q1", title: "What is this?", content: "An answer." },
+		{ id: "q2", title: "How does it work?", content: "Another answer." },
+	];
+</script>
+
+<Accordion {items} defaultOpen="q1" />`;
 
 const faqItems = [
 	{
@@ -31,8 +37,8 @@ const faqItems = [
 		title: "What is this component library?",
 		content: (
 			<p>
-				A set of accessible, plain-CSS React components built on a design system
-				of CSS custom properties. No preprocessor required.
+				A set of accessible, plain-CSS components for React and Svelte, built on
+				a design system of CSS custom properties. No preprocessor required.
 			</p>
 		),
 	},
@@ -105,15 +111,6 @@ export default function AccordionPage({ currentPath }) {
 					pure-CSS grid technique.
 				</p>
 
-				<h2>Import</h2>
-				<Code
-					code={"import { Accordion } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -155,7 +152,11 @@ export default function AccordionPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Accordion" />
+				<ComponentExample
+					component="Accordion"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>FAQ (single open)</h3>
 				<div className="docs-example">

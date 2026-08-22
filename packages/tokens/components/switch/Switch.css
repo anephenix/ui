@@ -52,7 +52,11 @@ input[type="checkbox"]:focus-visible + .switch-track {
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.switch-thumb {
+	:root:not([data-theme="light"]) .switch-thumb {
 		background: #e0e0e0;
 	}
+}
+
+:root[data-theme="dark"] .switch-thumb {
+	background: #e0e0e0;
 }

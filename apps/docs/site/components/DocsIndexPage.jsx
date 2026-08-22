@@ -6,7 +6,7 @@ const sections = [
 		href: "/docs/components",
 		title: "Components",
 		description:
-			"30+ accessible, themeable React components grouped by category — forms, layout, display, overlays, and more.",
+			"38 accessible, themeable components for React and Svelte, grouped by category — forms, layout, display, overlays, and more.",
 	},
 	{
 		href: "/docs/colours",
@@ -41,8 +41,10 @@ export default function DocsIndexPage({ currentPath }) {
 				<h1>Design System</h1>
 				<p>
 					Everything you need to build consistent UIs with{" "}
-					<code>@anephenix/ui</code>. Import the stylesheet once at the top
-					level of your app:
+					<code>@anephenix/ui</code> (React) or{" "}
+					<code>@anephenix/ui-svelte</code> (Svelte) — both share the same
+					design tokens. Import the stylesheet once at the top level of your
+					app:
 				</p>
 				<Code
 					code={"import '@anephenix/ui/dist/index.css';"}

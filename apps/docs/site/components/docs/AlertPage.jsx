@@ -1,10 +1,12 @@
-import { Alert, Code } from "@anephenix/ui";
+import { Alert } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Persistent
+const reactCode = `import { Alert } from '@anephenix/ui';
+
+// Persistent
 <Alert variant="success" title="Saved">
   Your changes have been saved successfully.
 </Alert>
@@ -17,6 +19,18 @@ const [visible, setVisible] = useState(true);
     Your session will expire in 5 minutes.
   </Alert>
 )}`;
+
+const svelteCode = `<script>
+	import { Alert } from "@anephenix/ui-svelte";
+</script>
+
+<!-- Persistent -->
+<Alert variant="success" title="Saved">Your changes have been saved.</Alert>
+
+<!-- Dismissible -->
+<Alert variant="warning" onClose={() => (visible = false)}>
+	Your session will expire in 5 minutes.
+</Alert>`;
 
 export default function AlertPage({ currentPath }) {
 	const [dismissed, setDismissed] = useState({
@@ -42,12 +56,6 @@ export default function AlertPage({ currentPath }) {
 					default; pass <code>onClose</code> to add a dismiss button.
 				</p>
 
-				<h2>Import</h2>
-				<Code code={"import { Alert } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -68,7 +76,11 @@ export default function AlertPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Alert" />
+				<ComponentExample
+					component="Alert"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}

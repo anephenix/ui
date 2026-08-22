@@ -1,15 +1,32 @@
-import { Button, Code, Input, Popover, Switch } from "@anephenix/ui";
+import { Button, Input, Popover, Switch } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `<Popover
+const reactCode = `import { Button, Popover } from '@anephenix/ui';
+
+<Popover
   trigger={<Button text="Options" className="button theme-default secondary" />}
   title="Display options"
   content={<p>Popover body content.</p>}
   position="bottom"
 />`;
+
+const svelteCode = `<script>
+	import { Popover, Switch } from "@anephenix/ui-svelte";
+</script>
+
+<Popover title="Display options" position="bottom">
+	{#snippet trigger(triggerProps)}
+		<button type="button" class="button theme-default secondary" {...triggerProps}>
+			Options
+		</button>
+	{/snippet}
+	{#snippet content()}
+		<Switch name="dark" label="Dark mode" />
+	{/snippet}
+</Popover>`;
 
 const positions = ["top", "right", "bottom", "left"];
 
@@ -27,15 +44,6 @@ export default function PopoverPage({ currentPath }) {
 					interactive elements like forms, switches, or buttons. Closes on
 					Escape, outside click, or the × button.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Popover } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -61,7 +69,11 @@ export default function PopoverPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Popover" />
+				<ComponentExample
+					component="Popover"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Positions</h3>
 				<div

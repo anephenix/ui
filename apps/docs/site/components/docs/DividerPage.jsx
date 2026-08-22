@@ -1,23 +1,21 @@
-import { Code, Divider } from "@anephenix/ui";
+import { Divider } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Basic horizontal divider
+const reactCode = `import { Divider } from '@anephenix/ui';
+
 <Divider />
-
-// With a label
 <Divider label="or" />
+<Divider variant="dashed" />`;
 
-// Dashed variant
-<Divider variant="dashed" />
+const svelteCode = `<script>
+	import { Divider } from "@anephenix/ui-svelte";
+</script>
 
-// Vertical (inside a flex container)
-<div style={{ display: 'flex', height: '2rem', alignItems: 'center', gap: '1rem' }}>
-  <span>Left</span>
-  <Divider orientation="vertical" />
-  <span>Right</span>
-</div>`;
+<Divider />
+<Divider label="or" />
+<Divider variant="dashed" />`;
 
 export default function DividerPage({ currentPath }) {
 	return (
@@ -29,15 +27,6 @@ export default function DividerPage({ currentPath }) {
 					and vertical orientations, three line styles, and an optional centred
 					text label.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Divider } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -62,7 +51,11 @@ export default function DividerPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Divider" />
+				<ComponentExample
+					component="Divider"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}

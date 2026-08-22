@@ -1,13 +1,21 @@
-import { Code, Textarea } from "@anephenix/ui";
+import { Textarea } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const exampleSnippet = `<Textarea
+const reactCode = `import { Textarea } from '@anephenix/ui';
+
+<Textarea
   name="message"
   placeholder="Enter your message here…"
   onChange={(e) => console.log(e.target.value)}
 />`;
+
+const svelteCode = `<script>
+	import { Textarea } from "@anephenix/ui-svelte";
+</script>
+
+<Textarea name="message" placeholder="Enter your message..." oninput={handleChange} />`;
 
 export default function TextareaPage({ currentPath }) {
 	return (
@@ -17,15 +25,6 @@ export default function TextareaPage({ currentPath }) {
 				<p>
 					A multi-line text area. Accepts a <code>forwardRef</code>.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Textarea } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -39,7 +38,11 @@ export default function TextareaPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Textarea" />
+				<ComponentExample
+					component="Textarea"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Textarea name="message" placeholder="Enter your message here…" />
 				</div>

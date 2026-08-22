@@ -1,16 +1,24 @@
-import { Button, Code, Spinner } from "@anephenix/ui";
+import { Button, Spinner } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Standalone
+const reactCode = `import { Spinner } from '@anephenix/ui';
+
+// Standalone
 <Spinner />
 
 // Inside a button (loading state)
-<button type="button" disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+<button type="button" disabled>
   <Spinner size="sm" label="Saving..." />
   Saving...
 </button>`;
+
+const svelteCode = `<script>
+	import { Spinner } from "@anephenix/ui-svelte";
+</script>
+
+<Spinner size="md" label="Loading..." />`;
 
 const sizes = ["sm", "md", "lg"];
 
@@ -24,15 +32,6 @@ export default function SpinnerPage({ currentPath }) {
 					pure-CSS rotating ring. Use it standalone for page or section loading,
 					or inline inside a button to indicate a pending action.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Spinner } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -52,7 +51,11 @@ export default function SpinnerPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Spinner" />
+				<ComponentExample
+					component="Spinner"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Sizes</h3>
 				<div

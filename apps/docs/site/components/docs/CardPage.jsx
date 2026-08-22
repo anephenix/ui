@@ -1,34 +1,27 @@
-import { Button, Card, Code } from "@anephenix/ui";
+import { Button, Card } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Minimal — body content only
-<Card>
-  <p>Any content goes here.</p>
-</Card>
+const reactCode = `import { Button, Card } from '@anephenix/ui';
 
-// With title, subtitle, and footer actions
 <Card
   title="Getting started"
-  subtitle="Read the docs and install in minutes"
-  footer={
-    <Button
-      text="Docs"
-      className="button theme-default primary"
-    />
-  }
+  subtitle="Up and running in minutes"
+  footer={<Button text="View docs" className="button theme-default primary" />}
 >
   <p>Build consistent UIs with a plain-CSS design system.</p>
-</Card>
+</Card>`;
 
-// With a cover image
-<Card
-  image="/cover.jpg"
-  imageAlt="Mountain landscape"
-  title="Travel guide"
->
-  <p>Explore the best routes this season.</p>
+const svelteCode = `<script>
+	import { Button, Card } from "@anephenix/ui-svelte";
+</script>
+
+<Card title="Getting started" subtitle="Up and running in minutes">
+	{#snippet footer()}
+		<Button text="View docs" class="button theme-default primary" />
+	{/snippet}
+	<p>Build consistent UIs with a plain-CSS design system.</p>
 </Card>`;
 
 export default function CardPage({ currentPath }) {
@@ -41,12 +34,6 @@ export default function CardPage({ currentPath }) {
 					footer sections. Width fills the parent — use a grid or flex layout to
 					control how many cards appear per row.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Card } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -74,7 +61,11 @@ export default function CardPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Card" />
+				<ComponentExample
+					component="Card"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{

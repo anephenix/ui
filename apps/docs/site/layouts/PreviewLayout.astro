@@ -1,9 +1,11 @@
 ---
 import "@anephenix/ui/dist/index.css";
+
+const { theme } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,8 +18,9 @@ import "@anephenix/ui/dist/index.css";
             }
             body {
                 margin: 0;
-                padding: 0;
-                background: #fff;
+                padding: 32px;
+                background: var(--light);
+                color: var(--dark);
                 font-family:
                     "Helvetica Neue",
                     -apple-system,
@@ -26,6 +29,16 @@ import "@anephenix/ui/dist/index.css";
                     Roboto,
                     sans-serif;
                 -webkit-font-smoothing: antialiased;
+            }
+            @media screen and (prefers-color-scheme: dark) {
+                :root:not([data-theme="light"]) body {
+                    background: var(--dark);
+                    color: var(--light);
+                }
+            }
+            :root[data-theme="dark"] body {
+                background: var(--dark);
+                color: var(--light);
             }
             .preview-center {
                 display: flex;

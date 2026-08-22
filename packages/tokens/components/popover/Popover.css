@@ -105,7 +105,7 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.popover {
+	:root:not([data-theme="light"]) .popover {
 		background: var(--dark);
 		color: var(--light);
 		border-color: rgba(255, 255, 255, 0.12);
@@ -114,7 +114,20 @@
 			0 4px 16px rgba(0, 0, 0, 0.5);
 	}
 
-	.popover-header {
+	:root:not([data-theme="light"]) .popover-header {
 		border-bottom-color: rgba(255, 255, 255, 0.12);
 	}
+}
+
+:root[data-theme="dark"] .popover {
+	background: var(--dark);
+	color: var(--light);
+	border-color: rgba(255, 255, 255, 0.12);
+	box-shadow:
+		0 1px 4px rgba(0, 0, 0, 0.2),
+		0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="dark"] .popover-header {
+	border-bottom-color: rgba(255, 255, 255, 0.12);
 }

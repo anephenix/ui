@@ -1,15 +1,29 @@
-import { Breadcrumb, Code } from "@anephenix/ui";
+import { Breadcrumb } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `<Breadcrumb
+const reactCode = `import { Breadcrumb } from '@anephenix/ui';
+
+<Breadcrumb
   items={[
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: "Laptops", href: "/products/laptops" },
     { label: "MacBook Pro" },
   ]}
+/>`;
+
+const svelteCode = `<script>
+	import { Breadcrumb } from "@anephenix/ui-svelte";
+</script>
+
+<Breadcrumb
+	items={[
+		{ label: "Home", href: "/" },
+		{ label: "Products", href: "/products" },
+		{ label: "Laptops" },
+	]}
 />`;
 
 const docsItems = [
@@ -38,15 +52,6 @@ export default function BreadcrumbPage({ currentPath }) {
 					Separators are hidden from screen readers via <code>aria-hidden</code>
 					.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Breadcrumb } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -78,7 +83,11 @@ export default function BreadcrumbPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Breadcrumb" />
+				<ComponentExample
+					component="Breadcrumb"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Default separator</h3>
 				<div className="docs-example">

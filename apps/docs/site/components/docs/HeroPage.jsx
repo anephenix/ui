@@ -1,6 +1,6 @@
-import { Code, Hero } from "@anephenix/ui";
+import { Hero } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const Link = ({ href, children, ...props }) => (
@@ -14,7 +14,9 @@ const ctas = [
 	{ href: "/docs", text: "Documentation", buttonClass: "secondary" },
 ];
 
-const exampleSnippet = `const ctas = [
+const reactCode = `import { Hero } from '@anephenix/ui';
+
+const ctas = [
   { href: '/get-started', text: 'Get started', buttonClass: 'primary' },
   { href: '/docs', text: 'Documentation', buttonClass: 'secondary' },
 ];
@@ -24,6 +26,22 @@ const exampleSnippet = `const ctas = [
   description="Built for Anephenix."
   ctas={ctas}
   Link={Link}
+/>`;
+
+const svelteCode = `<script>
+	import { Hero } from "@anephenix/ui-svelte";
+
+	const ctas = [
+		{ href: "/get-started", text: "Get started", buttonClass: "primary" },
+		{ href: "/docs", text: "Documentation", buttonClass: "secondary" },
+	];
+</script>
+
+<Hero
+	title="A Design System for Svelte"
+	description="Built for Anephenix."
+	{ctas}
+	Link={MyRouterLink}
 />`;
 
 export default function HeroPage({ currentPath }) {
@@ -37,12 +55,6 @@ export default function HeroPage({ currentPath }) {
 					component; falls back to a plain <code>&lt;a&gt;</code> tag if not
 					provided.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Hero } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -63,7 +75,11 @@ export default function HeroPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Hero" />
+				<ComponentExample
+					component="Hero"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ padding: 0, overflow: "hidden" }}

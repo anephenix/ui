@@ -1,10 +1,20 @@
-import { Code, FormField, Input } from "@anephenix/ui";
+import { FormField, Input } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const exampleSnippet = `<FormField error="This field is required">
+const reactCode = `import { FormField, Input } from '@anephenix/ui';
+
+<FormField error="This field is required">
   <Input name="email" type="email" />
+</FormField>`;
+
+const svelteCode = `<script>
+	import { FormField, Input } from "@anephenix/ui-svelte";
+</script>
+
+<FormField error="This field is required">
+	<Input name="email" type="email" />
 </FormField>`;
 
 export default function FormFieldPage({ currentPath }) {
@@ -19,15 +29,6 @@ export default function FormFieldPage({ currentPath }) {
 					which form control styles can target.
 				</p>
 
-				<h2>Import</h2>
-				<Code
-					code={"import { FormField } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -41,7 +42,11 @@ export default function FormFieldPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="FormField" />
+				<ComponentExample
+					component="FormField"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1rem" }}

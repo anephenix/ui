@@ -7,6 +7,10 @@ import PreviewLayout from "../layouts/PreviewLayout.astro";
 const componentParam = Astro.url.searchParams.get("component");
 const framework =
 	Astro.url.searchParams.get("framework") === "svelte" ? "svelte" : "react";
+const embed = Astro.url.searchParams.get("embed") === "1";
+const themeParam = Astro.url.searchParams.get("theme");
+const theme =
+	themeParam === "light" || themeParam === "dark" ? themeParam : undefined;
 
 const toQuery = (fw: string) => {
 	const params = new URLSearchParams();
@@ -17,15 +21,17 @@ const toQuery = (fw: string) => {
 };
 ---
 
-<PreviewLayout>
-	<div class="framework-toggle">
-		<a href={`/preview${toQuery("react")}`} class:list={{ active: framework === "react" }}>
-			React
-		</a>
-		<a href={`/preview${toQuery("svelte")}`} class:list={{ active: framework === "svelte" }}>
-			Svelte
-		</a>
-	</div>
+<PreviewLayout theme={theme}>
+	{!embed && (
+		<div class="framework-toggle">
+			<a href={`/preview${toQuery("react")}`} class:list={{ active: framework === "react" }}>
+				React
+			</a>
+			<a href={`/preview${toQuery("svelte")}`} class:list={{ active: framework === "svelte" }}>
+				Svelte
+			</a>
+		</div>
+	)}
 	{
 		framework === "svelte" ? (
 			<SveltePreviewPage client:only="svelte" />

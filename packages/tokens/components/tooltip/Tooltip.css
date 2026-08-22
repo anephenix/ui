@@ -56,9 +56,15 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.tooltip {
+	:root:not([data-theme="light"]) .tooltip {
 		background: #f0f0f0;
 		color: #111;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	}
+}
+
+:root[data-theme="dark"] .tooltip {
+	background: #f0f0f0;
+	color: #111;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }

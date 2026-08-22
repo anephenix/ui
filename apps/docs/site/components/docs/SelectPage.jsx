@@ -1,6 +1,6 @@
-import { Code, Select } from "@anephenix/ui";
+import { Select } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const options = [
@@ -10,7 +10,9 @@ const options = [
 	{ value: "fr", label: "France" },
 ];
 
-const exampleSnippet = `const options = [
+const reactCode = `import { Select } from '@anephenix/ui';
+
+const options = [
   { value: 'gb', label: 'United Kingdom' },
   { value: 'us', label: 'United States' },
 ];
@@ -20,6 +22,17 @@ const exampleSnippet = `const options = [
   options={options}
   onChange={(e) => console.log(e.target.value)}
 />`;
+
+const svelteCode = `<script>
+	import { Select } from "@anephenix/ui-svelte";
+
+	const options = [
+		{ value: "gb", label: "United Kingdom" },
+		{ value: "us", label: "United States" },
+	];
+</script>
+
+<Select name="country" {options} onchange={handleChange} />`;
 
 export default function SelectPage({ currentPath }) {
 	return (
@@ -31,12 +44,6 @@ export default function SelectPage({ currentPath }) {
 					see the <a href="/docs/dropdown">Dropdown</a> component. Accepts a{" "}
 					<code>forwardRef</code>.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Select } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -50,7 +57,11 @@ export default function SelectPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Select" />
+				<ComponentExample
+					component="Select"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Select name="country" options={options} className="" />
 				</div>

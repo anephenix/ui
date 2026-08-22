@@ -65,17 +65,55 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	#nav-bar {
+	:root:not([data-theme="light"]) #nav-bar {
 		background: var(--dark);
 		border-bottom: solid 1px var(--dark);
 		color: var(--light);
 	}
 
-	#nav-bar .container .withSidePadding ul#desktop-menu li a {
+	:root:not([data-theme="light"])
+		#nav-bar
+		.container
+		.withSidePadding
+		ul#desktop-menu
+		li
+		a {
 		color: var(--light);
 	}
 
-	#nav-bar .container .withSidePadding ul#desktop-menu li a:hover {
+	:root:not([data-theme="light"])
+		#nav-bar
+		.container
+		.withSidePadding
+		ul#desktop-menu
+		li
+		a:hover {
 		color: #bfbfbf;
 	}
+}
+
+:root[data-theme="dark"] #nav-bar {
+	background: var(--dark);
+	border-bottom: solid 1px var(--dark);
+	color: var(--light);
+}
+
+:root[data-theme="dark"]
+	#nav-bar
+	.container
+	.withSidePadding
+	ul#desktop-menu
+	li
+	a {
+	color: var(--light);
+}
+
+:root[data-theme="dark"]
+	#nav-bar
+	.container
+	.withSidePadding
+	ul#desktop-menu
+	li
+	a:hover {
+	color: #bfbfbf;
 }

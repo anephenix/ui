@@ -35,7 +35,11 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	#footer .container .withSidePadding a {
+	:root:not([data-theme="light"]) #footer .container .withSidePadding a {
 		color: var(--light);
 	}
+}
+
+:root[data-theme="dark"] #footer .container .withSidePadding a {
+	color: var(--light);
 }

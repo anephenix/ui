@@ -1,6 +1,6 @@
 import { Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const snippet = `import { Button, Input } from '@anephenix/ui';
@@ -15,11 +15,19 @@ export default function LoginForm() {
   );
 }`;
 
-const usageSnippet = `<Code
+const reactCode = `import { Code } from '@anephenix/ui';
+
+<Code
   title="LoginForm.jsx"
   code={snippet}
   language="jsx"
 />`;
+
+const svelteCode = `<script>
+	import { Code } from "@anephenix/ui-svelte";
+</script>
+
+<Code title="LoginForm.jsx" code={snippet} language="jsx" />`;
 
 export default function CodePage({ currentPath }) {
 	return (
@@ -31,16 +39,6 @@ export default function CodePage({ currentPath }) {
 					<code>react-highlight</code>), line numbers, a title bar, and a copy
 					button.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Code } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code
-					code={usageSnippet}
-					language="jsx"
-					style={{ marginTop: "1.5rem" }}
-				/>
 
 				<h2>Props</h2>
 				<PropTable
@@ -56,7 +54,11 @@ export default function CodePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Code" />
+				<ComponentExample
+					component="Code"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<Code title="LoginForm.jsx" code={snippet} language="jsx" />
 			</div>
 		</DocsLayout>

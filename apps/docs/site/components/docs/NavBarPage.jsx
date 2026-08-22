@@ -1,9 +1,8 @@
-import { Code } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `import { NavBar } from '@anephenix/ui';
+const reactCode = `import { NavBar } from '@anephenix/ui';
 
 const links = [
   {
@@ -38,6 +37,31 @@ const links = [
   Link={Link}
 />`;
 
+const svelteCode = `<script>
+	import { NavBar } from "@anephenix/ui-svelte";
+
+	const links = [
+		{
+			id: "home",
+			text: "Home",
+			url: "/",
+			hideOnDesktop: false,
+			hideOptions: ({ loggedIn }) => true,
+		},
+		{
+			id: "about",
+			text: "About",
+			url: "/about",
+			hideOnDesktop: false,
+			hideOptions: ({ loggedIn }) => true,
+		},
+	];
+</script>
+
+<NavBar {links} loggedIn={false} Link={MyRouterLink}>
+	{#snippet logo()}<a href="/"><strong>My App</strong></a>{/snippet}
+</NavBar>`;
+
 export default function NavBarPage({ currentPath }) {
 	return (
 		<DocsLayout currentPath={currentPath}>
@@ -49,12 +73,6 @@ export default function NavBarPage({ currentPath }) {
 					smaller screens. Manages open/closed state internally using a React
 					class component.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { NavBar } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code title="NavBar usage" code={usageSnippet} language="jsx" />
 
 				<h2>NavBar props</h2>
 				<PropTable
@@ -85,7 +103,11 @@ export default function NavBarPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="NavBar" />
+				<ComponentExample
+					component="NavBar"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h2>Link object shape</h2>
 				<PropTable

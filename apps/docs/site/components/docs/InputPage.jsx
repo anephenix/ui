@@ -1,13 +1,26 @@
-import { Code, Input } from "@anephenix/ui";
+import { Input } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const exampleSnippet = `<Input
+const reactCode = `import { Input } from '@anephenix/ui';
+
+<Input
   name="email"
   type="email"
   placeholder="you@example.com"
   onChange={(e) => console.log(e.target.value)}
+/>`;
+
+const svelteCode = `<script>
+	import { Input } from "@anephenix/ui-svelte";
+</script>
+
+<Input
+	name="email"
+	type="email"
+	placeholder="you@example.com"
+	oninput={(e) => console.log(e.target.value)}
 />`;
 
 export default function InputPage({ currentPath }) {
@@ -18,12 +31,6 @@ export default function InputPage({ currentPath }) {
 				<p>
 					A text input element. Accepts a <code>forwardRef</code>.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Input } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -38,7 +45,11 @@ export default function InputPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Input" />
+				<ComponentExample
+					component="Input"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}

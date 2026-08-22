@@ -1,7 +1,11 @@
 import { Alert, Code, Tabs, Terminal } from "@anephenix/ui";
+import { useState } from "react";
 import SiteLayout from "./SiteLayout.jsx";
 
-const installCode = "npm i @anephenix/ui --save";
+const install = {
+	react: "npm i @anephenix/ui --save",
+	svelte: "npm i @anephenix/ui-svelte --save",
+};
 
 const appRouterCode = `// app/layout.jsx
 import '@anephenix/ui/dist/index.css';
@@ -14,7 +18,7 @@ export default function RootLayout({ children }) {
   );
 }`;
 
-const viteCode = `// src/main.jsx
+const viteReactCode = `// src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@anephenix/ui/dist/index.css';
@@ -33,7 +37,22 @@ export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }`;
 
-const firstComponentCode = `import { Button, Alert } from '@anephenix/ui';
+const svelteKitLayoutCode = `<!-- src/routes/+layout.svelte -->
+<script>
+	import '@anephenix/ui-svelte/dist/index.css';
+	let { children } = $props();
+</script>
+
+{@render children()}`;
+
+const viteSvelteCode = `// src/main.js
+import '@anephenix/ui-svelte/dist/index.css';
+import { mount } from 'svelte';
+import App from './App.svelte';
+
+mount(App, { target: document.getElementById('app') });`;
+
+const firstComponentReactCode = `import { Button, Alert } from '@anephenix/ui';
 
 function MyPage() {
   return (
@@ -51,7 +70,21 @@ function MyPage() {
   );
 }`;
 
-const pageLayoutCode = `import { Page, NavBar, Footer } from '@anephenix/ui';
+const firstComponentSvelteCode = `<script>
+	import { Alert, Button } from '@anephenix/ui-svelte';
+</script>
+
+<Alert variant="success" title="You're all set!">
+	@anephenix/ui-svelte is installed and ready to use.
+</Alert>
+
+<Button
+	text="Get started"
+	class="button theme-default primary"
+	onclick={() => console.log('clicked!')}
+/>`;
+
+const pageLayoutReactCode = `import { Page, NavBar, Footer } from '@anephenix/ui';
 
 export default function RootLayout({ children }) {
   return (
@@ -65,6 +98,22 @@ export default function RootLayout({ children }) {
     </Page>
   );
 }`;
+
+const pageLayoutSvelteCode = `<script>
+	import { Footer, NavBar, Page } from '@anephenix/ui-svelte';
+	let { children } = $props();
+</script>
+
+<Page>
+	<NavBar links={[]} loggedIn={false}>
+		{#snippet logo()}<a href="/">My App</a>{/snippet}
+	</NavBar>
+	<main>{@render children()}</main>
+	<Footer>
+		{#snippet leftSection()}<span>&copy; 2026 My Company</span>{/snippet}
+		{#snippet rightSection()}<a href="/privacy">Privacy</a>{/snippet}
+	</Footer>
+</Page>`;
 
 const tokenOverrideCode = `/* In your own global CSS, after the @anephenix/ui import */
 :root {
@@ -80,42 +129,95 @@ const tokenOverrideCode = `/* In your own global CSS, after the @anephenix/ui im
 }`;
 
 export default function GetStartedPage() {
-	const frameworkTabs = [
-		{
-			id: "app-router",
-			label: "Next.js App Router",
-			content: (
-				<Code title="app/layout.jsx" code={appRouterCode} language="jsx" />
-			),
-		},
-		{
-			id: "vite",
-			label: "Vite / React",
-			content: <Code title="src/main.jsx" code={viteCode} language="jsx" />,
-		},
-		{
-			id: "pages-router",
-			label: "Next.js Pages Router",
-			content: (
-				<Code title="pages/_app.jsx" code={pagesRouterCode} language="jsx" />
-			),
-		},
-	];
+	const [framework, setFramework] = useState("react");
+	const isReact = framework === "react";
+	const pkg = isReact ? "@anephenix/ui" : "@anephenix/ui-svelte";
+
+	const frameworkTabs = isReact
+		? [
+				{
+					id: "app-router",
+					label: "Next.js App Router",
+					content: (
+						<Code title="app/layout.jsx" code={appRouterCode} language="jsx" />
+					),
+				},
+				{
+					id: "vite",
+					label: "Vite / React",
+					content: (
+						<Code title="src/main.jsx" code={viteReactCode} language="jsx" />
+					),
+				},
+				{
+					id: "pages-router",
+					label: "Next.js Pages Router",
+					content: (
+						<Code
+							title="pages/_app.jsx"
+							code={pagesRouterCode}
+							language="jsx"
+						/>
+					),
+				},
+			]
+		: [
+				{
+					id: "sveltekit",
+					label: "SvelteKit",
+					content: (
+						<Code
+							title="+layout.svelte"
+							code={svelteKitLayoutCode}
+							language="svelte"
+						/>
+					),
+				},
+				{
+					id: "vite-svelte",
+					label: "Vite / Svelte",
+					content: (
+						<Code
+							title="src/main.js"
+							code={viteSvelteCode}
+							language="javascript"
+						/>
+					),
+				},
+			];
 
 	return (
 		<SiteLayout>
 			<div className="gs-content">
 				<h1>Get started</h1>
 				<p className="gs-lead">
-					@anephenix/ui is a React component library with a plain-CSS design
-					system. This guide takes you from installation to your first working
-					page in a few minutes.
+					A plain-CSS design system available for both React (
+					<code>@anephenix/ui</code>) and Svelte (
+					<code>@anephenix/ui-svelte</code>). This guide takes you from
+					installation to your first working page in a few minutes.
 				</p>
+
+				<div className="live-preview-toggle">
+					<button
+						type="button"
+						className={isReact ? "active" : ""}
+						onClick={() => setFramework("react")}
+					>
+						React
+					</button>
+					<button
+						type="button"
+						className={!isReact ? "active" : ""}
+						onClick={() => setFramework("svelte")}
+					>
+						Svelte
+					</button>
+				</div>
 
 				{/* ── 1. Install ── */}
 				<section className="gs-section">
 					<h2>1. Install</h2>
-					<Terminal title="Install" code={installCode} />
+					<Terminal title="Install" code={install[framework]} />
 				</section>
 
 				{/* ── 2. Requirements ── */}
@@ -136,8 +238,8 @@ export default function GetStartedPage() {
 								<td>Required for the build tooling</td>
 							</tr>
 							<tr>
-								<td>React</td>
-								<td>19+</td>
+								<td>{isReact ? "React" : "Svelte"}</td>
+								<td>{isReact ? "19+" : "5+"}</td>
 								<td>Peer dependency — install separately</td>
 							</tr>
 						</tbody>
@@ -152,7 +254,10 @@ export default function GetStartedPage() {
 						Import it once at the root of your app — the exact location depends
 						on your framework.
 					</p>
-					<Tabs tabs={frameworkTabs} defaultTab="app-router" />
+					<Tabs
+						tabs={frameworkTabs}
+						defaultTab={isReact ? "app-router" : "sveltekit"}
+					/>
 					<Alert variant="info" title="One import only">
 						Do not import the stylesheet more than once. A single root-level
 						import covers your entire app.
@@ -163,10 +268,22 @@ export default function GetStartedPage() {
 				<section className="gs-section">
 					<h2>4. Your first component</h2>
 					<p>
-						All components are named exports from <code>@anephenix/ui</code>.
-						Import only what you need — the library is tree-shakeable.
+						All components are named exports from <code>{pkg}</code>. Import
+						only what you need — the library is tree-shakeable.
 					</p>
-					<Code title="MyPage.jsx" code={firstComponentCode} language="jsx" />
+					{isReact ? (
+						<Code
+							title="MyPage.jsx"
+							code={firstComponentReactCode}
+							language="jsx"
+						/>
+					) : (
+						<Code
+							title="MyPage.svelte"
+							code={firstComponentSvelteCode}
+							language="svelte"
+						/>
+					)}
 				</section>
 
 				{/* ── 5. Structuring a page ── */}
@@ -179,7 +296,19 @@ export default function GetStartedPage() {
 						<code>.container.withSidePadding</code> div constrains the main
 						content to the grid column.
 					</p>
-					<Code title="layout.jsx" code={pageLayoutCode} language="jsx" />
+					{isReact ? (
+						<Code
+							title="layout.jsx"
+							code={pageLayoutReactCode}
+							language="jsx"
+						/>
+					) : (
+						<Code
+							title="+layout.svelte"
+							code={pageLayoutSvelteCode}
+							language="svelte"
+						/>
+					)}
 				</section>
 
 				{/* ── 6. Customising design tokens ── */}
@@ -188,9 +317,10 @@ export default function GetStartedPage() {
 					<p>
 						Every colour, font size, weight, and spacing value is a CSS custom
 						property on <code>:root</code>. Override any of them in your own
-						global stylesheet — after the <code>@anephenix/ui</code> import —
-						and every component that consumes that token will update
-						automatically.
+						global stylesheet — after the <code>{pkg}</code> import — and every
+						component that consumes that token will update automatically. Both
+						packages are built from the same design tokens, so overrides apply
+						identically to either.
 					</p>
 					<Code title="globals.css" code={tokenOverrideCode} language="css" />
 					<p>

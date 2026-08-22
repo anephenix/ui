@@ -1,7 +1,7 @@
-import { Code, ComboBox } from "@anephenix/ui";
+import { ComboBox } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const fruits = [
@@ -21,7 +21,9 @@ const fruits = [
 	{ value: "strawberry", label: "Strawberry" },
 ];
 
-const usageSnippet = `const options = [
+const reactCode = `import { ComboBox } from '@anephenix/ui';
+
+const options = [
   { value: 'apple', label: 'Apple' },
   { value: 'banana', label: 'Banana' },
   { value: 'cherry', label: 'Cherry' },
@@ -33,6 +35,24 @@ const [selected, setSelected] = useState(null);
   options={options}
   placeholder="Search fruit..."
   onSelect={(option) => setSelected(option)}
+/>`;
+
+const svelteCode = `<script>
+	import { ComboBox } from "@anephenix/ui-svelte";
+
+	const options = [
+		{ value: "apple", label: "Apple" },
+		{ value: "banana", label: "Banana" },
+		{ value: "cherry", label: "Cherry" },
+	];
+
+	let selected = $state(null);
+</script>
+
+<ComboBox
+	{options}
+	placeholder="Search fruit..."
+	onSelect={(option) => (selected = option)}
 />`;
 
 export default function ComboBoxPage({ currentPath }) {
@@ -47,15 +67,6 @@ export default function ComboBoxPage({ currentPath }) {
 					Supports keyboard navigation (arrow keys, Enter, Escape),
 					outside-click dismissal, and full ARIA combobox semantics.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { ComboBox } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -94,7 +105,11 @@ export default function ComboBoxPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="ComboBox" />
+				<ComponentExample
+					component="ComboBox"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<ComboBox
 						options={fruits}

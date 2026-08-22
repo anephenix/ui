@@ -1,6 +1,6 @@
-import { Code, Dropdown } from "@anephenix/ui";
+import { Dropdown } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const options = [
@@ -10,12 +10,25 @@ const options = [
 	{ value: "rb", text: "Ruby" },
 ];
 
-const exampleSnippet = `const options = [
+const reactCode = `import { Dropdown } from '@anephenix/ui';
+
+const options = [
   { value: 'js', text: 'JavaScript' },
   { value: 'ts', text: 'TypeScript' },
 ];
 
 <Dropdown name="language" options={options} />`;
+
+const svelteCode = `<script>
+	import { Dropdown } from "@anephenix/ui-svelte";
+
+	const options = [
+		{ value: "js", text: "JavaScript" },
+		{ value: "ts", text: "TypeScript" },
+	];
+</script>
+
+<Dropdown name="language" {options} />`;
 
 export default function DropdownPage({ currentPath }) {
 	return (
@@ -32,15 +45,6 @@ export default function DropdownPage({ currentPath }) {
 					distinguishes it from the <a href="/docs/select">Select</a> component.
 				</p>
 
-				<h2>Import</h2>
-				<Code
-					code={"import { Dropdown } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={exampleSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -54,7 +58,11 @@ export default function DropdownPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Dropdown" />
+				<ComponentExample
+					component="Dropdown"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Dropdown name="language" options={options} className="" />
 				</div>

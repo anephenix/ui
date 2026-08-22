@@ -1,5 +1,6 @@
 import { Footer, NavBar, Page } from "@anephenix/ui";
 import links from "../../data/navbar-links.js";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const Link = ({ href, children, ...props }) => (
 	<a href={href} {...props}>
@@ -74,7 +75,13 @@ export default function SiteLayout({ children }) {
 
 	return (
 		<Page>
-			<NavBar logo={logo} links={links} loggedIn={false} Link={Link} />
+			<NavBar
+				logo={logo}
+				links={links}
+				loggedIn={false}
+				Link={Link}
+				midSection={<ThemeToggle />}
+			/>
 			<div className="page container withSidePadding">{children}</div>
 			<Footer leftSection={<LeftSection />} rightSection={<RightSection />} />
 		</Page>

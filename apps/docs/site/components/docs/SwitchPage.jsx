@@ -1,10 +1,12 @@
-import { Code, Switch } from "@anephenix/ui";
+import { Switch } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Uncontrolled
+const reactCode = `import { Switch } from '@anephenix/ui';
+
+// Uncontrolled
 <Switch name="notifications" label="Enable notifications" defaultChecked={false} />
 
 // Controlled
@@ -16,6 +18,15 @@ const [enabled, setEnabled] = useState(false);
   checked={enabled}
   onChange={(e) => setEnabled(e.target.checked)}
 />`;
+
+const svelteCode = `<script>
+	import { Switch } from "@anephenix/ui-svelte";
+
+	// Controlled
+	let enabled = $state(false);
+</script>
+
+<Switch name="darkMode" label="Dark mode" bind:checked={enabled} />`;
 
 export default function SwitchPage({ currentPath }) {
 	const [darkMode, setDarkMode] = useState(false);
@@ -33,12 +44,6 @@ export default function SwitchPage({ currentPath }) {
 					usage, accepts a <code>forwardRef</code>, and animates the thumb via
 					CSS.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Switch } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -70,7 +75,11 @@ export default function SwitchPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Switch" />
+				<ComponentExample
+					component="Switch"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexDirection: "column", gap: "1rem" }}

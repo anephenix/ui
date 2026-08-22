@@ -7,7 +7,7 @@ const Link = ({ href, children, ...props }) => (
 	</a>
 );
 
-const title = "A Design System for React";
+const title = "A Design System for React and Svelte";
 const description = "Built for Anephenix";
 const ctas = [
 	{ href: "/get-started", text: "Get started", buttonClass: "primary" },

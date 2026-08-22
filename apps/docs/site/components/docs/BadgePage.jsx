@@ -1,9 +1,11 @@
-import { Badge, Code } from "@anephenix/ui";
+import { Badge } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Status label
+const reactCode = `import { Badge } from '@anephenix/ui';
+
+// Status label
 <Badge variant="success">Active</Badge>
 
 // Count
@@ -11,6 +13,13 @@ const usageSnippet = `// Status label
 
 // Tag
 <Badge variant="default">React</Badge>`;
+
+const svelteCode = `<script>
+	import { Badge } from "@anephenix/ui-svelte";
+</script>
+
+<Badge variant="success">Active</Badge>
+<Badge variant="error" size="sm">99+</Badge>`;
 
 const variants = [
 	"default",
@@ -35,12 +44,6 @@ export default function BadgePage({ currentPath }) {
 					and other inline elements.
 				</p>
 
-				<h2>Import</h2>
-				<Code code={"import { Badge } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
-
 				<h2>Props</h2>
 				<PropTable
 					rows={[
@@ -60,7 +63,11 @@ export default function BadgePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Badge" />
+				<ComponentExample
+					component="Badge"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Variants</h3>
 				<div

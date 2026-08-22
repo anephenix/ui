@@ -18,13 +18,37 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.gs-content h1 {
+	:root:not([data-theme="light"]) .gs-content h1 {
 		border-bottom-color: rgba(255, 255, 255, 0.12);
 	}
 
-	.gs-lead {
+	:root:not([data-theme="light"]) .gs-lead {
 		color: #aaa;
 	}
+}
+
+:root[data-theme="dark"] .gs-content h1 {
+	border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .gs-lead {
+	color: #aaa;
+}
+
+.gs-content .live-preview-toggle {
+	margin-bottom: 2.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) .gs-content .live-preview-toggle {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+:root[data-theme="dark"] .gs-content .live-preview-toggle {
+	border-color: rgba(255, 255, 255, 0.1);
 }
 
 .gs-section {
@@ -54,11 +78,17 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.gs-section p code,
-	.gs-section li code {
+	:root:not([data-theme="light"]) .gs-section p code,
+	:root:not([data-theme="light"]) .gs-section li code {
 		background: rgba(255, 255, 255, 0.08);
 		border-color: rgba(255, 255, 255, 0.12);
 	}
+}
+
+:root[data-theme="dark"] .gs-section p code,
+:root[data-theme="dark"] .gs-section li code {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.12);
 }
 
 .gs-section .alert {
@@ -106,21 +136,37 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.gs-table {
+	:root:not([data-theme="light"]) .gs-table {
 		border-color: rgba(255, 255, 255, 0.12);
 		box-shadow:
 			0 1px 3px rgba(0, 0, 0, 0.3),
 			0 2px 8px rgba(0, 0, 0, 0.2);
 	}
 
-	.gs-table th {
+	:root:not([data-theme="light"]) .gs-table th {
 		border-bottom-color: rgba(255, 255, 255, 0.12);
 		background: rgba(255, 255, 255, 0.03);
 	}
 
-	.gs-table td {
+	:root:not([data-theme="light"]) .gs-table td {
 		border-bottom-color: rgba(255, 255, 255, 0.06);
 	}
+}
+
+:root[data-theme="dark"] .gs-table {
+	border-color: rgba(255, 255, 255, 0.12);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.3),
+		0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .gs-table th {
+	border-bottom-color: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme="dark"] .gs-table td {
+	border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
 /* Next steps list */

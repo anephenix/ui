@@ -1,6 +1,6 @@
-import { Code, Table } from "@anephenix/ui";
+import { Table } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
 const columns = [
@@ -54,7 +54,9 @@ const rows = [
 	},
 ];
 
-const usageSnippet = `const columns = [
+const reactCode = `import { Table } from '@anephenix/ui';
+
+const columns = [
   { key: 'name', header: 'Name' },
   { key: 'role', header: 'Role' },
   {
@@ -75,6 +77,22 @@ const rows = [
 
 <Table columns={columns} rows={rows} caption="Team members" />`;
 
+const svelteCode = `<script>
+	import { Table } from "@anephenix/ui-svelte";
+
+	const columns = [
+		{ key: "name", header: "Name" },
+		{ key: "role", header: "Role" },
+		{ key: "status", header: "Status", render: (value) => value.toUpperCase() },
+	];
+
+	const rows = [
+		{ id: 1, name: "Alice Chen", role: "Engineer", status: "Active" },
+	];
+</script>
+
+<Table {columns} {rows} caption="Team members" />`;
+
 export default function TablePage({ currentPath }) {
 	return (
 		<DocsLayout currentPath={currentPath}>
@@ -85,12 +103,6 @@ export default function TablePage({ currentPath }) {
 					support an optional <code>render</code> function for custom cell
 					content. Horizontally scrollable on small screens.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Table } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -137,7 +149,11 @@ export default function TablePage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Table" />
+				<ComponentExample
+					component="Table"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div className="docs-example">
 					<Table columns={columns} rows={rows} caption="Team members" />
 				</div>

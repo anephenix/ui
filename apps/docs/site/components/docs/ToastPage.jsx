@@ -1,10 +1,12 @@
-import { Button, Code, Toast } from "@anephenix/ui";
+import { Button, Toast } from "@anephenix/ui";
 import { useState } from "react";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `const [isVisible, setIsVisible] = useState(false);
+const reactCode = `import { Button, Toast } from '@anephenix/ui';
+
+const [isVisible, setIsVisible] = useState(false);
 
 <Button
   text="Show notification"
@@ -19,6 +21,21 @@ const usageSnippet = `const [isVisible, setIsVisible] = useState(false);
   variant="success"
   duration={4000}
   onClose={() => setIsVisible(false)}
+/>`;
+
+const svelteCode = `<script>
+	import { Toast } from "@anephenix/ui-svelte";
+
+	let isVisible = $state(false);
+</script>
+
+<Toast
+	isVisible={isVisible}
+	title="Saved"
+	message="Your changes have been saved."
+	variant="success"
+	duration={4000}
+	onClose={() => (isVisible = false)}
 />`;
 
 export default function ToastPage({ currentPath }) {
@@ -36,12 +53,6 @@ export default function ToastPage({ currentPath }) {
 					viewport. Supports four variants, optional auto-dismiss, and an
 					optional title. Renders nothing when not visible.
 				</p>
-
-				<h2>Import</h2>
-				<Code code={"import { Toast } from '@anephenix/ui';"} language="jsx" />
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -73,7 +84,11 @@ export default function ToastPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Toast" />
+				<ComponentExample
+					component="Toast"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 				<div
 					className="docs-example"
 					style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}

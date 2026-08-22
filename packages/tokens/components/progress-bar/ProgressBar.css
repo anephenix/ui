@@ -84,12 +84,21 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.progress-bar {
+	:root:not([data-theme="light"]) .progress-bar {
 		background: rgba(255, 255, 255, 0.12);
 	}
 
-	.progress-bar-label,
-	.progress-bar-value {
+	:root:not([data-theme="light"]) .progress-bar-label,
+	:root:not([data-theme="light"]) .progress-bar-value {
 		color: var(--light);
 	}
+}
+
+:root[data-theme="dark"] .progress-bar {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .progress-bar-label,
+:root[data-theme="dark"] .progress-bar-value {
+	color: var(--light);
 }

@@ -66,14 +66,25 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.pagination-page,
-	.pagination-nav {
+	:root:not([data-theme="light"]) .pagination-page,
+	:root:not([data-theme="light"]) .pagination-nav {
 		background: var(--dark);
 		color: var(--light);
 		border-color: rgba(255, 255, 255, 0.2);
 	}
 
-	.pagination-ellipsis {
+	:root:not([data-theme="light"]) .pagination-ellipsis {
 		color: var(--light);
 	}
+}
+
+:root[data-theme="dark"] .pagination-page,
+:root[data-theme="dark"] .pagination-nav {
+	background: var(--dark);
+	color: var(--light);
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="dark"] .pagination-ellipsis {
+	color: var(--light);
 }

@@ -90,18 +90,33 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	.accordion-trigger:hover {
+	:root:not([data-theme="light"]) .accordion-trigger:hover {
 		background: rgba(255, 255, 255, 0.05);
 	}
 
-	.accordion {
+	:root:not([data-theme="light"]) .accordion {
 		border-color: rgba(255, 255, 255, 0.12);
 		box-shadow:
 			0 1px 3px rgba(0, 0, 0, 0.2),
 			0 2px 8px rgba(0, 0, 0, 0.4);
 	}
 
-	.accordion-item {
+	:root:not([data-theme="light"]) .accordion-item {
 		border-bottom-color: rgba(255, 255, 255, 0.12);
 	}
+}
+
+:root[data-theme="dark"] .accordion-trigger:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .accordion {
+	border-color: rgba(255, 255, 255, 0.12);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.2),
+		0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .accordion-item {
+	border-bottom-color: rgba(255, 255, 255, 0.12);
 }

@@ -1,23 +1,21 @@
-import { Code, Skeleton } from "@anephenix/ui";
+import { Skeleton } from "@anephenix/ui";
 import DocsLayout from "../DocsLayout.jsx";
-import { LivePreview } from "./LivePreview.jsx";
+import { ComponentExample } from "./ComponentExample.jsx";
 import { PropTable } from "./shared.jsx";
 
-const usageSnippet = `// Single text line
+const reactCode = `import { Skeleton } from '@anephenix/ui';
+
 <Skeleton width="60%" />
+<Skeleton lines={3} />
+<Skeleton width={48} height={48} borderRadius="50%" />`;
 
-// Paragraph (multiple lines, last line shorter)
-<Skeleton lines={4} />
+const svelteCode = `<script>
+	import { Skeleton } from "@anephenix/ui-svelte";
+</script>
 
-// Avatar circle
-<Skeleton width={48} height={48} borderRadius="50%" />
-
-// Card placeholder
-<div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-  <Skeleton height={160} />
-  <Skeleton width="50%" height="1.25rem" />
-  <Skeleton lines={2} />
-</div>`;
+<Skeleton width="60%" />
+<Skeleton lines={3} />
+<Skeleton width={48} height={48} borderRadius="50%" />`;
 
 export default function SkeletonPage({ currentPath }) {
 	return (
@@ -29,15 +27,6 @@ export default function SkeletonPage({ currentPath }) {
 					Compose multiple skeletons to match the layout of the real content —
 					the closer the match, the less jarring the transition.
 				</p>
-
-				<h2>Import</h2>
-				<Code
-					code={"import { Skeleton } from '@anephenix/ui';"}
-					language="jsx"
-				/>
-
-				<h2>Usage</h2>
-				<Code code={usageSnippet} language="jsx" />
 
 				<h2>Props</h2>
 				<PropTable
@@ -67,7 +56,11 @@ export default function SkeletonPage({ currentPath }) {
 				/>
 
 				<h2>Example</h2>
-				<LivePreview component="Skeleton" />
+				<ComponentExample
+					component="Skeleton"
+					reactCode={reactCode}
+					svelteCode={svelteCode}
+				/>
 
 				<h3>Text and paragraphs</h3>
 				<div
