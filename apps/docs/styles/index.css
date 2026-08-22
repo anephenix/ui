@@ -2,6 +2,78 @@
 	margin-top: 40px;
 }
 
+/* ── Homepage component showcase ────────────────────────────────── */
+
+.home-showcase {
+	margin-bottom: 80px;
+}
+
+.home-showcase h2 {
+	font-size: 32px;
+	margin-bottom: 0.5rem;
+}
+
+.home-showcase-lead {
+	font-size: 1.05rem;
+	color: #555;
+	line-height: 1.6;
+	margin-bottom: 2rem;
+	max-width: 60ch;
+}
+
+.home-showcase-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--spacer-two);
+}
+
+.home-showcase-grid .card-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacer-one);
+}
+
+.home-showcase-demo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	min-height: 44px;
+}
+
+.home-showcase-demo-block {
+	display: block;
+}
+
+.home-showcase-caption {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	opacity: 0.7;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) .home-showcase-lead {
+		color: #aaa;
+	}
+}
+
+:root[data-theme="dark"] .home-showcase-lead {
+	color: #aaa;
+}
+
+@media screen and (max-width: 900px) {
+	.home-showcase-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.home-showcase-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 #nav-bar .container .withSidePadding a:first-of-type {
 	text-decoration: none;
 	color: black;

@@ -1,4 +1,5 @@
 import { Hero } from "@anephenix/ui";
+import HomeShowcase from "./HomeShowcase.jsx";
 import SiteLayout from "./SiteLayout.jsx";
 
 const Link = ({ href, children, ...props }) => (
@@ -19,6 +20,7 @@ export default function HomePage() {
 		<SiteLayout>
 			<div id="home-page">
 				<Hero title={title} description={description} ctas={ctas} Link={Link} />
+				<HomeShowcase />
 			</div>
 		</SiteLayout>
 	);
