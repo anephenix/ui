@@ -14,7 +14,7 @@ interface Props {
 	variant?: AlertVariant;
 	title?: string;
 	children: Snippet;
-	onclose?: () => void;
+	onClose?: () => void;
 	class?: string;
 }
 
@@ -22,7 +22,7 @@ let {
 	variant = "info",
 	title,
 	children,
-	onclose,
+	onClose,
 	class: className,
 }: Props = $props();
 
@@ -42,8 +42,8 @@ let classNames = $derived(
 		{/if}
 		<div class="alert-body">{@render children()}</div>
 	</div>
-	{#if onclose}
-		<button type="button" class="alert-close" onclick={onclose} aria-label="Dismiss">
+	{#if onClose}
+		<button type="button" class="alert-close" onclick={onClose} aria-label="Dismiss">
 			&times;
 		</button>
 	{/if}

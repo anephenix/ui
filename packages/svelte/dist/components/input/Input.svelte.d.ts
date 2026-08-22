@@ -4,7 +4,7 @@ interface Props {
     defaultValue?: string;
     placeholder?: string;
     name?: string;
-    onchange?: (event: Event) => void;
+    oninput?: (event: Event) => void;
     ref?: HTMLInputElement | null;
 }
 declare const Input: import("svelte").Component<Props, {}, "ref">;

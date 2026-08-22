@@ -3,7 +3,7 @@ interface Props {
     defaultValue?: string;
     placeholder?: string;
     name?: string;
-    onchange?: (event: Event) => void;
+    oninput?: (event: Event) => void;
     ref?: HTMLTextAreaElement | null;
 }
 declare const Textarea: import("svelte").Component<Props, {}, "ref">;

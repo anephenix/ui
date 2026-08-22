@@ -5,7 +5,7 @@ interface Props {
 	defaultValue?: string;
 	placeholder?: string;
 	name?: string;
-	onchange?: (event: Event) => void;
+	oninput?: (event: Event) => void;
 	ref?: HTMLInputElement | null;
 }
 
@@ -15,7 +15,7 @@ let {
 	defaultValue,
 	placeholder,
 	name,
-	onchange,
+	oninput,
 	ref = $bindable(null),
 }: Props = $props();
 </script>
@@ -26,6 +26,6 @@ let {
 	{type}
 	class={className}
 	value={defaultValue}
-	{onchange}
+	{oninput}
 	{placeholder}
 />

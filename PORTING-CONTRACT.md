@@ -39,7 +39,20 @@ hardest). Conventions established, to guide any remaining/future ports:
   no changes as new components are ported; it globs `packages/tokens/components/*/*.css` directly.
 - `className` → `class` (renamed on destructure as `class: className` internally, since `class`
   alone is a reserved word).
-- `onClick` → `onclick` (Svelte 5 uses plain DOM event attribute names).
+- `onClick` → `onclick` (Svelte 5 uses plain DOM event attribute names) for native passthrough
+  handlers. **Watch for `onChange` specifically**: React's `onChange` on a plain
+  `<input>`/`<textarea>` actually tracks the native `input` event (fires on every keystroke), not
+  `change` (fires on blur/commit) — the correct Svelte equivalent there is `oninput`, not
+  `onchange`. `Input.svelte` and `Textarea.svelte` initially got this wrong (ported as `onchange`
+  before this distinction was fully internalized during the `ComboBox` port) and were fixed once
+  writing `packages/svelte/COMPONENTS.md` surfaced the inconsistency — see `ComboBox.svelte` for
+  the pattern that caught it originally. This only matters for text-like fields; `change` fires
+  immediately (no meaningful "keystroke") on checkboxes, radios, and `<select>`, so `Switch`,
+  `RadioButton`, and `Select`/`Dropdown` correctly keep `onchange`. It does *not* apply to custom
+  callback props defined by a component's own logic rather than passed straight through to a
+  native element (`onChange` on `Accordion`/`Tabs`/`ComboBox`, `onSelect`, `onClose`,
+  `onPageChange`, etc.) — those keep their original camelCase names since they were never native
+  DOM attributes to begin with.
 - `forwardRef` → a `$bindable` `ref` prop bound via `bind:this` — e.g. `Button.svelte`. Note this
   isn't independently unit-tested (it's a Svelte-native mechanism, not app logic); tests just
   assert the real DOM element renders.
@@ -65,6 +78,12 @@ hardest). Conventions established, to guide any remaining/future ports:
   test-only `.svelte` fixtures `*.test.svelte` so they're excluded from the publish tarball by
   the same `package.json` `files` globs that exclude `*.test.ts`, and are never picked up by
   vitest (which only matches `src/**/*.test.ts`).
+- **Fixed while writing `COMPONENTS.md`**: `Alert`'s dismiss callback was named `onclose`
+  (lowercase), inconsistent with `Modal` and `Toast`'s `onClose` (camelCase) for the exact same
+  "optional dismiss callback" pattern. Renamed to `onClose` to match. This is a custom callback
+  prop, not a native DOM passthrough (Alert decides when to invoke it, from its own close
+  button's click), so it was never subject to the `onClick`→`onclick` native-event rule above —
+  it was just an inconsistency between components, caught by writing all three side by side.
 
 **Phase 4 (stateful component) conventions, on top of the above:**
 
@@ -200,28 +219,60 @@ bundle and API shape. Left unported pending that decision. `Terminal` (which sha
 
 | Export | Public API | Notes |
 |---|---|---|
-| `handleErrors` | Y | Plain function, not a component — framework-agnostic as-is, ports to the Svelte package with no changes needed. |
+| `handleErrors` | Y | Plain function, not a component — framework-agnostic as-is. **Actually ported** to `packages/svelte/src/lib/handleErrors.ts` (this table previously claimed it "ports with no changes needed" but nobody had actually copied it over — caught while writing `packages/svelte/COMPONENTS.md`). Re-exporting it required an explicit `.js` extension in `index.ts`'s `export … from "./handleErrors.js"` — `@sveltejs/package` doesn't rewrite cross-file import extensions, so the un-extended TS-style import worked in dev but silently pointed at a nonexistent `.ts` file in the published `dist/index.js`. |
 
-## Docs site preview
+## Docs site preview (Phase 5 — complete)
 
 `apps/docs`'s `/preview?component=X` route (already used for manual preview + screenshot
-generation) now supports `&framework=svelte`, rendering `SveltePreviewPage.svelte` instead of
+generation) supports `&framework=svelte`, rendering `SveltePreviewPage.svelte` instead of
 the React `PreviewPage.jsx` — same wrapper CSS classes (`preview-center`/`preview-padded`/
 `preview-bare`), same example content per component, translated to the Svelte prop APIs
-documented above. A toggle at the top of the page switches frameworks while preserving the
-`component` param; each `/docs/components/*` page also links out to its Svelte preview (hidden
-for `Code`, which isn't ported). Astro supports multiple UI-framework integrations
-(`@astrojs/react` + `@astrojs/svelte`) in one project simultaneously — no conflict between the
-two. `PreviewLayout.astro` only imports `@anephenix/ui/dist/index.css` (React's build output);
-that's sufficient for both, since the two packages' CSS is rule-for-rule identical (see the
-Phase 3 commit). The screenshot-generation scripts (`compute-clip-regions.js`,
-`generate-screenshots.js`) still default to React only — not extended to Svelte.
+documented in `packages/svelte/COMPONENTS.md`. A toggle at the top of that page switches
+frameworks while preserving the `component` param. Astro supports multiple UI-framework
+integrations (`@astrojs/react` + `@astrojs/svelte`) in one project simultaneously — no conflict
+between the two. `PreviewLayout.astro` only imports `@anephenix/ui/dist/index.css` (React's
+build output); that's sufficient for both, since the two packages' CSS is rule-for-rule
+identical (see the Phase 3 commit). Each `/docs/components/*` page also embeds a
+`LivePreview` component (toggle + iframe onto `/preview`) directly inside its existing
+"Example" section, rather than linking out — see `apps/docs/site/components/docs/LivePreview.jsx`.
+`Code`'s toggle is hidden (`svelte={false}`) since it isn't ported; `Page` has no live preview on
+either framework side (it's just a wrapper `<div>`, nothing to demo) and wasn't given one.
+
+The screenshot-generation scripts (`compute-clip-regions.js`, `generate-screenshots.js`) still
+default to React only — deliberately not extended to Svelte, since the exit criteria explicitly
+allowed "keep one canonical screenshot set since CSS output should be identical," which holds
+(verified in the Phase 3 commit).
+
+**`packages/svelte/COMPONENTS.md`** mirrors `packages/react/COMPONENTS.md`, translated per the
+conventions above — this was the harder, still-outstanding half of Phase 5's exit criteria.
+Writing it accurately (cross-referencing every component's actual `Props` interface rather than
+trusting memory) surfaced three real bugs that a "docs site shows both frameworks" check alone
+never would have:
+- `Input.svelte`/`Textarea.svelte` were wired to `onchange` (fires on blur) instead of `oninput`
+  (fires on every keystroke) — a silent behavioural regression from React's `onChange`, exactly
+  the class of bug the `ComboBox` port had already identified and avoided elsewhere. Fixed to
+  `oninput`, prop renamed to match.
+- `Alert`'s dismiss callback was `onclose` (lowercase) while `Modal` and `Toast` — the same
+  pattern — used `onClose` (camelCase). Renamed to `onClose` for consistency.
+- `handleErrors` was claimed as "ported, no changes needed" in this file's summary table but had
+  never actually been copied into `packages/svelte`. Added for real
+  (`packages/svelte/src/lib/handleErrors.ts`), which surfaced a second, smaller bug:
+  `@sveltejs/package` doesn't rewrite cross-file import extensions, so `export … from
+  "./handleErrors"` (or `.ts`) resolved fine in dev but pointed at a nonexistent file in the
+  published `dist/index.js`; fixed by using the `.js` extension in the source import, matching
+  the actual compiled output.
 
 Since `apps/docs` now genuinely depends on `packages/svelte`'s built output (not just as an
 experiment), `packages/svelte/dist` is committed to git, same as `packages/react/dist`, and
 `.husky/pre-commit` rebuilds and stages both on every commit. `packages/svelte/dist/**/*.test.*`
 (the stray test-file copies `@sveltejs/package` includes but `package.json`'s `files` field
 excludes from the npm tarball) are gitignored so they don't pollute the git history.
+
+**Not part of Phase 5, still open for Phase 6:** `packages/svelte` has no `README.md` (npm's
+publish README), no `size-limit` config, and no `prepare-patch-release`/`publish-patch-release`
+scripts — it's never been published and still sits at `0.0.1`. CI
+(`.github/workflows/node.js.yml`) is still a single `npm i && npm t` job with no per-workspace
+matrix.
 
 ---
 

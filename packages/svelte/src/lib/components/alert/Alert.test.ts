@@ -65,26 +65,26 @@ describe("Alert", () => {
 		expect(container.firstChild).toHaveClass("alert", "custom-alert");
 	});
 
-	test("renders the dismiss button when onclose is provided", () => {
+	test("renders the dismiss button when onClose is provided", () => {
 		render(Alert, {
-			props: { onclose: () => {}, children: textSnippet("Content") },
+			props: { onClose: () => {}, children: textSnippet("Content") },
 		});
 		expect(
 			screen.getByRole("button", { name: /dismiss/i }),
 		).toBeInTheDocument();
 	});
 
-	test("does not render the dismiss button when onclose is omitted", () => {
+	test("does not render the dismiss button when onClose is omitted", () => {
 		render(Alert, { props: { children: textSnippet("Content") } });
 		expect(
 			screen.queryByRole("button", { name: /dismiss/i }),
 		).not.toBeInTheDocument();
 	});
 
-	test("calls onclose when the dismiss button is clicked", () => {
+	test("calls onClose when the dismiss button is clicked", () => {
 		const handleClose = vi.fn();
 		render(Alert, {
-			props: { onclose: handleClose, children: textSnippet("Content") },
+			props: { onClose: handleClose, children: textSnippet("Content") },
 		});
 		fireEvent.click(screen.getByRole("button", { name: /dismiss/i }));
 		expect(handleClose).toHaveBeenCalledTimes(1);

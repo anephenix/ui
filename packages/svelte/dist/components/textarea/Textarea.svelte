@@ -4,7 +4,7 @@ interface Props {
 	defaultValue?: string;
 	placeholder?: string;
 	name?: string;
-	onchange?: (event: Event) => void;
+	oninput?: (event: Event) => void;
 	ref?: HTMLTextAreaElement | null;
 }
 
@@ -13,7 +13,7 @@ let {
 	defaultValue,
 	placeholder,
 	name,
-	onchange,
+	oninput,
 	ref = $bindable(null),
 }: Props = $props();
 </script>
@@ -23,6 +23,6 @@ let {
 	{name}
 	class={className}
 	value={defaultValue}
-	{onchange}
+	{oninput}
 	{placeholder}
 ></textarea>

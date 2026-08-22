@@ -30,13 +30,13 @@ describe("Input", () => {
 		expect(inputElement).toHaveValue("password123");
 	});
 
-	test("calls onchange when value changes", () => {
+	test("calls oninput on every keystroke", () => {
 		const handleChange = vi.fn();
 		const { getByPlaceholderText } = render(Input, {
-			props: { placeholder: "Enter text", onchange: handleChange },
+			props: { placeholder: "Enter text", oninput: handleChange },
 		});
 		const inputElement = getByPlaceholderText("Enter text");
-		fireEvent.change(inputElement, { target: { value: "new value" } });
+		fireEvent.input(inputElement, { target: { value: "new value" } });
 		expect(handleChange).toHaveBeenCalledTimes(1);
 		expect(inputElement).toHaveValue("new value");
 	});

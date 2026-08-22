@@ -30,3 +30,4 @@ export { default as Terminal } from "./components/terminal/Terminal.svelte";
 export { default as Textarea } from "./components/textarea/Textarea.svelte";
 export { default as Toast } from "./components/toast/Toast.svelte";
 export { default as Tooltip } from "./components/tooltip/Tooltip.svelte";
+export { handleErrors } from "./handleErrors.js";

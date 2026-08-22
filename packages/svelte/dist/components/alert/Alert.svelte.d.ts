@@ -4,7 +4,7 @@ interface Props {
     variant?: AlertVariant;
     title?: string;
     children: Snippet;
-    onclose?: () => void;
+    onClose?: () => void;
     class?: string;
 }
 declare const Alert: import("svelte").Component<Props, {}, "">;
