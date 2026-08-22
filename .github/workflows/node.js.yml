@@ -1,4 +1,7 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# This workflow does a clean install of node dependencies, cache/restore them, and lints,
+# tests, and builds each workspace in the monorepo independently — a break in one package
+# (e.g. packages/svelte) is reported on its own job rather than being folded into one
+# pass/fail status for everything.
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
@@ -12,16 +15,30 @@ on:
         branches: [master]
 
 jobs:
-    build:
+    lint:
         runs-on: ubuntu-latest
         env:
             CI: true
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+                  cache: 'npm'
+            - run: npm i
+            - run: npm run lint
+            - run: npm run lint:package
 
+    test:
+        runs-on: ubuntu-latest
+        env:
+            CI: true
         strategy:
+            fail-fast: false
             matrix:
+                workspace: [packages/react, packages/svelte]
                 node-version: [24.x]
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }}
@@ -30,4 +47,32 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
             - run: npm i
-            - run: npm t
+            - run: npm test --workspace=${{ matrix.workspace }}
+
+    size:
+        runs-on: ubuntu-latest
+        env:
+            CI: true
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+                  cache: 'npm'
+            - run: npm i
+            - run: npm run size
+
+    docs-build:
+        runs-on: ubuntu-latest
+        env:
+            CI: true
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+                  cache: 'npm'
+            - run: npm i
+            - run: npm run build-lib
+            - run: npm run build-svelte
+            - run: npm run build

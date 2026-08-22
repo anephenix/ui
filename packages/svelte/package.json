@@ -1,6 +1,6 @@
 {
 	"name": "@anephenix/ui-svelte",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "A collection of UI components for Svelte web applications",
 	"type": "module",
 	"svelte": "./dist/index.js",
@@ -22,7 +22,12 @@
 	"scripts": {
 		"build": "svelte-package && node scripts/build-css.js",
 		"cover": "npx vitest run --coverage",
-		"test": "npx vitest run --coverage"
+		"size": "size-limit",
+		"lint:package": "npx publint",
+		"test": "npx vitest run --coverage",
+		"update-changelog": "node scripts/update-changelog.ts",
+		"prepare-patch-release": "npm run build && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch --tag-version-prefix=svelte-v",
+		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags"
 	},
 	"keywords": [
 		"svelte",
@@ -57,8 +62,16 @@
 		"@vitest/coverage-v8": "^4.1.2",
 		"esbuild": "^0.28.0",
 		"jsdom": "^30.0.0",
+		"publint": "^0.3.14",
+		"size-limit": "^13.0.1",
 		"svelte": "^5.56.10",
 		"vite": "^8",
 		"vitest": "^4.1.2"
-	}
+	},
+	"size-limit": [
+		{
+			"path": "dist/index.css",
+			"limit": "10 kB"
+		}
+	]
 }

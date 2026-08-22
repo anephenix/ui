@@ -268,11 +268,51 @@ experiment), `packages/svelte/dist` is committed to git, same as `packages/react
 (the stray test-file copies `@sveltejs/package` includes but `package.json`'s `files` field
 excludes from the npm tarball) are gitignored so they don't pollute the git history.
 
-**Not part of Phase 5, still open for Phase 6:** `packages/svelte` has no `README.md` (npm's
-publish README), no `size-limit` config, and no `prepare-patch-release`/`publish-patch-release`
-scripts — it's never been published and still sits at `0.0.1`. CI
-(`.github/workflows/node.js.yml`) is still a single `npm i && npm t` job with no per-workspace
-matrix.
+## Phase 6 — publishing and CI (complete)
+
+- **`packages/svelte/README.md`** — npm's publish-facing README, mirroring
+  `packages/react/README.md`'s structure. Explicitly says "not yet published to npm" rather than
+  writing `npm i @anephenix/ui-svelte` instructions for a package that doesn't exist on the
+  registry — that would have been misleading. Version bumped `0.0.1` → `0.1.0` (a label-only
+  `package.json` edit, not a publish) to mark it feature-complete-enough for a first real
+  release, matching the original plan's "packages/svelte starts fresh at 0.1.0."
+- **`size-limit`** — only `dist/index.css` is tracked (10 kB budget, same as React's, since the
+  CSS is rule-identical; currently ~6.67 kB). `dist/index.js` is deliberately **not** tracked:
+  size-limit's checker bundles the given entry with plain esbuild before measuring, and
+  `dist/index.js` is just `export … from "./components/x/X.svelte"` re-export statements —
+  esbuild has no `.svelte` loader configured, so it fails outright (`No loader is configured for
+  ".svelte" files`), confirmed by actually running it. This isn't fixable by picking a different
+  entry point: `@sveltejs/package` ships unbundled `.svelte` source (unlike React's single
+  bundled `dist/index.js`), so there's no single JS artifact whose size represents what a
+  consumer's bundle actually pays — that only becomes concrete once *their* Svelte-aware bundler
+  processes the specific components they import.
+- **Publish scripts** (`update-changelog`, `prepare-patch-release`, `publish-patch-release`) —
+  copied from `packages/react`'s pattern with one necessary change: **git tags are scoped
+  `svelte-v*`, not bare `vX.Y.Z`.** All 61 existing tags in this repo (`v0.1.0`...`v0.4.3`) are
+  React's release history, sharing one global namespace; a bare `npm version patch` for Svelte
+  would either collide with a tag React might reuse later or make `svelte-v0.1.0`
+  indistinguishable from a same-numbered React tag. `packages/svelte/package.json` passes
+  `--tag-version-prefix=svelte-v` to `npm version patch`. `packages/svelte/scripts/update-changelog.ts`
+  is adapted to match: `git describe --match "svelte-v*"` and `git log -- packages/svelte` so it
+  only considers Svelte's own tags and commits. That script needs at least one prior `svelte-v*`
+  tag to run (it diffs against "the previous version"), so it can't produce the *first* changelog
+  entry — `packages/svelte/CHANGELOG.md`'s `0.1.0` entry was written by hand; the script becomes
+  usable starting with the second release. Root's `prepare-patch-release`/`publish-patch-release`
+  are deliberately left pointing at `packages/react` only, not fanned out via `--workspaces` —
+  releasing is consequential and should never happen to both packages from one generic command;
+  releasing Svelte requires explicitly running `npm run prepare-patch-release --workspace=packages/svelte`.
+  None of these scripts have actually been run — authoring the tooling is in scope here, actually
+  publishing is a separate, explicit decision for whoever runs them.
+- **CI** (`.github/workflows/node.js.yml`) — split from one `npm i && npm t` job into four:
+  `lint` (Biome + `publint` for both packages), `test` (matrix over `packages/react` and
+  `packages/svelte`, `fail-fast: false` so one package's failure doesn't hide the other's
+  result), `size`, and `docs-build` (`build-lib` + `build-svelte` + the Astro build, mirroring
+  what `.husky/pre-commit` already does locally). Root's `lint:package` and `size` scripts now
+  fan out via `--workspaces --if-present` instead of hardcoding `packages/react`, so both
+  packages are covered without the CI config needing to know their names individually. Verified
+  by actually running every job's commands locally (not just reading the YAML) — `js-yaml`
+  loaded the workflow file to confirm structural validity, then each job's steps were run for
+  real: lint, both test matrix legs, size (both packages), and the full docs-build sequence.
 
 ---
 
