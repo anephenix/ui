@@ -44,6 +44,9 @@
 	"peerDependencies": {
 		"svelte": "^5.0.0"
 	},
+	"dependencies": {
+		"clipboard-copy": "^4.0.1"
+	},
 	"devDependencies": {
 		"@anephenix/ui-tokens": "*",
 		"@sveltejs/package": "^2.5.8",

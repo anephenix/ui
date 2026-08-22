@@ -22,10 +22,12 @@ in Svelte's reactivity model rather than copied.
 
 ## Svelte port status
 
-Ported so far (`packages/svelte/src/lib/components/`): **Badge, Button, Card, Divider, Page**
-— a deliberately small first slice picked to exercise a spread of cases (dynamic variant
-classes, ref forwarding, children/slots, conditional root elements) before porting the
-remaining ~28. Conventions established by that slice, to keep the rest consistent:
+Ported (`packages/svelte/src/lib/components/`): **Badge, Button, Card, Divider, Page** (first
+slice) plus **CloseIcon, Hamburger, MenuItem, DesktopMenu, MobileMenu, NavBar, Breadcrumb,
+Pagination, Hero, Footer, Checkbox, Input, RadioButton, Select, Dropdown, Textarea, FormField,
+Alert, ProgressBar, Skeleton, Spinner, Table, Terminal, Tooltip** — every `Simple`-rated
+component except **Code** (deferred, see below). Conventions established, to guide any
+remaining/future ports:
 
 - Svelte components render class names only — **no per-component CSS import**. `@sveltejs/package`
   copies `.svelte` files as-is rather than bundling them, so a source-level
@@ -40,10 +42,42 @@ remaining ~28. Conventions established by that slice, to keep the rest consisten
 - `forwardRef` → a `$bindable` `ref` prop bound via `bind:this` — e.g. `Button.svelte`. Note this
   isn't independently unit-tested (it's a Svelte-native mechanism, not app logic); tests just
   assert the real DOM element renders.
+- A React `Component` prop (e.g. `Link` in `NavBar`/`MenuItem`/`Hero`) becomes a Svelte
+  `Component<Props>` type (`import type { Component } from "svelte"`), used directly as a
+  dynamic tag: `<Link {href}>{text}</Link>`.
+- A React `ReactNode` prop that isn't a plain string (e.g. `children`, `footer`, `logo`,
+  `midSection`) becomes a Svelte `Snippet`, rendered with `{@render x()}`. Where the original
+  accepted *either* a string or a node (e.g. `Hero`'s `description`, `Tooltip`'s `content`), the
+  Svelte prop type is `string | Snippet` with a `typeof x === "string"` branch.
+- `Table`'s per-column `render` prop changed from `(value, row) => ReactNode` to
+  `(value, row) => string`. A function returning arbitrary renderable content doesn't have a
+  clean Svelte equivalent without asking every consumer to import `createRawSnippet`; a
+  string-returning formatter (uppercase, date formatting, etc.) covers the realistic use case
+  and is simpler to use. Documented here since it's a real, not cosmetic, API difference.
 - Component tests use `@testing-library/svelte` + `createRawSnippet` (from `svelte`) to pass
   `children`/other snippet props from test code — see any `*.test.ts` in that directory for the
   pattern. One gotcha: a component whose root is an `{#if}/{:else}` block gets a comment-node
-  anchor as `container.firstChild`; use `container.firstElementChild` instead (see `Divider.test.ts`).
+  anchor as `container.firstChild`; use `container.firstElementChild` instead (see
+  `Divider.test.ts`, `Skeleton.test.ts`, `Pagination.test.ts`).
+- Testing a component that takes another component as a prop (e.g. `MenuItem`'s `Link`) needs a
+  real `.svelte` fixture, not a plain mock object — see `menu-item/MockLink.test.svelte`. Name
+  test-only `.svelte` fixtures `*.test.svelte` so they're excluded from the publish tarball by
+  the same `package.json` `files` globs that exclude `*.test.ts`, and are never picked up by
+  vitest (which only matches `src/**/*.test.ts`).
+
+**NavBar correction:** the original audit below (from grepping for `useState`/`useEffect`/etc.)
+missed that `NavBar` is a **class component** with `this.state.menuOpen` — genuinely stateful,
+just not hook-based. Ported using `$state`/`$derived`, same as the 8 already-known stateful
+components; simple enough (one boolean toggle) to include in this pass rather than deferring
+to Phase 4. Treat any remaining unaudited component with suspicion if it's a class component,
+not just for hooks.
+
+**Code deferred:** `Code.tsx` uses `react-syntax-highlighter`, a React-only rendering library —
+this isn't a mechanical port, it's a dependency decision (which Svelte-compatible syntax
+highlighter to adopt, e.g. `svelte-highlight` or a direct Prism.js integration) that changes the
+bundle and API shape. Left unported pending that decision. `Terminal` (which shares the
+`.title-bar-button`/`.title-bar-action` CSS classes but has no syntax highlighting, just
+`clipboard-copy`) is already ported.
 
 ## How to read the table
 
@@ -78,7 +112,7 @@ remaining ~28. Conventions established by that slice, to keep the rest consisten
 | Component | Public API | State | CSS | Root class(es) |
 |---|---|---|---|---|
 | Breadcrumb | Y | Simple | Breadcrumb.css | `.breadcrumb`, `.breadcrumb-item`, `.breadcrumb-link`, `.breadcrumb-current`, `.breadcrumb-separator` |
-| NavBar | Y | Simple | NavBar.css | multiple/nested — see file |
+| NavBar | Y | **Stateful** (class component, `this.state.menuOpen` — not hook-based, missed by the original grep audit) | NavBar.css | multiple/nested — see file |
 | Pagination | Y | Simple | Pagination.css | `.pagination`, `.pagination-nav`, `.pagination-page`, `.pagination-page-active`, `.pagination-ellipsis` |
 | CloseIcon | N (internal, used by NavBar) | Simple | shared tokens | dynamic — see source |
 | DesktopMenu | N (internal, used by NavBar) | Simple | DesktopMenu.css | multiple/nested — see file |
@@ -139,10 +173,15 @@ remaining ~28. Conventions established by that slice, to keep the rest consisten
 ## Summary
 
 - 38 component directories: 33 public components + 5 internal (`NavBar` sub-parts) + `handleErrors`.
-- 8 components are `Stateful` and need careful review during the port: Accordion, Avatar,
-  ComboBox, Switch, Popover, Tabs, Modal, Toast. Everything else is presentational or
+- 9 components are `Stateful` and need careful review: Accordion, Avatar, ComboBox, Switch,
+  Popover, Tabs, Modal, Toast, and **NavBar** (found stateful only after auditing the class
+  component directly — see the correction above). Everything else is presentational or
   React-ref plumbing only.
 - 30 of 38 directories have a dedicated CSS file; the other 8 (Button, Checkbox, CloseIcon,
   Dropdown, Input, MenuItem, RadioButton, Textarea) style purely through shared
   `design-system/` tokens — those are the simplest to verify for parity since there's no
   component-local CSS to cross-check.
+- Svelte port progress: 29 of 38 components ported — every `Simple` component except `Code`
+  (deferred pending a syntax-highlighter dependency decision), plus `NavBar` despite being
+  `Stateful` (simple enough to include now). Remaining: Accordion, Avatar, ComboBox, Switch,
+  Popover, Tabs, Modal, Toast (Phase 4), plus `Code`.
