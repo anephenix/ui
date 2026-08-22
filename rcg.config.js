@@ -4,8 +4,8 @@ import path from "node:path";
 
 const config = {
 	directory: path.join(process.cwd(), "src", "components"),
-	jsExtension: "jsx",
-	cssExtension: "scss",
+	jsExtension: "tsx",
+	cssExtension: "css",
 };
 
 export default config;
