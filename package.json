@@ -1,32 +1,32 @@
 {
-	"name": "@anephenix/ui",
-	"version": "0.4.3",
-	"description": "A collection of UI components for React web applications",
+	"name": "anephenix-ui",
+	"private": true,
+	"description": "Monorepo for Anephenix UI: framework component packages, shared design tokens, and the docs site",
 	"type": "module",
-	"main": "dist/",
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
 	"scripts": {
-		"build": "astro build",
-		"build-lib": "node build.js",
-		"cover": "npx vitest run --coverage",
-		"dev": "astro dev",
+		"build": "npm run build --workspace=apps/docs",
+		"build-lib": "npm run build --workspace=packages/react",
+		"build-svelte": "npm run build --workspace=packages/svelte",
+		"cover": "npm run cover --workspace=packages/react",
+		"dev": "npm run dev --workspace=apps/docs",
 		"format": "npx @biomejs/biome check . --write",
 		"lint": "npx @biomejs/biome check .",
-		"lint:package": "npx publint",
-		"size": "size-limit",
-		"start": "astro preview",
-		"prepare-patch-release": "npm run build-lib && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch",
-		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags",
-		"test": "npx vitest run --coverage",
-		"compute-clips": "node scripts/compute-clip-regions.js",
-		"screenshots": "node scripts/generate-screenshots.js",
-		"update-changelog": "node scripts/update-changelog.ts",
+		"lint:package": "npm run lint:package --workspaces --if-present",
+		"start": "npm run start --workspace=apps/docs",
+		"prepare-patch-release": "npm run prepare-patch-release --workspace=packages/react",
+		"publish-patch-release": "npm run publish-patch-release --workspace=packages/react",
+		"test": "npm run test --workspaces --if-present",
+		"size": "npm run size --workspaces --if-present",
+		"compute-clips": "npm run compute-clips --workspace=apps/docs",
+		"screenshots": "npm run screenshots --workspace=apps/docs",
+		"update-changelog": "npm run update-changelog --workspace=packages/react",
 		"prepare": "husky",
-		"generate-types": "wrangler types"
+		"generate-types": "npm run generate-types --workspace=apps/docs"
 	},
-	"keywords": [
-		"react",
-		"ui"
-	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/anephenix/ui.git"
@@ -44,48 +44,13 @@
 			"pre-commit": "npm run lint && npm t"
 		}
 	},
-	"size-limit": [
-		{
-			"path": "dist/index.js",
-			"limit": "250 kB"
-		},
-		{
-			"path": "dist/index.css",
-			"limit": "10 kB"
-		}
-	],
 	"devDependencies": {
-		"@anephenix/rcg": "0.0.27",
-		"@astrojs/react": "^6.0.0",
 		"@biomejs/biome": "^2.4.14",
 		"@size-limit/esbuild": "^13.0.1",
 		"@size-limit/esbuild-why": "^13.0.1",
 		"@size-limit/preset-small-lib": "^13.0.2",
-		"@testing-library/jest-dom": "^7.0.0",
-		"@testing-library/react": "^16.1.0",
-		"@testing-library/user-event": "^14.6.1",
-		"@vitejs/plugin-react": "^6.0.3",
-		"@vitest/coverage-v8": "^4.1.2",
-		"astro": "^7.0.3",
-		"esbuild": "^0.28.0",
 		"globals": "^17.0.0",
-		"husky": "^9.1.7",
-		"identity-obj-proxy": "^3.0.0",
-		"jsdoc": "^4.0.3",
-		"jsdom": "^30.0.0",
-		"publint": "^0.3.14",
-		"puppeteer": "^25.3.0",
-		"react-test-renderer": "^19.0.0",
-		"size-limit": "^13.0.1",
-		"vitest": "^4.1.2",
-		"wrangler": "^4.87.0"
-	},
-	"dependencies": {
-		"@astrojs/cloudflare": "^14.0.1",
-		"clipboard-copy": "^4.0.1",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"react-syntax-highlighter": "^16.1.1"
+		"husky": "^9.1.7"
 	},
 	"overrides": {
 		"vite": "^8",

@@ -1,0 +1,250 @@
+.code {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	border: solid 1px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	background: hsl(220, 13%, 18%);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	overflow: hidden;
+}
+
+@media screen and (max-width: 720px) {
+	.code {
+		width: 100%;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.code {
+		border: solid 1px rgba(255, 255, 255, 0.175);
+		box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.025);
+	}
+}
+
+/* ── Code editor body ────────────────────────────────────────────── */
+
+.code-editor {
+	display: flex;
+	align-items: flex-start;
+	background: hsl(220, 13%, 18%);
+}
+
+/* Line numbers are a separate element — selection never crosses the boundary */
+.code-line-numbers {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 0.75em;
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+	flex-shrink: 0;
+	user-select: none;
+	font-family:
+		"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	font-size: 10pt;
+	line-height: 1.5;
+	color: hsl(220, 14%, 40%);
+	text-align: right;
+}
+
+.code-line-number {
+	display: block;
+	line-height: 1.5;
+	min-width: 1.5ch;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────── */
+
+.code #title-bar {
+	padding: 4px;
+	display: grid;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	grid-template-columns: 20% 60% 20%;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.code #title-bar #title-bar-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10pt;
+	color: white;
+	font-weight: 700;
+}
+
+.code #title-bar #title-bar-buttons {
+	display: flex;
+	padding: 4px;
+	width: 56px;
+	justify-content: space-between;
+}
+
+.code #title-bar #title-bar-buttons .title-bar-button {
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+}
+
+.code #title-bar #title-bar-buttons #close {
+	background: rgb(255, 95, 87);
+}
+
+.code #title-bar #title-bar-buttons #minimize {
+	background: rgb(254, 188, 47);
+}
+
+.code #title-bar #title-bar-buttons #maximize {
+	background: rgb(40, 200, 64);
+}
+
+.code #title-bar #title-bar-actions {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.code #title-bar #title-bar-actions .title-bar-action {
+	cursor: pointer;
+	font-size: 8pt;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 4px 8px;
+	border: none;
+	border-radius: 4px;
+	color: rgb(143, 236, 174);
+	background: rgba(143, 236, 174, 0.2);
+	transition: background-color, color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-out;
+}
+
+.code #title-bar #title-bar-actions .title-bar-action:hover {
+	background: rgba(143, 236, 174, 0.3);
+	color: rgb(205, 255, 222);
+}
+
+/* ── Syntax highlighting (Prism "one-dark" token colours) ──────────
+ * Only the React package needs react-syntax-highlighter — it renders
+ * Prism's tokens as inline styles, never these classes. The Svelte
+ * package calls Prism.highlight() directly and renders its real
+ * `.token.*` output, which these rules style. Colours are transcribed
+ * from react-syntax-highlighter's bundled prism/one-dark theme
+ * (node_modules/react-syntax-highlighter/src/styles/prism/one-dark.js)
+ * so both packages render the same palette — scoped to the languages
+ * actually used in this codebase (javascript, jsx, css); extend this
+ * block, not a different theme, if another language is added. */
+
+.code-editor pre[class*="language-"],
+.code-editor code[class*="language-"] {
+	color: hsl(220, 14%, 71%);
+	font-family:
+		"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	tab-size: 2;
+	hyphens: none;
+}
+
+.code-editor pre[class*="language-"] {
+	background: transparent;
+	margin: 0;
+	padding: 10px 12px;
+	font-size: 10pt;
+	border-radius: 0;
+	overflow-x: auto;
+	flex: 1;
+	min-width: 0;
+}
+
+.code-editor .token.comment,
+.code-editor .token.prolog,
+.code-editor .token.cdata {
+	color: hsl(220, 10%, 40%);
+	font-style: italic;
+}
+
+.code-editor .token.doctype,
+.code-editor .token.punctuation,
+.code-editor .token.entity {
+	color: hsl(220, 14%, 71%);
+}
+
+.code-editor .token.attr-name,
+.code-editor .token.class-name,
+.code-editor .token.boolean,
+.code-editor .token.constant,
+.code-editor .token.number,
+.code-editor .token.atrule {
+	color: hsl(29, 54%, 61%);
+}
+
+.code-editor .token.keyword {
+	color: hsl(286, 60%, 67%);
+}
+
+.code-editor .token.property,
+.code-editor .token.tag,
+.code-editor .token.symbol,
+.code-editor .token.deleted,
+.code-editor .token.important {
+	color: hsl(355, 65%, 65%);
+}
+
+.code-editor .token.selector,
+.code-editor .token.string,
+.code-editor .token.char,
+.code-editor .token.builtin,
+.code-editor .token.inserted,
+.code-editor .token.regex,
+.code-editor .token.attr-value {
+	color: hsl(95, 38%, 62%);
+}
+
+.code-editor .token.variable,
+.code-editor .token.operator,
+.code-editor .token.function {
+	color: hsl(207, 82%, 66%);
+}
+
+.code-editor .token.url {
+	color: hsl(187, 47%, 55%);
+}
+
+.code-editor .token.bold {
+	font-weight: bold;
+}
+
+.code-editor .token.italic {
+	font-style: italic;
+}
+
+.code-editor .language-css .token.selector {
+	color: hsl(355, 65%, 65%);
+}
+
+.code-editor .language-css .token.property {
+	color: hsl(220, 14%, 71%);
+}
+
+.code-editor .language-css .token.function,
+.code-editor .language-css .token.url > .token.function {
+	color: hsl(187, 47%, 55%);
+}
+
+.code-editor .language-css .token.url > .token.string.url {
+	color: hsl(95, 38%, 62%);
+}
+
+.code-editor .language-css .token.important,
+.code-editor .language-css .token.atrule .token.rule {
+	color: hsl(286, 60%, 67%);
+}
+
+.code-editor .language-javascript .token.operator {
+	color: hsl(286, 60%, 67%);
+}

@@ -1,0 +1,8 @@
+{
+	"name": "@anephenix/ui-tokens",
+	"version": "0.0.1",
+	"private": true,
+	"description": "Shared design tokens and component CSS, consumed by @anephenix/ui and future framework packages",
+	"type": "module",
+	"license": "MIT"
+}

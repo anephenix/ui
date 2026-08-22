@@ -1,0 +1,79 @@
+{
+	"name": "@anephenix/ui-svelte",
+	"version": "0.1.0",
+	"description": "A collection of UI components for Svelte web applications",
+	"type": "module",
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./dist/index.css": "./dist/index.css",
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*",
+		"COMPONENTS.md"
+	],
+	"scripts": {
+		"build": "svelte-package && node scripts/build-css.js",
+		"cover": "npx vitest run --coverage",
+		"size": "size-limit",
+		"lint:package": "npx publint",
+		"test": "npx vitest run --coverage",
+		"update-changelog": "node scripts/update-changelog.ts",
+		"prepare-patch-release": "npm run build && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch --tag-version-prefix=svelte-v",
+		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags"
+	},
+	"keywords": [
+		"svelte",
+		"ui"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anephenix/ui.git",
+		"directory": "packages/svelte"
+	},
+	"author": "Paul Jensen <paul@anephenix.com>",
+	"maintainers": [
+		{
+			"name": "Paul Jensen",
+			"email": "paul@anephenix.com"
+		}
+	],
+	"license": "MIT",
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"clipboard-copy": "^4.0.1",
+		"prismjs": "^1.30.0"
+	},
+	"devDependencies": {
+		"@anephenix/ui-tokens": "*",
+		"@sveltejs/package": "^2.5.8",
+		"@sveltejs/vite-plugin-svelte": "^7.3.0",
+		"@testing-library/jest-dom": "^7.0.0",
+		"@testing-library/svelte": "^5.4.2",
+		"@testing-library/user-event": "^14.6.1",
+		"@types/prismjs": "^1.26.6",
+		"@vitest/coverage-v8": "^4.1.2",
+		"esbuild": "^0.28.0",
+		"jsdom": "^30.0.0",
+		"publint": "^0.3.14",
+		"size-limit": "^13.0.1",
+		"svelte": "^5.56.10",
+		"vite": "^8",
+		"vitest": "^4.1.2"
+	},
+	"size-limit": [
+		{
+			"path": "dist/index.css",
+			"limit": "10 kB"
+		}
+	]
+}

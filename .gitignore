@@ -6,3 +6,6 @@ out
 site-dist
 .wrangler
 .astro
+.svelte-kit
+packages/svelte/dist/**/*.test.*
+.claude/settings.local.json
