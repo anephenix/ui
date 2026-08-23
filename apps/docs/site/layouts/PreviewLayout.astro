@@ -1,7 +1,7 @@
 ---
 import "@anephenix/ui/dist/index.css";
 
-const { theme } = Astro.props;
+const { theme, embed } = Astro.props;
 ---
 
 <!doctype html>
@@ -47,7 +47,6 @@ const { theme } = Astro.props;
                 min-height: 450px;
                 height: 100vh;
                 padding: 2rem;
-                border: solid 1px red;
             }
             .preview-padded {
                 padding: 2rem;
@@ -56,9 +55,24 @@ const { theme } = Astro.props;
             .preview-bare {
                 min-height: 450px;
             }
+            /* Embedded in ComponentExample's Preview tab, sized to fit its
+               content — the fixed-viewport heights above are only needed
+               for the standalone /preview route used by screenshot tooling. */
+            body[data-embed] .preview-center {
+                min-height: 0;
+                height: auto;
+                padding: 24px;
+            }
+            body[data-embed] .preview-padded {
+                min-height: 0;
+                padding: 24px;
+            }
+            body[data-embed] .preview-bare {
+                min-height: 0;
+            }
         </style>
     </head>
-    <body>
+    <body data-embed={embed ? "1" : undefined}>
         <slot />
     </body>
 </html>

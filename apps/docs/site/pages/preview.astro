@@ -21,7 +21,7 @@ const toQuery = (fw: string) => {
 };
 ---
 
-<PreviewLayout theme={theme}>
+<PreviewLayout theme={theme} embed={embed}>
 	{!embed && (
 		<div class="framework-toggle">
 			<a href={`/preview${toQuery("react")}`} class:list={{ active: framework === "react" }}>
