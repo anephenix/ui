@@ -197,6 +197,20 @@
 	font-size: 10pt;
 }
 
+/* Inline prose links — otherwise fall back to the browser's unstyled
+   default blue, which clashes badly against the dark theme. */
+.docs-content p a,
+.docs-content li a {
+	color: var(--blue-one-colour);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.docs-content p a:hover,
+.docs-content li a:hover {
+	text-decoration: underline;
+}
+
 @media screen and (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) .docs-content h1 {
 		border-bottom-color: rgba(255, 255, 255, 0.12);
@@ -208,6 +222,11 @@
 
 	:root:not([data-theme="light"]) .docs-content code {
 		background: rgba(255, 255, 255, 0.08);
+	}
+
+	:root:not([data-theme="light"]) .docs-content p a,
+	:root:not([data-theme="light"]) .docs-content li a {
+		color: var(--blue-two-colour);
 	}
 }
 
@@ -221,6 +240,11 @@
 
 :root[data-theme="dark"] .docs-content code {
 	background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] .docs-content p a,
+:root[data-theme="dark"] .docs-content li a {
+	color: var(--blue-two-colour);
 }
 
 /* Live example box */

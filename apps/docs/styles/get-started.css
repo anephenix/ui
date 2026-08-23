@@ -204,3 +204,23 @@
 .gs-next-steps a:hover {
 	text-decoration: underline;
 }
+
+.gs-content p a {
+	color: var(--blue-one-colour);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.gs-content p a:hover {
+	text-decoration: underline;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) .gs-content p a {
+		color: var(--blue-two-colour);
+	}
+}
+
+:root[data-theme="dark"] .gs-content p a {
+	color: var(--blue-two-colour);
+}
