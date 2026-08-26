@@ -607,6 +607,37 @@ import { Code } from '@anephenix/ui';
 
 ---
 
+**CodeEditor**
+
+An editable version of Code: type or paste code directly into it, with line numbers that grow as you add lines, a resizable window, a fullscreen toggle (click the green title-bar button), and a footer with a language switcher and a live line:column cursor position.
+
+```jsx
+import { CodeEditor } from '@anephenix/ui';
+
+<CodeEditor
+    title="greet.js"
+    code={snippet}
+    language="javascript"
+    onFinishedTyping={(code) => console.log(code)}
+/>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | | Title shown in the bar above the editor |
+| `code` | `string` | | The initial code shown in the editor |
+| `language` | `string` | `"javascript"` | Initial syntax-highlighting language |
+| `languages` | `string[]` | `["javascript", "jsx", "css"]` | Languages offered in the footer switcher |
+| `width` | `number` | `600` | Initial width in pixels |
+| `height` | `number` | `300` | Initial height of the scrollable code area in pixels |
+| `resizable` | `boolean` | `true` | Whether the bottom-right corner grip can resize the editor |
+| `expandable` | `boolean` | `true` | Whether the green title-bar button can expand the editor to fill the browser window |
+| `onChange` | `(code: string) => void` | | Called on every keystroke with the current code |
+| `onFinishedTyping` | `(code: string) => void` | | Called after typing pauses (or on blur) with the current code |
+| `finishedTypingDelay` | `number` | `800` | Milliseconds of inactivity before `onFinishedTyping` fires |
+
+---
+
 **Popover**
 
 A click-triggered floating panel for richer interactive content. Closes on Escape, outside click, or the × button.

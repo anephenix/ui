@@ -1,0 +1,149 @@
+/* CodeEditor reuses Code.css's `.code` shell, `#title-bar` structure,
+ * `.code-line-numbers` and the `.code-editor` syntax-highlighting/token
+ * rules verbatim (both files are typically loaded together), so this
+ * file only adds the rules specific to the editable surface, footer,
+ * and fullscreen/resize behaviour. Import Code.css alongside this file. */
+
+.code-editor-window {
+	position: relative;
+}
+
+@media screen and (max-width: 720px) {
+	.code-editor-window {
+		/* biome-ignore lint/complexity/noImportantStyles: both frameworks set
+		 * width via an inline style attribute (resizing/initial width), which
+		 * only !important can override on small screens. */
+		width: 100% !important;
+	}
+}
+
+.code-editor-window.is-fullscreen {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+	border-radius: 0;
+}
+
+.code-editor-window.is-fullscreen .code-editor-body {
+	flex: 1;
+	min-height: 0;
+}
+
+/* ── Maximize button (interactive, unlike the decorative dots) ─────── */
+
+.code-editor-window #title-bar-buttons .title-bar-button-action {
+	border: 0;
+	padding: 0;
+	appearance: none;
+	cursor: pointer;
+}
+
+/* ── Editable surface: a real textarea overlaid on the highlighted
+ * output. Both layers render the same text with identical font,
+ * padding and white-space so the invisible textarea caret lines up
+ * with the coloured tokens beneath it. Scroll position is synced in
+ * script (both axes) since each layer scrolls independently. ────── */
+
+.code-editor-surface {
+	position: relative;
+	flex: 1;
+	min-width: 0;
+}
+
+.code-editor-pre-wrapper,
+.code-editor-textarea {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 10px 12px;
+}
+
+.code-editor-pre-wrapper {
+	overflow: auto;
+	pointer-events: none;
+	scrollbar-width: none;
+}
+
+.code-editor-pre-wrapper::-webkit-scrollbar {
+	display: none;
+}
+
+.code-editor-textarea {
+	overflow: auto;
+	border: 0;
+	outline: none;
+	resize: none;
+	background: transparent;
+	color: transparent;
+	caret-color: #fff;
+	-webkit-text-fill-color: transparent;
+	font-family:
+		"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	font-size: 10pt;
+	line-height: 1.5;
+	white-space: pre;
+	tab-size: 2;
+	z-index: 1;
+}
+
+/* ── Footer status bar: language switcher + resize grip ────────────── */
+
+.code-editor-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px 8px;
+	background: hsl(220, 13%, 18%);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-editor-language-select {
+	background: rgba(255, 255, 255, 0.08);
+	color: hsl(220, 14%, 71%);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	font-size: 8pt;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 3px 6px;
+	cursor: pointer;
+}
+
+.code-editor-position {
+	font-family:
+		"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	font-size: 8pt;
+	color: hsl(220, 14%, 56%);
+	white-space: nowrap;
+	user-select: none;
+}
+
+.code-editor-resize-handle {
+	width: 14px;
+	height: 14px;
+	flex-shrink: 0;
+	border: 0;
+	padding: 0;
+	appearance: none;
+	background-color: transparent;
+	cursor: nwse-resize;
+	background-image: repeating-linear-gradient(
+		135deg,
+		transparent 0,
+		transparent 2px,
+		rgba(255, 255, 255, 0.35) 2px,
+		rgba(255, 255, 255, 0.35) 3px
+	);
+	-webkit-mask-image: linear-gradient(
+		135deg,
+		transparent 40%,
+		#000 40%,
+		#000 100%
+	);
+	mask-image: linear-gradient(135deg, transparent 40%, #000 40%, #000 100%);
+}

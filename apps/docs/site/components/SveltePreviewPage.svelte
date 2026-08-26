@@ -9,6 +9,7 @@ import {
 	Card,
 	Checkbox,
 	Code,
+	CodeEditor,
 	ComboBox,
 	Divider,
 	Dropdown,
@@ -56,6 +57,7 @@ const wrapperClass: Record<string, string> = {
 	Card: "preview-center",
 	Checkbox: "preview-center",
 	Code: "preview-center",
+	CodeEditor: "preview-center",
 	ComboBox: "preview-center",
 	Divider: "preview-padded",
 	Dropdown: "preview-center",
@@ -184,6 +186,12 @@ $effect(() => {
 			<Code
 				title="greet.js"
 				code={"const greet = (name) => {\n  return `Hello, ${name}!`;\n};\n\ngreet('World');"}
+				language="javascript"
+			/>
+		{:else if name === "CodeEditor"}
+			<CodeEditor
+				title="greet.js"
+				code={"function greet(name) {\n  return `Hello, ${name}!`;\n}\n\ngreet('World');"}
 				language="javascript"
 			/>
 		{:else if name === "ComboBox"}
