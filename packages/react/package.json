@@ -46,7 +46,7 @@
 		}
 	],
 	"devDependencies": {
-		"@anephenix/rcg": "0.0.27",
+		"@anephenix/rcg": "0.0.28",
 		"@anephenix/ui-tokens": "*",
 		"@testing-library/jest-dom": "^7.0.0",
 		"@testing-library/react": "^16.1.0",
