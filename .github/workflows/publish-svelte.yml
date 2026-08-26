@@ -1,0 +1,63 @@
+name: Publish Svelte package to npm
+permissions:
+    contents: read # Required for actions/checkout to read the repository
+    id-token: write # Optional, for OIDC-based authentication if using cloud services
+
+on:
+    push:
+        tags:
+            - 'svelte-v*' # Triggers only for tags like svelte-v0.1.0, matching packages/svelte's `--tag-version-prefix=svelte-v`
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
+    publish:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24 # or the node version you're using
+                  registry-url: 'https://registry.npmjs.org/'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build package
+              run: npm run build --workspace=packages/svelte
+
+            - name: Lint package
+              run: npm run lint:package --workspace=packages/svelte
+
+            # --access public is required because @anephenix/ui-svelte has never
+            # been published: npm defaults a brand-new scoped package to
+            # private, which would require a paid plan for the @anephenix scope
+            # and break installs for everyone. This flag is safe to keep on
+            # every publish (it's a no-op once a package is already public).
+            #
+            # Note: Trusted Publishing (the id-token/--provenance flow used
+            # here, same as packages/react) can only be configured on
+            # npmjs.com for a package that already exists. The very first run
+            # of this workflow will fail to authenticate unless an NPM_TOKEN
+            # secret + NODE_AUTH_TOKEN env var is added for that one bootstrap
+            # publish (or the first publish is done manually from a maintainer
+            # machine). Once the package exists, Trusted Publishing can be
+            # configured for this workflow and any bootstrap token removed.
+            - name: Publish to npm
+              run: npm publish --provenance --access public --workspace=packages/svelte

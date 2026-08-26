@@ -26,7 +26,7 @@
 		"lint:package": "npx publint",
 		"test": "npx vitest run --coverage",
 		"update-changelog": "node scripts/update-changelog.ts",
-		"prepare-patch-release": "npm run build && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch --tag-version-prefix=svelte-v",
+		"prepare-patch-release": "npm run build && npm run size && git add dist && npm run update-changelog && git add CHANGELOG.md && git commit -m \"Updated changelog\" && npm version patch --tag-version-prefix=svelte-v --force",
 		"publish-patch-release": "npm run prepare-patch-release && git push origin master && git push --tags"
 	},
 	"keywords": [
