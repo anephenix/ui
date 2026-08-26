@@ -7,6 +7,7 @@ import Button from "./src/components/button/Button";
 import Card from "./src/components/card/Card";
 import Checkbox from "./src/components/checkbox/Checkbox";
 import Code from "./src/components/code/Code";
+import CodeEditor from "./src/components/code-editor/CodeEditor";
 import ComboBox from "./src/components/combo-box/ComboBox";
 import Divider from "./src/components/divider/Divider";
 import Dropdown from "./src/components/dropdown/Dropdown";
@@ -64,6 +65,7 @@ export {
 	Card,
 	Checkbox,
 	Code,
+	CodeEditor,
 	ComboBox,
 	Divider,
 	Dropdown,

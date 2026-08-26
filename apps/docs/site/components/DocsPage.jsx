@@ -136,6 +136,11 @@ const categories = [
 				desc: "Code block with syntax highlighting, line numbers, and a copy button",
 			},
 			{
+				href: "/docs/components/code-editor",
+				name: "CodeEditor",
+				desc: "Editable code block with line numbers, resizing, fullscreen, and a language switcher",
+			},
+			{
 				href: "/docs/components/popover",
 				name: "Popover",
 				desc: "Click-triggered floating panel for rich interactive content",

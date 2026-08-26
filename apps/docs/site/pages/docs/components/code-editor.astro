@@ -1,0 +1,8 @@
+---
+import CodeEditorPage from "../../../components/docs/CodeEditorPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="CodeEditor - UI Docs">
+    <CodeEditorPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>

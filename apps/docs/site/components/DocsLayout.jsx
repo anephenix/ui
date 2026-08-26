@@ -122,6 +122,7 @@ const sidebarGroups = [
 			{ href: "/docs/components/badge", label: "Badge" },
 			{ href: "/docs/components/card", label: "Card" },
 			{ href: "/docs/components/code", label: "Code" },
+			{ href: "/docs/components/code-editor", label: "CodeEditor" },
 			{ href: "/docs/components/skeleton", label: "Skeleton" },
 			{ href: "/docs/components/spinner", label: "Spinner" },
 			{ href: "/docs/components/table", label: "Table" },

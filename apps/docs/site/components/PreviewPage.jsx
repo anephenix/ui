@@ -335,6 +335,7 @@ import {
 	Card,
 	Checkbox,
 	Code,
+	CodeEditor,
 	ComboBox,
 	Divider,
 	Dropdown,
@@ -574,6 +575,17 @@ const previews = {
 			<Code
 				title="greet.js"
 				code={`const greet = (name) => {\n  return \`Hello, \${name}!\`;\n};\n\ngreet('World');`}
+				language="javascript"
+			/>
+		),
+	},
+
+	CodeEditor: {
+		wrapper: "preview-center",
+		render: () => (
+			<CodeEditor
+				title="greet.js"
+				code={`function greet(name) {\n  return \`Hello, \${name}!\`;\n}\n\ngreet('World');`}
 				language="javascript"
 			/>
 		),
