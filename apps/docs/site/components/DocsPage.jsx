@@ -176,6 +176,11 @@ const categories = [
 				desc: "Terminal-style output block with a copy button",
 			},
 			{
+				href: "/docs/components/live-terminal",
+				name: "LiveTerminal",
+				desc: "Interactive terminal prompt with command history and tab completion",
+			},
+			{
 				href: "/docs/components/tooltip",
 				name: "Tooltip",
 				desc: "Small floating label shown on hover and keyboard focus",

@@ -15,6 +15,7 @@ import Footer from "./src/components/footer/Footer";
 import FormField from "./src/components/form-field/FormField";
 import Hero from "./src/components/hero/Hero";
 import Input from "./src/components/input/Input";
+import LiveTerminal from "./src/components/live-terminal/LiveTerminal";
 import Modal from "./src/components/modal/Modal";
 import NavBar from "./src/components/nav-bar/NavBar";
 import Page from "./src/components/page/Page";
@@ -74,6 +75,7 @@ export {
 	Hero,
 	handleErrors,
 	Input,
+	LiveTerminal,
 	Modal,
 	NavBar,
 	Page,

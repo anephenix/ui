@@ -801,6 +801,38 @@ import { Terminal } from '@anephenix/ui';
 
 ---
 
+**LiveTerminal**
+
+An editable version of Terminal: a blinking prompt you can type into, including multi-line input (Shift+Enter for a newline, plain Enter submits). Submitted commands are handed to `onCommand`; you feed the resulting stdout/stderr back in via the `lines` prop. Supports arrow-key command history (only recalled when the caret is on the first/last line of the draft, so multi-line editing isn't hijacked), Tab-based autocomplete, and the same resizable/fullscreen window behaviour as CodeEditor.
+
+```jsx
+import { LiveTerminal } from '@anephenix/ui';
+
+<LiveTerminal
+    title="Shell"
+    lines={lines}
+    onCommand={(command) => console.log(command)}
+    getSuggestions={(input) => ['help', 'echo', 'date'].filter((c) => c.startsWith(input))}
+/>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | | Title shown in the bar above the terminal |
+| `prompt` | `string` | `"$"` | The prompt symbol shown on the first line of input |
+| `continuationPrompt` | `string` | `">"` | The prompt shown on line 2+ of a multi-line command, both while typing and once echoed into the transcript |
+| `lines` | `LiveTerminalLine[]` | `[]` | The transcript to render above the live prompt. Each line is `{ id?, type: "input" \| "output" \| "error", text }` (text may itself contain "\n" for a multi-line command) — you own this array: echo the submitted command and append stdout/stderr to it as they arrive |
+| `onCommand` | `(command: string) => void` | | Called when Enter (without Shift) is pressed with a non-empty command. Shift+Enter inserts a literal newline instead of submitting |
+| `getSuggestions` | `(input: string) => string[]` | | Called on Tab with the current input. A single match auto-completes; multiple matches complete to their common prefix and show a suggestion list |
+| `disabled` | `boolean` | `false` | Disables the input, e.g. while a command is still running |
+| `width` | `number` | `400` | Initial width in pixels |
+| `height` | `number` | `300` | Initial height of the scrollable transcript area in pixels |
+| `resizable` | `boolean` | `true` | Whether the bottom-right corner grip can resize the terminal |
+| `expandable` | `boolean` | `true` | Whether the green title-bar button can expand the terminal to fill the browser window |
+| `historySize` | `number` | `100` | Maximum number of commands kept for arrow-key recall |
+
+---
+
 **Tooltip**
 
 A small floating label that appears on hover and keyboard focus. Shown and hidden entirely via CSS.
