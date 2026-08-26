@@ -2,6 +2,74 @@
 
 ### 0.4.5 - Wednesday 26th August, 2026
 
+- Updated changelog
+- Fix for pushing updates
+- Updated changelog
+- Updated biome version in schema
+- Updated versions
+- Updated changelog
+- Merge pull request #529 from anephenix/feature/live-terminal
+- Added the LiveTerminal component
+- Merge pull request #528 from anephenix/feature/code-editor-component
+- Added new CodeEditor component
+- Merge pull request #527 from anephenix/dependabot/npm_and_yarn/anephenix/rcg-0.0.28
+- Bump @anephenix/rcg from 0.0.27 to 0.0.28
+- Spacing/padding polish pass on the docs site
+- Styling tweaks
+- Make the component preview box size the height to match to the component's height
+- Add a live component showcase to the homepage
+- Combine Preview/Code into one element, add a manual dark-mode toggle, and make docs Svelte-aware
+- Fix Cloudflare Workers deploy config for the static Astro build
+- Updating action versions in the workflow file
+- Merge pull request #526 from anephenix/feature/svelte-version
+- Regenerate package-lock.json to fix missing rolldown platform bindings
+- Merge branch 'master' into feature/svelte-version
+- Port Code to Svelte: the last remaining component (38 of 38)
+- Complete Phase 6: publishing tooling and a per-workspace CI matrix
+- Complete Phase 5: packages/svelte/COMPONENTS.md, and the bugs writing it found
+- Embed a toggleable React/Svelte live preview in each docs page
+- Port the remaining 8 stateful components to Svelte
+- Port all remaining simple components to Svelte (except Code)
+- Bootstrap packages/svelte and port a first slice of components
+- Convert to npm workspaces monorepo (packages/react, apps/docs)
+- Extracted shared CSS into packages/tokens
+- Fix for rcg config
+- Merge pull request #524 from anephenix/dependabot/npm_and_yarn/astrojs/react-6.0.3
+- Merge pull request #523 from anephenix/dependabot/npm_and_yarn/astro-7.2.3
+- Merge pull request #525 from anephenix/dependabot/npm_and_yarn/vitest-4.1.11
+- Merge pull request #522 from anephenix/dependabot/npm_and_yarn/testing-library/user-event-14.6.5
+- Merge pull request #521 from anephenix/dependabot/npm_and_yarn/wrangler-4.124.0
+- Bump vitest from 4.1.10 to 4.1.11
+- Bump @astrojs/react from 6.0.2 to 6.0.3
+- Bump astro from 7.2.2 to 7.2.3
+- Bump @testing-library/user-event from 14.6.4 to 14.6.5
+- Bump wrangler from 4.123.0 to 4.124.0
+- Merge pull request #520 from anephenix/dependabot/npm_and_yarn/puppeteer-25.8.0
+- Bump puppeteer from 25.7.0 to 25.8.0
+- Updated biome schema
+- Updated dependencies
+- Merge pull request #519 from anephenix/dependabot/npm_and_yarn/wrangler-4.120.1
+- Merge pull request #518 from anephenix/dependabot/npm_and_yarn/testing-library/jest-dom-7.0.1
+- Bump wrangler from 4.120.0 to 4.120.1
+- Bump @testing-library/jest-dom from 7.0.0 to 7.0.1
+- Merge pull request #517 from anephenix/dependabot/npm_and_yarn/esbuild-0.28.2
+- Bump esbuild from 0.28.1 to 0.28.2
+- Merge pull request #515 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.2.0
+- Bump @astrojs/cloudflare from 14.1.7 to 14.2.0
+- Merge pull request #514 from anephenix/dependabot/npm_and_yarn/astro-7.2.0
+- Merge pull request #516 from anephenix/dependabot/npm_and_yarn/wrangler-4.120.0
+- Bump wrangler from 4.118.0 to 4.120.0
+- Bump astro from 7.1.6 to 7.2.0
+- Applied an override for the undici package
+- Approved some packages for pre-install
+- Updated dependencies
+- Merge pull request #509 from anephenix/dependabot/npm_and_yarn/size-limit/preset-small-lib-13.0.3
+- Merge pull request #513 from anephenix/dependabot/npm_and_yarn/wrangler-4.118.0
+- Bump wrangler from 4.115.0 to 4.118.0
+- Bump @size-limit/preset-small-lib from 13.0.2 to 13.0.3
+
+### 0.4.5 - Wednesday 26th August, 2026
+
 - Fix for pushing updates
 - Updated changelog
 - Updated biome version in schema
