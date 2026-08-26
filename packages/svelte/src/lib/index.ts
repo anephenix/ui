@@ -15,6 +15,7 @@ export { default as Footer } from "./components/footer/Footer.svelte";
 export { default as FormField } from "./components/form-field/FormField.svelte";
 export { default as Hero } from "./components/hero/Hero.svelte";
 export { default as Input } from "./components/input/Input.svelte";
+export { default as LiveTerminal } from "./components/live-terminal/LiveTerminal.svelte";
 export { default as Modal } from "./components/modal/Modal.svelte";
 export { default as NavBar } from "./components/nav-bar/NavBar.svelte";
 export { default as Page } from "./components/page/Page.svelte";

@@ -17,6 +17,7 @@ import {
 	FormField,
 	Hero,
 	Input,
+	LiveTerminal,
 	Modal,
 	NavBar,
 	Pagination,
@@ -47,6 +48,43 @@ const tableRows = [
 	{ id: 3, name: "Carol Park", role: "Manager", status: "Away" },
 ];
 
+type LiveTerminalDemoLine = {
+	type: "input" | "output" | "error";
+	text: string;
+};
+const LIVE_TERMINAL_COMMANDS = ["help", "echo", "date", "clear"];
+let liveTerminalLines = $state<LiveTerminalDemoLine[]>([]);
+
+function getLiveTerminalSuggestions(input: string) {
+	return input.includes(" ")
+		? []
+		: LIVE_TERMINAL_COMMANDS.filter((c) => c.startsWith(input));
+}
+
+function onLiveTerminalCommand(command: string) {
+	const next = [
+		...liveTerminalLines,
+		{ type: "input" as const, text: command },
+	];
+	const [commandName, ...args] = command.trim().split(/\s+/);
+	if (commandName === "help") {
+		next.push({
+			type: "output",
+			text: "Commands: help, echo <text>, date, clear",
+		});
+	} else if (commandName === "echo") {
+		next.push({ type: "output", text: args.join(" ") });
+	} else if (commandName === "date") {
+		next.push({ type: "output", text: new Date().toString() });
+	} else if (commandName === "clear") {
+		liveTerminalLines = [];
+		return;
+	} else {
+		next.push({ type: "error", text: `command not found: ${commandName}` });
+	}
+	liveTerminalLines = next;
+}
+
 const wrapperClass: Record<string, string> = {
 	Accordion: "preview-padded",
 	Alert: "preview-padded",
@@ -65,6 +103,7 @@ const wrapperClass: Record<string, string> = {
 	FormField: "preview-center",
 	Hero: "preview-padded",
 	Input: "preview-center",
+	LiveTerminal: "preview-center",
 	Modal: "preview-bare",
 	NavBar: "preview-bare",
 	Pagination: "preview-center",
@@ -263,6 +302,13 @@ $effect(() => {
 				<Input name="email" type="email" placeholder="Email address" />
 				<Input name="search" type="search" placeholder="Search..." />
 			</div>
+		{:else if name === "LiveTerminal"}
+			<LiveTerminal
+				title="Shell"
+				lines={liveTerminalLines}
+				oncommand={onLiveTerminalCommand}
+				getSuggestions={getLiveTerminalSuggestions}
+			/>
 		{:else if name === "Modal"}
 			<Modal isOpen={true} onClose={() => {}} title="Confirm action">
 				{#snippet footer()}

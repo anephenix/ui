@@ -822,12 +822,359 @@ var Input = forwardRef4(function input({ type = "text", className, defaultValue,
 });
 var Input_default = Input;
 
-// src/components/modal/Modal.tsx
-import { useEffect as useEffect3, useRef as useRef3 } from "react";
-import { jsx as jsx18, jsxs as jsxs12 } from "react/jsx-runtime";
-var Modal = ({ isOpen, onClose, title, children, footer }) => {
-  const dialogRef = useRef3(null);
+// src/components/live-terminal/LiveTerminal.tsx
+import { useEffect as useEffect3, useRef as useRef3, useState as useState5 } from "react";
+import { Fragment, jsx as jsx18, jsxs as jsxs12 } from "react/jsx-runtime";
+var DEFAULT_HISTORY_SIZE = 100;
+var MIN_WIDTH2 = 280;
+var MIN_HEIGHT2 = 120;
+function longestCommonPrefix(values) {
+  if (values.length === 0) return "";
+  let prefix = values[0];
+  for (let i = 1; i < values.length; i++) {
+    while (!values[i].startsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+      if (prefix === "") return "";
+    }
+  }
+  return prefix;
+}
+function caretLineColumn(value, pos) {
+  const before = value.slice(0, pos);
+  const beforeLines = before.split("\n");
+  return {
+    line: beforeLines.length - 1,
+    column: beforeLines[beforeLines.length - 1].length
+  };
+}
+var LiveTerminal = ({
+  title,
+  prompt = "$",
+  continuationPrompt = ">",
+  lines = [],
+  onCommand,
+  getSuggestions,
+  disabled = false,
+  width: initialWidth = 400,
+  height: initialHeight = 300,
+  resizable = true,
+  expandable = true,
+  historySize = DEFAULT_HISTORY_SIZE
+}) => {
+  const [value, setValue] = useState5("");
+  const [caretPos, setCaretPos] = useState5(0);
+  const [history, setHistory] = useState5([]);
+  const [historyIndex, setHistoryIndex] = useState5(0);
+  const [suggestions, setSuggestions] = useState5([]);
+  const [isFocused, setIsFocused] = useState5(false);
+  const [width, setWidth] = useState5(initialWidth);
+  const [height, setHeight] = useState5(initialHeight);
+  const [isFullscreen, setIsFullscreen] = useState5(false);
+  const textareaRef = useRef3(null);
+  const mirrorRef = useRef3(null);
+  const bodyRef = useRef3(null);
+  const draftRef = useRef3("");
+  const resizeStart = useRef3(null);
   useEffect3(() => {
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
+  }, [lines, value]);
+  const syncScrollPositions = () => {
+    const textarea2 = textareaRef.current;
+    if (!textarea2) return;
+    if (mirrorRef.current) {
+      mirrorRef.current.scrollLeft = textarea2.scrollLeft;
+      mirrorRef.current.scrollTop = textarea2.scrollTop;
+    }
+  };
+  const updateCaretPosition = (target) => {
+    setCaretPos(target.selectionStart ?? target.value.length);
+  };
+  const applyValue = (next) => {
+    setValue(next);
+    setCaretPos(next.length);
+  };
+  const insertAtCaret = (text) => {
+    const next = `${value.slice(0, caretPos)}${text}${value.slice(caretPos)}`;
+    const caret = caretPos + text.length;
+    setValue(next);
+    setCaretPos(caret);
+    setSuggestions([]);
+  };
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    updateCaretPosition(event.target);
+    setSuggestions([]);
+    requestAnimationFrame(syncScrollPositions);
+  };
+  const handleSelect = (event) => {
+    updateCaretPosition(event.currentTarget);
+    syncScrollPositions();
+  };
+  const handleScroll = () => {
+    syncScrollPositions();
+  };
+  const submitCommand = () => {
+    const command = value;
+    if (command.trim() !== "") {
+      onCommand?.(command);
+      let nextHistory = history;
+      if (history[history.length - 1] !== command) {
+        nextHistory = [...history, command];
+        if (nextHistory.length > historySize) {
+          nextHistory = nextHistory.slice(nextHistory.length - historySize);
+        }
+        setHistory(nextHistory);
+      }
+      setHistoryIndex(nextHistory.length);
+    } else {
+      setHistoryIndex(history.length);
+    }
+    draftRef.current = "";
+    setValue("");
+    setCaretPos(0);
+    setSuggestions([]);
+  };
+  const navigateHistory = (direction) => {
+    if (history.length === 0) return;
+    if (direction === -1) {
+      if (historyIndex === 0) return;
+      if (historyIndex === history.length) draftRef.current = value;
+      const nextIndex = historyIndex - 1;
+      setHistoryIndex(nextIndex);
+      applyValue(history[nextIndex]);
+    } else {
+      if (historyIndex >= history.length) return;
+      const nextIndex = historyIndex + 1;
+      setHistoryIndex(nextIndex);
+      applyValue(
+        nextIndex === history.length ? draftRef.current : history[nextIndex]
+      );
+    }
+    setSuggestions([]);
+  };
+  const handleTab = () => {
+    if (!getSuggestions) return;
+    const matches = getSuggestions(value);
+    if (matches.length === 0) {
+      setSuggestions([]);
+      return;
+    }
+    if (matches.length === 1) {
+      applyValue(matches[0]);
+      setSuggestions([]);
+      return;
+    }
+    const commonPrefix = longestCommonPrefix(matches);
+    if (commonPrefix.length > value.length) applyValue(commonPrefix);
+    setSuggestions(matches);
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "Enter":
+        event.preventDefault();
+        if (event.shiftKey) {
+          insertAtCaret("\n");
+        } else {
+          submitCommand();
+        }
+        break;
+      case "ArrowUp": {
+        const { line } = caretLineColumn(value, caretPos);
+        if (line === 0) {
+          event.preventDefault();
+          navigateHistory(-1);
+        }
+        break;
+      }
+      case "ArrowDown": {
+        const { line } = caretLineColumn(value, caretPos);
+        if (line === value.split("\n").length - 1) {
+          event.preventDefault();
+          navigateHistory(1);
+        }
+        break;
+      }
+      case "Tab":
+        event.preventDefault();
+        handleTab();
+        break;
+      default:
+        break;
+    }
+  };
+  const toggleFullscreen = () => {
+    if (!expandable) return;
+    setIsFullscreen((v) => !v);
+  };
+  useEffect3(() => {
+    if (!isFullscreen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setIsFullscreen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isFullscreen]);
+  const handleResizeStart = (event) => {
+    if (!resizable || isFullscreen) return;
+    event.preventDefault();
+    resizeStart.current = { x: event.clientX, y: event.clientY, width, height };
+    const onMouseMove = (moveEvent) => {
+      if (!resizeStart.current) return;
+      const deltaX = moveEvent.clientX - resizeStart.current.x;
+      const deltaY = moveEvent.clientY - resizeStart.current.y;
+      setWidth(Math.max(MIN_WIDTH2, resizeStart.current.width + deltaX));
+      setHeight(Math.max(MIN_HEIGHT2, resizeStart.current.height + deltaY));
+    };
+    const onMouseUp = () => {
+      resizeStart.current = null;
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+  };
+  const focusInput = () => {
+    if (disabled) return;
+    const selection = window.getSelection();
+    if (selection && selection.toString().length > 0) return;
+    textareaRef.current?.focus();
+  };
+  const valueLines = value.split("\n");
+  const { line: caretLine, column: caretColumn } = caretLineColumn(
+    value,
+    caretPos
+  );
+  const cursorClassName = `live-terminal-cursor${isFocused && !disabled ? " is-blinking" : ""}${disabled ? " is-disabled" : ""}`;
+  const renderTranscriptLine = (line, index) => {
+    const key = line.id ?? index;
+    if (line.type !== "input") {
+      return /* @__PURE__ */ jsx18(
+        "div",
+        {
+          className: `live-terminal-line${line.type === "error" ? " live-terminal-line-error" : ""}`,
+          children: /* @__PURE__ */ jsx18("span", { children: line.text })
+        },
+        key
+      );
+    }
+    return line.text.split("\n").map((subLine, subIndex) => (
+      // biome-ignore lint/suspicious/noArrayIndexKey: subLines are re-split from the same immutable line.text on every render, in the same order every time — never reordered/filtered/prepended.
+      /* @__PURE__ */ jsxs12("div", { className: "live-terminal-line", children: [
+        /* @__PURE__ */ jsx18("span", { className: "live-terminal-prompt", children: subIndex === 0 ? prompt : continuationPrompt }),
+        /* @__PURE__ */ jsx18("span", { children: subLine })
+      ] }, `${key}-${subIndex}`)
+    ));
+  };
+  return /* @__PURE__ */ jsxs12(
+    "div",
+    {
+      className: `terminal live-terminal${isFullscreen ? " is-fullscreen" : ""}`,
+      style: isFullscreen ? void 0 : { width },
+      children: [
+        /* @__PURE__ */ jsxs12("div", { id: "title-bar", children: [
+          /* @__PURE__ */ jsxs12("div", { id: "title-bar-buttons", children: [
+            /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "close" }),
+            /* @__PURE__ */ jsx18("div", { className: "title-bar-button", id: "minimize" }),
+            /* @__PURE__ */ jsx18(
+              "button",
+              {
+                type: "button",
+                className: "title-bar-button title-bar-button-action",
+                id: "maximize",
+                "aria-label": isFullscreen ? "Exit fullscreen" : "Expand to fullscreen",
+                "aria-pressed": isFullscreen,
+                onClick: toggleFullscreen
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx18("div", { id: "title-bar-title", children: title })
+        ] }),
+        /* @__PURE__ */ jsxs12(
+          "div",
+          {
+            className: `live-terminal-body${disabled ? " is-disabled" : ""}`,
+            style: { height: isFullscreen ? void 0 : height },
+            ref: bodyRef,
+            onClick: focusInput,
+            children: [
+              lines.map((line, index) => renderTranscriptLine(line, index)),
+              /* @__PURE__ */ jsxs12("div", { className: "live-terminal-current", children: [
+                /* @__PURE__ */ jsx18("div", { className: "live-terminal-prompt-gutter", "aria-hidden": "true", children: valueLines.map((_, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: lines are positional and never reordered.
+                  /* @__PURE__ */ jsx18("span", { className: "live-terminal-prompt", children: i === 0 ? prompt : continuationPrompt }, i)
+                )) }),
+                /* @__PURE__ */ jsxs12("div", { className: "live-terminal-input-surface", children: [
+                  /* @__PURE__ */ jsx18(
+                    "div",
+                    {
+                      className: "live-terminal-mirror",
+                      ref: mirrorRef,
+                      "aria-hidden": "true",
+                      children: valueLines.map((lineText, i) => (
+                        // biome-ignore lint/suspicious/noArrayIndexKey: lines are positional and never reordered.
+                        /* @__PURE__ */ jsx18("div", { className: "live-terminal-mirror-row", children: i === caretLine ? /* @__PURE__ */ jsxs12(Fragment, { children: [
+                          lineText.slice(0, caretColumn),
+                          /* @__PURE__ */ jsx18("span", { className: cursorClassName }),
+                          lineText.slice(caretColumn)
+                        ] }) : lineText || "\xA0" }, i)
+                      ))
+                    }
+                  ),
+                  /* @__PURE__ */ jsx18(
+                    "textarea",
+                    {
+                      ref: textareaRef,
+                      className: "live-terminal-real-input",
+                      value,
+                      onChange: handleChange,
+                      onScroll: handleScroll,
+                      onKeyDown: handleKeyDown,
+                      onKeyUp: handleSelect,
+                      onClick: handleSelect,
+                      onSelect: handleSelect,
+                      onFocus: () => setIsFocused(true),
+                      onBlur: () => setIsFocused(false),
+                      disabled,
+                      spellCheck: false,
+                      autoCapitalize: "off",
+                      autoCorrect: "off",
+                      "aria-label": title ? `${title} terminal input` : "Terminal input"
+                    }
+                  )
+                ] })
+              ] }),
+              suggestions.length > 1 && /* @__PURE__ */ jsx18("div", { className: "live-terminal-suggestions", children: suggestions.join("  ") })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsx18("div", { className: "live-terminal-footer", children: resizable && !isFullscreen && /* @__PURE__ */ jsx18(
+          "button",
+          {
+            type: "button",
+            className: "live-terminal-resize-handle",
+            onMouseDown: handleResizeStart,
+            "aria-label": "Resize terminal"
+          }
+        ) })
+      ]
+    }
+  );
+};
+var LiveTerminal_default = LiveTerminal;
+
+// src/components/modal/Modal.tsx
+import { useEffect as useEffect4, useRef as useRef4 } from "react";
+import { jsx as jsx19, jsxs as jsxs13 } from "react/jsx-runtime";
+var Modal = ({ isOpen, onClose, title, children, footer }) => {
+  const dialogRef = useRef4(null);
+  useEffect4(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
     if (isOpen) {
@@ -836,7 +1183,7 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
       if (dialog.open) dialog.close();
     }
   }, [isOpen]);
-  useEffect3(() => {
+  useEffect4(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
     const handleCancel = () => onClose?.();
@@ -848,10 +1195,10 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
   };
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <dialog> handles keyboard interaction natively via the cancel event (Escape key)
-    /* @__PURE__ */ jsx18("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs12("div", { className: "modal-content", children: [
-      /* @__PURE__ */ jsxs12("div", { className: "modal-header", children: [
-        /* @__PURE__ */ jsx18("h2", { className: "modal-title", children: title }),
-        /* @__PURE__ */ jsx18(
+    /* @__PURE__ */ jsx19("dialog", { ref: dialogRef, className: "modal", onClick: handleBackdropClick, children: /* @__PURE__ */ jsxs13("div", { className: "modal-content", children: [
+      /* @__PURE__ */ jsxs13("div", { className: "modal-header", children: [
+        /* @__PURE__ */ jsx19("h2", { className: "modal-title", children: title }),
+        /* @__PURE__ */ jsx19(
           "button",
           {
             type: "button",
@@ -862,8 +1209,8 @@ var Modal = ({ isOpen, onClose, title, children, footer }) => {
           }
         )
       ] }),
-      /* @__PURE__ */ jsx18("div", { className: "modal-body", children }),
-      footer && /* @__PURE__ */ jsx18("div", { className: "modal-footer", children: footer })
+      /* @__PURE__ */ jsx19("div", { className: "modal-body", children }),
+      footer && /* @__PURE__ */ jsx19("div", { className: "modal-footer", children: footer })
     ] }) })
   );
 };
@@ -873,7 +1220,7 @@ var Modal_default = Modal;
 import { Component } from "react";
 
 // src/components/menu-item/MenuItem.tsx
-import { jsx as jsx19 } from "react/jsx-runtime";
+import { jsx as jsx20 } from "react/jsx-runtime";
 var MenuItem = ({
   text,
   id,
@@ -889,7 +1236,7 @@ var MenuItem = ({
 }) => {
   if (url && !onClick) {
     if (url.startsWith("http") || url.startsWith("mailto")) {
-      return /* @__PURE__ */ jsx19("li", { children: /* @__PURE__ */ jsx19(
+      return /* @__PURE__ */ jsx20("li", { children: /* @__PURE__ */ jsx20(
         "a",
         {
           id,
@@ -902,7 +1249,7 @@ var MenuItem = ({
         }
       ) }, i);
     } else {
-      return /* @__PURE__ */ jsx19("li", { children: /* @__PURE__ */ jsx19(
+      return /* @__PURE__ */ jsx20("li", { children: /* @__PURE__ */ jsx20(
         Link,
         {
           id,
@@ -916,15 +1263,15 @@ var MenuItem = ({
       ) }, i);
     }
   } else {
-    return /* @__PURE__ */ jsx19("li", { children: /* @__PURE__ */ jsx19("button", { type: "button", id, className, onClick, children: text }) }, i);
+    return /* @__PURE__ */ jsx20("li", { children: /* @__PURE__ */ jsx20("button", { type: "button", id, className, onClick, children: text }) }, i);
   }
 };
 var MenuItem_default = MenuItem;
 
 // src/components/desktop-menu/DesktopMenu.tsx
-import { jsx as jsx20 } from "react/jsx-runtime";
+import { jsx as jsx21 } from "react/jsx-runtime";
 import { createElement } from "react";
-var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx20("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx21("ul", { id: "desktop-menu", children: links.filter((x) => !x.hideOnDesktop).filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
   return /* @__PURE__ */ createElement(
     MenuItem_default,
     {
@@ -938,15 +1285,15 @@ var DesktopMenu = ({ links, loggedIn, Link }) => /* @__PURE__ */ jsx20("ul", { i
 var DesktopMenu_default = DesktopMenu;
 
 // src/components/hamburger/Hamburger.tsx
-import { jsx as jsx21, jsxs as jsxs13 } from "react/jsx-runtime";
-var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx21(
+import { jsx as jsx22, jsxs as jsxs14 } from "react/jsx-runtime";
+var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx22(
   "button",
   {
     type: "button",
     id: "hamburger",
     onClick,
     "data-testid": "hamburger",
-    children: /* @__PURE__ */ jsxs13(
+    children: /* @__PURE__ */ jsxs14(
       "svg",
       {
         width: width || "33px",
@@ -956,8 +1303,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx21(
         xmlns: "http://www.w3.org/2000/svg",
         xmlnsXlink: "http://www.w3.org/1999/xlink",
         children: [
-          /* @__PURE__ */ jsx21("title", { children: "Menu" }),
-          /* @__PURE__ */ jsx21(
+          /* @__PURE__ */ jsx22("title", { children: "Menu" }),
+          /* @__PURE__ */ jsx22(
             "g",
             {
               id: "hamburger-container",
@@ -967,17 +1314,17 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx21(
               fillRule: "evenodd",
               strokeLinecap: "round",
               strokeLinejoin: "round",
-              children: /* @__PURE__ */ jsx21(
+              children: /* @__PURE__ */ jsx22(
                 "g",
                 {
                   id: "hamburger-layers",
                   transform: "translate(-328.000000, -19.000000)",
                   stroke: "#000",
                   strokeWidth: "2",
-                  children: /* @__PURE__ */ jsxs13("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
-                    /* @__PURE__ */ jsx21("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
-                    /* @__PURE__ */ jsx21("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
-                    /* @__PURE__ */ jsx21("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
+                  children: /* @__PURE__ */ jsxs14("g", { id: "Group", transform: "translate(330.000000, 20.000000)", children: [
+                    /* @__PURE__ */ jsx22("path", { d: "M0.357142857,1 L29.320836,1", id: "layer-1" }),
+                    /* @__PURE__ */ jsx22("path", { d: "M0.357142857,12 L29.320836,12", id: "layer-2" }),
+                    /* @__PURE__ */ jsx22("path", { d: "M0.357142857,23 L29.320836,23", id: "layer-3" })
                   ] })
                 }
               )
@@ -991,8 +1338,8 @@ var Hamburger = ({ width, height, onClick }) => /* @__PURE__ */ jsx21(
 var Hamburger_default = Hamburger;
 
 // src/components/close-icon/CloseIcon.tsx
-import { jsx as jsx22, jsxs as jsxs14 } from "react/jsx-runtime";
-var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs14(
+import { jsx as jsx23, jsxs as jsxs15 } from "react/jsx-runtime";
+var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs15(
   "svg",
   {
     width: width || "26px",
@@ -1002,8 +1349,8 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs14(
     xmlns: "http://www.w3.org/2000/svg",
     xmlnsXlink: "http://www.w3.org/1999/xlink",
     children: [
-      /* @__PURE__ */ jsx22("title", { children: "Close" }),
-      /* @__PURE__ */ jsx22(
+      /* @__PURE__ */ jsx23("title", { children: "Close" }),
+      /* @__PURE__ */ jsx23(
         "g",
         {
           id: "containing-group",
@@ -1013,16 +1360,16 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs14(
           fillRule: "evenodd",
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          children: /* @__PURE__ */ jsx22(
+          children: /* @__PURE__ */ jsx23(
             "g",
             {
               id: '9.7"-iPad',
               transform: "translate(-681.000000, -23.000000)",
               stroke: "#000",
               strokeWidth: "3",
-              children: /* @__PURE__ */ jsxs14("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
-                /* @__PURE__ */ jsx22("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
-                /* @__PURE__ */ jsx22("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
+              children: /* @__PURE__ */ jsxs15("g", { id: "Group-2", transform: "translate(683.000000, 25.000000)", children: [
+                /* @__PURE__ */ jsx23("path", { d: "M0.315354693,22.0054813 L22.320836,0", id: "Line-3" }),
+                /* @__PURE__ */ jsx23("path", { d: "M0.320836027,0 L22.320836,22", id: "Line-3" })
               ] })
             }
           )
@@ -1034,7 +1381,7 @@ var CloseIcon = ({ width, height }) => /* @__PURE__ */ jsxs14(
 var CloseIcon_default = CloseIcon;
 
 // src/components/mobile-menu/MobileMenu.tsx
-import { jsx as jsx23, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx24, jsxs as jsxs16 } from "react/jsx-runtime";
 var MobileMenu = ({
   menuOpen,
   toggleMenu,
@@ -1042,10 +1389,10 @@ var MobileMenu = ({
   loggedIn,
   Link
 }) => {
-  return /* @__PURE__ */ jsxs15("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
-    /* @__PURE__ */ jsx23("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx23("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx23(CloseIcon_default, { width: "20px" }) }) }),
-    menuOpen && /* @__PURE__ */ jsx23("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
-      return /* @__PURE__ */ jsx23(
+  return /* @__PURE__ */ jsxs16("div", { id: "mobile-menu", className: menuOpen ? "open" : "closed", children: [
+    /* @__PURE__ */ jsx24("div", { id: "mobile-menu-header", children: /* @__PURE__ */ jsx24("button", { type: "button", id: "close-icon", onClick: toggleMenu, children: /* @__PURE__ */ jsx24(CloseIcon_default, { width: "20px" }) }) }),
+    menuOpen && /* @__PURE__ */ jsx24("ul", { children: links.filter((x) => x.hideOptions({ loggedIn })).map((link, i) => {
+      return /* @__PURE__ */ jsx24(
         MenuItem_default,
         {
           ...link,
@@ -1062,7 +1409,7 @@ var MobileMenu = ({
 var MobileMenu_default = MobileMenu;
 
 // src/components/nav-bar/NavBar.tsx
-import { Fragment, jsx as jsx24, jsxs as jsxs16 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx25, jsxs as jsxs17 } from "react/jsx-runtime";
 var NavBar = class extends Component {
   constructor(props) {
     super(props);
@@ -1079,17 +1426,17 @@ var NavBar = class extends Component {
       Link,
       loggedIn,
       className,
-      midSection = /* @__PURE__ */ jsx24("div", {})
+      midSection = /* @__PURE__ */ jsx25("div", {})
     } = this.props;
     const { menuOpen } = this.state;
-    return /* @__PURE__ */ jsxs16(Fragment, { children: [
-      /* @__PURE__ */ jsx24("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx24("div", { className: "container", children: /* @__PURE__ */ jsxs16("div", { className: "withSidePadding", children: [
+    return /* @__PURE__ */ jsxs17(Fragment2, { children: [
+      /* @__PURE__ */ jsx25("div", { id: "nav-bar", className, children: /* @__PURE__ */ jsx25("div", { className: "container", children: /* @__PURE__ */ jsxs17("div", { className: "withSidePadding", children: [
         logo,
         midSection,
-        /* @__PURE__ */ jsx24(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
-        /* @__PURE__ */ jsx24(DesktopMenu_default, { ...{ links, loggedIn, Link } })
+        /* @__PURE__ */ jsx25(Hamburger_default, { width: "25px", onClick: this.toggleMenu }),
+        /* @__PURE__ */ jsx25(DesktopMenu_default, { ...{ links, loggedIn, Link } })
       ] }) }) }),
-      /* @__PURE__ */ jsx24(
+      /* @__PURE__ */ jsx25(
         MobileMenu_default,
         {
           ...{
@@ -1107,12 +1454,12 @@ var NavBar = class extends Component {
 var NavBar_default = NavBar;
 
 // src/components/page/Page.tsx
-import { jsx as jsx25 } from "react/jsx-runtime";
-var Page = ({ children }) => /* @__PURE__ */ jsx25("div", { className: "page", children });
+import { jsx as jsx26 } from "react/jsx-runtime";
+var Page = ({ children }) => /* @__PURE__ */ jsx26("div", { className: "page", children });
 var Page_default = Page;
 
 // src/components/pagination/Pagination.tsx
-import { jsx as jsx26, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs18 } from "react/jsx-runtime";
 var getPageNumbers = (currentPage, totalPages, siblingCount) => {
   const totalShown = 2 * siblingCount + 5;
   if (totalPages <= totalShown) {
@@ -1138,8 +1485,8 @@ var Pagination = ({
   if (totalPages < 2) return null;
   const pages = getPageNumbers(currentPage, totalPages, siblingCount);
   const classNames = `pagination${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs17("nav", { className: classNames, "aria-label": "Pagination", children: [
-    showFirstLast && /* @__PURE__ */ jsx26(
+  return /* @__PURE__ */ jsxs18("nav", { className: classNames, "aria-label": "Pagination", children: [
+    showFirstLast && /* @__PURE__ */ jsx27(
       "button",
       {
         type: "button",
@@ -1150,7 +1497,7 @@ var Pagination = ({
         children: "\xAB"
       }
     ),
-    /* @__PURE__ */ jsx26(
+    /* @__PURE__ */ jsx27(
       "button",
       {
         type: "button",
@@ -1163,11 +1510,11 @@ var Pagination = ({
     ),
     pages.map((page) => {
       if (page === "left-ellipsis" || page === "right-ellipsis") {
-        return /* @__PURE__ */ jsx26("span", { className: "pagination-ellipsis", children: "\u2026" }, page);
+        return /* @__PURE__ */ jsx27("span", { className: "pagination-ellipsis", children: "\u2026" }, page);
       }
       const pageNum = page;
       const isActive = pageNum === currentPage;
-      return /* @__PURE__ */ jsx26(
+      return /* @__PURE__ */ jsx27(
         "button",
         {
           type: "button",
@@ -1179,7 +1526,7 @@ var Pagination = ({
         pageNum
       );
     }),
-    /* @__PURE__ */ jsx26(
+    /* @__PURE__ */ jsx27(
       "button",
       {
         type: "button",
@@ -1190,7 +1537,7 @@ var Pagination = ({
         children: "\u203A"
       }
     ),
-    showFirstLast && /* @__PURE__ */ jsx26(
+    showFirstLast && /* @__PURE__ */ jsx27(
       "button",
       {
         type: "button",
@@ -1206,8 +1553,8 @@ var Pagination = ({
 var Pagination_default = Pagination;
 
 // src/components/popover/Popover.tsx
-import { cloneElement, useEffect as useEffect4, useRef as useRef4, useState as useState5 } from "react";
-import { jsx as jsx27, jsxs as jsxs18 } from "react/jsx-runtime";
+import { cloneElement, useEffect as useEffect5, useRef as useRef5, useState as useState6 } from "react";
+import { jsx as jsx28, jsxs as jsxs19 } from "react/jsx-runtime";
 var Popover = ({
   trigger,
   content,
@@ -1215,9 +1562,9 @@ var Popover = ({
   position = "bottom",
   className
 }) => {
-  const [isOpen, setIsOpen] = useState5(false);
-  const containerRef = useRef4(null);
-  useEffect4(() => {
+  const [isOpen, setIsOpen] = useState6(false);
+  const containerRef = useRef5(null);
+  useEffect5(() => {
     if (!isOpen) return;
     const handleOutsideClick = (e) => {
       if (!containerRef.current?.contains(e.target)) {
@@ -1227,7 +1574,7 @@ var Popover = ({
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [isOpen]);
-  useEffect4(() => {
+  useEffect5(() => {
     if (!isOpen) return;
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setIsOpen(false);
@@ -1244,9 +1591,9 @@ var Popover = ({
     "aria-haspopup": "dialog"
   });
   const popoverClass = `popover popover-${position}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs18("div", { ref: containerRef, className: "popover-wrapper", children: [
+  return /* @__PURE__ */ jsxs19("div", { ref: containerRef, className: "popover-wrapper", children: [
     triggerEl,
-    isOpen && /* @__PURE__ */ jsxs18(
+    isOpen && /* @__PURE__ */ jsxs19(
       "dialog",
       {
         open: true,
@@ -1254,9 +1601,9 @@ var Popover = ({
         "aria-label": title ?? "Popover",
         "aria-modal": "false",
         children: [
-          /* @__PURE__ */ jsxs18("div", { className: "popover-header", children: [
-            title && /* @__PURE__ */ jsx27("div", { className: "popover-title", children: title }),
-            /* @__PURE__ */ jsx27(
+          /* @__PURE__ */ jsxs19("div", { className: "popover-header", children: [
+            title && /* @__PURE__ */ jsx28("div", { className: "popover-title", children: title }),
+            /* @__PURE__ */ jsx28(
               "button",
               {
                 type: "button",
@@ -1267,7 +1614,7 @@ var Popover = ({
               }
             )
           ] }),
-          /* @__PURE__ */ jsx27("div", { className: "popover-body", children: content })
+          /* @__PURE__ */ jsx28("div", { className: "popover-body", children: content })
         ]
       }
     )
@@ -1276,7 +1623,7 @@ var Popover = ({
 var Popover_default = Popover;
 
 // src/components/progress-bar/ProgressBar.tsx
-import { jsx as jsx28, jsxs as jsxs19 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs20 } from "react/jsx-runtime";
 var ProgressBar = ({
   value = 0,
   max = 100,
@@ -1288,15 +1635,15 @@ var ProgressBar = ({
   className = ""
 }) => {
   const percentage = indeterminate ? null : Math.min(100, Math.max(0, value / max * 100));
-  return /* @__PURE__ */ jsxs19("div", { className: `progress-bar-wrapper${className ? ` ${className}` : ""}`, children: [
-    (label || showValue && !indeterminate) && /* @__PURE__ */ jsxs19("div", { className: "progress-bar-header", children: [
-      label && /* @__PURE__ */ jsx28("span", { className: "progress-bar-label", children: label }),
-      showValue && !indeterminate && /* @__PURE__ */ jsxs19("span", { className: "progress-bar-value", children: [
+  return /* @__PURE__ */ jsxs20("div", { className: `progress-bar-wrapper${className ? ` ${className}` : ""}`, children: [
+    (label || showValue && !indeterminate) && /* @__PURE__ */ jsxs20("div", { className: "progress-bar-header", children: [
+      label && /* @__PURE__ */ jsx29("span", { className: "progress-bar-label", children: label }),
+      showValue && !indeterminate && /* @__PURE__ */ jsxs20("span", { className: "progress-bar-value", children: [
         Math.round(percentage),
         "%"
       ] })
     ] }),
-    /* @__PURE__ */ jsx28(
+    /* @__PURE__ */ jsx29(
       "div",
       {
         className: `progress-bar progress-bar-${size}`,
@@ -1305,7 +1652,7 @@ var ProgressBar = ({
         "aria-valuemin": 0,
         "aria-valuemax": max,
         "aria-label": label ?? "Progress",
-        children: /* @__PURE__ */ jsx28(
+        children: /* @__PURE__ */ jsx29(
           "div",
           {
             className: `progress-bar-fill progress-bar-${variant}${indeterminate ? " progress-bar-indeterminate" : ""}`,
@@ -1320,13 +1667,13 @@ var ProgressBar_default = ProgressBar;
 
 // src/components/radio-button/RadioButton.tsx
 import { forwardRef as forwardRef5 } from "react";
-import { jsx as jsx29, jsxs as jsxs20 } from "react/jsx-runtime";
+import { jsx as jsx30, jsxs as jsxs21 } from "react/jsx-runtime";
 var RadioButton = forwardRef5(
   function radioButton({ name, label, className, defaultValue, value, onChange, checked }, ref) {
     const classNames = `radio ${className}`;
     const isControlled = checked !== void 0;
-    return /* @__PURE__ */ jsxs20("label", { className: classNames, children: [
-      /* @__PURE__ */ jsx29(
+    return /* @__PURE__ */ jsxs21("label", { className: classNames, children: [
+      /* @__PURE__ */ jsx30(
         "input",
         {
           type: "radio",
@@ -1336,8 +1683,8 @@ var RadioButton = forwardRef5(
           ...isControlled ? { checked, onChange } : {}
         }
       ),
-      /* @__PURE__ */ jsx29("div", { className: "radio-element", children: /* @__PURE__ */ jsx29("div", { className: "selected" }) }),
-      /* @__PURE__ */ jsx29("span", { children: label })
+      /* @__PURE__ */ jsx30("div", { className: "radio-element", children: /* @__PURE__ */ jsx30("div", { className: "selected" }) }),
+      /* @__PURE__ */ jsx30("span", { children: label })
     ] });
   }
 );
@@ -1345,10 +1692,10 @@ var RadioButton_default = RadioButton;
 
 // src/components/select/Select.tsx
 import { forwardRef as forwardRef6 } from "react";
-import { jsx as jsx30 } from "react/jsx-runtime";
-var Option = ({ value, label }, index) => /* @__PURE__ */ jsx30("option", { value, children: label }, index);
+import { jsx as jsx31 } from "react/jsx-runtime";
+var Option = ({ value, label }, index) => /* @__PURE__ */ jsx31("option", { value, children: label }, index);
 var Select = forwardRef6(function select({ className, defaultValue, name, onChange, options }, ref) {
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx31(
     "select",
     {
       ref,
@@ -1363,9 +1710,9 @@ var Select = forwardRef6(function select({ className, defaultValue, name, onChan
 var Select_default = Select;
 
 // src/components/skeleton/Skeleton.tsx
-import { jsx as jsx31 } from "react/jsx-runtime";
+import { jsx as jsx32 } from "react/jsx-runtime";
 var toCSS = (value) => typeof value === "number" ? `${value}px` : value;
-var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx31(
+var SkeletonLine = ({ width, height, borderRadius }) => /* @__PURE__ */ jsx32(
   "div",
   {
     className: "skeleton",
@@ -1385,7 +1732,7 @@ var Skeleton = ({
   className
 }) => {
   if (lines === 1) {
-    return /* @__PURE__ */ jsx31(
+    return /* @__PURE__ */ jsx32(
       "div",
       {
         className: `skeleton${className ? ` ${className}` : ""}`,
@@ -1398,7 +1745,7 @@ var Skeleton = ({
     id: `line-${i}`,
     isLast: i === lines - 1
   }));
-  return /* @__PURE__ */ jsx31("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx31(
+  return /* @__PURE__ */ jsx32("div", { className: `skeleton-group${className ? ` ${className}` : ""}`, children: lineItems.map(({ id, isLast }) => /* @__PURE__ */ jsx32(
     SkeletonLine,
     {
       width: isLast ? "70%" : width,
@@ -1411,20 +1758,20 @@ var Skeleton = ({
 var Skeleton_default = Skeleton;
 
 // src/components/spinner/Spinner.tsx
-import { jsx as jsx32 } from "react/jsx-runtime";
+import { jsx as jsx33 } from "react/jsx-runtime";
 var Spinner = ({
   size = "md",
   label = "Loading...",
   className
 }) => {
   const classNames = `spinner spinner-${size}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx32("div", { className: classNames, role: "status", "aria-label": label });
+  return /* @__PURE__ */ jsx33("div", { className: classNames, role: "status", "aria-label": label });
 };
 var Spinner_default = Spinner;
 
 // src/components/switch/Switch.tsx
-import { forwardRef as forwardRef7, useState as useState6 } from "react";
-import { jsx as jsx33, jsxs as jsxs21 } from "react/jsx-runtime";
+import { forwardRef as forwardRef7, useState as useState7 } from "react";
+import { jsx as jsx34, jsxs as jsxs22 } from "react/jsx-runtime";
 var Switch = forwardRef7(function switchInput({
   name,
   label,
@@ -1435,7 +1782,7 @@ var Switch = forwardRef7(function switchInput({
   disabled
 }, ref) {
   const isControlled = checked !== void 0;
-  const [internalChecked, setInternalChecked] = useState6(defaultChecked);
+  const [internalChecked, setInternalChecked] = useState7(defaultChecked);
   const isChecked = isControlled ? checked : internalChecked;
   const handleChange = (e) => {
     if (!isControlled) {
@@ -1444,8 +1791,8 @@ var Switch = forwardRef7(function switchInput({
     onChange?.(e);
   };
   const labelClass = `switch${disabled ? " switch-disabled" : ""}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs21("label", { className: labelClass, children: [
-    /* @__PURE__ */ jsx33(
+  return /* @__PURE__ */ jsxs22("label", { className: labelClass, children: [
+    /* @__PURE__ */ jsx34(
       "input",
       {
         type: "checkbox",
@@ -1458,14 +1805,14 @@ var Switch = forwardRef7(function switchInput({
         disabled
       }
     ),
-    /* @__PURE__ */ jsx33("div", { className: "switch-track", children: /* @__PURE__ */ jsx33("div", { className: "switch-thumb" }) }),
-    label && /* @__PURE__ */ jsx33("span", { className: "switch-label", children: label })
+    /* @__PURE__ */ jsx34("div", { className: "switch-track", children: /* @__PURE__ */ jsx34("div", { className: "switch-thumb" }) }),
+    label && /* @__PURE__ */ jsx34("span", { className: "switch-label", children: label })
   ] });
 });
 var Switch_default = Switch;
 
 // src/components/table/Table.tsx
-import { jsx as jsx34, jsxs as jsxs22 } from "react/jsx-runtime";
+import { jsx as jsx35, jsxs as jsxs23 } from "react/jsx-runtime";
 var Table = ({
   columns,
   rows,
@@ -1474,20 +1821,20 @@ var Table = ({
   className
 }) => {
   const classNames = `table${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsx34("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs22("table", { className: classNames, children: [
-    caption && /* @__PURE__ */ jsx34("caption", { children: caption }),
-    /* @__PURE__ */ jsx34("thead", { children: /* @__PURE__ */ jsx34("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx34("th", { scope: "col", children: header }, key)) }) }),
-    /* @__PURE__ */ jsx34("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx34("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx34("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
+  return /* @__PURE__ */ jsx35("div", { className: "table-wrapper", children: /* @__PURE__ */ jsxs23("table", { className: classNames, children: [
+    caption && /* @__PURE__ */ jsx35("caption", { children: caption }),
+    /* @__PURE__ */ jsx35("thead", { children: /* @__PURE__ */ jsx35("tr", { children: columns.map(({ key, header }) => /* @__PURE__ */ jsx35("th", { scope: "col", children: header }, key)) }) }),
+    /* @__PURE__ */ jsx35("tbody", { children: rows.map((row) => /* @__PURE__ */ jsx35("tr", { children: columns.map(({ key, render }) => /* @__PURE__ */ jsx35("td", { children: render ? render(row[key], row) : row[key] }, key)) }, row[rowKey])) })
   ] }) });
 };
 var Table_default = Table;
 
 // src/components/tabs/Tabs.tsx
-import { useRef as useRef5, useState as useState7 } from "react";
-import { jsx as jsx35, jsxs as jsxs23 } from "react/jsx-runtime";
+import { useRef as useRef6, useState as useState8 } from "react";
+import { jsx as jsx36, jsxs as jsxs24 } from "react/jsx-runtime";
 var Tabs = ({ tabs, defaultTab, onChange, className }) => {
-  const [activeTab, setActiveTab] = useState7(defaultTab ?? tabs[0]?.id);
-  const tabRefs = useRef5({});
+  const [activeTab, setActiveTab] = useState8(defaultTab ?? tabs[0]?.id);
+  const tabRefs = useRef6({});
   const handleSelect = (id) => {
     setActiveTab(id);
     onChange?.(id);
@@ -1507,8 +1854,8 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
     }
   };
   const wrapperClass = `tabs${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs23("div", { className: wrapperClass, children: [
-    /* @__PURE__ */ jsx35("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx35(
+  return /* @__PURE__ */ jsxs24("div", { className: wrapperClass, children: [
+    /* @__PURE__ */ jsx36("div", { role: "tablist", className: "tabs-list", children: tabs.map(({ id, label }, index) => /* @__PURE__ */ jsx36(
       "button",
       {
         ref: (el) => {
@@ -1527,7 +1874,7 @@ var Tabs = ({ tabs, defaultTab, onChange, className }) => {
       },
       id
     )) }),
-    tabs.map(({ id, content }) => /* @__PURE__ */ jsx35(
+    tabs.map(({ id, content }) => /* @__PURE__ */ jsx36(
       "div",
       {
         id: `panel-${id}`,
@@ -1545,17 +1892,17 @@ var Tabs_default = Tabs;
 
 // src/components/terminal/Terminal.tsx
 import copy3 from "clipboard-copy";
-import { jsx as jsx36, jsxs as jsxs24 } from "react/jsx-runtime";
+import { jsx as jsx37, jsxs as jsxs25 } from "react/jsx-runtime";
 var Terminal = ({ title, code }) => {
-  return /* @__PURE__ */ jsxs24("div", { className: "terminal", children: [
-    /* @__PURE__ */ jsxs24("div", { id: "title-bar", children: [
-      /* @__PURE__ */ jsxs24("div", { id: "title-bar-buttons", children: [
-        /* @__PURE__ */ jsx36("div", { className: "title-bar-button", id: "close" }),
-        /* @__PURE__ */ jsx36("div", { className: "title-bar-button", id: "minimize" }),
-        /* @__PURE__ */ jsx36("div", { className: "title-bar-button", id: "maximize" })
+  return /* @__PURE__ */ jsxs25("div", { className: "terminal", children: [
+    /* @__PURE__ */ jsxs25("div", { id: "title-bar", children: [
+      /* @__PURE__ */ jsxs25("div", { id: "title-bar-buttons", children: [
+        /* @__PURE__ */ jsx37("div", { className: "title-bar-button", id: "close" }),
+        /* @__PURE__ */ jsx37("div", { className: "title-bar-button", id: "minimize" }),
+        /* @__PURE__ */ jsx37("div", { className: "title-bar-button", id: "maximize" })
       ] }),
-      /* @__PURE__ */ jsx36("div", { id: "title-bar-title", children: title }),
-      /* @__PURE__ */ jsx36("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx36(
+      /* @__PURE__ */ jsx37("div", { id: "title-bar-title", children: title }),
+      /* @__PURE__ */ jsx37("div", { id: "title-bar-actions", children: /* @__PURE__ */ jsx37(
         "button",
         {
           type: "button",
@@ -1565,17 +1912,17 @@ var Terminal = ({ title, code }) => {
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsx36("pre", { children: /* @__PURE__ */ jsx36("code", { children: code }) })
+    /* @__PURE__ */ jsx37("pre", { children: /* @__PURE__ */ jsx37("code", { children: code }) })
   ] });
 };
 var Terminal_default = Terminal;
 
 // src/components/textarea/Textarea.tsx
 import { forwardRef as forwardRef8 } from "react";
-import { jsx as jsx37 } from "react/jsx-runtime";
+import { jsx as jsx38 } from "react/jsx-runtime";
 var Textarea = forwardRef8(
   function textarea({ className, defaultValue, placeholder, name, onChange }, ref) {
-    return /* @__PURE__ */ jsx37(
+    return /* @__PURE__ */ jsx38(
       "textarea",
       {
         ref,
@@ -1591,8 +1938,8 @@ var Textarea = forwardRef8(
 var Textarea_default = Textarea;
 
 // src/components/toast/Toast.tsx
-import { useEffect as useEffect5 } from "react";
-import { jsx as jsx38, jsxs as jsxs25 } from "react/jsx-runtime";
+import { useEffect as useEffect6 } from "react";
+import { jsx as jsx39, jsxs as jsxs26 } from "react/jsx-runtime";
 var variantIcons2 = {
   success: "\u2713",
   error: "\u2715",
@@ -1608,25 +1955,25 @@ var Toast = ({
   onClose,
   duration = 4e3
 }) => {
-  useEffect5(() => {
+  useEffect6(() => {
     if (!isVisible || !duration) return;
     const timer = setTimeout(() => onClose?.(), duration);
     return () => clearTimeout(timer);
   }, [isVisible, duration, onClose]);
   if (!isVisible) return null;
-  return /* @__PURE__ */ jsxs25(
+  return /* @__PURE__ */ jsxs26(
     "div",
     {
       className: `toast toast-${variant} toast-${position}`,
       role: "alert",
       "aria-live": "polite",
       children: [
-        /* @__PURE__ */ jsx38("div", { className: "toast-icon", children: variantIcons2[variant] }),
-        /* @__PURE__ */ jsxs25("div", { className: "toast-content", children: [
-          title && /* @__PURE__ */ jsx38("div", { className: "toast-title", children: title }),
-          /* @__PURE__ */ jsx38("div", { className: "toast-message", children: message })
+        /* @__PURE__ */ jsx39("div", { className: "toast-icon", children: variantIcons2[variant] }),
+        /* @__PURE__ */ jsxs26("div", { className: "toast-content", children: [
+          title && /* @__PURE__ */ jsx39("div", { className: "toast-title", children: title }),
+          /* @__PURE__ */ jsx39("div", { className: "toast-message", children: message })
         ] }),
-        /* @__PURE__ */ jsx38(
+        /* @__PURE__ */ jsx39(
           "button",
           {
             type: "button",
@@ -1643,7 +1990,7 @@ var Toast = ({
 var Toast_default = Toast;
 
 // src/components/tooltip/Tooltip.tsx
-import { jsx as jsx39, jsxs as jsxs26 } from "react/jsx-runtime";
+import { jsx as jsx40, jsxs as jsxs27 } from "react/jsx-runtime";
 var Tooltip = ({
   children,
   content,
@@ -1651,9 +1998,9 @@ var Tooltip = ({
   className
 }) => {
   const tooltipClass = `tooltip tooltip-${position}${className ? ` ${className}` : ""}`;
-  return /* @__PURE__ */ jsxs26("span", { className: "tooltip-wrapper", children: [
+  return /* @__PURE__ */ jsxs27("span", { className: "tooltip-wrapper", children: [
     children,
-    /* @__PURE__ */ jsx39("span", { role: "tooltip", className: tooltipClass, children: content })
+    /* @__PURE__ */ jsx40("span", { role: "tooltip", className: tooltipClass, children: content })
   ] });
 };
 var Tooltip_default = Tooltip;
@@ -1691,6 +2038,7 @@ export {
   FormField_default as FormField,
   Hero_default as Hero,
   Input_default as Input,
+  LiveTerminal_default as LiveTerminal,
   Modal_default as Modal,
   NavBar_default as NavBar,
   Page_default as Page,

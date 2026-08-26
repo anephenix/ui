@@ -128,6 +128,7 @@ const sidebarGroups = [
 			{ href: "/docs/components/table", label: "Table" },
 			{ href: "/docs/components/tabs", label: "Tabs" },
 			{ href: "/docs/components/terminal", label: "Terminal" },
+			{ href: "/docs/components/live-terminal", label: "LiveTerminal" },
 			{ href: "/docs/components/popover", label: "Popover" },
 			{ href: "/docs/components/progress-bar", label: "ProgressBar" },
 			{ href: "/docs/components/tooltip", label: "Tooltip" },

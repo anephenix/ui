@@ -343,6 +343,7 @@ import {
 	FormField,
 	Hero,
 	Input,
+	LiveTerminal,
 	Modal,
 	NavBar,
 	Pagination,
@@ -377,6 +378,48 @@ const tableRows = [
 	{ id: 2, name: "Bob Smith", role: "Designer", status: "Active" },
 	{ id: 3, name: "Carol Park", role: "Manager", status: "Away" },
 ];
+
+const LIVE_TERMINAL_COMMANDS = ["help", "echo", "date", "clear"];
+
+function LiveTerminalDemo() {
+	const [lines, setLines] = useState([]);
+
+	const getSuggestions = (input) =>
+		input.includes(" ")
+			? []
+			: LIVE_TERMINAL_COMMANDS.filter((c) => c.startsWith(input));
+
+	const onCommand = (command) => {
+		setLines((prev) => {
+			const next = [...prev, { type: "input", text: command }];
+			const [name, ...args] = command.trim().split(/\s+/);
+			if (name === "help") {
+				next.push({
+					type: "output",
+					text: "Commands: help, echo <text>, date, clear",
+				});
+			} else if (name === "echo") {
+				next.push({ type: "output", text: args.join(" ") });
+			} else if (name === "date") {
+				next.push({ type: "output", text: new Date().toString() });
+			} else if (name === "clear") {
+				return [];
+			} else {
+				next.push({ type: "error", text: `command not found: ${name}` });
+			}
+			return next;
+		});
+	};
+
+	return (
+		<LiveTerminal
+			title="Shell"
+			lines={lines}
+			onCommand={onCommand}
+			getSuggestions={getSuggestions}
+		/>
+	);
+}
 
 const previews = {
 	Accordion: {
@@ -695,6 +738,11 @@ const previews = {
 				<Input name="search" type="search" placeholder="Search..." />
 			</div>
 		),
+	},
+
+	LiveTerminal: {
+		wrapper: "preview-center",
+		render: () => <LiveTerminalDemo />,
 	},
 
 	Modal: {

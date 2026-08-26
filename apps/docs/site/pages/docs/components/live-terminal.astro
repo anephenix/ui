@@ -1,0 +1,8 @@
+---
+import LiveTerminalPage from "../../../components/docs/LiveTerminalPage.jsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="LiveTerminal - UI Docs">
+    <LiveTerminalPage client:only="react" currentPath={Astro.url.pathname} />
+</Layout>
