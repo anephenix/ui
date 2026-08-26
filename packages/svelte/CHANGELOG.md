@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.1.1 - Wednesday 26nd August, 2026
+
+- Initial version of the Svelte library
+
 ### 0.1.0 - Saturday 22nd August, 2026
 
 - Initial release: 37 of 38 components ported from `@anephenix/ui` (React). `Code` isn't
