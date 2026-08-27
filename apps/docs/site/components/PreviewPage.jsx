@@ -154,14 +154,7 @@ function CropTool({ viewport, componentName }) {
 							: "1px solid rgba(255,255,255,0.08)",
 					}}
 				>
-					<span style={{ fontWeight: 700, color: "#7bccff" }}>
-						Crop Tool
-						{componentName && (
-							<span style={{ color: "#8d95a5", marginLeft: "0.5rem" }}>
-								— {componentName}
-							</span>
-						)}
-					</span>
+					<span style={{ fontWeight: 700, color: "#7bccff" }}>📷</span>
 					<button
 						type="button"
 						onClick={() => setMinimized((m) => !m)}
