@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function CropTool({ viewport, componentName }) {
 	const [active, setActive] = useState(false);
@@ -9,6 +9,10 @@ function CropTool({ viewport, componentName }) {
 	const [copied, setCopied] = useState(false);
 	const [minimized, setMinimized] = useState(false);
 	const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+	const [panelPosition, setPanelPosition] = useState(null);
+	const [panelDragging, setPanelDragging] = useState(false);
+	const panelRef = useRef(null);
+	const panelDragOffset = useRef({ x: 0, y: 0 });
 
 	useEffect(() => {
 		const update = () =>
@@ -17,6 +21,43 @@ function CropTool({ viewport, componentName }) {
 		window.addEventListener("resize", update);
 		return () => window.removeEventListener("resize", update);
 	}, []);
+
+	const handlePanelDragStart = (e) => {
+		if (e.button !== 0) return;
+		const rect = panelRef.current.getBoundingClientRect();
+		panelDragOffset.current = {
+			x: e.clientX - rect.left,
+			y: e.clientY - rect.top,
+		};
+		setPanelDragging(true);
+	};
+
+	useEffect(() => {
+		if (!panelDragging) return;
+		const handleMove = (e) => {
+			const panel = panelRef.current;
+			if (!panel) return;
+			const maxLeft = window.innerWidth - panel.offsetWidth;
+			const maxTop = window.innerHeight - panel.offsetHeight;
+			setPanelPosition({
+				left: Math.min(
+					Math.max(0, e.clientX - panelDragOffset.current.x),
+					maxLeft,
+				),
+				top: Math.min(
+					Math.max(0, e.clientY - panelDragOffset.current.y),
+					maxTop,
+				),
+			});
+		};
+		const handleUp = () => setPanelDragging(false);
+		window.addEventListener("mousemove", handleMove);
+		window.addEventListener("mouseup", handleUp);
+		return () => {
+			window.removeEventListener("mousemove", handleMove);
+			window.removeEventListener("mouseup", handleUp);
+		};
+	}, [panelDragging]);
 
 	const scaleX = windowSize.width ? viewport.width / windowSize.width : 1;
 	const scaleY = windowSize.height ? viewport.height / windowSize.height : 1;
@@ -84,8 +125,9 @@ function CropTool({ viewport, componentName }) {
 
 	const panelStyle = {
 		position: "fixed",
-		bottom: "1rem",
-		right: "1rem",
+		...(panelPosition
+			? { top: panelPosition.top, left: panelPosition.left }
+			: { bottom: "1rem", right: "1rem" }),
 		zIndex: 9999,
 		background: "#0d0f1c",
 		color: "#c8c8d8",
@@ -97,6 +139,7 @@ function CropTool({ viewport, componentName }) {
 		border: "1px solid rgba(255,255,255,0.1)",
 		lineHeight: 1.6,
 		overflow: "hidden",
+		userSelect: panelDragging ? "none" : undefined,
 	};
 
 	const btnBase = {
@@ -141,8 +184,13 @@ function CropTool({ viewport, componentName }) {
 				</div>
 			)}
 
-			<div style={panelStyle}>
+			<div ref={panelRef} style={panelStyle}>
+				{/* biome-ignore lint/a11y/noStaticElementInteractions: mouse-only
+				 * drag handle for repositioning the panel — the minimize button
+				 * inside is already independently focusable and labelled, so
+				 * keyboard/AT users reach it directly via Tab without this div. */}
 				<div
+					onMouseDown={handlePanelDragStart}
 					style={{
 						display: "flex",
 						justifyContent: "space-between",
@@ -152,11 +200,13 @@ function CropTool({ viewport, componentName }) {
 						borderBottom: minimized
 							? "none"
 							: "1px solid rgba(255,255,255,0.08)",
+						cursor: panelDragging ? "grabbing" : "grab",
 					}}
 				>
 					<span style={{ fontWeight: 700, color: "#7bccff" }}>📷</span>
 					<button
 						type="button"
+						onMouseDown={(e) => e.stopPropagation()}
 						onClick={() => setMinimized((m) => !m)}
 						style={{
 							...btnBase,
