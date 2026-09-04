@@ -24,6 +24,6 @@
 	},
 	"devDependencies": {
 		"puppeteer": "^25.9.0",
-		"wrangler": "^4.127.1"
+		"wrangler": "^4.128.0"
 	}
 }
