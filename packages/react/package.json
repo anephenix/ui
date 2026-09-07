@@ -50,7 +50,7 @@
 		"@anephenix/ui-tokens": "*",
 		"@testing-library/jest-dom": "^7.0.0",
 		"@testing-library/react": "^16.3.3",
-		"@testing-library/user-event": "^14.6.1",
+		"@testing-library/user-event": "^14.6.7",
 		"@vitejs/plugin-react": "^6.1.1",
 		"@vitest/coverage-v8": "^4.1.2",
 		"esbuild": "^0.28.0",
