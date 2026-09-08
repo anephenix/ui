@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@anephenix/ui": "*",
 		"@anephenix/ui-svelte": "*",
-		"@astrojs/cloudflare": "^14.2.6",
+		"@astrojs/cloudflare": "^14.3.0",
 		"@astrojs/react": "^6.0.5",
 		"@astrojs/svelte": "^9.0.1",
 		"astro": "^7.2.10",
