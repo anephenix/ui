@@ -60,7 +60,7 @@
 		"publint": "^0.3.14",
 		"react-test-renderer": "^19.3.0",
 		"size-limit": "^13.1.1",
-		"vitest": "^5.0.0"
+		"vitest": "^5.0.1"
 	},
 	"dependencies": {
 		"clipboard-copy": "^4.0.1",
