@@ -23,7 +23,7 @@
 		"svelte": "^5.57.0"
 	},
 	"devDependencies": {
-		"puppeteer": "^25.10.0",
+		"puppeteer": "^25.11.0",
 		"wrangler": "^4.131.2"
 	}
 }
