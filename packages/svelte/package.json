@@ -73,7 +73,8 @@
 	"size-limit": [
 		{
 			"path": "dist/index.css",
-			"limit": "10 kB"
+			"limit": "10 kB",
+			"rolldown": false
 		}
 	]
 }
