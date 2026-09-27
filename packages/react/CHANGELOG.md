@@ -1,5 +1,91 @@
 # CHANGELOG
 
+### 0.4.6 - Sunday 27th September, 2026
+
+- Updated dependencies
+- Merge pull request #574 from anephenix/dependabot/npm_and_yarn/astrojs/react-7.0.0
+- Bump @astrojs/react from 6.0.6 to 7.0.0
+- Merge pull request #572 from anephenix/dependabot/npm_and_yarn/size-limit-14.0.0
+- Bump size-limit from 13.1.1 to 14.0.0
+- Fix npm run size failing on CSS entries
+- Updated dependencies
+- Updated size-limit dependencies
+- Updated biome schema
+- Updated to the latest dependencies
+- Merge pull request #569 from anephenix/dependabot/npm_and_yarn/vitest-5.0.1
+- Merge pull request #567 from anephenix/dependabot/npm_and_yarn/wrangler-4.132.0
+- Bump vitest from 5.0.0 to 5.0.1
+- Bump wrangler from 4.131.2 to 4.132.0
+- Merge pull request #563 from anephenix/dependabot/npm_and_yarn/puppeteer-25.11.0
+- Bump puppeteer from 25.10.0 to 25.11.0
+- Merge pull request #565 from anephenix/dependabot/npm_and_yarn/wrangler-4.131.2
+- Bump wrangler from 4.131.1 to 4.131.2
+- Merge pull request #559 from anephenix/dependabot/npm_and_yarn/react-test-renderer-19.3.0
+- Bump react-test-renderer from 19.2.8 to 19.3.0
+- Merge pull request #560 from anephenix/dependabot/npm_and_yarn/size-limit-13.1.1
+- Merge pull request #562 from anephenix/dependabot/npm_and_yarn/react-dom-19.3.0
+- Merge pull request #561 from anephenix/dependabot/npm_and_yarn/size-limit/preset-small-lib-13.1.1
+- Bump react-dom from 19.2.8 to 19.3.0
+- Bump @size-limit/preset-small-lib from 13.0.3 to 13.1.1
+- Bump size-limit from 13.0.3 to 13.1.1
+- Merge pull request #557 from anephenix/dependabot/npm_and_yarn/vite-8.3.0
+- Merge pull request #558 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.13
+- Merge pull request #555 from anephenix/dependabot/npm_and_yarn/wrangler-4.131.1
+- Bump @biomejs/biome from 2.5.12 to 2.5.13
+- Bump vite from 8.2.2 to 8.3.0
+- Bump wrangler from 4.130.0 to 4.131.1
+- Document consumer feedback from re-theming Dashku with @anephenix/ui
+- Merge pull request #553 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.3.0
+- Updated dependencies
+- Merge branch 'master' into dependabot/npm_and_yarn/astrojs/cloudflare-14.3.0
+- Merge pull request #550 from anephenix/dependabot/npm_and_yarn/vitest/coverage-v8-5.0.0
+- Bump @vitest/coverage-v8 from 4.1.11 to 5.0.0
+- Merge pull request #551 from anephenix/dependabot/npm_and_yarn/vitest-5.0.0
+- Merge pull request #552 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.12
+- Bump @astrojs/cloudflare from 14.2.6 to 14.3.0
+- Bump @biomejs/biome from 2.5.11 to 2.5.12
+- Bump vitest from 4.1.11 to 5.0.0
+- Merge pull request #547 from anephenix/dependabot/npm_and_yarn/testing-library/user-event-14.6.7
+- Merge pull request #549 from anephenix/dependabot/npm_and_yarn/puppeteer-25.10.0
+- Bump puppeteer from 25.9.0 to 25.10.0
+- Bump @testing-library/user-event from 14.6.6 to 14.6.7
+- Merge pull request #546 from anephenix/dependabot/npm_and_yarn/wrangler-4.128.0
+- Merge pull request #545 from anephenix/dependabot/npm_and_yarn/globals-17.12.0
+- Bump wrangler from 4.127.1 to 4.128.0
+- Bump globals from 17.11.0 to 17.12.0
+- Merge pull request #544 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.2.6
+- Bump @astrojs/cloudflare from 14.2.5 to 14.2.6
+- Merge pull request #543 from anephenix/dependabot/npm_and_yarn/astrojs/react-6.0.5
+- Merge pull request #542 from anephenix/dependabot/npm_and_yarn/astro-7.2.10
+- Bump @astrojs/react from 6.0.4 to 6.0.5
+- Bump astro from 7.2.9 to 7.2.10
+- Merge pull request #541 from anephenix/dependabot/npm_and_yarn/svelte-5.57.0
+- Bump svelte from 5.56.10 to 5.57.0
+- Merge pull request #540 from anephenix/dependabot/npm_and_yarn/vitejs/plugin-react-6.1.1
+- Merge pull request #539 from anephenix/dependabot/npm_and_yarn/astro-7.2.9
+- Merge pull request #538 from anephenix/dependabot/npm_and_yarn/biomejs/biome-2.5.11
+- Merge pull request #537 from anephenix/dependabot/npm_and_yarn/testing-library/react-16.3.3
+- Merge pull request #536 from anephenix/dependabot/npm_and_yarn/wrangler-4.127.1
+- Bump @vitejs/plugin-react from 6.1.0 to 6.1.1
+- Bump astro from 7.2.7 to 7.2.9
+- Bump @biomejs/biome from 2.5.10 to 2.5.11
+- Bump @testing-library/react from 16.3.2 to 16.3.3
+- Bump wrangler from 4.126.0 to 4.127.1
+- Merge pull request #534 from anephenix/dependabot/npm_and_yarn/wrangler-4.126.0
+- Bump wrangler from 4.125.0 to 4.126.0
+- Merge pull request #535 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.2.5
+- Merge pull request #533 from anephenix/dependabot/npm_and_yarn/puppeteer-25.9.0
+- Merge pull request #532 from anephenix/dependabot/npm_and_yarn/astro-7.2.7
+- Bump @astrojs/cloudflare from 14.2.4 to 14.2.5
+- Bump puppeteer from 25.8.0 to 25.9.0
+- Bump astro from 7.2.6 to 7.2.7
+- Merge pull request #530 from anephenix/dependabot/npm_and_yarn/astrojs/cloudflare-14.2.4
+- Bump @astrojs/cloudflare from 14.2.3 to 14.2.4
+- Merge pull request #531 from anephenix/dependabot/npm_and_yarn/astro-7.2.6
+- Bump astro from 7.2.4 to 7.2.6
+- Made the crop tool draggable
+- Make the Crop tool less visible in the editor
+
 ### 0.4.5 - Wednesday 26th August, 2026
 
 - Updated changelog
