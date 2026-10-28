@@ -1,6 +1,13 @@
 import { render } from "@testing-library/react";
 import NavBar from "./NavBar";
 
+const Link = ({
+	href,
+	children,
+}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+	children?: React.ReactNode;
+}) => <a href={href}>{children}</a>;
+
 describe("NavBar", () => {
 	const props = {
 		logo: <div>Logo</div>,
@@ -12,12 +19,7 @@ describe("NavBar", () => {
 				hideOptions: () => false,
 			},
 		],
-		Link: ({
-			href,
-			children,
-		}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-			children?: React.ReactNode;
-		}) => <a href={href}>{children}</a>,
+		Link,
 		loggedIn: true,
 		className: "test-class",
 		midSection: <div>Mid Section</div>,

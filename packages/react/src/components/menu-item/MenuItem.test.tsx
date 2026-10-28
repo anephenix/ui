@@ -2,6 +2,13 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import MenuItem from "./MenuItem";
 
+const MockLink = ({
+	children,
+	...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+	children?: React.ReactNode;
+}) => <a {...props}>{children}</a>;
+
 describe("MenuItem", () => {
 	test("renders an external link correctly", () => {
 		render(
@@ -22,12 +29,6 @@ describe("MenuItem", () => {
 	});
 
 	test("renders an internal link correctly", () => {
-		const MockLink = ({
-			children,
-			...props
-		}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-			children?: React.ReactNode;
-		}) => <a {...props}>{children}</a>;
 		render(
 			<MenuItem
 				text="Internal Link"

@@ -51,7 +51,7 @@ Conventions established, to guide any remaining/future ports:
   writing `packages/svelte/COMPONENTS.md` surfaced the inconsistency — see `ComboBox.svelte` for
   the pattern that caught it originally. This only matters for text-like fields; `change` fires
   immediately (no meaningful "keystroke") on checkboxes, radios, and `<select>`, so `Switch`,
-  `RadioButton`, and `Select`/`Dropdown` correctly keep `onchange`. It does *not* apply to custom
+  `RadioButton`, and `Select`/`Dropdown` correctly keep `onchange`. It does _not_ apply to custom
   callback props defined by a component's own logic rather than passed straight through to a
   native element (`onChange` on `Accordion`/`Tabs`/`ComboBox`, `onSelect`, `onClose`,
   `onPageChange`, etc.) — those keep their original camelCase names since they were never native
@@ -64,7 +64,7 @@ Conventions established, to guide any remaining/future ports:
   dynamic tag: `<Link {href}>{text}</Link>`.
 - A React `ReactNode` prop that isn't a plain string (e.g. `children`, `footer`, `logo`,
   `midSection`) becomes a Svelte `Snippet`, rendered with `{@render x()}`. Where the original
-  accepted *either* a string or a node (e.g. `Hero`'s `description`, `Tooltip`'s `content`), the
+  accepted _either_ a string or a node (e.g. `Hero`'s `description`, `Tooltip`'s `content`), the
   Svelte prop type is `string | Snippet` with a `typeof x === "string"` branch.
 - `Table`'s per-column `render` prop changed from `(value, row) => ReactNode` to
   `(value, row) => string`. A function returning arbitrary renderable content doesn't have a
@@ -93,7 +93,7 @@ Conventions established, to guide any remaining/future ports:
 - `useState`/`useRef` → `$state`/plain `let` bound via `bind:this`; `useEffect` (with its
   cleanup-function return) → `$effect` (same cleanup-return shape). Reactive dependencies are
   inferred automatically from what the effect body reads synchronously — no dependency array.
-  When seeding `$state` from a prop that's only meant to set an *initial* value (React's
+  When seeding `$state` from a prop that's only meant to set an _initial_ value (React's
   `useState(someProp)` pattern, e.g. `defaultOpen`/`defaultTab`), Svelte's compiler warns
   (`state_referenced_locally`) since it can't tell that's deliberate; suppress with
   `// svelte-ignore state_referenced_locally` and a comment explaining why, rather than
@@ -133,13 +133,13 @@ React-only rendering library, so this genuinely wasn't a mechanical port — it 
 on which Svelte-compatible syntax highlighter to adopt. Chose **`prismjs` directly** (the core
 tokenizer `react-syntax-highlighter` itself wraps — already a transitive dependency via that
 package, confirmed with `npm view prismjs version`) over a Svelte-specific wrapper library like
-`svelte-highlight` (which wraps `highlight.js`, a *different* tokenizer — switching engines would
+`svelte-highlight` (which wraps `highlight.js`, a _different_ tokenizer — switching engines would
 mean different token boundaries/classes and no guaranteed visual match to the React version).
 `Code.svelte` calls `Prism.highlight(code, Prism.languages[language], language)` directly and
 renders the real `<span class="token …">` HTML via `{@html}` — safe because `Prism.highlight()`
 HTML-escapes the source text itself before tokenizing, the same guarantee any plain Prism.js
 usage relies on; confirmed with a dedicated test asserting an unregistered language falls back to
-*escaped* plain text (via a hand-rolled `escapeHtml()`) rather than executing injected markup.
+_escaped_ plain text (via a hand-rolled `escapeHtml()`) rather than executing injected markup.
 
 Only `javascript`, `jsx`, and `css` Prism grammars are registered — the languages this codebase
 actually uses (checked with `grep` across every `<Code>`/`<LivePreview>` usage in `apps/docs`)
@@ -186,72 +186,76 @@ has no syntax highlighting, just `clipboard-copy`) was already ported earlier, u
 
 ### Layout
 
-| Component | Public API | State | CSS | Root class(es) |
-|---|---|---|---|---|
-| Page | Y | Simple | Page.css | `.page` |
-| Hero | Y | Simple | Hero.css | multiple/nested — see file |
-| Footer | Y | Simple | Footer.css | multiple/nested — see file |
+| Component | Public API | State  | CSS        | Root class(es)             |
+| --------- | ---------- | ------ | ---------- | -------------------------- |
+| Page      | Y          | Simple | Page.css   | `.page`                    |
+| Hero      | Y          | Simple | Hero.css   | multiple/nested — see file |
+| Footer    | Y          | Simple | Footer.css | multiple/nested — see file |
 
 ### Navigation
 
-| Component | Public API | State | CSS | Root class(es) |
-|---|---|---|---|---|
-| Breadcrumb | Y | Simple | Breadcrumb.css | `.breadcrumb`, `.breadcrumb-item`, `.breadcrumb-link`, `.breadcrumb-current`, `.breadcrumb-separator` |
-| NavBar | Y | **Stateful** (class component, `this.state.menuOpen` — not hook-based, missed by the original grep audit) | NavBar.css | multiple/nested — see file |
-| Pagination | Y | Simple | Pagination.css | `.pagination`, `.pagination-nav`, `.pagination-page`, `.pagination-page-active`, `.pagination-ellipsis` |
-| CloseIcon | N (internal, used by NavBar) | Simple | shared tokens | dynamic — see source |
-| DesktopMenu | N (internal, used by NavBar) | Simple | DesktopMenu.css | multiple/nested — see file |
-| Hamburger | N (internal, used by NavBar) | Simple | Hamburger.css | multiple/nested — see file |
-| MenuItem | N (internal, used by NavBar) | Simple | shared tokens | dynamic — see source |
-| MobileMenu | N (internal, used by NavBar) | Simple | MobileMenu.css | multiple/nested — see file |
+| Component   | Public API                   | State                                                                                                     | CSS             | Root class(es)                                                                                          |
+| ----------- | ---------------------------- | --------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------- |
+| Breadcrumb  | Y                            | Simple                                                                                                    | Breadcrumb.css  | `.breadcrumb`, `.breadcrumb-item`, `.breadcrumb-link`, `.breadcrumb-current`, `.breadcrumb-separator`   |
+| NavBar      | Y                            | **Stateful** (class component, `this.state.menuOpen` — not hook-based, missed by the original grep audit) | NavBar.css      | multiple/nested — see file                                                                              |
+| Pagination  | Y                            | Simple                                                                                                    | Pagination.css  | `.pagination`, `.pagination-nav`, `.pagination-page`, `.pagination-page-active`, `.pagination-ellipsis` |
+| CloseIcon   | N (internal, used by NavBar) | Simple                                                                                                    | shared tokens   | dynamic — see source                                                                                    |
+| DesktopMenu | N (internal, used by NavBar) | Simple                                                                                                    | DesktopMenu.css | multiple/nested — see file                                                                              |
+| Hamburger   | N (internal, used by NavBar) | Simple                                                                                                    | Hamburger.css   | multiple/nested — see file                                                                              |
+| MenuItem    | N (internal, used by NavBar) | Simple                                                                                                    | shared tokens   | dynamic — see source                                                                                    |
+| MobileMenu  | N (internal, used by NavBar) | Simple                                                                                                    | MobileMenu.css  | multiple/nested — see file                                                                              |
 
 ### Forms
 
-| Component | Public API | State | CSS | Root class(es) |
-|---|---|---|---|---|
-| Button | Y | Simple (`forwardRef`) | shared tokens (buttons.css) | dynamic — see source |
-| Checkbox | Y | Simple (`forwardRef`) | shared tokens (form-fields.css) | `.checkbox-element`, `.tick` |
-| Switch | Y | **Stateful** (`useState`) | Switch.css | `.switch`, `.switch-track`, `.switch-thumb`, `.switch-label`, `.switch-disabled` |
-| Input | Y | Simple (`forwardRef`) | shared tokens (form-fields.css) | dynamic — see source |
-| RadioButton | Y | Simple (`forwardRef`) | shared tokens (form-fields.css) | `.radio-element`, `.selected` |
-| Select | Y | Simple (`forwardRef`) | Select.css | dynamic — see source |
-| Dropdown | Y | Simple (`forwardRef`) | shared tokens (form-fields.css) | dynamic — see source |
-| ComboBox | Y | **Stateful** (`useState`, `useEffect`, `useRef`, `useId`) | ComboBox.css | `.combo-box`, `.combo-box-input`, `.combo-box-listbox`, `.combo-box-option`, `.combo-box-option-active`, `.combo-box-no-results` |
-| Textarea | Y | Simple (`forwardRef`) | shared tokens (form-fields.css) | dynamic — see source |
-| FormField | Y | Simple | FormField.css | `.form-field`, `.error-message` |
+| Component   | Public API | State                                                     | CSS                             | Root class(es)                                                                                                                   |
+| ----------- | ---------- | --------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Button      | Y          | Simple (`forwardRef`)                                     | shared tokens (buttons.css)     | dynamic — see source                                                                                                             |
+| Checkbox    | Y          | Simple (`forwardRef`)                                     | shared tokens (form-fields.css) | `.checkbox-element`, `.tick`                                                                                                     |
+| Switch      | Y          | **Stateful** (`useState`)                                 | Switch.css                      | `.switch`, `.switch-track`, `.switch-thumb`, `.switch-label`, `.switch-disabled`                                                 |
+| Input       | Y          | Simple (`forwardRef`)                                     | shared tokens (form-fields.css) | dynamic — see source                                                                                                             |
+| RadioButton | Y          | Simple (`forwardRef`)                                     | shared tokens (form-fields.css) | `.radio-element`, `.selected`                                                                                                    |
+| Select      | Y          | Simple (`forwardRef`)                                     | Select.css                      | dynamic — see source                                                                                                             |
+| Dropdown    | Y          | Simple (`forwardRef`)                                     | shared tokens (form-fields.css) | dynamic — see source                                                                                                             |
+| ComboBox    | Y          | **Stateful** (`useState`, `useEffect`, `useRef`, `useId`) | ComboBox.css                    | `.combo-box`, `.combo-box-input`, `.combo-box-listbox`, `.combo-box-option`, `.combo-box-option-active`, `.combo-box-no-results` |
+| Textarea    | Y          | Simple (`forwardRef`)                                     | shared tokens (form-fields.css) | dynamic — see source                                                                                                             |
+| FormField   | Y          | Simple                                                    | FormField.css                   | `.form-field`, `.error-message`                                                                                                  |
 
 ### Display
 
-| Component | Public API | State | CSS | Root class(es) |
-|---|---|---|---|---|
-| Accordion | Y | **Stateful** (`useState`) | Accordion.css | `.accordion`, `.accordion-item`, `.accordion-heading`, `.accordion-trigger`(`-open`), `.accordion-title`, `.accordion-panel`(`-open`), `.accordion-panel-inner`, `.accordion-chevron`(`-open`) |
-| Alert | Y | Simple | Alert.css | `.alert`, `.alert-{info,success,warning,error}`, `.alert-icon`, `.alert-content`, `.alert-title`, `.alert-body`, `.alert-close` |
-| Divider | Y | Simple | Divider.css | `.divider`, `.divider-horizontal`, `.divider-vertical`, `.divider-label` |
-| Avatar | Y | **Stateful** (`useState`, image load fallback) | Avatar.css | `.avatar`, `.avatar-{circle,square,rounded}`, `.avatar-{sm,md,lg,xl}`, `.avatar-img`, `.avatar-initials`, `.avatar-icon` |
-| Badge | Y | Simple | Badge.css | dynamic — `.badge` + variant/size classes composed at runtime, see source |
-| Card | Y | Simple | Card.css | `.card`, `.card-image`, `.card-header`, `.card-title`, `.card-subtitle`, `.card-body`, `.card-footer` |
-| Code | Y | Simple | Code.css | `.code`, `.code-editor`, `.code-line-numbers`, `.code-line-number`, plus `.title-bar-button`/`.title-bar-action` (shared with Terminal) |
-| Popover | Y | **Stateful** (`useState`, `useEffect`, `useRef` — positioning) | Popover.css | `.popover`, `.popover-{top,bottom,left,right}`, `.popover-wrapper`, `.popover-header`, `.popover-title`, `.popover-close`, `.popover-body` |
-| ProgressBar | Y | Simple | ProgressBar.css | `.progress-bar-wrapper`, `.progress-bar`, `.progress-bar-{default,success,warning,error}`, `.progress-bar-{sm,md,lg}`, `.progress-bar-fill`, `.progress-bar-indeterminate`, `.progress-bar-header`, `.progress-bar-label`, `.progress-bar-value` |
-| Skeleton | Y | Simple | Skeleton.css | `.skeleton`, `.skeleton-group` |
-| Spinner | Y | Simple | Spinner.css | dynamic — `.spinner` + size class composed at runtime, see source |
-| Table | Y | Simple | Table.css | `.table-wrapper` |
-| Tabs | Y | **Stateful** (`useState`, `useRef`) | Tabs.css | `.tabs`, `.tabs-list`, `.tabs-tab`(`-active`), `.tabs-panel` |
-| Terminal | Y | Simple | Terminal.css | `.terminal`, `.title-bar-button`, `.title-bar-action` |
-| Tooltip | Y | Simple | Tooltip.css | `.tooltip-wrapper`, `.tooltip`, `.tooltip-{top,bottom,left,right}` |
+| Component   | Public API | State                                                          | CSS             | Root class(es)                                                                                                                                                                                                                                   |
+| ----------- | ---------- | -------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Accordion   | Y          | **Stateful** (`useState`)                                      | Accordion.css   | `.accordion`, `.accordion-item`, `.accordion-heading`, `.accordion-trigger`(`-open`), `.accordion-title`, `.accordion-panel`(`-open`), `.accordion-panel-inner`, `.accordion-chevron`(`-open`)                                                   |
+| Alert       | Y          | Simple                                                         | Alert.css       | `.alert`, `.alert-{info,success,warning,error}`, `.alert-icon`, `.alert-content`, `.alert-title`, `.alert-body`, `.alert-close`                                                                                                                  |
+| Divider     | Y          | Simple                                                         | Divider.css     | `.divider`, `.divider-horizontal`, `.divider-vertical`, `.divider-label`                                                                                                                                                                         |
+| Avatar      | Y          | **Stateful** (`useState`, image load fallback)                 | Avatar.css      | `.avatar`, `.avatar-{circle,square,rounded}`, `.avatar-{sm,md,lg,xl}`, `.avatar-img`, `.avatar-initials`, `.avatar-icon`                                                                                                                         |
+| Badge       | Y          | Simple                                                         | Badge.css       | dynamic — `.badge` + variant/size classes composed at runtime, see source                                                                                                                                                                        |
+| Card        | Y          | Simple                                                         | Card.css        | `.card`, `.card-image`, `.card-header`, `.card-title`, `.card-subtitle`, `.card-body`, `.card-footer`                                                                                                                                            |
+| Code        | Y          | Simple                                                         | Code.css        | `.code`, `.code-editor`, `.code-line-numbers`, `.code-line-number`, plus `.title-bar-button`/`.title-bar-action` (shared with Terminal)                                                                                                          |
+| Popover     | Y          | **Stateful** (`useState`, `useEffect`, `useRef` — positioning) | Popover.css     | `.popover`, `.popover-{top,bottom,left,right}`, `.popover-wrapper`, `.popover-header`, `.popover-title`, `.popover-close`, `.popover-body`                                                                                                       |
+| ProgressBar | Y          | Simple                                                         | ProgressBar.css | `.progress-bar-wrapper`, `.progress-bar`, `.progress-bar-{default,success,warning,error}`, `.progress-bar-{sm,md,lg}`, `.progress-bar-fill`, `.progress-bar-indeterminate`, `.progress-bar-header`, `.progress-bar-label`, `.progress-bar-value` |
+| Skeleton    | Y          | Simple                                                         | Skeleton.css    | `.skeleton`, `.skeleton-group`                                                                                                                                                                                                                   |
+| Spinner     | Y          | Simple                                                         | Spinner.css     | dynamic — `.spinner` + size class composed at runtime, see source                                                                                                                                                                                |
+| Table       | Y          | Simple                                                         | Table.css       | `.table-wrapper`                                                                                                                                                                                                                                 |
+| Tabs        | Y          | **Stateful** (`useState`, `useRef`)                            | Tabs.css        | `.tabs`, `.tabs-list`, `.tabs-tab`(`-active`), `.tabs-panel`                                                                                                                                                                                     |
+| Terminal    | Y          | Simple                                                         | Terminal.css    | `.terminal`, `.title-bar-button`, `.title-bar-action`                                                                                                                                                                                            |
+| Tooltip     | Y          | Simple                                                         | Tooltip.css     | `.tooltip-wrapper`, `.tooltip`, `.tooltip-{top,bottom,left,right}`                                                                                                                                                                               |
 
 ### Overlays
 
-| Component | Public API | State | CSS | Root class(es) |
-|---|---|---|---|---|
-| Modal | Y | **Stateful** (`useEffect`, `useRef` — native `<dialog>` imperative API) | Modal.css | `.modal`, `.modal-content`, `.modal-header`, `.modal-title`, `.modal-close`, `.modal-body`, `.modal-footer` |
-| Toast | Y | **Stateful** (`useEffect` — likely auto-dismiss timer) | Toast.css | `.toast`, `.toast-{top,bottom}-{left,center,right}`, `.toast-{info,success,warning,error}`, `.toast-icon`, `.toast-content`, `.toast-title`, `.toast-message`, `.toast-close` |
+| Component | Public API | State                                                                   | CSS       | Root class(es)                                                                                                                                                                |
+| --------- | ---------- | ----------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Modal     | Y          | **Stateful** (`useEffect`, `useRef` — native `<dialog>` imperative API) | Modal.css | `.modal`, `.modal-content`, `.modal-header`, `.modal-title`, `.modal-close`, `.modal-body`, `.modal-footer`                                                                   |
+| Toast     | Y          | **Stateful** (`useEffect` — likely auto-dismiss timer)                  | Toast.css | `.toast`, `.toast-{top,bottom}-{left,center,right}`, `.toast-{info,success,warning,error}`, `.toast-icon`, `.toast-content`, `.toast-title`, `.toast-message`, `.toast-close` |
 
 ### Utilities
 
-| Export | Public API | Notes |
-|---|---|---|
-| `handleErrors` | Y | Plain function, not a component — framework-agnostic as-is. **Actually ported** to `packages/svelte/src/lib/handleErrors.ts` (this table previously claimed it "ports with no changes needed" but nobody had actually copied it over — caught while writing `packages/svelte/COMPONENTS.md`). Re-exporting it required an explicit `.js` extension in `index.ts`'s `export … from "./handleErrors.js"` — `@sveltejs/package` doesn't rewrite cross-file import extensions, so the un-extended TS-style import worked in dev but silently pointed at a nonexistent `.ts` file in the published `dist/index.js`. |
+- **`handleErrors`** — public API (`Y`). Plain function, not a component — framework-agnostic
+  as-is. **Actually ported** to `packages/svelte/src/lib/handleErrors.ts` (this entry previously
+  claimed it "ports with no changes needed" but nobody had actually copied it over — caught while
+  writing `packages/svelte/COMPONENTS.md`). Re-exporting it required an explicit `.js` extension
+  in `index.ts`'s `export … from "./handleErrors.js"` — `@sveltejs/package` doesn't rewrite
+  cross-file import extensions, so the un-extended TS-style import worked in dev but silently
+  pointed at a nonexistent `.ts` file in the published `dist/index.js`.
 
 ## Docs site preview (Phase 5 — complete)
 
@@ -316,7 +320,7 @@ excludes from the npm tarball) are gitignored so they don't pollute the git hist
   ".svelte" files`), confirmed by actually running it. This isn't fixable by picking a different
   entry point: `@sveltejs/package` ships unbundled `.svelte` source (unlike React's single
   bundled `dist/index.js`), so there's no single JS artifact whose size represents what a
-  consumer's bundle actually pays — that only becomes concrete once *their* Svelte-aware bundler
+  consumer's bundle actually pays — that only becomes concrete once _their_ Svelte-aware bundler
   processes the specific components they import.
 - **Publish scripts** (`update-changelog`, `prepare-patch-release`, `publish-patch-release`) —
   copied from `packages/react`'s pattern with one necessary change: **git tags are scoped
@@ -327,7 +331,7 @@ excludes from the npm tarball) are gitignored so they don't pollute the git hist
   `--tag-version-prefix=svelte-v` to `npm version patch`. `packages/svelte/scripts/update-changelog.ts`
   is adapted to match: `git describe --match "svelte-v*"` and `git log -- packages/svelte` so it
   only considers Svelte's own tags and commits. That script needs at least one prior `svelte-v*`
-  tag to run (it diffs against "the previous version"), so it can't produce the *first* changelog
+  tag to run (it diffs against "the previous version"), so it can't produce the _first_ changelog
   entry — `packages/svelte/CHANGELOG.md`'s `0.1.0` entry was written by hand; the script becomes
   usable starting with the second release. Root's `prepare-patch-release`/`publish-patch-release`
   are deliberately left pointing at `packages/react` only, not fanned out via `--workspaces` —
