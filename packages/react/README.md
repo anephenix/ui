@@ -20,8 +20,8 @@ npm i @anephenix/ui --save
 Import the components and the stylesheet in your project:
 
 ```jsx
-import { Button, Input, NavBar } from '@anephenix/ui';
-import '@anephenix/ui/dist/index.css';
+import { Button, Input, NavBar } from "@anephenix/ui";
+import "@anephenix/ui/dist/index.css";
 ```
 
 The stylesheet must be imported once at the root of your app. See the full [Get Started guide](https://ui.anephenix.com/get-started) for framework-specific setup (Next.js App Router, Vite, Pages Router), token customisation, and layout utilities.
@@ -36,12 +36,12 @@ Full API reference: **[COMPONENTS.md](./COMPONENTS.md)**
 
 The library ships a set of CSS custom properties for colours, spacing, typography, and grid that all components consume. Override any token in your own stylesheet to theme the system without touching component code.
 
-| Token group | Variables | Docs |
-|-------------|-----------|------|
-| Colours | `--primary-colour`, `--blue-one-colour`, … | [Colours](https://ui.anephenix.com/docs/colours) |
-| Spacing | `--spacer-one` … `--spacer-five` | [Grid](https://ui.anephenix.com/docs/grid) |
-| Typography | `--font-size-base`, `--font-weight-bold`, … | [Typography](https://ui.anephenix.com/docs/typography) |
-| Layout | `.page`, `.container`, `.withSidePadding` | [Layout](https://ui.anephenix.com/docs/layout) |
+| Token group | Variables                                   | Docs                                                   |
+| ----------- | ------------------------------------------- | ------------------------------------------------------ |
+| Colours     | `--primary-colour`, `--blue-one-colour`, …  | [Colours](https://ui.anephenix.com/docs/colours)       |
+| Spacing     | `--spacer-one` … `--spacer-five`            | [Grid](https://ui.anephenix.com/docs/grid)             |
+| Typography  | `--font-size-base`, `--font-weight-bold`, … | [Typography](https://ui.anephenix.com/docs/typography) |
+| Layout      | `.page`, `.container`, `.withSidePadding`   | [Layout](https://ui.anephenix.com/docs/layout)         |
 
 ### Tests
 

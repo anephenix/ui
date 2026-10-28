@@ -6,12 +6,12 @@ This is an npm workspaces monorepo for the Anephenix design system.
 
 ### Layout
 
-| Path | Package | Purpose |
-|------|---------|---------|
-| `packages/tokens` | `@anephenix/ui-tokens` | Shared design tokens and per-component CSS (framework-agnostic, workspace-internal). |
-| `packages/react` | `@anephenix/ui` | The published React component library. See [packages/react/README.md](./packages/react/README.md) for installation and usage. |
-| `packages/svelte` | `@anephenix/ui-svelte` | The Svelte component library (all components ported — see [packages/svelte/COMPONENTS.md](./packages/svelte/COMPONENTS.md)). Not yet published to npm. |
-| `apps/docs` | `@anephenix/ui-docs` | The Astro docs site at [ui.anephenix.com](https://ui.anephenix.com), including component previews (with a live React/Svelte toggle on every component page) and screenshot tooling. |
+| Path              | Package                | Purpose                                                                                                                                                                             |
+| ----------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/tokens` | `@anephenix/ui-tokens` | Shared design tokens and per-component CSS (framework-agnostic, workspace-internal).                                                                                                |
+| `packages/react`  | `@anephenix/ui`        | The published React component library. See [packages/react/README.md](./packages/react/README.md) for installation and usage.                                                       |
+| `packages/svelte` | `@anephenix/ui-svelte` | The Svelte component library (all components ported — see [packages/svelte/COMPONENTS.md](./packages/svelte/COMPONENTS.md)). Not yet published to npm.                              |
+| `apps/docs`       | `@anephenix/ui-docs`   | The Astro docs site at [ui.anephenix.com](https://ui.anephenix.com), including component previews (with a live React/Svelte toggle on every component page) and screenshot tooling. |
 
 See [PORTING-CONTRACT.md](./PORTING-CONTRACT.md) for the React → Svelte parity checklist and the API differences between the two packages.
 

@@ -31,7 +31,7 @@ Import the components and the stylesheet in your project:
 ```
 
 ```js
-import '@anephenix/ui-svelte/dist/index.css';
+import "@anephenix/ui-svelte/dist/index.css";
 ```
 
 The stylesheet must be imported once at the root of your app.
@@ -48,12 +48,12 @@ If you're coming from [`@anephenix/ui`](https://www.npmjs.com/package/@anephenix
 
 The library ships a set of CSS custom properties for colours, spacing, typography, and grid that all components consume — the same tokens as the React package, since both are built from the same `packages/tokens` source. Override any token in your own stylesheet to theme the system without touching component code.
 
-| Token group | Variables | Docs |
-|-------------|-----------|------|
-| Colours | `--primary-colour`, `--blue-one-colour`, … | [Colours](https://ui.anephenix.com/docs/colours) |
-| Spacing | `--spacer-one` … `--spacer-five` | [Grid](https://ui.anephenix.com/docs/grid) |
-| Typography | `--font-size-base`, `--font-weight-bold`, … | [Typography](https://ui.anephenix.com/docs/typography) |
-| Layout | `.page`, `.container`, `.withSidePadding` | [Layout](https://ui.anephenix.com/docs/layout) |
+| Token group | Variables                                   | Docs                                                   |
+| ----------- | ------------------------------------------- | ------------------------------------------------------ |
+| Colours     | `--primary-colour`, `--blue-one-colour`, …  | [Colours](https://ui.anephenix.com/docs/colours)       |
+| Spacing     | `--spacer-one` … `--spacer-five`            | [Grid](https://ui.anephenix.com/docs/grid)             |
+| Typography  | `--font-size-base`, `--font-weight-bold`, … | [Typography](https://ui.anephenix.com/docs/typography) |
+| Layout      | `.page`, `.container`, `.withSidePadding`   | [Layout](https://ui.anephenix.com/docs/layout)         |
 
 ### Tests
 
