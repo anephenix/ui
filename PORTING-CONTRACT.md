@@ -284,6 +284,7 @@ conventions above — this was the harder, still-outstanding half of Phase 5's e
 Writing it accurately (cross-referencing every component's actual `Props` interface rather than
 trusting memory) surfaced three real bugs that a "docs site shows both frameworks" check alone
 never would have:
+
 - `Input.svelte`/`Textarea.svelte` were wired to `onchange` (fires on blur) instead of `oninput`
   (fires on every keystroke) — a silent behavioural regression from React's `onChange`, exactly
   the class of bug the `ComboBox` port had already identified and avoided elsewhere. Fixed to
