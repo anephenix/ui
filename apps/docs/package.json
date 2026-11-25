@@ -20,7 +20,7 @@
 		"astro": "^7.4.13",
 		"react": "^19.0.0",
 		"react-dom": "^19.3.0",
-		"svelte": "^5.57.2"
+		"svelte": "^5.59.1"
 	},
 	"devDependencies": {
 		"puppeteer": "^25.18.1",
